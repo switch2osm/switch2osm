@@ -5,7 +5,7 @@ rvm:
 branches:
   only:
     - /^.*$/
-install: 
-  - gem install
+install:
+  - gem install bundler && bundle install
 script: 
-  - jekyll build --quiet --trace
+  - bundle exec jekyll build --quiet --trace
