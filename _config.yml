@@ -9,6 +9,8 @@
 title: Switch2OSM
 description: > # this means to ignore newlines until "baseurl:"
   Switch to OpenStreetMap and discover how you can build beautiful maps from the world’s best map data.
+copyright: >
+  © 2013–2015 OpenStreetMap and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.switch2osm.org" # the base hostname & protocol for your site
 github_username: switch2osm
