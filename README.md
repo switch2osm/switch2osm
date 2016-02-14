@@ -2,7 +2,7 @@
 
 This repository is not what currently powers switch2osm.org, but is some ideas in the early conceptual stage.
 
-## Content design goals ##
+## Content principles ##
 
 * Covers from first principles to technical how-tos.
 
@@ -18,7 +18,7 @@ This repository is not what currently powers switch2osm.org, but is some ideas i
   * openstreetmapdata.com, for coastlines and other preprocessed data
   * Natural Earth and other well-used public data sources
 
-## Technical design goals ##
+## Content technical needs ##
 
 * Uses multiple steps to build understanding, rather than one shell script
 
