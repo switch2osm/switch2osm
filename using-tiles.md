@@ -7,11 +7,9 @@ permalink: /using-tiles/
 You can switch a website to OpenStreetMap in under an hour. Choose a JavaScript API and a tile provider, and you’re ready to go. Then, as your needs increase, you can consider custom tiles, either from a specialist provider or generated yourself.
 
 # Choosing an API/library
-Unlike commercial online map providers, OpenStreetMap does not provide an “official” JavaScript library which you are required to use. Rather, you can use any library that meets your needs. The two most popular are OpenLayers and Leaflet. Both are open source.
+Unlike commercial online map providers, OpenStreetMap does not provide an “official” JavaScript library which you are required to use. Rather, you can use any library that meets your needs. The most popular is Leaflet, an open-source library.
 
-Getting started with Leaflet – a new, lighter library
-
-Getting started with OpenLayers – a mature, feature-rich library
+[Getting started with Leaflet – a new, lighter library](/using-tiles/getting-started-with-leaflet/)
 
 If you choose to use MapQuest Open tiles (made from OSM data), you can also use the MapQuest Open API which adds routing and geocoding capabilities to the standard featureset.
 Mapstraction is a library which enables you to switch from one mapping provider to another without changing your code.
