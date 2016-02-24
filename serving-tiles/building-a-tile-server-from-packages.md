@@ -9,6 +9,7 @@ If you’d like to build your own tile server, using packages can save you a goo
 These packages work with Ubuntu Linux versions 12.04 LTS (Precise Pangolin) and above. After installation, you should have your own working tileserver with the standard OSM Mapnik stylesheet, into which you can import an extract of the OSM data for rendering.
 
 It is based on the same software that OSM’s own tile server uses:
+
 * mod_tile for serving
 * renderd as the rendering daemon
 * mapnik for the actual rendering
@@ -41,6 +42,7 @@ Install the package libapache2-mod-tile and its dependencies. During configurati
     sudo apt-get install libapache2-mod-tile
 
 # Import map data
+
 Download the OpenStreetMap data you want to render (complete planet files can be found on planet.openstreetmap.org, country extracts can be found e.g. on download.geofabrik.de). e.g:
 
     wget http://download.geofabrik.de/europe/ireland-and-northern-ireland-latest.osm.pbf
@@ -68,6 +70,7 @@ If everything worked OK, you should have a working tileserver and you can view i
 If you are not opening slippymap.html on localhost and you are seeing only pink tiles, you will need to edit the html page and replace localhost with the correct server name in ‘new OpenLayers.Layer.OSM(“Local Tiles”…’ or change it to a relative URL.
 
 # Updating
+
 The following commands explain how to keep your tile server up-to-date with the latest OSM data.
 
 After importing the initial database with osm2pgsql as described above (you will need to have used the ``--slim`` option in the initial import to allow for updating), you need to do the following steps
@@ -130,7 +133,9 @@ Hardware requirements can be quite demanding if you want to render larger areas,
 If you want to import and render the whole world, you will need a considerably beefier server than a typical desktop. E.g. starting from about 24Gb of RAM upwards. It is also strongly recomend to use an SSD for the database or at least a fast RAID array. The full planet import is currently around about 256GB, so to store all of the DB on an SSD, you will likely need a 512GB SSD. An import that is not updated and uses the –drop option on the otherhand likely still fits on a 256GB SSD. You can also selectively put the most important parts of the database on an SSD and the rest on slower disks. Osm2pgsql supports using separate tablespaces for different parts of the database for this purpose.
 
 # FAQ
+
 ## Where are the various files (DB / Tiles, etc.)?
+
 * Style sheets and coastlines are in /etc/mapnik-osm-data
 * Tiles are in /var/lib/mod_tile
 * Renderd configuration in /etc/renderd.conf
@@ -173,4 +178,5 @@ The above would cause all 4 tiles at zoom 1 to be rendered
 Note that you have to set ``--socket=/var/run/renderd/renderd.sock``
 
 # Acknowledgements
+
 Thanks to Kai Krueger for maintaining the packages and preparing the documentation.
