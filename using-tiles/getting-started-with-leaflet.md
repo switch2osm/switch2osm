@@ -4,12 +4,12 @@ title: Getting started with Leaflet
 permalink: /using-tiles/getting-started-with-leaflet/
 ---
 
-Leaflet is a new JavaScript library for embedding maps which is quickly gaining popularity. Simpler and smaller than OpenLayers, it is a good choice for those with fairly standard embedding needs.
+[Leaflet](http://leafletjs.com/) is a new JavaScript library for embedding maps which is quickly gaining popularity. Simpler and smaller than OpenLayers, it is a good choice for those with fairly standard embedding needs.
 
 On this page, we explain how to create a simple embedded map with markers using Leaflet, as shown on a recent switcher to OpenStreetMap, property site PlotBrowser.com.
 
 # Downloading Leaflet
-You can download Leaflet from its own site at leafletjs.com. The source is available as a .zip, or you can fork it on GitHub.
+You can download Leaflet from its own site at [leafletjs.com](http://leafletjs.com/). The source is available as a .zip, or you can fork it on GitHub.
 
 Leaflet uses a permissive BSD open-source licence so can be incorporated into any site without legal worries.
 
