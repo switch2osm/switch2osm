@@ -43,3 +43,9 @@ This repository is not what currently powers switch2osm.org, but is some ideas i
 * Uses OS distribution methods for software when possible
 
   Use apt-get or homebrew. With PPAs, it should be possible to get all software installed this way.
+
+## Contribute
+The webpage is built using [GitHub Pages](https://pages.github.com/). To compile your changes, execute
+* `bundle install --path .vendor/bundle`
+* `bundle exec jekyll serve`
+and open http://127.0.0.1:4000/ in the browser
