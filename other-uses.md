@@ -18,12 +18,11 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 * [OSRM](http://project-osrm.org/) is a new, fast routing engine designed for OSM data.
 * [Gosmore](http://sourceforge.net/projects/gosmore/) is a long-established routing engine.
 * [Graphhopper](http://graphhopper.com/) is a fast Java routing engine.
-* Public routing APIs using OSM data are offered by [MapQuest Open](http://developer.mapquest.com/web/products/open/directions-service) and [CloudMade](http://developers.cloudmade.com/projects/show/routing-http-api).
+* Public routing APIs using OSM data are offered by [MapQuest Open](http://open.mapquestapi.com/directions/).
 * Specialist routing APIs include [CycleStreets cycle routing](http://www.cyclestreets.net/api/) (UK)
 
 ## Mobile libraries
-* iPhone/iOS libraries include [Route-Me](https://github.com/route-me/route-me) and [CloudMade’s SDK](http://cloudmade.com/products/iphone-sdk).
-* Android libraries include [osmdroid](http://code.google.com/p/osmdroid/).
+* Android libraries include [osmdroid](http://osmdroid.org/).
 
 ## Vector rendering
 * [Kothic-JS](https://github.com/kothic/kothic-js) is an in-development new technology which renders OSM data “on the fly” using HTML5, without the need for raster tile images.
