@@ -18,12 +18,14 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 * [OSRM](http://project-osrm.org/) is a new, fast routing engine designed for OSM data.
 * [Gosmore](http://sourceforge.net/projects/gosmore/) is a long-established routing engine.
 * [Graphhopper](http://graphhopper.com/) is a fast Java routing engine.
-* Public routing APIs using OSM data are offered by [MapQuest Open](http://open.mapquestapi.com/directions/).
+* Public routing APIs using OSM data are offered by [MapQuest Open](http://open.mapquestapi.com/directions/) and [Mapbox](https://www.mapbox.com/directions/).
 * Specialist routing APIs include [CycleStreets cycle routing](http://www.cyclestreets.net/api/) (UK)
 
 ## Mobile libraries
-* Android libraries include [osmdroid](http://osmdroid.org/).
+* Android libraries include the [Mapbox Android SDK](https://www.mapbox.com/android-sdk/), [mapsforge](http://mapsforge.org/), [Nutiteq Maps SDK](https://developer.nutiteq.com/), [Skobbler Android SDK](http://developer.skobbler.com/), and [Tangram ES](https://github.com/tangrams/tangram-es/).
+* iOS libraries include the [Mapbox iOS SDK](https://www.mapbox.com/ios-sdk/), [Nutiteq Maps SDK](https://developer.nutiteq.com/), [Skobbler iOS SDK](http://developer.skobbler.com/), and [Tangram ES](https://github.com/tangrams/tangram-es/).
 
 ## Vector rendering
-* [Kothic-JS](https://github.com/kothic/kothic-js) is an in-development new technology which renders OSM data “on the fly” using HTML5, without the need for raster tile images.
+* [Kothic JS](https://github.com/kothic/kothic-js) renders OSM data “on the fly” using HTML5, without the need for raster tile images.
+* [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/) and [Tangram](http://tangrams.github.io/tangram/) render vector tiles based on OSM data using WebGL for better performance.
 * [Mapbox Studio](https://www.mapbox.com/mapbox-studio/) is a suite of tools to produce ‘vector tiles’ which can be rendered either server-side or client-side.
