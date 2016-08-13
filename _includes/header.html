@@ -1,27 +1,103 @@
-<header class="site-header">
+{% capture site_cats %}{% for cat in site.categories %}{{ cat | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{% assign cats_list = site_cats | split:',' | sort %}
 
-  <div class="wrapper">
-
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-
-    <nav class="site-nav">
-      <a href="#" class="menu-icon">
-        <svg viewBox="0 0 18 15">
-          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-        </svg>
-      </a>
-
-      <div class="trigger">
-        {% for my_page in site.pages %}
-          {% if my_page.title %}
-          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><h2><i class="fa fa-bars"></i></h2></a></li>
+      <li class="header-item-title">
+        <a href="{{site.url}}/">
+          {% if site.logo %}
+            <img class="logo" src="{{site.url}}/{{ site.logo }}" alt="{{ site.title }}">
           {% endif %}
-        {% endfor %}
-      </div>
-    </nav>
+          <a href="{{site.url}}/" class="title"> {{ site.title }}</a>
+        </a>
+      </li>
+      {% for menu in site.menu reversed %}
+        {% assign class = nil %}
+        {% if ((page.url contains menu.url and menu.url != '/') or (page.url == '/index.html' and menu.url == '/')) %}
+          {% assign class = 'active' %}
+        {% endif %}
 
+        {% if menu.type == 'categories' %}
+          <li class="header-item {{class}}"><a href="{{site.url}}{{menu.url}}"><h3>{{ menu.title }}</h3></a>
+            <ul class="header-submenu">
+              {% for item in (0..site.categories.size) %}{% unless forloop.last %}
+                {% capture this_word %}{{ cats_list[item] | strip_newlines }}{% endcapture %}
+                  <li class="sub-item"><a href="/categories/#{{this_word}}">{{this_word}}</a></li>
+              {% endunless %}{% endfor %}
+            </ul>
+          </li>
+        {% elsif menu.submenu %}
+          <li class="header-item {{class}}"><a href="{{site.url}}{{menu.url}}"><h3>{{ menu.title }}</h3></a>
+            <ul class="header-submenu">
+              {% for sub in menu.submenu %}
+                <li class="sub-item"><a href="{{site.url}}{{sub.url}}">{{sub.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+            {% if menu.url contains 'http://' or menu.url contains 'https://' %}
+                <li class="header-item {{class}}"><a href="{{menu.url}}" target="_blank"><h3>{{ menu.title }}</h3></a></li>
+            {% else %}
+                <li class="header-item {{class}}"><a href="{{site.url}}{{menu.url}}"><h3>{{ menu.title }}</h3></a></li>
+            {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
   </div>
+<div class="entry-header">
+  <div class="header-title">
+    <div class="header-title-wrap">
+      <h1>{{ page.title }}</h1>
+      {% if page.date %}
+        <h2><span class="entry-date date published updated"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></span></h2>
+      {% else %}
+        <h2><span class="entry-date"><time>&nbsp;</time></span></h2>
+      {% endif %}
 
-</header>
+      {% if site.reading_time and page.layout == 'post' %}
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          {% assign readtime = content | strip_html | number_of_words | divided_by:site.words_per_minute %}
+          Reading time ~{% if readtime <= 1 %}1 minute{% else %}{{ readtime }} minutes{% endif %}
+        </p><!-- /.entry-reading-time -->
+      {% else %}
+          <p class="entry-reading-time">
+            &nbsp;
+          </p><!-- /.entry-reading-time -->
+      {% endif %}
+    </div><!-- /.header-title-wrap -->
+  </div><!-- /.header-title -->
+</div><!-- /.entry-header -->
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    {% for menu in site.menu %}
+      {% if menu.type == 'categories' %}
+        <li><a href="{{site.url}}{{menu.url}}"><h3>{{ menu.title }}</h3></a>
+          <ul>
+            {% for item in (0..site.categories.size) %}{% unless forloop.last %}
+              {% capture this_word %}{{ cats_list[item] | strip_newlines }}{% endcapture %}
+                <li><a href="{{site.url}}/categories/#{{this_word}}">{{this_word}}</a></li>
+            {% endunless %}{% endfor %}
+          </ul>
+        </li>
+      {% elsif menu.submenu %}
+        <li><a href="{{site.url}}{{menu.url}}"><h3>{{ menu.title }}</h3></a>
+          <ul>
+            {% for sub in menu.submenu %}
+              <li><a href="{{site.url}}{{sub.url}}">{{sub.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li><a href="{{site.url}}{{menu.url}}"><h3>{{ menu.title }}</h3></a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+
+{% if site.owner.twitter %}
+  <a href="https://twitter.com/{{site.owner.twitter}}" class="btn btn-info button-twitter" data-show-count="false" data-size="large"><i class="fa fa-twitter"></i> <span> | Follow @{{site.owner.twitter}}</span></a>
+{% endif %}
