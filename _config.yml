@@ -3,6 +3,7 @@ description: >
   Switch to OpenStreetMap and discover how you can build beautiful maps from the world’s best map data.
 copyright: 2013–2016 OpenStreetMap and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>
 baseurl: "" # the subpath of your site, e.g. /blog
+url: http://switch2osm.github.io
 github_username: switch2osm
 
 # Build settings
