@@ -1,19 +1,32 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
 title: Switch2OSM
-description: > # this means to ignore newlines until "baseurl:"
+description: >
   Switch to OpenStreetMap and discover how you can build beautiful maps from the world’s best map data.
-copyright: >
-  © 2013–2016 OpenStreetMap and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>
+copyright: 2013–2016 OpenStreetMap and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://www.switch2osm.org" # the base hostname & protocol for your site
 github_username: switch2osm
 
 # Build settings
 markdown: kramdown
+
+menu:
+  - title: Why Switch?
+    url: /why-switch/
+  - title: Case Studies
+    url: /the-basics/
+  - title: The Basics
+    url: /the-basics/
+  - title: Using Tiles
+    url: /using-tiles/
+    submenu:
+      - title: Getting Started with Leaflet
+      - url: /using-tiles/getting-started-with-leaflet/
+  - title: Serving tiles
+    url: /serving-tiles/
+    submenu:
+      - title: Building a Tile Server from Packages
+  - title: Other Uses
+    url: /other-uses/
+  - title: Providers
+    url: /providers/
+  - title: Find Out More
+    url: /find-out-more/
