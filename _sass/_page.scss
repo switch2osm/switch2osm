@@ -538,7 +538,7 @@ ul.social-buttons li a:active {
 		height: 100%;
 		padding: 0;
 		@media #{$large} {
-			max-width: 900px;
+			max-width: 72em;
 		}
 	}
 }
@@ -567,8 +567,8 @@ ul.social-buttons li a:active {
 .header-item,
 .header-item-title {
 	float: right;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
 	border-top-color: transparent;
 	border-top-style: solid;
 	border-top-width: 5px;
