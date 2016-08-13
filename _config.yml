@@ -20,11 +20,12 @@ menu:
     url: /using-tiles/
     submenu:
       - title: Getting Started with Leaflet
-      - url: /using-tiles/getting-started-with-leaflet/
+        url: /using-tiles/getting-started-with-leaflet/
   - title: Serving tiles
     url: /serving-tiles/
     submenu:
       - title: Building a Tile Server from Packages
+        url: /serving-tiles/building-a-tile-server-from-packages/
   - title: Other Uses
     url: /other-uses/
   - title: Providers
