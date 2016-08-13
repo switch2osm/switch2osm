@@ -7,12 +7,12 @@ $caption-font: $base-font;
 $code-font: monospace;
 $alt-font: serif;
 
-$doc-font-size: 16;
+$doc-font-size: 15;
 $doc-line-height: 26;
 
 
 // set-up the body font-size / line-height
-body {
+html {
 	font-size: 0px + $doc-font-size;
 }
 
@@ -46,4 +46,4 @@ $info				     : #308cbc;
 
 $small               : "only screen and (min-width: 30em)";
 $medium              : "only screen and (min-width: 48em)";
-$large               : "only screen and (min-width: 62.5em)";
+$large               : "only screen and (min-width: 75em)";
