@@ -165,7 +165,7 @@ Notes:
 
 - substitute `<filename>.osm` with the saved .osm file (e.g., produced through JOSM); also `<filename>.pbf` can be used;
 - to refresh the data, simply relaunch the osm2pgsql command (as the default option is to recreate the tables); anyway Tilemill shall be closed before (as well as any other client accessing the db). You can also drop the database, recreate it with the psql commands shown before and do again osm2pgsql;
-- try removing the –s option when managing big .osm files, if the import operation is too slow;
+- try removing the â€“s option when managing big .osm files, if the import operation is too slow;
 - try reducing -C 800 to a smaller cache size (MB) if you verify memory errors.
 
 If still you fail to connect to the database, try editing `%programfiles%\PostgreSQL\*version*\data\pg_hba.conf` and changing all `md5` with `trust`
@@ -194,7 +194,7 @@ Set the PATH appropriately:
 set PATH=%PATH;<shapeindex folder>
 ```
 
-Verify that the shapeindex command works with `shapeindex –V`
+Verify that the shapeindex command works with `shapeindex â€“V`
 
 Now run:
 
@@ -211,7 +211,7 @@ OpenStreetMap Carto uses a YAML file for defining layers. TileMill does not dire
 python -m pip install --upgrade pip
 ```
 
-Check that pip works with `pip –V`. (Check also `Scripts\pip` if pip is not found).
+Check that pip works with `pip â€“V`. (Check also `Scripts\pip` if pip is not found).
 
 ```
 pip install pyyaml
