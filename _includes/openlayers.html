@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simple Map</title>
+    <link rel="stylesheet" href="http://openlayers.org/en/v3.18.2/css/ol.css" type="text/css">
+    <style>
+      html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      #map {
+        /* configure the size of the map */
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="http://openlayers.org/en/v3.18.2/build/ol.js"></script>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <div id="popup" style="padding: 10px;background-color: white;"></div>
+    <script>
+      var map = new ol.Map({
+        layers: [
+          new ol.layer.Tile({
+            // This illustrates a custom tiles source but for using
+            // official OpenStreetMap server new ol.source.OSM()
+            // instead of new ol.source.XYZ(...) is enough
+            source: new ol.source.XYZ({
+              attributions: [
+              ol.source.OSM.ATTRIBUTION,
+                'Tiles courtesy of ' +
+                '<a href="http://openstreetmap.org">' +
+                'OpenStreetMap' +
+                '</a>'
+              ],
+              url: 'http://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            })
+          })
+        ],
+        controls: ol.control.defaults({
+          // Set to display OSM attributions on the bottom right control
+          attributionOptions:  {
+            collapsed: false
+          }
+        }).extend([
+          new ol.control.ScaleLine() // Add scale line to the defaults controls
+        ]),
+        target: 'map',
+        view: new ol.View({
+          center: ol.proj.fromLonLat([0, 0]),
+          zoom: 2
+        })
+      });
+
+      // Add vector layer with a feature and a style using an icon
+      var vectorLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+          features: [
+            new ol.Feature({
+              geometry: new ol.geom.Point(
+                ol.proj.fromLonLat([0, 0])
+              ),
+              name: 'The center of the world'
+            })
+          ]
+        }),
+        style: new ol.style.Style({
+          image: new ol.style.Icon({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            src: 'http://openlayers.org/en/latest/examples/data/icon.png'
+          })
+        })
+      });
+
+      map.addLayer(vectorLayer);
+
+      // Overlay to manage popup on the top of the map
+      var popup = document.getElementById('popup');
+      var overLay = new ol.Overlay({
+        element: popup,
+        position: ol.proj.fromLonLat([0, 0])
+      });
+
+      map.addOverlay(overLay);
+
+      // Manage click on the map to display/hide popup
+      map.on('click', function(e) {
+        var info = [];
+        map.forEachFeatureAtPixel(e.pixel, function (feature) {
+          info.push(feature.get('name'));
+        });
+        if (info.length > 0) {
+          popup.innerHTML = info.join(',');
+          popup.style.display = 'inline';
+        } else {
+          popup.innerHTML = '&nbsp;';
+          popup.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -21,6 +21,8 @@ menu:
     submenu:
       - title: Getting Started with Leaflet
         url: /using-tiles/getting-started-with-leaflet/
+      - title: Getting Started with OpenLayers
+        url: /using-tiles/getting-started-with-openlayers/
   - title: Serving tiles
     url: /serving-tiles/
     submenu:
