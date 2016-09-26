@@ -7,7 +7,7 @@ permalink: /using-tiles/getting-started-with-leaflet/
 # Introduction
 [Leaflet](http://leafletjs.com/) is a lightweight JavaScript library for embedding maps. It uses a permissive BSD open-source license so can be incorporated into any site without legal worries. Its source code is available on [GitHub](http://github.com/Leaflet/Leaflet).
 
-Here, we restrict ourselves to a small, self-contained example and refer to the official [tutorials](http://leafletjs.com/reference.html) and [documentation](http://leafletjs.com/reference.html) for elaborate usages.
+Here, we restrict ourselves to a small, self-contained example and refer to the official [tutorials](http://leafletjs.com/examples.html) and [documentation](http://leafletjs.com/reference.html) for elaborate usages.
 
 # Getting started
 Copy the following content to a file `leaflet.html` and open it in your browser:
