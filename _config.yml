@@ -12,8 +12,9 @@ markdown: kramdown
 menu:
   - title: Why Switch?
     url: /why-switch/
-  - title: Case Studies
-    url: /case-studies/
+    submenu:
+      - title: Case Studies
+        url: /case-studies/
   - title: The Basics
     url: /the-basics/
   - title: Using Tiles
