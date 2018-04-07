@@ -31,6 +31,8 @@ menu:
         url: /serving-tiles/building-a-tile-server-from-packages/
       - title: Manually building a tile server (16.04.2 LTS)
         url: /serving-tiles/manually-building-a-tile-server-16-04-2-lts/
+      - title: Manually building a tile server (18.04 LTS)
+        url: /serving-tiles/manually-building-a-tile-server-18-04-lts/
   - title: Other Uses
     url: /other-uses/
   - title: Providers

@@ -1,29 +1,29 @@
 ---
 layout: page
-title: Manually building a tile server (16.04.2 LTS)
-permalink: /serving-tiles/manually-building-a-tile-server-16-04-2-lts/
+title: Manually building a tile server (18.04 LTS)
+permalink: /serving-tiles/manually-building-a-tile-server-18-04-lts/
 ---
 
-This page describes how to install, setup and configure all the necessary software to operate your own tile server. The step-by-step instructions are written for [Ubuntu Linux](http://www.ubuntu.com/) 16.04.2 LTS (Xenial Xerus).
+This page describes how to install, setup and configure all the necessary software to operate your own tile server. The step-by-step instructions are written for [Ubuntu Linux](http://www.ubuntu.com/) 18.04 LTS (Bionic Beaver).
 
 # Software installation
 
-The OSM tile server stack is a collection of programs and libraries that work together to create a tile server. As so often with OpenStreetMap, there are many ways to achieve this goal and nearly all of the components have alternatives that have various specific advantages and disadvantages. This tutorial describes the most standard version that is also used on the main OpenStreetMap.org tile server.
+The OSM tile server stack is a collection of programs and libraries that work together to create a tile server. As so often with OpenStreetMap, there are many ways to achieve this goal and nearly all of the components have alternatives that have various specific advantages and disadvantages. This tutorial describes the most standard version that is also likely to be used on the main OpenStreetMap.org tile server when 18.04.1 is released.
 
 It consists of 5 main components: mod_tile, renderd, mapnik, osm2pgsql and a postgresql/postgis database. Mod_tile is an apache module that serves cached tiles and decides which tiles need re-rendering - either because they are not yet cached or because they are outdated. Renderd provides a priority queueing system for rendering requests to manage and smooth out the load from rendering requests. Mapnik is the software library that does the actual rendering and is used by renderd.
 
-Note that these instructions are have been written and tested against a newly-installed Ubuntu 16.04 server. If you have got other versions of some software already installed (perhaps you upgraded from an earlier Ubuntu version, or you set up some PPAs to load from) then you may need to make some adjustments.
+Note that these instructions are have been written and tested against a newly-installed Ubuntu 18.04 server. If you have got other versions of some software already installed (perhaps you upgraded from an earlier Ubuntu version, or you set up some PPAs to load from) then you may need to make some adjustments.
 
 In order to build these components, a variety of dependencies need to be installed first:
 
-    sudo apt install libboost-all-dev git-core tar unzip wget bzip2 build-essential autoconf libtool libxml2-dev libgeos-dev libgeos++-dev libpq-dev libbz2-dev libproj-dev munin-node munin libprotobuf-c0-dev protobuf-c-compiler libfreetype6-dev libpng12-dev libtiff5-dev libicu-dev libgdal-dev libcairo-dev libcairomm-1.0-dev apache2 apache2-dev libagg-dev liblua5.2-dev ttf-unifont lua5.1 liblua5.1-dev libgeotiff-epsg
+    sudo apt install libboost-all-dev git-core tar unzip wget bzip2 build-essential autoconf libtool libxml2-dev libgeos-dev libgeos++-dev libpq-dev libbz2-dev libproj-dev munin-node munin libprotobuf-c0-dev protobuf-c-compiler libfreetype6-dev libtiff5-dev libicu-dev libgdal-dev libcairo-dev libcairomm-1.0-dev apache2 apache2-dev libagg-dev liblua5.2-dev ttf-unifont lua5.1 liblua5.1-dev libgeotiff-epsg
 
 Say yes to install. This will take a while, so go and have a cup of tea. This list includes various utilities and libraries, the Apache web server, and "carto" which is used to convert Carto-CSS stylesheets into something that "mapnik" the map renderer can understand. When that is complete, install the second set of prerequisites:
 # Installing postgresql / postgis
 
 On Ubuntu there are pre-packaged versions of both postgis and postgresql, so these can simply be installed via the Ubuntu package manager.
 
-    sudo apt-get install postgresql postgresql-contrib postgis postgresql-9.5-postgis-2.2
+    sudo apt-get install postgresql postgresql-contrib postgis postgresql-10-postgis-2.4
 
 Here "postgresql" is the database we're going to store map data and "postgis" adds some extra graphical support to it. Again, say yes to install.
 
@@ -101,9 +101,9 @@ Again, say yes to install.
 
 # Mapnik
 
-Next, we'll install Mapnik. We'll use the default version in Ubuntu 16.04:
+Next, we'll install Mapnik. We'll use the default version in Ubuntu 18.04:
 
-    sudo apt-get install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libgdal1-dev libmapnik-dev mapnik-utils python-mapnik
+    sudo apt-get install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev mapnik-utils python-mapnik
 
 We'll check that Mapnik has been installed correctly:
 
@@ -117,7 +117,7 @@ If python replies with the second chevron prompt >>> and without errors, then Ma
 
 # Install mod_tile and renderd
 
-Next, we'll install mod_tile and renderd. "mod_tile" is an Apache module that handles requests for tiles; "renderd" is a daemon that actually renders tiles when "mod_tile" requests them. We'll use the "switch2osm" branch of https://github.com/SomeoneElseOSM/mod_tile, which is itself forked from https://github.com/openstreetmap/mod_tile, but modified so that it supports Ubuntu 16.04, and with a couple of other changes to work on a standard Ubuntu server rather than one of OSM's rendering servers.
+Next, we'll install mod_tile and renderd. "mod_tile" is an Apache module that handles requests for tiles; "renderd" is a daemon that actually renders tiles when "mod_tile" requests them. We'll use the "switch2osm" branch of https://github.com/SomeoneElseOSM/mod_tile, which is itself forked from https://github.com/openstreetmap/mod_tile, but modified so that it supports Ubuntu 18.04, and with a couple of other changes to work on a standard Ubuntu server rather than one of OSM's rendering servers.
 
 ## Compile the mod_tile source code:
 
@@ -163,13 +163,13 @@ Here we're assuming that we're storing the stylesheet details in a directory bel
 
 Next, we'll install a suitable version of the "carto" compiler. This is later than the version that ships with Ubuntu, so we need to do:
 
-    sudo apt install npm nodejs-legacy
+    sudo apt install npm nodejs
     sudo npm install -g carto
     carto -v
 
 That should respond with a number that is at least as high as:
 
-    carto 0.18.1 (Carto map stylesheet compiler)
+    carto 1.0.0 (Carto map stylesheet compiler)
 
 Then we convert the carto project into something that Mapnik can understand:
 
@@ -178,7 +178,7 @@ Then we convert the carto project into something that Mapnik can understand:
 You now have a Mapnik XML stylesheet at /home/renderaccount/src/openstreetmap-carto/mapnik.xml .
 # Loading data
 
-Initially, we'll load only a small amount of test data. Other download locations are available, but "download.geofabrik.de" has a wide range of options. In this example we'll download the data for Azerbaijan, which is about 25Mb.
+Initially, we'll load only a small amount of test data. Other download locations are available, but "download.geofabrik.de" has a wide range of options. In this example we'll download the data for Azerbaijan, which is about 17Mb.
 
 Browse to http://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2017-02-26T21:43:02Z"). We'll need that later if we want to update the database with people's susbsequent changes to OpenStreetMap. Download it as follows:
 
@@ -362,7 +362,7 @@ From an ssh connection do:
 
 That will show a line every time a tile is requested, and one every time rendering of one is completed.
 
-In your switcheroo-configured Chrome / Chromium browser go to: http://www.openstreetmap.org/#map=13/40.3743/49.7134
+In your switcheroo-configured Chrome / Chromium browser go to: https://www.openstreetmap.org/#map=13/40.3743/49.7134
 
 and switch to the "Humanitarian" layer in OSM. You should see some tile requests. Zoom out gradually. You'll see requests for new tiles show up in the ssh connection. Some low-zoom tiles may take a long time (several minutes) to render for the first time, but once done they'll be ready for the next time that they are needed.
 
