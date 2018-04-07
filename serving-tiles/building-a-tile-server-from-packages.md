@@ -4,9 +4,9 @@ title: Building a tile server from packages
 permalink: /serving-tiles/building-a-tile-server-from-packages/
 ---
 
-If you’d like to build your own tile server, using packages can save you a good deal of installation work.
+If you'd like to build your own tile server and are using an older version of Ubuntu, using packages can save you a good deal of installation work.
 
-These packages work with Ubuntu Linux versions 12.04 LTS (Precise Pangolin) and above. After installation, you should have your own working tileserver with the standard OSM Mapnik stylesheet, into which you can import an extract of the OSM data for rendering.
+These packages work with Ubuntu Linux versions between 12.04 LTS (Precise Pangolin) and and 14.04 LTS (Trusty Tahr). After installation, you should have your own working tileserver with the standard OSM Mapnik stylesheet, into which you can import an extract of the OSM data for rendering.
 
 It is based on the same software that OSM’s own tile server uses:
 
@@ -19,6 +19,7 @@ The main aim of these packages is to simplify installation, by automating as muc
 # Installation
 
 The following commands need to be entered into the terminal to set things up:
+
 In case you do not have add-apt-repository installed, add it with:
 
 for Ubuntu 12.04
@@ -90,7 +91,7 @@ Initialise the osmosis replication stack to the data of your data import. Choose
 As the packaged script currently uses an outdated service to determine the correct replication start-point, you will need to manually choose and download the correct state.txt from the base_url (see below) which corresponds to slightly before the age of the extract to make sure all modifications are included in your db. This needs to be copied to /var/lib/mod_tile/.osmosis/state.txt
 
 You will next need to update the default configuration of osmosis. In /var/lib/mod_tile/.osmosis/configuration.txt change the base_url to
-`http://planet.openstreetmap.org/replication/minute/`
+`https://planet.openstreetmap.org/replication/minute/`
 
 Update your tileserver by up to an hour and expire the corresponding rendered tiles
 
@@ -175,6 +176,7 @@ Without –all, send a list of tiles to be rendered from STDIN in the format X Y
     1 1 1
 
 The above would cause all 4 tiles at zoom 1 to be rendered
+
 Note that you have to set ``--socket=/var/run/renderd/renderd.sock``
 
 # Acknowledgements
