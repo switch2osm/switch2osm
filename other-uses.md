@@ -12,6 +12,7 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 * [Mapbox Studio](https://www.mapbox.com/mapbox-studio/) is a suite of tools to produce ‘vector tiles’ which can be rendered either server-side or client-side.
 
 ## Geocoding services
+* [Gisgraphy](https://www.gisgraphy.com) is an open source geocoder that provides API / webservices for forward and reverse geocoding with auto-completion, interpolation, location Bias, find nearby, all can be run offline or as hosted solutions. It provide some importers for Openstreetmap but also Openadresses, Geonames, and more.
 * [Nominatim](http://wiki.openstreetmap.org/wiki/Nominatim) is OpenStreetMap’s geocoding service (placename<->lat/long). It has significant hardware requirements and many people choose to use the free instance offered by [MapQuest Open](http://open.mapquestapi.com/nominatim/).
 * [OpenCage](http://geocoder.opencagedata.com/) provides a public geocoding API aggregating Nominatim and other sources.
 
