@@ -10,7 +10,7 @@ The following companies offer development services and consulting for sites wish
 
 * [AND Automotive Navigation Data](https://www.and.com/services/openstreetmap/), Netherlands
 * [Boundless](http://boundlessgeo.com/), US
-* [CampToCamp](http://camptocamp.com/), Switzerland
+* [Camptocamp](https://camptocamp.com/), Switzerland
 * [Carto](https://carto.com/), US
 * [Geofabrik](http://www.geofabrik.de/), Germany
 * [GreenInfo Network](http://www.greeninfo.org/), US (public interest groups only)
