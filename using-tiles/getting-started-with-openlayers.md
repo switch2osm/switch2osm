@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Getting started with OpenLayers
 permalink: /using-tiles/getting-started-with-openlayers/
 ---

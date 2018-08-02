@@ -14,6 +14,7 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 ## Geocoding services
 * [Nominatim](http://wiki.openstreetmap.org/wiki/Nominatim) is OpenStreetMap’s geocoding service (placename<->lat/long). It has significant hardware requirements and many people choose to use the free instance offered by [MapQuest Open](http://open.mapquestapi.com/nominatim/).
 * [OpenCage](http://geocoder.opencagedata.com/) provides a public geocoding API aggregating Nominatim and other sources.
+* [OSMNames](https://osmnames.org/) - place names from OpenStreetMap. Downloadable. Ranked. With bbox and hierarchy. Ready for geocoding.
 
 ## Routing engines and services
 * [OSRM](http://project-osrm.org/) is a new, fast routing engine designed for OSM data.

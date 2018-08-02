@@ -284,7 +284,7 @@ li.mm-vertical.mm-opened > .mm-panel {
   color: rgba(0, 0, 0, 0.7); }
   .mm-menu .mm-navbar > *,
   .mm-menu .mm-navbar a {
-    color: rgba(0, 0, 0, 0.3); }
+    color: #3c403a; }
   .mm-menu .mm-navbar .mm-btn:before, .mm-menu .mm-navbar .mm-btn:after {
     border-color: rgba(0, 0, 0, 0.3); }
   .mm-menu .mm-listview {
@@ -413,7 +413,7 @@ em.mm-counter {
   display: none; }
 
 .mm-menu em.mm-counter {
-  color: rgba(0, 0, 0, 0.3); }
+  color: #3c403a; }
 
 /*
 	jQuery.mmenu dividers addon CSS
@@ -1331,10 +1331,10 @@ html.mm-opening .mm-menu.mm-front, html.mm-opening .mm-menu.mm-next {
 .mm-menu.mm-theme-white {
   background: white;
   border-color: rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.6); }
+  color: #3c403a }
   .mm-menu.mm-theme-white .mm-navbar > *,
   .mm-menu.mm-theme-white .mm-navbar a {
-    color: rgba(0, 0, 0, 0.3); }
+    color: #3c403a; }
   .mm-menu.mm-theme-white .mm-navbar .mm-btn:before, .mm-menu.mm-theme-white .mm-navbar .mm-btn:after {
     border-color: rgba(0, 0, 0, 0.3); }
   .mm-menu.mm-theme-white .mm-listview {
@@ -1357,7 +1357,7 @@ html.mm-opening .mm-menu.mm-front, html.mm-opening .mm-menu.mm-next {
   border-color: rgba(0, 0, 0, 0.6); }
 
 .mm-menu.mm-theme-white em.mm-counter {
-  color: rgba(0, 0, 0, 0.3); }
+  color: #3c403a; }
 
 .mm-menu.mm-theme-white .mm-fixeddivider span {
   background: rgba(0, 0, 0, 0.03); }
@@ -1369,10 +1369,10 @@ html.mm-opening .mm-menu.mm-front, html.mm-opening .mm-menu.mm-next {
   background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.6); }
 .mm-menu.mm-theme-white .mm-noresultsmsg {
-  color: rgba(0, 0, 0, 0.3); }
+  color: #3c403a; }
 
 .mm-menu.mm-theme-white .mm-indexer a {
-  color: rgba(0, 0, 0, 0.3); }
+  color: #3c403a; }
 
 .mm-menu.mm-theme-white label.mm-toggle {
   background: rgba(0, 0, 0, 0.1); }
