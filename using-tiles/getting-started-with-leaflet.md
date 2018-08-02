@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Getting started with Leaflet
 permalink: /using-tiles/getting-started-with-leaflet/
 ---

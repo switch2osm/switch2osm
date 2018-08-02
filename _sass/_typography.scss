@@ -5,6 +5,9 @@ body {
 	color: $text-color;
 }
 
+p {
+	text-shadow: 0 2px 25px rgba(0, 1, 1, 0.1);
+}
 // Headings
 // --------------------------------------------------
 h1, h2, h3, h4, h5, h6 {
@@ -16,25 +19,30 @@ h1 {
 		@include font-rem(32);
 	}
 }
-
+h2{
+	font-size: 24px !important;
+}
+h3 {
+	font-size: 20px!important;
+}
 // Links
 // --------------------------------------------------
-a { 
+a {
 	text-decoration: none;
-	color: $link-color; 
-	&:visited { 
-		color: lighten($link-color, 20); 
+	color: $secondary;
+	&:visited {
+		color: $secondary;
 	}
-	&:hover { 
-		color: darken($link-color, 20); 
+	&:hover {
+		color: darken($secondary, 20);
 	}
-	&:focus { 
-		outline: thin dotted; 
-		color: darken($link-color, 20);
+	&:focus {
+		outline: thin dotted;
+		color: darken($secondary, 20);
 	}
-	&:hover, 
-	&:active { 
-		outline: 0; 
+	&:hover,
+	&:active {
+		outline: 0;
 	}
 }
 
@@ -97,7 +105,7 @@ tt, code, kbd, samp, pre {
 	font-family: $code-font;
 }
 p,
-li { 
+li {
 	code {
 		@include font-rem(12);
 		line-height: 1.5;
@@ -122,4 +130,13 @@ pre {
 		background-color: #6a6d5d;
 		@include rounded(4px);
 	}
+}
+.big {
+	font-size: 115%;
+}
+.bigger{
+	font-size: 135%;
+}
+.quote {
+	color: #9c9e9a;
 }

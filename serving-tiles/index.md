@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Serving Tiles
 permalink: /serving-tiles/
 ---

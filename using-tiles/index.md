@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Using Tiles
 permalink: /using-tiles/
 ---
