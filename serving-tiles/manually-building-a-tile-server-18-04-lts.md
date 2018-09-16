@@ -8,7 +8,7 @@ This page describes how to install, setup and configure all the necessary softwa
 
 # Software installation
 
-The OSM tile server stack is a collection of programs and libraries that work together to create a tile server. As so often with OpenStreetMap, there are many ways to achieve this goal and nearly all of the components have alternatives that have various specific advantages and disadvantages. This tutorial describes the most standard version that is also likely to be used on the main OpenStreetMap.org tile server when 18.04.1 is released.
+The OSM tile server stack is a collection of programs and libraries that work together to create a tile server. As so often with OpenStreetMap, there are many ways to achieve this goal and nearly all of the components have alternatives that have various specific advantages and disadvantages. This tutorial describes the most standard version that is similar to that used on the main OpenStreetMap.org tile servers.
 
 It consists of 5 main components: mod_tile, renderd, mapnik, osm2pgsql and a postgresql/postgis database. Mod_tile is an apache module that serves cached tiles and decides which tiles need re-rendering - either because they are not yet cached or because they are outdated. Renderd provides a priority queueing system for rendering requests to manage and smooth out the load from rendering requests. Mapnik is the software library that does the actual rendering and is used by renderd.
 
@@ -169,7 +169,7 @@ Next, we'll install a suitable version of the "carto" compiler. This is later th
 
 That should respond with a number that is at least as high as:
 
-    carto 1.0.0 (Carto map stylesheet compiler)
+    carto 1.1.0 (Carto map stylesheet compiler)
 
 Then we convert the carto project into something that Mapnik can understand:
 
@@ -348,11 +348,7 @@ To make it start automatically every time:
 
 # Viewing tiles
 
-In order to see tiles, we'll cheat and add the "Switcheroo Redirector" extension to the Chrome (or Chromium) browser:
-
-    https://chrome.google.com/webstore/detail/switcheroo-redirector/cnmciclhnghalnpfhhleggldniplelbg?hl=en
-
-We'll add "https://tile-a.openstreetmap.fr/hot/" as "From" and "http://yourserveripaddress/hot/" as "To", and do the same also for "tile-b" and "tile-c".
+In order to see tiles, we’ll cheat and use an html file “sample_leaflet.html” in mod_tile’s “extras” folder. Just open that file in a web browser on the machine where you installed the tile server. If that isn’t possible because you’re installing on a server without a local web browser, you can edit it to replace “127.0.0.1” with the IP address of the server and copy it to below “/var/www/html”.
 
 From an ssh connection do:
 
@@ -362,8 +358,6 @@ From an ssh connection do:
 
 That will show a line every time a tile is requested, and one every time rendering of one is completed.
 
-In your switcheroo-configured Chrome / Chromium browser go to: https://www.openstreetmap.org/#map=13/40.3743/49.7134
-
-and switch to the "Humanitarian" layer in OSM. You should see some tile requests. Zoom out gradually. You'll see requests for new tiles show up in the ssh connection. Some low-zoom tiles may take a long time (several minutes) to render for the first time, but once done they'll be ready for the next time that they are needed.
+When you load that page you should see some tile requests. Zoom out gradually. You’ll see requests for new tiles show up in the ssh connection. Some low-zoom tiles may take a long time (several minutes) to render for the first time, but once done they’ll be ready for the next time that they are needed.
 
 Congratulations. Head over to the [using tiles](http://switch2osm.github.io/using-tiles/) section to create a map that uses your new tile server.
