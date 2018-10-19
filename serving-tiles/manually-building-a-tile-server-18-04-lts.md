@@ -23,7 +23,7 @@ Say yes to install. This will take a while, so go and have a cup of tea. This li
 
 On Ubuntu there are pre-packaged versions of both postgis and postgresql, so these can simply be installed via the Ubuntu package manager.
 
-    sudo apt-get install postgresql postgresql-contrib postgis postgresql-10-postgis-2.4
+    sudo apt-get install postgresql postgresql-contrib postgis postgresql-10-postgis-2.4 postgresql-10-postgis-scripts
 
 Here "postgresql" is the database we're going to store map data and "postgis" adds some extra graphical support to it. Again, say yes to install.
 
