@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Manually building a tile server (16.04.2 LTS)
 permalink: /serving-tiles/manually-building-a-tile-server-16-04-2-lts/
 ---

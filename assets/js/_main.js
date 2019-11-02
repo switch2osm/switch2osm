@@ -48,19 +48,6 @@ $(document).ready(function() {
   });
 });
 
-// header
-$(document).ready(function(e) {
-  $(window).scroll(function(){
-    var header = $('.header-menu');
-    var scroll = $(window).scrollTop();
-    if(scroll > 300){
-      header.attr('class', 'header-menu header-menu-overflow');
-    } else {
-      header.attr('class', 'header-menu header-menu-top');
-    }
-  });
-});
-
 //mobile menu
 $(document).ready(function(){
   $("#menu").attr('style', '');
@@ -70,20 +57,9 @@ $(document).ready(function(){
       "effect-zoom-menu",
       "effect-zoom-panels",
       "pageshadow",
-      "theme-dark"
+      "theme-white"
     ],
     "counters": true,
-    "navbars": [
-      {
-        "position": "bottom",
-        "content": [
-          "<a class='fa fa-search' href='/search'></a>",
-          "<a class='fa fa-envelope' href='#/'></a>",
-          "<a class='fa fa-twitter' href='#/'></a>",
-          "<a class='fa fa-facebook' href='#/'></a>"
-        ]
-      }
-    ]
   });
 });
 

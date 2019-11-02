@@ -16,6 +16,7 @@ The following companies offer development services and consulting for sites wish
 * [GreenInfo Network](http://www.greeninfo.org/), US (public interest groups only)
 * [ITO!](http://www.itoworld.com/), UK
 * [Mapbox](http://mapbox.com/), US
+* [MapTiler](https://www.maptiler.com/), Switzerland
 * [Mapzen](http://mapzen.com/), US
 * [Makina Corpus](http://makina-corpus.com/), France
 * [OpenCage Data](http://opencagedata.com/), UK
@@ -31,6 +32,7 @@ The following companies host OpenStreetMap tiles.
 ### Allows free usage
 * [Carto](https://carto.com/), US
 * [Mapbox](http://mapbox.com/), US
+* [MapTiler](https://www.maptiler.com/), Switzerland
 * [Mapzen](http://mapzen.com/), US
 * [Skobbler](http://developer.skobbler.com/), Germany
 * [Stamen](http://www.stamen.com/), US

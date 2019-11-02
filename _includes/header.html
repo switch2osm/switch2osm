@@ -3,14 +3,9 @@
 
 <div class="header-menu header-menu-top">
     <ul class="header-item-container">
-      <li class="header-item-title header-toggle "><a href="#menu"><h2><i class="fa fa-bars"></i></h2></a></li>
+      <li class="header-item-title header-toggle "><a href="#menu"><h2><i class="fa fa-bars"></i></h2></a> </li>
       <li class="header-item-title">
-        <a href="{{site.url}}/">
-          {% if site.logo %}
-            <img class="logo" src="{{site.url}}/{{ site.logo }}" alt="{{ site.title }}">
-          {% endif %}
-          <a href="{{site.url}}/" class="title"> {{ site.title }}</a>
-        </a>
+          <a href="{{ site.url }}" class="title" > <b>Switch2<span class="secondary">OSM</span></b></a>
       </li>
       {% for menu in site.menu reversed %}
         {% assign class = nil %}
@@ -19,7 +14,7 @@
         {% endif %}
 
         {% if menu.type == 'categories' %}
-          <li class="header-item {{class}}"><a href="{{site.url}}{{menu.url}}"><h3>{{ menu.title }}</h3></a>
+          <li class="header-item {{class}}"><a href="{{ site.url }}{{menu.url}}"><h3>{{ menu.title }}</h3></a>
             <ul class="header-submenu">
               {% for item in (0..site.categories.size) %}{% unless forloop.last %}
                 {% capture this_word %}{{ cats_list[item] | strip_newlines }}{% endcapture %}
@@ -27,48 +22,24 @@
               {% endunless %}{% endfor %}
             </ul>
           </li>
-        {% elsif menu.submenu %}
-          <li class="header-item {{class}}"><a href="{{site.url}}{{menu.url}}"><h3>{{ menu.title }}</h3></a>
-            <ul class="header-submenu">
-              {% for sub in menu.submenu %}
-                <li class="sub-item"><a href="{{site.url}}{{sub.url}}">{{sub.title}}</a></li>
-              {% endfor %}
-            </ul>
-          </li>
         {% else %}
             {% if menu.url contains 'http://' or menu.url contains 'https://' %}
                 <li class="header-item {{class}}"><a href="{{menu.url}}" target="_blank"><h3>{{ menu.title }}</h3></a></li>
             {% else %}
-                <li class="header-item {{class}}"><a href="{{site.url}}{{menu.url}}"><h3>{{ menu.title }}</h3></a></li>
+                <li class="header-item {{class}}"><a href="{{ site.url }}{{menu.url}}"><h3>{{ menu.title }}</h3></a></li>
             {% endif %}
         {% endif %}
       {% endfor %}
     </ul>
   </div>
-<div class="entry-header">
-  <div class="header-title">
-    <div class="header-title-wrap">
-      <h1>{{ page.title }}</h1>
-      {% if page.date %}
-        <h2><span class="entry-date date published updated"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></span></h2>
-      {% else %}
-        <h2><span class="entry-date"><time>&nbsp;</time></span></h2>
-      {% endif %}
 
-      {% if site.reading_time and page.layout == 'post' %}
-        <p class="entry-reading-time">
-          <i class="fa fa-clock-o"></i>
-          {% assign readtime = content | strip_html | number_of_words | divided_by:site.words_per_minute %}
-          Reading time ~{% if readtime <= 1 %}1 minute{% else %}{{ readtime }} minutes{% endif %}
-        </p><!-- /.entry-reading-time -->
-      {% else %}
-          <p class="entry-reading-time">
-            &nbsp;
-          </p><!-- /.entry-reading-time -->
-      {% endif %}
-    </div><!-- /.header-title-wrap -->
-  </div><!-- /.header-title -->
-</div><!-- /.entry-header -->
+  <div class="container-header">
+  <div class="{% if page.layout == 'home' %}logo-home {% else %} logo-page {% endif %}">
+    <h1>Switch2<span class="secondary">OSM</span></h1>
+    <p class="">Take back control of your maps</p>
+  </div>
+</div>
+
 
 
 <nav id="menu" style="display: none">

@@ -1,10 +1,11 @@
 title: Switch2OSM
 description: >
   Switch to OpenStreetMap and discover how you can build beautiful maps from the world’s best map data.
-copyright: 2013–2016 OpenStreetMap and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>
-baseurl: "" # the subpath of your site, e.g. /blog
-url: http://switch2osm.github.io
+baseurl: "/switch2osm" # the subpath of your site, e.g. /blog
+copyright: 2013–2019 OpenStreetMap and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>
+url: https://klokantech.github.io/switch2osm
 github_username: switch2osm
+
 
 # Build settings
 markdown: kramdown
@@ -12,27 +13,14 @@ markdown: kramdown
 menu:
   - title: Why Switch?
     url: /why-switch/
-    submenu:
-      - title: Case Studies
-        url: /case-studies/
+  - title: Case Studies
+    url: /case-studies/
   - title: The Basics
     url: /the-basics/
   - title: Using Tiles
     url: /using-tiles/
-    submenu:
-      - title: Getting Started with Leaflet
-        url: /using-tiles/getting-started-with-leaflet/
-      - title: Getting Started with OpenLayers
-        url: /using-tiles/getting-started-with-openlayers/
   - title: Serving tiles
     url: /serving-tiles/
-    submenu:
-      - title: Building a Tile Server from Packages
-        url: /serving-tiles/building-a-tile-server-from-packages/
-      - title: Manually building a tile server (16.04.2 LTS)
-        url: /serving-tiles/manually-building-a-tile-server-16-04-2-lts/
-      - title: Manually building a tile server (18.04 LTS)
-        url: /serving-tiles/manually-building-a-tile-server-18-04-lts/
   - title: Other Uses
     url: /other-uses/
   - title: Providers
