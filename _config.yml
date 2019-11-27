@@ -6,9 +6,14 @@ copyright: 2013–2019 OpenStreetMap and contributors, <a href="http://creativec
 url: https://switch2osm.github.io
 github_username: switch2osm
 
-
 # Build settings
 markdown: kramdown
+
+# Repo files to not include in built site
+exclude:
+  - Dockerfile*
+  - docker-compose.*
+  - Gemfile
 
 menu:
   - title: Why Switch?
