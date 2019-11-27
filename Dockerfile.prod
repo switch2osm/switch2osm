@@ -1,0 +1,36 @@
+# This file is used if building for Production environments
+# It uses a multi-stage build to run jekyll to populate an nginx container
+
+FROM ruby:2.6-alpine as build
+
+# Add Gem build requirements
+RUN apk add --no-cache g++ make libxml2-dev libxslt-dev
+
+# Create app directory
+WORKDIR /app
+
+# Add Gemfile and Gemfile.lock
+ADD Gemfile* /app/
+
+# Install Gems
+RUN gem update --system \
+    && gem install bundler \
+    && bundle config build.nokogiri --use-system-libraries \
+    && bundle config --global jobs $(nproc) \
+    && bundle install --deployment --no-cache \
+    && bundle clean
+
+# Copy Site Files
+COPY . .
+
+ENV JEKYLL_ENV=production
+
+# Run jekyll build site
+RUN bundle exec jekyll build --verbose
+
+#-------------------------------------------------
+
+FROM nginx:stable-alpine as webserver
+
+# Copy built site from build stage
+COPY --from=build /app/_site /usr/share/nginx/html
