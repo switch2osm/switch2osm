@@ -6,8 +6,10 @@ permalink: /the-basics/
 
 # The challenge
 Your current map provider gives you two things:
-A set of ’tiles’ (square map images) that are placed together to make the map
-A JavaScript API, or equivalent library for mobile apps, to view them
+
+* A set of ’tiles’ (square map images) that are placed together to make the map
+* A JavaScript API, or equivalent library for mobile apps, to view them
+
 To switch to OpenStreetMap, you’ll need to replace both of these.
 
 # The tiles
