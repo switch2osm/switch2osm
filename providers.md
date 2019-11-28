@@ -17,7 +17,6 @@ The following companies offer development services and consulting for sites wish
 * [ITO!](http://www.itoworld.com/), UK
 * [Mapbox](http://mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
-* [Mapzen](http://mapzen.com/), US
 * [Makina Corpus](http://makina-corpus.com/), France
 * [OpenCage Data](http://opencagedata.com/), UK
 * [Skobbler](http://developer.skobbler.com/), Germany
@@ -33,7 +32,7 @@ The following companies host OpenStreetMap tiles.
 * [Carto](https://carto.com/), US
 * [Mapbox](http://mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
-* [Mapzen](http://mapzen.com/), US
+* [Nextzen](https://www.nextzen.org/), US
 * [Skobbler](http://developer.skobbler.com/), Germany
 * [Stamen](http://www.stamen.com/), US
 
