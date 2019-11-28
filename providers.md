@@ -21,6 +21,7 @@ The following companies offer development services and consulting for sites wish
 * [Makina Corpus](http://makina-corpus.com/), France
 * [OpenCage Data](http://opencagedata.com/), UK
 * [Skobbler](http://developer.skobbler.com/), Germany
+* [Stadia Maps](https://stadiamaps.com), US
 * [Stamen](http://www.stamen.com/), US
 * [Système D](http://www.systemeD.net/openstreetmap "OpenStreetMap consultancy by Richard Fairhurst"), UK
 * [Urban Mapping, Inc](http://www.urbanmapping.com/), US
@@ -35,6 +36,7 @@ The following companies host OpenStreetMap tiles.
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Mapzen](http://mapzen.com/), US
 * [Skobbler](http://developer.skobbler.com/), Germany
+* [Stadia Maps](https://stadiamaps.com), US
 * [Stamen](http://www.stamen.com/), US
 
 ### Paid customers only
