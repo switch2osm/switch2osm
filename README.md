@@ -1,6 +1,8 @@
 # switch2osm #
 
-This repository is not what currently powers switch2osm.org, but is some ideas in the early conceptual stage.
+This repository is the content for switch2osm.org.
+
+See the issues for things to work on.
 
 ## Content principles ##
 
