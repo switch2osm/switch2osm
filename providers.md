@@ -16,7 +16,6 @@ The following companies offer development services and consulting for sites wish
 * [ITO!](https://www.itoworld.com/), UK
 * [Mapbox](https://www.mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
-* [Mapzen](http://mapzen.com/), US
 * [Makina Corpus](https://makina-corpus.com/), France
 * [OpenCage Data](https://opencagedata.com/), UK
 * [Skobbler](https://developer.skobbler.com/), Germany
