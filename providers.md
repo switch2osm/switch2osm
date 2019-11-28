@@ -9,13 +9,12 @@ permalink: /providers/
 The following companies offer development services and consulting for sites wishing to switch to OpenStreetMap.
 
 * [AND Automotive Navigation Data](https://www.and.com/services/openstreetmap/), Netherlands
-* [Boundless](http://boundlessgeo.com/), US
 * [Camptocamp](https://camptocamp.com/), Switzerland
 * [Carto](https://carto.com/), US
-* [Geofabrik](http://www.geofabrik.de/), Germany
-* [GreenInfo Network](http://www.greeninfo.org/), US (public interest groups only)
-* [ITO!](http://www.itoworld.com/), UK
-* [Mapbox](http://mapbox.com/), US
+* [Geofabrik](https://www.geofabrik.de/), Germany
+* [GreenInfo Network](https://www.greeninfo.org/), US (public interest groups only)
+* [ITO!](https://www.itoworld.com/), UK
+* [Mapbox](https://www.mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Makina Corpus](http://makina-corpus.com/), France
 * [OpenCage Data](http://opencagedata.com/), UK
@@ -30,6 +29,7 @@ The following companies offer development services and consulting for sites wish
 The following companies host OpenStreetMap tiles.
 
 ### Allows free usage
+
 * [Carto](https://carto.com/), US
 * [Mapbox](http://mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
@@ -39,6 +39,7 @@ The following companies host OpenStreetMap tiles.
 * [Stamen](http://www.stamen.com/), US
 
 ### Paid customers only
+
 * [AND Automotive Navigation Data](https://www.and.com/services/openstreetmap/), Netherlands
-* [Geofabrik](http://www.geofabrik.de/maps/rendering.html), Germany
-* [Makina Corpus](http://makina-corpus.com/), France
+* [Geofabrik](https://www.geofabrik.de/maps/rendering.html), Germany
+* [Makina Corpus](https://makina-corpus.com/), France
