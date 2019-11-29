@@ -44,4 +44,4 @@ Your obligations are:
 
 * Attribution. You must credit OpenStreetMap with the same prominence that would be expected if you were using a commercial provider. See [OSM’s copyright guidelines](http://www.openstreetmap.org/copyright).
 
-* Share-Alike. When you use any adapted version of OSM’s map data, or works produced it, you must also offer that adapted database under the ODbL.
+* Share-Alike. When you use any adapted version of OSM’s map data, or works produced with it, you must also offer that adapted database under the ODbL.
