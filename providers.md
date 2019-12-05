@@ -17,7 +17,6 @@ The following companies offer development services and consulting for sites wish
 * [Mapbox](https://www.mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Makina Corpus](https://makina-corpus.com/), France
-* [OpenCage Data](https://opencagedata.com/), UK
 * [Skobbler](https://developer.skobbler.com/), Germany
 * [Stamen](https://stamen.com/), US
 * [Système D](https://www.systemed.net/openstreetmap/ "OpenStreetMap consultancy by Richard Fairhurst"), UK
