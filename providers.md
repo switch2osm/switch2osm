@@ -8,7 +8,7 @@ permalink: /providers/
 
 The following companies offer development services and consulting for sites wishing to switch to OpenStreetMap.
 
-* [AND Automotive Navigation Data](https://www.and.com/services/openstreetmap/), Netherlands
+* [AND Automotive Navigation Data](https://www.and.com/services-3/map-hosting/), Netherlands
 * [Camptocamp](https://camptocamp.com/), Switzerland
 * [Carto](https://carto.com/), US
 * [Geofabrik](https://www.geofabrik.de/), Germany
@@ -37,6 +37,6 @@ The following companies host OpenStreetMap tiles.
 
 ### Paid customers only
 
-* [AND Automotive Navigation Data](https://www.and.com/services/openstreetmap/), Netherlands
+* [AND Automotive Navigation Data](https://www.and.com/services-3/map-hosting/), Netherlands
 * [Geofabrik](https://www.geofabrik.de/maps/rendering.html), Germany
 * [Makina Corpus](https://makina-corpus.com/), France
