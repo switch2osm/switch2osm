@@ -22,7 +22,7 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 * [Gosmore](http://sourceforge.net/projects/gosmore/) is a long-established routing engine.
 * [Graphhopper](http://graphhopper.com/) is a fast Java routing engine.
 * Public routing APIs using OSM data are offered by [MapQuest Open](http://open.mapquestapi.com/directions/) and [Mapbox](https://www.mapbox.com/directions/).
-* Specialist routing APIs include [CycleStreets cycle routing](http://www.cyclestreets.net/api/) (UK)
+* Specialist routing APIs include [CycleStreets cycle routing](https://www.cyclestreets.net/api/) (UK and beyond)
 
 ## Vector map libraries (mobile)
 * Android libraries include the [Mapbox Android SDK](https://www.mapbox.com/android-sdk/), [mapsforge](http://mapsforge.org/), [Nutiteq Maps SDK](https://developer.nutiteq.com/), [Skobbler Android SDK](http://developer.skobbler.com/), and [Tangram ES](https://github.com/tangrams/tangram-es/).
