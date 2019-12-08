@@ -18,7 +18,7 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 * [OSMNames](https://osmnames.org/) - place names from OpenStreetMap. Downloadable. Ranked. With bbox and hierarchy. Ready for geocoding.
 
 ## Routing engines and services
-* [OSRM](http://project-osrm.org/) is a new, fast routing engine designed for OSM data.
+* [OSRM](http://project-osrm.org/) is a fast routing engine designed for OSM data.
 * [Gosmore](http://sourceforge.net/projects/gosmore/) is a long-established routing engine.
 * [Graphhopper](http://graphhopper.com/) is a fast Java routing engine.
 * Public routing APIs using OSM data are offered by [MapQuest Open](http://open.mapquestapi.com/directions/) and [Mapbox](https://www.mapbox.com/directions/).
