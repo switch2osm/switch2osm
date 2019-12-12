@@ -33,6 +33,7 @@ The following companies host OpenStreetMap tiles.
 * [Nextzen](https://www.nextzen.org/), US
 * [Skobbler](https://developer.skobbler.com/), Germany
 * [Stamen](https://stamen.com/), US
+* [Thunderforest](https://www.thunderforest.com), UK
 
 ### Paid customers only
 
