@@ -6,7 +6,7 @@ permalink: /using-tiles/getting-started-with-openlayers/
 
 ## Introduction
 
-[OpenLayers](http://openlayers.org/) is a complete JavaScript library for creating simple like advanced maps. It uses a permissive BSD open-source license so can be incorporated into any site without legal worries. Its source code is available on [GitHub](https://github.com/openlayers/ol3/).
+[OpenLayers](http://openlayers.org/) is a complete JavaScript library for embedding maps. It uses a permissive BSD open-source license so can be incorporated into any site without legal worries. Its source code is available on [GitHub](https://github.com/openlayers/ol3/).
 
 Here, we restrict ourselves to a small, self-contained example and refer to the official [tutorials](http://openlayers.org/en/latest/examples/) and [API](http://openlayers.org/en/latest/apidoc/) for elaborate usages.
 
