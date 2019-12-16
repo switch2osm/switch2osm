@@ -18,8 +18,9 @@ The following companies offer development services and consulting for sites wish
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Makina Corpus](https://makina-corpus.com/), France
 * [Skobbler](https://developer.skobbler.com/), Germany
-* [Stamen](https://stamen.com/), US
-* [Système D](https://www.systemed.net/openstreetmap/ "OpenStreetMap consultancy by Richard Fairhurst"), UK
+* [Stadia Maps](https://stadiamaps.com), US
+* [Stamen](https://www.stamen.com/), US
+* [Système D](https://www.systemeD.net/openstreetmap/ "OpenStreetMap consultancy by Richard Fairhurst"), UK
 
 ## Tile hosting
 
@@ -32,6 +33,7 @@ The following companies host OpenStreetMap tiles.
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Nextzen](https://www.nextzen.org/), US
 * [Skobbler](https://developer.skobbler.com/), Germany
+* [Stadia Maps](https://stadiamaps.com), US
 * [Stamen](https://stamen.com/), US
 * [Thunderforest](https://www.thunderforest.com), UK
 
