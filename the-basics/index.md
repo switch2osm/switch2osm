@@ -35,7 +35,7 @@ There is no single canonical library: you can choose whichever suits your needs 
 
 * Leaflet – lightweight and easy-to-learn
 
-If you choose to use MapQuest Open tiles (made from OSM data), you can also use the [MapQuest Open API](http://developer.mapquest.com/web/products/open/sdk). APIs are also available for mobile platforms, such as [Route-Me](https://github.com/route-me/route-me) (iOS) and [osmdroid](http://code.google.com/p/osmdroid/) (Android).
+If you choose to use MapQuest Open tiles (made from OSM data), you can also use the [MapQuest Open API](http://developer.mapquest.com/web/products/open/sdk). APIs are also available for mobile platforms, such as [Route-Me](https://github.com/route-me/route-me) (iOS) and [osmdroid](https://github.com/osmdroid/osmdroid) (Android).
 
 # The licence
 Unlike commercial providers’ data, OpenStreetMap is ‘open data’. The map data is available to you free-of-charge, with the freedom to copy and modify. OSM’s licence is the [Open Database Licence](http://opendatacommons.org/licenses/odbl/summary/).
@@ -44,4 +44,4 @@ Your obligations are:
 
 * Attribution. You must credit OpenStreetMap with the same prominence that would be expected if you were using a commercial provider. See [OSM’s copyright guidelines](http://www.openstreetmap.org/copyright).
 
-* Share-Alike. When you use any adapted version of OSM’s map data, or works produced it, you must also offer that adapted database under the ODbL.
+* Share-Alike. When you use any adapted version of OSM’s map data, or works produced with it, you must also offer that adapted database under the ODbL.

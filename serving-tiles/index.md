@@ -16,9 +16,8 @@ If you are setting up your own tile server, we recommend that you use [Ubuntu Li
 
 # The options
 
-1. [Build a tile server using packages](building-a-tile-server-from-packages/)
-2. [Build a tile server from source](http://switch2osm.org/?page_id=76)
-3. [Use an all-in-one solution](using-an-all-in-one-solution/)
+1. [Build a tile server from source](manually-building-a-tile-server-18-04-lts/)
+2. [Build a tile server using packages](ubuntu-14-building-a-tile-server-from-packages/)
 
 # System requirements
 Serving your own maps is a fairly intensive task. Depending on the size of the area you’re interested in serving and the traffic you expect the system requirements will vary. In general, requirements will range from 10-20GB of storage, 4GB of memory, and a modern dual-core processor for a city-sized region to 300GB+ of fast storage, 24GB of memory, and a quad-core processor for the entire planet.
@@ -26,7 +25,7 @@ Serving your own maps is a fairly intensive task. Depending on the size of the a
 We would recommend that you begin with extracts of OpenStreetMap data – for example, a city, county or small country – rather than spending a week importing the whole world (planet.osm) and then having to restart because of a configuration mistake! You can download extracts from:
 
 * [Geofabrik](http://download.geofabrik.de/osm/) (countries and provinces)
-* [Metro extracts](http://metro.teczno.com/) (city areas)
+* [Protomaps Extracts](https://protomaps.com/extracts/) (minutely-updated cities and small countries)
 
 # The toolchain
 
