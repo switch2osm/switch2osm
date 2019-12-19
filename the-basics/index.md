@@ -29,7 +29,7 @@ Rendering your own tiles gives you complete control over their appearance. You c
 
 # The API/library
 
-There is no single canonical library: you can choose whichever suits your needs best. The two most popular JavaScript libraries for rendering OSM tiles are:
+There is no single canonical library: you can choose whichever suits your needs best. The two most popular JavaScript libraries for displaying OSM tiles are:
 
 * OpenLayers – powerful and long-established
 
