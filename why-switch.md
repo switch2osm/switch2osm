@@ -25,4 +25,4 @@ All this is contributed by our volunteers (over 1,000,000 signed up so far, and 
 
 # It’s easier than you think
 
-There’s no limit to what you can do with OpenStreetMap. Yet it needn’t take long to get started. You can switch to OSM in under an hour using tools like the easy [Leaflet](http://leafletjs.com/) and MapQuest Open’s [free tiles](http://developer.mapquest.com/web/products/open/map). Read the rest of this site to get started with the possibilities.
+There’s no limit to what you can do with OpenStreetMap. Yet it needn’t take long to get started. You can switch to OSM in under an hour using tools like the easy [Leaflet](http://leafletjs.com/) and a provider of [free tiles](https://switch2osm.org/providers/). Read the rest of this site to get started with the possibilities.
