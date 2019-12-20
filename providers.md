@@ -14,6 +14,7 @@ The following companies offer development services and consulting for sites wish
 * [Geofabrik](https://www.geofabrik.de/), Germany
 * [GreenInfo Network](https://www.greeninfo.org/), US (public interest groups only)
 * [ITO!](https://www.itoworld.com/), UK
+* [Jawg](https://www.jawg.io/), France
 * [Mapbox](https://www.mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Makina Corpus](https://makina-corpus.com/), France
@@ -29,6 +30,7 @@ The following companies host OpenStreetMap tiles.
 ### Allows free usage
 
 * [Carto](https://carto.com/), US
+* [Jawg](https://www.jawg.io/), France
 * [Mapbox](http://mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Nextzen](https://www.nextzen.org/), US
