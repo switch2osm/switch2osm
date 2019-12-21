@@ -23,7 +23,7 @@ Create a docker volume for the data:
 
 And install it and import the data:
 
-    time docker run -v /home/renderaccount/zambia-latest.osm.pbf:/data.osm.pbf -v openstreetmap-data:/var/lib/postgresql/10/main overv/openstreetmap-tile-server import
+    time docker run -v /home/renderaccount/zambia-latest.osm.pbf:/data.osm.pbf -v openstreetmap-data:/var/lib/postgresql/12/main overv/openstreetmap-tile-server import
 
 The path to the data file needs to be the absolute path to the data file - it can't be a relative path.  In this example it's in the root directory of the "renderaccount" user.
 
@@ -45,7 +45,7 @@ That tells you how long things took in total (in this case 9.5 minutes).
 
 To start the tile server running:
 
-    docker run -p 80:80 -v openstreetmap-data:/var/lib/postgresql/10/main -d overv/openstreetmap-tile-server run
+    docker run -p 80:80 -v openstreetmap-data:/var/lib/postgresql/12/main -d overv/openstreetmap-tile-server run
 
 and to check that it’s working, browse to:
 
