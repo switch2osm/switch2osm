@@ -38,6 +38,7 @@ The following companies host OpenStreetMap tiles.
 * [Stadia Maps](https://stadiamaps.com), US
 * [Stamen](https://stamen.com/), US
 * [Thunderforest](https://www.thunderforest.com), UK
+* [Esri](https://www.esri.com), US
 
 ### Paid customers only
 
