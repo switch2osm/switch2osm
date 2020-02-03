@@ -15,7 +15,7 @@ If you don't already have Docker installed, there are lots of "how-tos" around -
 In this example run-through I’ll download data for Zambia and import it, but any OSM .pbf file should work.  For testing, try a small .pbf first.  When logged in as the non-root user that you run Docker from, download the data for Zambia:
 
     cd
-    wget http://download.geofabrik.de/africa/zambia-latest.osm.pbf
+    wget https://download.geofabrik.de/africa/zambia-latest.osm.pbf
 
 Create a docker volume for the data:
 
