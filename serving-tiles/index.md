@@ -12,7 +12,7 @@ Tiles from a third-party provider are the simplest way to make the switch to Ope
 
 Both generating and serving tiles incur significant hardware requirements, especially if you need global coverage and regular updates.
 
-If you are setting up your own tile server, we recommend that you use [Ubuntu Linux](http://www.ubuntu.com/).
+If you are setting up your own tile server, we recommend that you use [Ubuntu Linux](https://ubuntu.com/).
 
 # The options
 
@@ -24,8 +24,8 @@ Serving your own maps is a fairly intensive task. Depending on the size of the a
 
 We would recommend that you begin with extracts of OpenStreetMap data – for example, a city, county or small country – rather than spending a week importing the whole world (planet.osm) and then having to restart because of a configuration mistake! You can download extracts from:
 
-* [Geofabrik](http://download.geofabrik.de/osm/) (countries and provinces)
-* [Protomaps Extracts](https://protomaps.com/extracts/) (minutely-updated cities and small countries)
+* [Geofabrik](https://download.geofabrik.de/) (countries and provinces)
+* [Protomaps Extracts](https://protomaps.com/extracts) (minutely-updated cities and small countries)
 
 # The toolchain
 
