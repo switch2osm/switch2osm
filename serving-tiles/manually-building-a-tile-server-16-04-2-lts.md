@@ -4,7 +4,7 @@ title: Manually building a tile server (16.04.2 LTS)
 permalink: /serving-tiles/manually-building-a-tile-server-16-04-2-lts/
 ---
 
-This page describes how to install, setup and configure all the necessary software to operate your own tile server. The step-by-step instructions are written for [Ubuntu Linux](http://www.ubuntu.com/) 16.04.2 LTS (Xenial Xerus).
+This page describes how to install, setup and configure all the necessary software to operate your own tile server. The step-by-step instructions are written for [Ubuntu Linux](https://ubuntu.com/) 16.04.2 LTS (Xenial Xerus).
 
 # Software installation
 
@@ -180,11 +180,11 @@ You now have a Mapnik XML stylesheet at /home/renderaccount/src/openstreetmap-ca
 
 Initially, we'll load only a small amount of test data. Other download locations are available, but "download.geofabrik.de" has a wide range of options. In this example we'll download the data for Azerbaijan, which is about 25Mb.
 
-Browse to http://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2017-02-26T21:43:02Z"). We'll need that later if we want to update the database with people's susbsequent changes to OpenStreetMap. Download it as follows:
+Browse to https://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2017-02-26T21:43:02Z"). We'll need that later if we want to update the database with people's susbsequent changes to OpenStreetMap. Download it as follows:
 
     mkdir ~/data
     cd ~/data
-    wget http://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
+    wget https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
 
 The following command will insert the OpenStreetMap data you downloaded earlier into the database. This step is very disk I/O intensive; importing the full planet might take many hours, days or weeks depending on the hardware. For smaller extracts the import time is much faster accordingly, and you may need to experiment with different -C values to fit within your machine's available memory.
 
@@ -362,8 +362,8 @@ From an ssh connection do:
 
 That will show a line every time a tile is requested, and one every time rendering of one is completed.
 
-In your switcheroo-configured Chrome / Chromium browser go to: http://www.openstreetmap.org/#map=13/40.3743/49.7134
+In your switcheroo-configured Chrome / Chromium browser go to: https://www.openstreetmap.org/#map=13/40.3743/49.7134
 
 and switch to the "Humanitarian" layer in OSM. You should see some tile requests. Zoom out gradually. You'll see requests for new tiles show up in the ssh connection. Some low-zoom tiles may take a long time (several minutes) to render for the first time, but once done they'll be ready for the next time that they are needed.
 
-Congratulations. Head over to the [using tiles](http://switch2osm.github.io/using-tiles/) section to create a map that uses your new tile server.
+Congratulations. Head over to the [using tiles](https://switch2osm.github.io/using-tiles/) section to create a map that uses your new tile server.
