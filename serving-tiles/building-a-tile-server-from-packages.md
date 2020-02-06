@@ -46,7 +46,7 @@ Install the package libapache2-mod-tile and its dependencies. During configurati
 
 Download the OpenStreetMap data you want to render (complete planet files can be found on planet.openstreetmap.org, country extracts can be found e.g. on download.geofabrik.de). e.g:
 
-    wget http://download.geofabrik.de/europe/ireland-and-northern-ireland-latest.osm.pbf
+    wget https://download.geofabrik.de/europe/ireland-and-northern-ireland-latest.osm.pbf
 
 Import the data into your postgresql database with osm2pgsql. There are a number of different parameters one can use with osm2pgsql that depend on your available hardware and the size of the data extract you want to import. The most likely ones you will need to set are ``-C``, ``--slim`` and ``-number-processes``. ``-C`` specifies the number of Mb osm2pgsql will use to cache data. So this depends on the amount of RAM you have available. ``--slim`` keeps the complete osm data on disk, necessary for updates and low memory environments. ``--number-processes`` specifies the number of parallel processes that are used for some parts of the import process. The optimal value mostly depends on the speed of your disk system and the available processor cores.
 
@@ -103,7 +103,7 @@ Keeping the data up-to-date can be resource intense, in particular because after
 
 The initial install installed pre-processed coastlines, from time to time it may make sense to replace the files with new versions:
 
-    wget http://tile.openstreetmap.org/processed_p.tar.bz2
+    wget https://tile.openstreetmap.org/processed_p.tar.bz2
 
 and extract it to
 
