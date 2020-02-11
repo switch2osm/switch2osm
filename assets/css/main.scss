@@ -11,6 +11,9 @@ sitemap: false
  *
 */
 
+// Define Jekyll site.url as SCSS variable
+$site_url: '{{ site.url }}';
+
 // Partials
 @import "mixins";
 @import "reset";
@@ -26,3 +29,4 @@ sitemap: false
 @import "animations";
 @import "dl-menu";
 @import "page";
+@import "font-lato";
