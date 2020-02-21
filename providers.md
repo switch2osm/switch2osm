@@ -14,7 +14,6 @@ The following companies offer development services and consulting for sites wish
 * [Geoapify](https://www.geoapify.com/), Germany
 * [Geofabrik](https://www.geofabrik.de/), Germany
 * [GreenInfo Network](https://www.greeninfo.org/), US (public interest groups only)
-* [ITO!](https://www.itoworld.com/), UK
 * [Jawg](https://www.jawg.io/), France
 * [Mapbox](https://www.mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
