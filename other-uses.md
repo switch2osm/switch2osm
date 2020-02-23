@@ -19,9 +19,9 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 
 ## Routing engines and services
 * [OSRM](http://project-osrm.org/) is a fast routing engine designed for OSM data.
-* [Gosmore](http://sourceforge.net/projects/gosmore/) is a long-established routing engine.
-* [Graphhopper](http://graphhopper.com/) is a fast Java routing engine.
-* Public routing APIs using OSM data are offered by [MapQuest Open](http://open.mapquestapi.com/directions/) and [Mapbox](https://www.mapbox.com/directions/).
+* [Graphhopper](https://github.com/graphhopper/graphhopper/) is a fast Java routing engine with a small memory footprint.
+* [Valhalla](https://valhalla.readthedocs.io/en/latest/) is a C++ routing engine for road vehicles and public transport.
+* Public routing APIs using OSM data are offered by [GraphHopper](https://www.graphhopper.com/products/), [MapQuest Open](http://open.mapquestapi.com/directions/) and [Mapbox](https://www.mapbox.com/directions/).
 * Specialist routing APIs include [CycleStreets cycle routing](https://www.cyclestreets.net/api/) (UK and beyond)
 
 ## Vector map libraries (mobile)
@@ -29,5 +29,4 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 * iOS libraries include the [Mapbox iOS SDK](https://www.mapbox.com/ios-sdk/), [Nutiteq Maps SDK](https://developer.nutiteq.com/), [Skobbler iOS SDK](http://developer.skobbler.com/), and [Tangram ES](https://github.com/tangrams/tangram-es/).
 
 ## Vector map libraries (Web)
-* [Kothic JS](https://github.com/kothic/kothic-js) renders OSM data “on the fly” using HTML5, without the need for raster tile images.
 * [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/) and [Tangram](http://tangrams.github.io/tangram/) render vector tiles based on OSM data using WebGL for better performance.
