@@ -16,6 +16,8 @@ Note that these instructions are have been written and tested against a newly-in
 
 In order to build these components, a variety of dependencies need to be installed first:
 
+    add-apt-repository multiverse
+    apt update
     sudo apt install libboost-all-dev git-core tar unzip wget bzip2 build-essential autoconf libtool libxml2-dev libgeos-dev libgeos++-dev libpq-dev libbz2-dev libproj-dev munin-node munin libprotobuf-c0-dev protobuf-c-compiler libfreetype6-dev libtiff5-dev libicu-dev libgdal-dev libcairo-dev libcairomm-1.0-dev apache2 apache2-dev libagg-dev liblua5.2-dev ttf-unifont lua5.1 liblua5.1-dev libgeotiff-epsg
 
 Say yes to install. This will take a while, so go and have a cup of tea. This list includes various utilities and libraries, the Apache web server, and "carto" which is used to convert Carto-CSS stylesheets into something that "mapnik" the map renderer can understand. When that is complete, install the second set of prerequisites:
@@ -162,6 +164,10 @@ Here we're assuming that we're storing the stylesheet details in a directory bel
     cd openstreetmap-carto
 
 Next, we'll install a suitable version of the "carto" compiler. This is later than the version that ships with Ubuntu, so we need to do:
+
+    sudo apt-get install nodejs-dev node-gyp libssl1.0-dev
+
+Confusingly this will remove some things previously installed.  Then do:
 
     sudo apt install npm nodejs
     sudo npm install -g carto
