@@ -101,6 +101,7 @@ Next, we'll install mod_tile and renderd. "mod_tile" is an Apache module that ha
 
 ## Compile the mod_tile source code:
 
+    mkdir ~/src
     cd ~/src
     git clone -b switch2osm git://github.com/SomeoneElseOSM/mod_tile.git
     cd mod_tile
