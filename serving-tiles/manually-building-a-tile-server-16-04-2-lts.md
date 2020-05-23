@@ -4,7 +4,9 @@ title: Manually building a tile server (16.04.2 LTS)
 permalink: /serving-tiles/manually-building-a-tile-server-16-04-2-lts/
 ---
 
-This page describes how to install, setup and configure all the necessary software to operate your own tile server. The step-by-step instructions are written for [Ubuntu Linux](https://ubuntu.com/) 16.04.2 LTS (Xenial Xerus).
+This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Ubuntu Linux](https://ubuntu.com/) 16.04.2 LTS (Xenial Xerus).
+
+It's obviously some considerable time since Ubuntu 16.04 was released and there have been a number of changes to the other software used since then.  It's recommended to use one of the newer links, but if you absolutely still need a server based upon 16.04 can can still follow this one - although minor changes at some stages may be needed.
 
 # Software installation
 
@@ -236,9 +238,10 @@ That command will complete with something like "Osm2pgsql took 238s overall".
 Although most of the data used to create the map is directly from the OpenStreetMap data file that you downloaded above, some shapefiles for things like low-zoom country bondaries are still needed. To download and index these:
 
     cd ~/src/openstreetmap-carto/
-    scripts/get-shapefiles.py
+    scripts/get-external-data.py
 
-This process involves a sizable download and may take some time. When complete it will display "...script completed.".
+This process involves a sizable download and may take some time - not much will appear on the screen when it is running.  It will actually populate a "data" directory below "openstreetmap-carto".
+
 ## Fonts
 
 The names used for places around the world aren't always written with latin characters (the familar western alphabet a-z). To install the necessary fonts do the following:
