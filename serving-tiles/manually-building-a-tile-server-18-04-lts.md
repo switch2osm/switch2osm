@@ -16,8 +16,8 @@ Note that these instructions are have been written and tested against a newly-in
 
 In order to build these components, a variety of dependencies need to be installed first:
 
-    add-apt-repository multiverse
-    apt update
+    sudo add-apt-repository multiverse
+    sudo apt update
     sudo apt install libboost-all-dev git-core tar unzip wget bzip2 build-essential autoconf libtool libxml2-dev libgeos-dev libgeos++-dev libpq-dev libbz2-dev libproj-dev munin-node munin libprotobuf-c0-dev protobuf-c-compiler libfreetype6-dev libtiff5-dev libicu-dev libgdal-dev libcairo-dev libcairomm-1.0-dev apache2 apache2-dev libagg-dev liblua5.2-dev ttf-unifont lua5.1 liblua5.1-dev libgeotiff-epsg
 
 Say yes to install. This will take a while, so go and have a cup of tea. This list includes various utilities and libraries, the Apache web server, and "carto" which is used to convert Carto-CSS stylesheets into something that "mapnik" the map renderer can understand. When that is complete, install the second set of prerequisites:
@@ -32,7 +32,7 @@ Here "postgresql" is the database we're going to store map data and "postgis" ad
 Now you need to create a postgis database. The defaults of various programs assume the database is called gis and we will use the same convention in this tutorial, although this is not necessary. Substitute your username for renderaccount where is is used below. This should be the username that will render maps with Mapnik.
 
     sudo -u postgres -i
-    createuser renderaccount # answer yes for superuser (although this isn't strictly necessary)
+    createuser renderaccount
     createdb -E UTF8 -O renderaccount gis
 
 While still working as the "postgres" user, set up PostGIS on the PostgreSQL database (again, substitute your username for renderaccount below):
@@ -105,7 +105,7 @@ Again, say yes to install.
 
 Next, we'll install Mapnik. We'll use the default version in Ubuntu 18.04:
 
-    sudo apt-get install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev mapnik-utils python-mapnik
+    sudo apt-get install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev mapnik-utils python-mapnik python3-psycopg2
 
 We'll check that Mapnik has been installed correctly:
 
@@ -175,7 +175,7 @@ Confusingly this will remove some things previously installed.  Then do:
 
 That should respond with a number that is at least as high as:
 
-    carto 1.1.0 (Carto map stylesheet compiler)
+    carto 1.2.0 (Carto map stylesheet compiler)
 
 Then we convert the carto project into something that Mapnik can understand:
 
@@ -242,9 +242,9 @@ That command will complete with something like "Osm2pgsql took 238s overall".
 Although most of the data used to create the map is directly from the OpenStreetMap data file that you downloaded above, some shapefiles for things like low-zoom country bondaries are still needed. To download and index these:
 
     cd ~/src/openstreetmap-carto/
-    scripts/get-shapefiles.py
+    scripts/get-external-data.py
 
-This process involves a sizable download and may take some time. When complete it will display "...script completed.".
+This process involves a sizable download and may take some time - not much will appear on the screen when it is running.  It will actually populate a "data" directory below "openstreetmap-carto".  When complete it will display "...script completed.".
 ## Fonts
 
 The names used for places around the world aren't always written with latin characters (the familar western alphabet a-z). To install the necessary fonts do the following:
