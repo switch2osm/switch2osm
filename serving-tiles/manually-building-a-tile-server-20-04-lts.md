@@ -83,7 +83,7 @@ Next we'll install osm2pgsql:
 
 Next, we'll install Mapnik. We'll use the default version in Ubuntu 20.04:
 
-    sudo apt-get install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev mapnik-utils python3-mapnik
+    sudo apt-get install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev mapnik-utils python3-mapnik python3-psycopg2
 
 We'll check that Mapnik has been installed correctly:
 
@@ -217,7 +217,7 @@ That command will complete with something like "Osm2pgsql took 238s overall".
 Although most of the data used to create the map is directly from the OpenStreetMap data file that you downloaded above, some shapefiles for things like low-zoom country bondaries are still needed. To download and index these:
 
     cd ~/src/openstreetmap-carto/
-    scripts/get-shapefiles.py
+    scripts/get-external-data.py
 
 This process involves a sizable download and may take some time. When complete it will display "...script completed in (about 400) seconds.".
 
