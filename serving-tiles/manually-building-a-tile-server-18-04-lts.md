@@ -4,7 +4,7 @@ title: Manually building a tile server (18.04 LTS)
 permalink: /serving-tiles/manually-building-a-tile-server-18-04-lts/
 ---
 
-This page describes how to install, setup and configure all the necessary software to operate your own tile server. The step-by-step instructions are written for [Ubuntu Linux](https://ubuntu.com/) 18.04 LTS (Bionic Beaver).
+This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions are written for [Ubuntu Linux](https://ubuntu.com/) 18.04 LTS (Bionic Beaver), and were tested in May 2020.
 
 # Software installation
 
@@ -244,7 +244,8 @@ Although most of the data used to create the map is directly from the OpenStreet
     cd ~/src/openstreetmap-carto/
     scripts/get-external-data.py
 
-This process involves a sizable download and may take some time - not much will appear on the screen when it is running.  It will actually populate a "data" directory below "openstreetmap-carto".  When complete it will display "...script completed.".
+This process involves a sizable download and may take some time - not much will appear on the screen when it is running.  It will actually populate a "data" directory below "openstreetmap-carto".
+
 ## Fonts
 
 The names used for places around the world aren't always written with latin characters (the familar western alphabet a-z). To install the necessary fonts do the following:
