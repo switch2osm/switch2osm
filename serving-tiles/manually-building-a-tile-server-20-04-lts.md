@@ -219,7 +219,7 @@ Although most of the data used to create the map is directly from the OpenStreet
     cd ~/src/openstreetmap-carto/
     scripts/get-external-data.py
 
-This process involves a sizable download and may take some time. When complete it will display "...script completed in (about 400) seconds.".
+This process involves a sizable download and may take some time - not much will appear on the screen when it is running.  It will actually populate a "data" directory below "openstreetmap-carto".  When complete it will display "...script completed in (about 400) seconds.".
 
 ## Fonts
 
