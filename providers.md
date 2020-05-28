@@ -15,7 +15,7 @@ The following companies offer development services and consulting for sites wish
 * [GreenInfo Network](https://www.greeninfo.org/), US (public interest groups only)
 * [ITO!](https://www.itoworld.com/), UK
 * [Jawg](https://www.jawg.io/), France
-* [Kober-Kümmerly+Frey | mapz.com](https://www.mapz.com/), Germany
+* [Kober-Kümmerly+Frey - mapz.com](https://www.mapz.com/), Germany
 * [Mapbox](https://www.mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Makina Corpus](https://makina-corpus.com/), France
@@ -44,5 +44,5 @@ The following companies host OpenStreetMap tiles.
 
 * [AND Automotive Navigation Data](https://www.and.com/services-3/map-hosting/), Netherlands
 * [Geofabrik](https://www.geofabrik.de/maps/rendering.html), Germany
-* [Kober-Kümmerly+Frey | mapz.com](https://www.mapz.com/), Germany
+* [Kober-Kümmerly+Frey - mapz.com](https://www.mapz.com/), Germany
 * [Makina Corpus](https://makina-corpus.com/), France
