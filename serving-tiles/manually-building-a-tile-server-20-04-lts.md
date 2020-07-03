@@ -259,7 +259,7 @@ That was chosen so that the tiles generated here can more easily be used in plac
 
 We now need to tell Apache about "mod_tile", so with nano (or another editor):
 
-    sudo nano /etc/apache2/conf-available/mod_tile.conf
+    sudo nano /etc/apache2/mods-available/mod_tile.load
 
 Add the following line to that file:
 
