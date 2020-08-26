@@ -8,6 +8,7 @@ permalink: /providers/
 
 The following companies offer development services and consulting for sites wishing to switch to OpenStreetMap.
 
+* [Alantgeo](https://www.alantgeo.com.au), Australia
 * [AND Automotive Navigation Data](https://www.and.com/services-3/map-hosting/), Netherlands
 * [Camptocamp](https://camptocamp.com/), Switzerland
 * [Carto](https://carto.com/), US
