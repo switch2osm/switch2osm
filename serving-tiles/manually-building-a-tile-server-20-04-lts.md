@@ -23,7 +23,7 @@ Say yes to install. This will take a while, so go and have a cup of tea. This li
 
 On Ubuntu there are pre-packaged versions of both postgis and postgresql, so these can simply be installed via the Ubuntu package manager.
 
-    sudo apt-get install postgresql postgresql-contrib postgis postgresql-12-postgis-3 postgresql-12-postgis-3-scripts
+    sudo apt install postgresql postgresql-contrib postgis postgresql-12-postgis-3 postgresql-12-postgis-3-scripts
 
 Here "postgresql" is the database we're going to store map data and "postgis" adds some extra graphical support to it. Again, say yes to install.
 
@@ -83,7 +83,7 @@ Next we'll install osm2pgsql:
 
 Next, we'll install Mapnik. We'll use the default version in Ubuntu 20.04:
 
-    sudo apt-get install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev mapnik-utils python3-mapnik python3-psycopg2
+    sudo apt install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev mapnik-utils python3-mapnik python3-psycopg2
 
 We'll check that Mapnik has been installed correctly:
 
@@ -225,7 +225,7 @@ This process involves a sizable download and may take some time - not much will 
 
 The names used for places around the world aren't always written with latin characters (the familar western alphabet a-z). To install the necessary fonts do the following:
 
-    sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
+    sudo apt install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
 
 OpenSteetMap Carto's own installation instructions also suggest installing "Noto Emoji Regular" from source. That is needed for the emojis in an American shop name, apparently. All the other international fonts that are likely to be needed (including ones often not supported) are including in the list just installed.
 # Setting up your webserver
