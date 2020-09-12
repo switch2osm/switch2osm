@@ -44,7 +44,7 @@ See the issues for things to work on.
 
 * Uses OS distribution methods for software when possible
 
-  Use apt-get or homebrew. With PPAs, it should be possible to get all software installed this way.
+  Use `apt` or `homebrew`. With PPAs, it should be possible to get all software installed this way.
 
 ## Contribute
 The webpage is built using [GitHub Pages](https://pages.github.com/). To compile your changes, execute
