@@ -214,7 +214,7 @@ The final argument is the data file to load.
 That command will complete with something like "Osm2pgsql took 238s overall".
 ## Shapefile download
 
-Although most of the data used to create the map is directly from the OpenStreetMap data file that you downloaded above, some shapefiles for things like low-zoom country bondaries are still needed. To download and index these:
+Although most of the data used to create the map is directly from the OpenStreetMap data file that you downloaded above, some shapefiles for things like low-zoom country boundaries are still needed. To download and index these:
 
     cd ~/src/openstreetmap-carto/
     scripts/get-external-data.py
