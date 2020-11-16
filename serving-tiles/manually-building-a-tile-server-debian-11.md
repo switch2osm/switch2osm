@@ -12,7 +12,7 @@ The OSM tile server stack is a collection of programs and libraries that work to
 
 It consists of 5 main components: mod_tile, renderd, mapnik, osm2pgsql and a postgresql/postgis database. Mod_tile is an apache module that serves cached tiles and decides which tiles need re-rendering - either because they are not yet cached or because they are outdated. Renderd provides a priority queueing system for different sorts of requests to manage and smooth out the load from rendering requests. Mapnik is the software library that does the actual rendering and is used by renderd.
 
-Thanks to the work done by he Debian maintainers to incorporate the latest versions of these packages into Debian 11, so these instructions are actually somewhat shorter than previous versions.
+Thanks to the work done by the Debian maintainers to incorporate the latest versions of these packages into Debian 11, these instructions are somewhat shorter than previous versions.
 
 These instructions are have been written and tested against a newly-installed Debian 11 Testing server. Debian 11 hasn't been released yet, so of course things may change.  If you have got other versions of some software already installed (perhaps you upgraded from an earlier version, or you set up some PPAs to load from) then you may need to make some adjustments.
 
