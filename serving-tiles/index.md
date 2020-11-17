@@ -27,7 +27,7 @@ We would recommend that you begin with extracts of OpenStreetMap data – for ex
 
 * [Geofabrik](https://download.geofabrik.de/) (countries and provinces)
 * [Protomaps Extracts](https://protomaps.com/extracts) (minutely-updated cities and small countries)
-* [download.openstreetmap.fr)(http://download.openstreetmap.fr/)
+* [download.openstreetmap.fr](https://download.openstreetmap.fr/)
 
 # The toolchain
 
