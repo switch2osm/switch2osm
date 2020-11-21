@@ -44,7 +44,11 @@ See the issues for things to work on.
 
 * Uses OS distribution methods for software when possible
 
-  Use `apt` or `homebrew`. With PPAs, it should be possible to get all software installed this way.
+  Use `apt` or `homebrew` or similar.
+  
+* Avoid using PPAs where possible.
+
+  PPAs can be useful for grouping more different versions of software together, beyond what is distributed by the base OS, but they tend not to be supported forever, and aren't automatically tested for compatibility as new OS versions come out.  Also, base OS support of the components used here is much better than it was.
 
 ## Contribute
 The webpage is built using [GitHub Pages](https://pages.github.com/). To compile your changes, execute
