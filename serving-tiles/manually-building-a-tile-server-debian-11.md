@@ -170,13 +170,7 @@ The final argument is the data file to load.
 That command will complete with something like "Osm2pgsql took 238s overall".
 ## Shapefile download
 
-Although most of the data used to create the map is directly from the OpenStreetMap data file that you downloaded above, some shapefiles for things like low-zoom country boundaries are still needed.
-
-Due to a temporary [mismatch](https://github.com/gravitystorm/openstreetmap-carto/issues/4249) between the OSM Carto instructions and the Natural Earth data, edit "get_external_data.yml" and change the url in "ne_110m_admin_0_boundary_lines_land:" to:
-
-    url: https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
-
-Then, to download and index these, using the same account as we used previously:
+Although most of the data used to create the map is directly from the OpenStreetMap data file that you downloaded above, some shapefiles for things like low-zoom country boundaries are still needed. To download and index these, using the same account as we used previously:
 
     cd ~/src/openstreetmap-carto/
     mkdir data
