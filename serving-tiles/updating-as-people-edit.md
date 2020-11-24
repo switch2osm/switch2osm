@@ -6,6 +6,8 @@ permalink: /serving-tiles/updating-as-people-edit/
 
 # Updating your database as people edit OpenStreetMap
 
+Every day there are millions of new map updates so to prevent a map becoming "stale" you can refresh the data used to create map tiles regularly.
+
 We'll use "osmosis" for this, which will also install Java.  "osmosis" is a general-purpose OSM data utility, and one of the things that it can do is to update a database with recent changes from OSM.  Other options are available, such as "osmium".
 
     sudo apt install osmosis
