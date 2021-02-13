@@ -105,3 +105,4 @@ so that the script runs every 5 minutes. Replace "renderaccount" with the userna
 
 If an error such as "Expiry failed" appears in "/var/log/tiles/run.log" then the likely problem is that "render_expired", one of the programs called from within there, has run out of memory. If that is the case, reduce EXPIRY_MAXZOOM in the script until it works. You can get more details about what has gone wrong from the other files in "/var/log/tiles/".
 
+If an error such as "rm: cannot remove '/var/lib/mod_tile/dirty_tiles.6877':" occurs it might mean that osm2pgsql failed and it didn't produce a list of dirty tiles at the end of its run.  The location of the logfile it creates is higher up in the script.  By default it is /var/log/tiles/osm2pgsql.log , and if you look in there you should see the actual error.
