@@ -14,6 +14,12 @@ It consists of 5 main components: mod_tile, renderd, mapnik, osm2pgsql and a pos
 
 Note that these instructions are have been written and tested against a newly-installed Ubuntu 20.04 server. If you have got other versions of some software already installed (perhaps you upgraded from an earlier Ubuntu version, or you set up some PPAs to load from) then you may need to make some adjustments.
 
+This guide assumes that you run everything from a non-root user via "sudo".  The non-root username used by default below is "renderaccount" - you can create that locally if you want, or edit scripts to refer to a different username if you want.  If you do create the "renderaccount" user you'll need to add it to the group of users that can sudo to root.  From your normal non-root user account:
+
+    sudo -i
+    usermod -aG sudo renderaccount
+    exit
+
 In order to build these components, a variety of dependencies need to be installed first:
 
     sudo apt install libboost-all-dev git tar unzip wget bzip2 build-essential autoconf libtool libxml2-dev libgeos-dev libgeos++-dev libpq-dev libbz2-dev libproj-dev munin-node munin protobuf-c-compiler libfreetype6-dev libtiff5-dev libicu-dev libgdal-dev libcairo2-dev libcairomm-1.0-dev apache2 apache2-dev libagg-dev liblua5.2-dev ttf-unifont lua5.1 liblua5.1-0-dev
