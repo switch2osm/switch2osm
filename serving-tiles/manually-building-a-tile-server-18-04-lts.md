@@ -101,6 +101,13 @@ Again, say yes to install.
 
     sudo make install
 
+## Postgresql optimization
+
+If you have a default installation of postgresql it is very unlikely that it will be configured to offer good performance by default.
+It can be neglected if you are only working with small datasets but but it might become a problem if you are importing larger ones.
+The configuration of your postgresql is defined on Ubuntu by default at `/etc/postgresql/10/main/postgresql.conf`.
+Those settings must be set approprietly in regards to your machine, if you need help to find the right settings, checkout [PgTune](https://pgtune.leopard.in.ua/).
+
 # Mapnik
 
 Next, we'll install Mapnik. We'll use the default version in Ubuntu 18.04:
