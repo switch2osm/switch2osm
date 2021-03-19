@@ -74,10 +74,10 @@ While still working as the "postgres" user, set up PostGIS on the PostgreSQL dat
 
 ## Postgresql optimization
 
-If you have a default installation of postgresql it is very unlikely that it will be configured to offer good performance by default.
-It can be neglected if you are only working with small datasets but but it might become a problem if you are importing larger ones.
-The configuration of your postgresql is defined on Debian by default at `/etc/postgresql/13/main/postgresql.conf`.
-Those settings must be set approprietly in regards to your machine, if you need help to find the right settings, checkout [PgTune](https://pgtune.leopard.in.ua/).
+If you have a default installation of PostgreSQL it is very unlikely that it will be configured to offer good performance by default.
+It can be neglected if you are only working with small datasets but it might become a problem if you are importing larger ones.
+The configuration of your PostgreSQL is defined on Debian by default at `/etc/postgresql/13/main/postgresql.conf`.
+Those settings must be set appropriately in regards to your machine, if you need help to find the right settings, checkout [Tuning the PostgreSQL Server](https://osm2pgsql.org/doc/manual.html#tuning-the-postgresql-server).
 
 # Mapnik
 
