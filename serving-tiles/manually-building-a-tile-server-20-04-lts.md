@@ -218,6 +218,14 @@ Create the database columns in this file (actually these are unchanged from "ope
 The final argument is the data file to load.
 
 That command will complete with something like "Osm2pgsql took 238s overall".
+## Creating indexes
+
+Since version v5.3.0, some extra indexes now need to be [applied manually](https://github.com/gravitystorm/openstreetmap-carto/blob/master/CHANGELOG.md#v530---2021-01-28).
+
+    cd ~/src/openstreetmap-carto/
+    psql -d gis -f indexes.sql
+
+It should respond with "CREATE INDEX" 14 times.
 ## Shapefile download
 
 Although most of the data used to create the map is directly from the OpenStreetMap data file that you downloaded above, some shapefiles for things like low-zoom country boundaries are still needed. To download and index these:
