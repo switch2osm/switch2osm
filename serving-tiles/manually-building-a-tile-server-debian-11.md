@@ -168,6 +168,14 @@ Create the database columns in this file (actually these are unchanged from "ope
 The final argument is the data file to load.
 
 That command will complete with something like "Osm2pgsql took 238s overall".
+## Creating indexes
+
+Since version v5.3.0, some extra indexes now need to be [applied manually](https://github.com/gravitystorm/openstreetmap-carto/blob/master/CHANGELOG.md#v530---2021-01-28):
+
+    cd ~/src/openstreetmap-carto/
+    sudo -u _renderd psql -d gis -f indexes.sql
+    
+It should respond with "CREATE INDEX" 14 times.
 ## Shapefile download
 
 Although most of the data used to create the map is directly from the OpenStreetMap data file that you downloaded above, some shapefiles for things like low-zoom country boundaries are still needed. To download and index these, using the same account as we used previously:
@@ -201,6 +209,12 @@ Add a section like the following at the end:
     MAXZOOM=20
 
 The location of the XML file "/home/accountname/src/openstreetmap-carto/mapnik.xml" will need to be changed to the actual location on your system.  You can change "[s2o]" and "URI=/hot/" as well if you like.  If you want to render more than one set of tiles from one server you can - just add another section like "[s2o]" with a different name referring to a different map style.  If you want it to refer to a different database to the default "gis" you can, but that's out of the scope of this document.  If you've only got 2Gb or so of memory you'll also want to reduce "num_threads" to 2.  "URI=/hot/" was chosen so that the tiles generated here can more easily be used in place of the HOT tile layer at OpenStreetMap.org. You can use something else here, but "/hot/" is as good as anything.
+
+When this guide was first written, the version of Mapnik provided by Debian was 3.0, and the "plugins_dir" setting in the "[mapnik]" part of the file was "/usr/lib/mapnik/3.0/input".  At the time of writing that's changed to 3.1, and so the relevant value is ""/usr/lib/mapnik/3.1/input".  It may change again in the future.  If an error occurs when trying to render tiles such as this:
+
+    An error occurred while loading the map layer 's2o': Could not create datasource for type: 'postgis' (no datasource plugin directories have been successfully registered)  encountered during parsing of layer 'landcover-low-zoom'
+    
+then look in "/usr/lib/mapnik" and see what version directories there are, and also look in "/usr/lib/mapnik/(version)/input" to make sure that a file "postgis.input" exists there.
 ## Configuring Apache
 
     sudo mkdir /var/lib/mod_tile
