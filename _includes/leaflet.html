@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
       html, body {
         height: 100%;
@@ -31,7 +31,7 @@
       }).addTo(map);
 
       // show the scale bar on the lower left corner
-      L.control.scale().addTo(map);
+      L.control.scale({imperial: true, metric: true}).addTo(map);
 
       // show a marker on the map
       L.marker({lon: 0, lat: 0}).bindPopup('The center of the world').addTo(map);
