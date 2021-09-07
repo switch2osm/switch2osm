@@ -185,7 +185,7 @@ Although most of the data used to create the map is directly from the OpenStreet
     sudo chown _renderd data
     sudo -u _renderd scripts/get-external-data.py
 
-This process involves a sizable download and may take some time - not much will appear on the screen when it is running.  It will actually populate a "data" directory below "openstreetmap-carto".  
+This process involves a sizable download and may take some time - not much will appear on the screen when it is running.  It will actually populate a "data" directory below "openstreetmap-carto".  If there is a problem here the Natural Earth data may have moved - look at [this issue](https://github.com/nvkelso/natural-earth-vector/issues/581#issuecomment-913988101) and other issues on at Natural Earth for more details.  If you need to change the Natural Earth download location your copy of [this file](https://github.com/gravitystorm/openstreetmap-carto/blob/master/external-data.yml) is the one to edit.
 
 ## Fonts
 
