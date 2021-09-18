@@ -92,7 +92,7 @@ The style we'll use here is the one that use by the "standard" map on the openst
 
 The home of "OpenStreetMap Carto" on the web is https://github.com/gravitystorm/openstreetmap-carto/ and it has it's own installation instructions at https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md , although we'll cover everything that needs to be done here.
 
-Here we're assuming that we're storing the stylesheet details in a directory below "src" below the home directory of the "renderaccount" user (or whichever other one you are using)
+Here we're assuming that we're storing the stylesheet details in a directory below "src" below the home directory of the whichever non-root account you are using:
 
     mkdir ~/src
     cd ~/src
@@ -112,7 +112,7 @@ Then we convert the carto project into something that Mapnik can understand:
 
     carto project.mml > mapnik.xml
 
-You now have a Mapnik XML stylesheet at /home/renderaccount/src/openstreetmap-carto/mapnik.xml .
+You now have a Mapnik XML stylesheet at /home/youraccountname/src/openstreetmap-carto/mapnik.xml .
 # Loading data
 
 Initially, we'll load only a small amount of test data. Other download locations are available, but "download.geofabrik.de" has a wide range of options. In this example we'll download the data for Azerbaijan, which is about 17Mb.
