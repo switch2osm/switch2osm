@@ -112,7 +112,7 @@ You now have a Mapnik XML stylesheet at /home/youruseraccount/src/openstreetmap-
 
 Initially, we'll load only a small amount of test data. Other download locations are available, but "download.geofabrik.de" has a wide range of options. In this example we'll download the data for Azerbaijan, which is about 17Mb.
 
-Browse to https://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2020-11-13T21:42:03Z"). We'll need that later if we want to update the database with people's susbsequent changes to OpenStreetMap. Download it as follows:
+Browse to https://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2021-09-16T20:21:14Z"). We'll need that later if we want to update the database with people's susbsequent changes to OpenStreetMap. Download it as follows:
 
     mkdir ~/data
     cd ~/data
@@ -231,7 +231,7 @@ If you look at /var/log/syslog, you should see messages from the "renderd" servi
     
 In syslog you should see a message like:
 
-    Nov 14 14:24:55 servername apachectl[19119]: [Sat Nov 14 14:24:55.526717 2020] [tile:notice] [pid 19119:tid 140525098995008] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/lib/mod_tile with extension .png and mime type image/png
+    Sep 18 12:25:14 servername apachectl[42239]: [Sat Sep 18 12:25:14.749940 2021] [tile:notice] [pid 42239:tid 139637396966720] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/lib/mod_tile with extension .png and mime type image/png
 
 Next, point a web browser at "http://yourserveripaddress/index.html" (change yourserveripaddress to your actual server address).  You should see "Apache2 Ubuntu Default Page".
 
