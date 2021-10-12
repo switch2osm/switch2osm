@@ -1,4 +1,4 @@
-FROM ruby:2.6-alpine as build
+FROM ruby:2.7-alpine as build
 
 # Add Gem build requirements
 RUN apk add --no-cache g++ make libxml2-dev libxslt-dev
@@ -11,7 +11,7 @@ ADD Gemfile* /app/
 
 # Install Gems
 RUN gem update --system \
-    && gem install bundler \
+    && gem install bundler -v $(grep -F -A 1 'BUNDLED WITH' Gemfile.lock | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+') \
     && bundle config build.nokogiri --use-system-libraries \
     && bundle config --global jobs $(nproc) \
     && bundle install
