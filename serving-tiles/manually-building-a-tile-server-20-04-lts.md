@@ -89,7 +89,7 @@ Next we'll install osm2pgsql:
 
 Next, we'll install Mapnik. We'll use the default version in Ubuntu 20.04:
 
-    sudo apt install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev mapnik-utils python3-mapnik python3-psycopg2
+    sudo apt install autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libmapnik-dev mapnik-utils python3-mapnik python3-psycopg2 python3-yaml
 
 We'll check that Mapnik has been installed correctly:
 
