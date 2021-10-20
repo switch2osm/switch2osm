@@ -15,6 +15,7 @@ The following companies offer development services and consulting for sites wish
 * [Champs-Libres](https://www.champs-libres.coop/), Belgium
 * [Geoapify](https://www.geoapify.com/), Germany
 * [Geofabrik](https://www.geofabrik.de/), Germany
+* [Geokeo](https://www.geokeo.com/), India
 * [GreenInfo Network](https://www.greeninfo.org/), US (public interest groups only)
 * [Jawg](https://www.jawg.io/), France
 * [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
