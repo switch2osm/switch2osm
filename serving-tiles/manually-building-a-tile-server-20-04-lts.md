@@ -32,6 +32,9 @@ On Ubuntu there are pre-packaged versions of both postgis and postgresql, so the
     sudo apt install postgresql postgresql-contrib postgis postgresql-12-postgis-3 postgresql-12-postgis-3-scripts
 
 Here "postgresql" is the database we're going to store map data and "postgis" adds some extra graphical support to it. Again, say yes to install.
+Don't forget to start the cluster of the db instance
+
+    sudo pg_ctlcluster 12 main start
 
 Now you need to create a postgis database. The defaults of various programs assume the database is called gis and we will use the same convention in this tutorial, although this is not necessary. Substitute your username for renderaccount where is is used below. This should be the username that will render maps with Mapnik.
 
