@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Manually building a tile server (Ubuntu 22.04)
-permalink: /serving-tiles/manually-building-a-tile-server-ubuntu-22/
+permalink: /serving-tiles/manually-building-a-tile-server-ubuntu-22-04-lts/
 ---
 
 This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Ubuntu Linux](https://en.wikipedia.org/wiki/Ubuntu) [22.04](http://www.releases.ubuntu.com/22.04/) (Jammy Jellyfish), and were tested in April 2022.
