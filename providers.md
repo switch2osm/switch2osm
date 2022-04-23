@@ -18,7 +18,6 @@ The following companies offer development services and consulting for sites wish
 * [Geokeo](https://www.geokeo.com/), India
 * [GreenInfo Network](https://www.greeninfo.org/), US (public interest groups only)
 * [Jawg](https://www.jawg.io/), France
-* [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
 * [Mapbox](https://www.mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Makina Corpus](http://makina-corpus.com/), France
@@ -40,6 +39,7 @@ The following companies host OpenStreetMap tiles.
 * [Jawg](https://www.jawg.io/), France
 * [Mapbox](http://mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
+* [MapTiles API](https://www.maptilesapi.com/), US
 * [Nextzen](https://www.nextzen.org/), US
 * [Skobbler](http://developer.skobbler.com/), Germany
 * [Stadia Maps](https://stadiamaps.com), US
@@ -50,6 +50,6 @@ The following companies host OpenStreetMap tiles.
 * [AND Automotive Navigation Data](https://www.and.com/services-3/map-hosting/), Netherlands
 * [Champs-Libres](https://www.champs-libres.coop/), Belgium
 * [Geofabrik](https://www.geofabrik.de/maps/rendering.html), Germany
-* [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
 * [Makina Corpus](https://makina-corpus.com/), France
+* [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
 
