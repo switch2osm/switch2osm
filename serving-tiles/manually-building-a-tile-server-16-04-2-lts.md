@@ -81,7 +81,7 @@ We will need install various bits of software from source. The first of this is 
 
     mkdir ~/src
     cd ~/src
-    git clone git://github.com/openstreetmap/osm2pgsql.git
+    git clone https://github.com/openstreetmap/osm2pgsql
     cd osm2pgsql
 
 The build mechanism used by osm2pgsql has changed since older versions, so we'll need to install some more prerequisites for that:
@@ -124,7 +124,7 @@ Next, we'll install mod_tile and renderd. "mod_tile" is an Apache module that ha
 ## Compile the mod_tile source code:
 
     cd ~/src
-    git clone -b switch2osm git://github.com/SomeoneElseOSM/mod_tile.git
+    git clone -b switch2osm https://github.com/SomeoneElseOSM/mod_tile
     cd mod_tile
     ./autogen.sh
 
@@ -160,7 +160,7 @@ The home of "OpenStreetMap Carto" on the web is https://github.com/gravitystorm/
 Here we're assuming that we're storing the stylesheet details in a directory below "src" below the home directory of the "renderaccount" user (or whichever other one you are using)
 
     cd ~/src
-    git clone git://github.com/gravitystorm/openstreetmap-carto.git
+    git clone https://github.com/gravitystorm/openstreetmap-carto
     cd openstreetmap-carto
 
 Next, we'll install a suitable version of the "carto" compiler. This is later than the version that ships with Ubuntu, so we need to do:
