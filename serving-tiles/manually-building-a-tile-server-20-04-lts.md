@@ -145,7 +145,7 @@ The home of "OpenStreetMap Carto" on the web is https://github.com/gravitystorm/
 Here we're assuming that we're storing the stylesheet details in a directory below "src" below the home directory of the "renderaccount" user (or whichever other one you are using)
 
     cd ~/src
-    git clone git://github.com/gravitystorm/openstreetmap-carto.git
+    git clone https://github.com/gravitystorm/openstreetmap-carto
     cd openstreetmap-carto
 
 Next, we'll install a suitable version of the "carto" compiler. 

@@ -96,7 +96,7 @@ Here we're assuming that we're storing the stylesheet details in a directory bel
 
     mkdir ~/src
     cd ~/src
-    git clone git://github.com/gravitystorm/openstreetmap-carto.git
+    git clone https://github.com/gravitystorm/openstreetmap-carto
     cd openstreetmap-carto
 
 Next, we'll install a suitable version of the "carto" compiler. 
