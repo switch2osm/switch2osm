@@ -18,8 +18,8 @@ The following companies offer development services and consulting for sites wish
 * [Geokeo](https://www.geokeo.com/), India
 * [GreenInfo Network](https://www.greeninfo.org/), US (public interest groups only)
 * [Jawg](https://www.jawg.io/), France
-* [Mapbox](https://www.mapbox.com/), US
 * [Makina Corpus](https://makina-corpus.com/), France
+* [Mapbox](https://www.mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
 * [SmartMaps by YellowMap](https://www.smartmaps.net/en/), Germany
