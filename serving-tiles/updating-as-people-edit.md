@@ -8,7 +8,9 @@ permalink: /serving-tiles/updating-as-people-edit/
 
 Every day there are millions of new map updates so to prevent a map becoming "stale" you can refresh the data used to create map tiles regularly.
 
-We'll use "osmosis" for this, which will also install Java.  "osmosis" is a general-purpose OSM data utility, and one of the things that it can do is to update a database with recent changes from OSM.  Other options are available, such as "osmium".
+If you're using a recent version of osm2pgsql (version 1.4.2 or above) then you may be able to follow the instructions in [the osm2pgsql manual](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database).  These are especially useful if you want to use a update source that exactly matches your download area (for example, Geofabrik can provide daily updates for their download areas), and you're not worried about automatically marking updated tiles as "dirty" to force re-rendering.  If using osm2pgsql for replication is not an option for you, read on...
+
+Here, we'll use "osmosis" for this, which will also install Java.  "osmosis" is a general-purpose OSM data utility, and one of the things that it can do is to update a database with recent changes from OSM.  Other options are available, such as "osmium".
 
     sudo apt install osmosis
 
