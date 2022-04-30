@@ -16,7 +16,7 @@ Here, we'll use "osmosis" for this, which will also install Java.  "osmosis" is 
 
 (that'll eventually say "done.")
 
-We'll use "trim_osc.py" from Zverik's "regional" scripts to trim down the updates from OpenStreetMap.org down to just the area that we're interested in. We do this so that the postgres database doesn't grow significantly as updates are applied to it.  We also need to need to fetch some dependancies for that.
+We'll use "trim_osc.py" from Zverik's "regional" scripts to trim down the updates from OpenStreetMap.org down to just the area that we're interested in. We do this so that the postgres database doesn't grow significantly as updates are applied to it.  We also need to fetch some dependencies for that.
 
     cd ~/src
     git clone https://github.com/zverik/regional
@@ -60,7 +60,7 @@ The last line of the output that you get should look something like
 
 That has created a directory ".osmosis" in "/var/lib/mod_tile" with details of the last imported data. 
 
-One one ssh session to the server run:
+On one ssh session to the server run:
 
     tail -f /var/log/tiles/run.log
 
