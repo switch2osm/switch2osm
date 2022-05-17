@@ -16,7 +16,7 @@ Here, we'll use "osmosis" for this, which will also install Java.  "osmosis" is 
 
 (that'll eventually say "done.")
 
-We'll use "trim_osc.py" from Zverik's "regional" scripts to trim down the updates from OpenStreetMap.org down to just the area that we're interested in. We do this so that the postgres database doesn't grow significantly as updates are applied to it.  We also need to fetch some dependencies for that.
+We'll use "trim_osc.py" from Zverik's "regional" scripts to trim down the updates from OpenStreetMap.org down to just the area that we're interested in. We do this so that the postgres database doesn't grow significantly as updates are applied to it.  We will also need to fetch some dependencies for that.
 
     cd ~/src
     git clone https://github.com/zverik/regional
@@ -97,7 +97,7 @@ You may see a message "problems with history file" - don't worry if you do.  On 
 
     # m h  dom mon dow   command
 
-These fields are "minutes", "hours", "day of month", "month", "day of week" and "comand". We'll add the following line:
+These fields are "minutes", "hours", "day of month", "month", "day of week" and "command". We'll add the following line:
 
    */5  * *   *   *     /home/renderaccount/src/mod_tile/openstreetmap-tiles-update-expire
 
