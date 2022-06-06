@@ -22,7 +22,7 @@ This guide assumes that you run everything from a non-root user via "sudo".  Don
 
     sudo apt update
     sudo apt upgrade
-    sudo apt install sudo screen locate libapache2-mod-tile renderd git tar unzip wget bzip2 apache2 lua5.1 mapnik-utils python3-mapnik python3-psycopg2 python3-yaml gdal-bin npm fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-unifont postgresql postgresql-contrib postgis postgresql-14-postgis-3 postgresql-14-postgis-3-scripts osm2pgsql net-tools
+    sudo apt install screen locate libapache2-mod-tile renderd git tar unzip wget bzip2 apache2 lua5.1 mapnik-utils python3-mapnik python3-psycopg2 python3-yaml gdal-bin npm fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-unifont postgresql postgresql-contrib postgis postgresql-14-postgis-3 postgresql-14-postgis-3-scripts osm2pgsql net-tools
 
 At this point, a couple of new accounts have been added.  You can see them with "tail /etc/passwd".  "postgres" is used for managing the databases that we use to hold data for rendering.  "_renderd" is used for the renderd daemon, and we'll need to make sure lots of the commands below are run as that user.
 
@@ -111,7 +111,7 @@ You now have a Mapnik XML stylesheet at /home/youruseraccount/src/openstreetmap-
 
 Initially, we'll load only a small amount of test data. Other download locations are available, but "download.geofabrik.de" has a wide range of options. In this example we'll download the data for Azerbaijan, which is about 32Mb.
 
-Browse to https://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2022-04-22T20:21:40Z"). We'll need that later if we want to update the database with people's susbsequent changes to OpenStreetMap. Download it as follows:
+Browse to https://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2022-04-22T20:21:40Z"). We'll need that later if we want to update the database with people's subsequent changes to OpenStreetMap. Download it as follows:
 
     mkdir ~/data
     cd ~/data
@@ -191,7 +191,7 @@ This process involves a sizable download and may take some time - not much will 
 
 ## Fonts
 
-We installed fonts above.  OpenSteetMap Carto's own installation instructions also suggest installing "Noto Emoji Regular" from source. All the other international fonts that are likely to be needed (including ones often not supported) are including in the list previously installed.  Our test data area (Azerbaijan) was chosen both because it was a small area and because some place names in that region have names containing non-latin characters.
+We installed fonts above.  OpenStreetMap Carto's own installation instructions also suggest installing "Noto Emoji Regular" from source. All the other international fonts that are likely to be needed (including ones often not supported) are including in the list previously installed.  Our test data area (Azerbaijan) was chosen both because it was a small area and because some place names in that region have names containing non-latin characters.
 
 # Setting up your webserver
 ## Configure renderd
@@ -242,7 +242,7 @@ Note that this is just the "http" (port 80) site - you'll need to do a little bi
 
 Next, point a web browser at: http://yourserveripaddress/hot/0/0/0.png
 
-You'll need to edit that of course if you changed "URI=/hot/" above.  You should see a small map of the world.  If you don't, ivestigate the errors that it displays.  These will most likely be permissions errors or perhaps related to accidentally missing some steps from the instructions above.  If you don't get a tile and get other errors again save the full output in a pastebin and ask a question about the problem somewhere like help.openstreetmap.org.
+You'll need to edit that of course if you changed "URI=/hot/" above.  You should see a small map of the world.  If you don't, investigate the errors that it displays.  These will most likely be permissions errors or perhaps related to accidentally missing some steps from the instructions above.  If you don't get a tile and get other errors again save the full output in a pastebin and ask a question about the problem somewhere like help.openstreetmap.org.
 
 # Viewing tiles
 
