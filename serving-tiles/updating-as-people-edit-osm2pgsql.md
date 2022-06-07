@@ -10,7 +10,7 @@ Every day there are millions of new map updates so to prevent a map becoming "st
 
 Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously.  This is the version that is distributed as part of Ubuntu 22.04, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html).
 
-It's possible to set up replication from many different sources.  OpenStreetMap itself provides minutely. hourly and daily updates, and other sources such as Geofabrik can provide daily updates that match the regional data extracts available at [download.geofabrik.de](http://download.geofabrik.de/index.html).
+It's possible to set up replication from many different sources.  OpenStreetMap itself provides minutely, hourly and daily updates, and other sources such as Geofabrik can provide daily updates that match the regional data extracts available at [download.geofabrik.de](http://download.geofabrik.de/index.html).
 
 ## A worked example using Geofabrik data
 
@@ -26,7 +26,7 @@ Next, load the database.  The numbers here for processes and memory can be varie
 
     sudo -u _renderd osm2pgsql -d gis --create --slim  -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -C 3000 --number-processes 4 -S ~/src/openstreetmap-carto/openstreetmap-carto.style ~/data/greater-london-latest.osm.pbf
 
-Important note - the tile expiry script used below assumes that tiles are written below <code>"/var/cache/renderd/"</code>.  If <code>"/etc/renderd.conf"</code> specifies another location, you'll need  to modify it before expiring tiles using the scripts you're going to create here.
+Important note - the tile expiry script used below assumes that tiles are written below <code>"/var/cache/renderd/"</code>.  If <code>"/etc/renderd.conf"</code> specifies another location, you'll need to modify it before expiring tiles using the scripts you're going to create here.
 
 Then, initialise replication.  As described [here](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database) downloads from Geofabrik (and [download.openstreetmap.fr](https://download.openstreetmap.fr/)) contain all the information needed for replication (the URL from which to download updates and what date to start from).
 
@@ -53,7 +53,7 @@ An example of this script would be something like this:
     render_expired --map=s2o --min-zoom=13 --max-zoom=20 -s /run/renderd/renderd.sock < /home/renderaccount/data/dirty_tiles.txt
     rm /home/renderaccount/data/dirty_tiles.txt
 
-Change "renderaccount" to the name of whatever non-root account your are using here.  See the [man page](https://manpages.ubuntu.com/manpages/jammy/en/man1/render_expired.1.html) for possible settings for the other parameters.  The example above will try and rerender all dirty tiles from zoom level 13 upwards.  A more realistic example would be something like:
+Change "renderaccount" to the name of whatever non-root account you are using here.  See the [man page](https://manpages.ubuntu.com/manpages/jammy/en/man1/render_expired.1.html) for possible settings for the other parameters.  The example above will try and rerender all dirty tiles from zoom level 13 upwards.  A more realistic example would be something like:
 
     #!/bin/bash
     render_expired --map=s2o --min-zoom=13 --touch-from=13 --delete-from=19 --max-zoom=20 -s /run/renderd/renderd.sock < /home/renderaccount/data/dirty_tiles.txt
@@ -65,7 +65,7 @@ Next:
 
     sudo nano /usr/local/sbin/update_tiles.sh
 
-initially this script should contain:
+initially, this script should contain:
 
     #!/bin/bash
     osm2pgsql-replication update -d gis --post-processing /usr/local/sbin/expire_tiles.sh --max-diff-size 10  --  -G --hstore --tag-transform-script /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto.lua -C 3000 --number-processes 4 -S /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto.style --expire-tiles=1-20 --expire-output=/home/renderaccount/data/dirty_tiles.txt
@@ -79,11 +79,11 @@ Make both scripts executable:
 
 ### Making sure that you can see debug messages
 
-It'd be really useful at this point to be able to see the output from the tile rendering process, to see that tiles marked as dirty are being processed.  By default with recent mod_tile versions this is turned off.  To turn it on
+It'd be really useful at this point to be able to see the output from the tile rendering process, to see that tiles marked as dirty are being processed.  By default with recent mod_tile versions, this is turned off.  To turn it on:
 
     sudo nano /usr/lib/systemd/system/renderd.service
 
-If it is not there already, add
+If it is not there already, add:
 
     Environment=G_MESSAGES_DEBUG=all
 
@@ -95,7 +95,7 @@ after "[Service]".  Then:
 
 ### Testing
 
-On another session:
+In another session:
 
     sudo tail -f /var/log/syslog
 
@@ -130,7 +130,7 @@ If there are pending updates, then instead you will see:
     2022-06-05 16:29:57  Going over 129 pending relations (using 4 threads)
     ...
 
-when there there is a tile to expire, a line like this will appear:
+when there is a tile to expire, a line like this will appear:
 
     Read and expanded 42700 tiles from list.
     render: file:///var/cache/renderd/tiles/s2o/18/17/245/244/200/0.meta
@@ -188,7 +188,7 @@ There's no point in running it more than once per day, since Geofabrik updates a
 
 ## Using minutely updates from openstreetmap.org
 
-Updates are also available from openstreetmap.org.  These are for anything anywhere in the world, and will therefore be larger than a set of updates for the same time period for a region from e.g. Geofabrik.  To seet this up
+Updates are also available from openstreetmap.org.  These are for anything anywhere in the world, and will therefore be larger than a set of updates for the same time period for a region from e.g. Geofabrik.  To set this up
 
     sudo -u _renderd osm2pgsql-replication init -d gis  --server https://planet.openstreetmap.org/replication/minute
 
@@ -206,7 +206,7 @@ Once initialisation has been done, set up the same scripts described in "Creatin
 
     sudo -u _renderd /usr/local/sbin/update_tiles.sh
 
-Again, note that "osm2pgsql-replication" will actually repeat downloading data and updating the database until there is no more to process, and the <code>"--max diff-size"</code> in the script determines how much data is fetched on each iteration.  Eventually it will complete, ending with:
+Again, note that "osm2pgsql-replication" will actually repeat downloading data and updating the database until there is no more to process, and the <code>"--max diff-size"</code> in the script determines how much data is fetched on each iteration.  Eventually, it will complete, ending with:
 
     2022-06-05 22:30:47 [INFO]: Data imported until 2022-06-05 21:45:42+00:00. Backlog remaining: 0:45:05.948787
 
