@@ -110,7 +110,7 @@ Then we convert the carto project into something that Mapnik can understand:
 You now have a Mapnik XML stylesheet at /home/youruseraccount/src/openstreetmap-carto/mapnik.xml .
 # Loading data
 
-Initially, we'll load only a small amount of test data. Other download locations are available, but "download.geofabrik.de" has a wide range of options. In this example we'll download the data for Azerbaijan, which is about 32Mb.
+Initially, we'll load only a small amount of test data. Other download locations are available, but "download.geofabrik.de" has a wide range of options. In this example we'll download the data for Azerbaijan, which is currently about 32Mb.
 
 Browse to https://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2021-09-16T20:21:14Z"). We'll need that later if we want to update the database with people's susbsequent changes to OpenStreetMap. Download it as follows:
 
