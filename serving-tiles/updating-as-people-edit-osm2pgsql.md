@@ -45,6 +45,7 @@ Next, we'll create somewhere for expiry logfiles to be written and scripts to ap
 
     sudo mkdir /var/log/tiles
     sudo chown _renderd /var/log/tiles
+    sudo chown _renderd /home/renderaccount/data
     sudo nano /usr/local/sbin/expire_tiles.sh
 
 An example of this script would be something like this:
@@ -53,7 +54,7 @@ An example of this script would be something like this:
     render_expired --map=s2o --min-zoom=13 --max-zoom=20 -s /run/renderd/renderd.sock < /home/renderaccount/data/dirty_tiles.txt
     rm /home/renderaccount/data/dirty_tiles.txt
 
-Change "renderaccount" to the name of whatever non-root account you are using here.  See the [man page](https://manpages.ubuntu.com/manpages/jammy/en/man1/render_expired.1.html) for possible settings for the other parameters.  The example above will try and rerender all dirty tiles from zoom level 13 upwards.  A more realistic example would be something like:
+Change "renderaccount" to the name of whatever non-root account you are using here.  The "data" account needs to be writable by the "_renderd" account that we will run this script from.  See the [man page](https://manpages.ubuntu.com/manpages/jammy/en/man1/render_expired.1.html) for possible settings for the other parameters.  The example above will try and rerender all dirty tiles from zoom level 13 upwards.  A more realistic example would be something like:
 
     #!/bin/bash
     render_expired --map=s2o --min-zoom=13 --touch-from=13 --delete-from=19 --max-zoom=20 -s /run/renderd/renderd.sock < /home/renderaccount/data/dirty_tiles.txt
@@ -197,7 +198,7 @@ that will return something like
     2022-06-05 20:49:21 [INFO]: Initialised updates for service 'https://planet.openstreetmap.org/replication/minute'.
     2022-06-05 20:49:21 [INFO]: Starting at sequence 5088118 (2022-06-04 17:11:02+00:00).
 
-The date that updates will start from is obtained by looking at the most recent object in the database, which will typically be a little earlier than any "this extract contains all OSM data up to" cut-off date.  Hourly and daily updates are also available so you could also run the hourly or daily versions instead:
+The date that updates will start from is obtained by looking at the most recent way object in the database, which will typically be a little earlier than any "this extract contains all OSM data up to" cut-off date.  If that comes from somewhere other than OSM, an error will occur.  Hourly and daily updates are also available so you could also run the hourly or daily versions instead:
 
     sudo -u _renderd osm2pgsql-replication init -d gis  --server https://planet.openstreetmap.org/replication/hour
     sudo -u _renderd osm2pgsql-replication init -d gis  --server https://planet.openstreetmap.org/replication/day
