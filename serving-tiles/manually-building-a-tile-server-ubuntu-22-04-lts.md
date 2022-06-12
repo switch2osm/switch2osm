@@ -204,7 +204,6 @@ Add a section like the following at the end:
 
     [s2o]
     URI=/hot/
-    TILEDIR=/var/lib/mod_tile
     XML=/home/accountname/src/openstreetmap-carto/mapnik.xml
     HOST=localhost
     TILESIZE=256
@@ -217,14 +216,24 @@ When this guide was first written, the version of Mapnik provided by Ubuntu 22.0
     An error occurred while loading the map layer 's2o': Could not create datasource for type: 'postgis' (no datasource plugin directories have been successfully registered)  encountered during parsing of layer 'landcover-low-zoom'
     
 then look in "/usr/lib/mapnik" and see what version directories there are, and also look in "/usr/lib/mapnik/(version)/input" to make sure that a file "postgis.input" exists there.
+
+### Making sure that you can see debug messages
+
+It'd be really useful at this point to be able to see the output from the tile rendering process, including any errors.  By default with recent mod_tile versions, this is turned off.  To turn it on:
+
+    sudo nano /usr/lib/systemd/system/renderd.service
+
+If it is not there already, add:
+
+    Environment=G_MESSAGES_DEBUG=all
+
+after "[Service]".  Then:
+
+    sudo systemctl daemon-reload
+    sudo systemctl restart renderd
+    sudo systemctl restart apache2
+
 ## Configuring Apache
-
-    sudo mkdir /var/lib/mod_tile
-    sudo chown _renderd /var/lib/mod_tile
-
-After doing so, restart renderd:
-
-    sudo /etc/init.d/renderd restart
 
 If you look at /var/log/syslog, you should see messages from the "renderd" service.  There will initially be some font warnings - don't worry about those for now.  Next:
 
@@ -232,7 +241,7 @@ If you look at /var/log/syslog, you should see messages from the "renderd" servi
     
 In syslog you should see a message like:
 
-    Apr 23 11:14:10 servername apachectl[2031]: [Sat Apr 23 11:14:10.190678 2022] [tile:notice] [pid 2031:tid 140608477239168] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/lib/mod_tile with extension .png and mime type image/png
+    Apr 23 11:14:10 servername apachectl[2031]: [Sat Apr 23 11:14:10.190678 2022] [tile:notice] [pid 2031:tid 140608477239168] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/cache/renderd/tiles with extension .png and mime type image/png
 
 Next, point a web browser at "http://yourserveripaddress/index.html" (change yourserveripaddress to your actual server address).  You should see "Apache2 Ubuntu Default Page".
 
@@ -254,7 +263,13 @@ In order to see tiles, we’ll cheat and use an html file “sample_leaflet.html
 
 Edit so that the IP address matches yourserveraddress rather than just saying "127.0.0.1".  That should allow you to access this server from others.  Then browse to "http://yourserveraddress/sample_leaflet.html".
 
-The initial map display will take a little while.  You'll be able to zoom in and out, but depending on server speed some tiles may initially display as grey because they can't be rendered in time for the browser.  However, once done they’ll be ready for the next time that they are needed.  If you look in /var/log/syslog you should see requests for tiles. 
+The initial map display will take a little while.  You'll be able to zoom in and out, but depending on server speed some tiles may initially display as grey because they can't be rendered in time for the browser.  However, once done they’ll be ready for the next time that they are needed.  If you look in /var/log/syslog you should see requests for tiles, so to see these as they are requested, from an ssh connection do:
+
+    tail -f /var/log/syslog | grep " TILE "
+
+(note the spaces around "TILE" there)
+
+That will show a line every time a tile is requested, and one every time rendering of one is completed.
 
 If desired, you can increase the setting “ModTileMissingRequestTimeout” in “/etc/apache2/conf-available/renderd.conf” from 10 seconds to perhaps 30 or 60, in order to wait longer for tiles to be rendered in the background before a grey tile is given to the user. Make sure you “sudo service renderd restart” and “sudo service apache2 restart” after changing it.
 
