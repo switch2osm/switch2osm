@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Updating your database as people edit OpenStreetMap
-permalink: /serving-tiles/updating-as-people-edit-osm2pgsql/
+permalink: /serving-tiles/updating-as-people-edit-osm2pgsql-replication/
 ---
 
 # Updating your database as people edit OpenStreetMap using osm2pgsql
@@ -37,7 +37,7 @@ That produces output something like this:
     2022-04-24 23:32:42 [INFO]: Initialised updates for service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'.
     2022-04-24 23:32:42 [INFO]: Starting at sequence 3314 (2022-04-23 20:21:53+00:00).
 
-In this example the date shown there corresponds to the date currently visible [here](http://download.geofabrik.de/europe/great-britain/england/greater-london.html).
+In this example the date shown there corresponds to the date visible [on this page](http://download.geofabrik.de/europe/great-britain/england/greater-london.html) when the data was downloaded.
 
 ### Creating scripts to apply updates
 
@@ -45,22 +45,21 @@ Next, we'll create somewhere for expiry logfiles to be written and scripts to ap
 
     sudo mkdir /var/log/tiles
     sudo chown _renderd /var/log/tiles
-    sudo chown _renderd /home/renderaccount/data
     sudo nano /usr/local/sbin/expire_tiles.sh
 
 An example of this script would be something like this:
 
     #!/bin/bash
-    render_expired --map=s2o --min-zoom=13 --max-zoom=20 -s /run/renderd/renderd.sock < /home/renderaccount/data/dirty_tiles.txt
-    rm /home/renderaccount/data/dirty_tiles.txt
+    render_expired --map=s2o --min-zoom=13 --max-zoom=20 -s /run/renderd/renderd.sock < /var/cache/renderd/dirty_tiles.txt
+    rm /var/cache/renderd/dirty_tiles.txt
 
-Change "renderaccount" to the name of whatever non-root account you are using here.  The "data" account needs to be writable by the "_renderd" account that we will run this script from.  See the [man page](https://manpages.ubuntu.com/manpages/jammy/en/man1/render_expired.1.html) for possible settings for the other parameters.  The example above will try and rerender all dirty tiles from zoom level 13 upwards.  A more realistic example would be something like:
+The "dirty" tile list needs to be writable by the "_renderd" account that we will run this script from.  See the [man page](https://manpages.ubuntu.com/manpages/jammy/en/man1/render_expired.1.html) for possible settings for the other parameters.  The example above will try and rerender all dirty tiles from zoom level 13 upwards.  A more realistic example would be something like:
 
     #!/bin/bash
-    render_expired --map=s2o --min-zoom=13 --touch-from=13 --delete-from=19 --max-zoom=20 -s /run/renderd/renderd.sock < /home/renderaccount/data/dirty_tiles.txt
-    rm /home/renderaccount/data/dirty_tiles.txt
+    render_expired --map=s2o --min-zoom=13 --touch-from=13 --delete-from=19 --max-zoom=20 -s /run/renderd/renderd.sock < /var/cache/renderd/dirty_tiles.txt
+    rm /var/cache/renderd/dirty_tiles.txt
 
-which matches the [defaults](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/openstreetmap-tiles-update-expire#L58) that the older osmosis scripts used - tiles up to zoom level 12 are ignored, tiles from zoom levels 13 to 19 are marked as dirty and zoom level 20 tiles are deleted.
+which matches the [defaults](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/openstreetmap-tiles-update-expire#L58) that the older osmosis scripts used - tiles up to zoom level 12 are ignored, tiles from zoom levels 13 to 19 are marked as dirty and zoom level 20 tiles are deleted.  That example can also be found [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/expire_tiles.sh).  
 
 Next:
 
@@ -69,9 +68,9 @@ Next:
 initially, this script should contain:
 
     #!/bin/bash
-    osm2pgsql-replication update -d gis --post-processing /usr/local/sbin/expire_tiles.sh --max-diff-size 10  --  -G --hstore --tag-transform-script /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto.lua -C 3000 --number-processes 4 -S /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto.style --expire-tiles=1-20 --expire-output=/home/renderaccount/data/dirty_tiles.txt
+    osm2pgsql-replication update -d gis --post-processing /usr/local/sbin/expire_tiles.sh --max-diff-size 10  --  -G --hstore --tag-transform-script /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto.lua -C 3000 --number-processes 4 -S /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto.style --expire-tiles=1-20 --expire-output=/var/cache/renderd/dirty_tiles.txt
 
-Everything in the "osm2pgsql-replication update" line after <code>"--"</code> is passed as parameters to osm2pgsql - they will all need to match what the database was loaded with in the first place.  Before the <code>"--"</code>, <code>"-d gis"</code> just defines what database we're using and <code>"--max-diff-size 10"</code> how much data to process at once, but note that osm2pgsql-replication will actually repeat downloading data and updating the database until there is no more to process.  The <code>"--max diff-size"</code> determines how much data is fetched on each iteration.  The <code>"--post-processing /usr/local/sbin/expire_tiles.sh"</code> just calls our other script.
+Everything in the "osm2pgsql-replication update" line after <code>"--"</code> is passed as parameters to osm2pgsql - they will all need to match what the database was loaded with in the first place.  Before the <code>"--"</code>, <code>"-d gis"</code> just defines what database we're using and <code>"--max-diff-size 10"</code> how much data to process at once, but note that osm2pgsql-replication will actually repeat downloading data and updating the database until there is no more to process, which may take some time.  The <code>"--max diff-size"</code> determines how much data is fetched on each iteration.  The <code>"--post-processing /usr/local/sbin/expire_tiles.sh"</code> just calls our other script.
 
 Make both scripts executable:
 
@@ -131,7 +130,7 @@ If there are pending updates, then instead you will see:
     2022-06-05 16:29:57  Going over 129 pending relations (using 4 threads)
     ...
 
-when there is a tile to expire, a line like this will appear:
+When there is a tile to expire, a line like this will appear:
 
     Read and expanded 42700 tiles from list.
     render: file:///var/cache/renderd/tiles/s2o/18/17/245/244/200/0.meta
@@ -172,20 +171,13 @@ In the logfile, output will include something like:
 
 ### Running every day
 
-The script to perform the update can be added to root's crontab.  First, amend <code>update_tiles.sh</code> to append a summary to a logfile only:
-
-    #!/bin/bash
-    echo >> /var/log/tiles/run.log
-    date >> /var/log/tiles/run.log
-    osm2pgsql-replication update -d gis --post-processing /usr/local/sbin/expire_tiles.sh --max-diff-size 10  --  -G --hstore --tag-transform-script /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto.lua -C 3000 --number-processes 4 -S /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto.style --expire-tiles=1-20 --expire-output=/home/renderaccount/data/dirty_tiles.txt 2>&1 | tail -8 >> /var/log/tiles/run.log
-
-The two extra lines at the start write the date to the log and the final part sends the last 8 lines of stderr (containing a summary) to the end of the logfile.
+The script to perform the update can be added to root's crontab.  First, amend <code>update_tiles.sh</code> to do some error checking at startup, and to append a summary to a logfile only.  You can get a copy of that from [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles.sh).  Again, change "renderaccount" to the name of whatever non-root account you are using here.  
 
 Then add to root's crontab:
 
     04 04  *   *   *     sudo -u _renderd /usr/local/sbin/update_tiles.sh
 
-There's no point in running it more than once per day, since Geofabrik updates are only released daily.
+This example runs once per day at 04:04 every morning.  There's no point in running it more than once per day, since Geofabrik updates are only released daily.
 
 ## Using minutely updates from openstreetmap.org
 
@@ -215,4 +207,4 @@ The script to perform the update can be edited as above to output a summary to a
 
     */5 *  *   *   *     sudo -u _renderd /usr/local/sbin/update_tiles.sh
 
-As we're updating based on minutely updates, we can run this more often than once per day; in this case every 5 minutes.
+As we're updating based on minutely updates, and we've made the script check that it is not already running before trying to apply updates, we can run this more often than once per day; in this case every 5 minutes.
