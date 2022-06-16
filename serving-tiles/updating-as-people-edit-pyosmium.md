@@ -51,7 +51,7 @@ A script to actually apply updates has been created [here](https://raw.githubuse
 
 * If you're not using "trim_osc.py", just remove the section of code between the "Trim the downloaded changes" comment and the "The osm2pgsql append line" one.
 
-* If you are using "trim_osc.py" you'll need to make sure that TRIM_BIN points to the correct location.
+* If you are using "trim_osc.py" you'll need to make sure that TRIM_BIN points to the correct location and TRIM_REGION_OPTIONS matches the area that you are interested in (the default in the script covers IE+GB).
 
 * The parameters to "osm2pgsql --append" will need customising to match the server you're using (amount of memory allocated, number of threads, etc.)
 
