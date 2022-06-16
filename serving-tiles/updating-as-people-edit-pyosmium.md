@@ -108,3 +108,16 @@ and then add:
     */5 *  *   *   *     /usr/local/sbin/call_pyosmium.sh >> /var/log/tiles/run.log
 
 The script checks that it is not already running before trying to apply updates, so can run it fairly frequently; in this case every 5 minutes.
+
+It's a good idea to clear the "pyosmium is running" flag when renderd is restated.  To do that:
+
+    sudo nano /usr/lib/systemd/system/renderd.service
+
+and add:
+
+    ExecStartPre=rm /var/cache/renderd/pyosmium/call_pyosmium.running
+
+in the "[Service]" section.  Then:
+
+    sudo systemctl daemon-reload
+    sudo systemctl restart renderd
