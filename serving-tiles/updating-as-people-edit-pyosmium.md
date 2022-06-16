@@ -55,7 +55,7 @@ A script to actually apply updates has been created [here](https://raw.githubuse
 
 * The parameters passed to "render_expired" will need to be customised (how many zoom levels to process, and what to do with dirty tiles at each level)
 
-A script to display the current database replication lag is available [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/pyosmium_replag.sh), which is based on the "mod_tile" one that is shipped as an example with the mod_tile source.  <code>pyosmium_replag</code> displays the replication lag in seconds; <code>pyosmium_replag -h</code> displays the replication lag in hours (or if less than an hour minutes, or seconds).  It is suggested to also create that in <code>/usr/local/sbin</code>
+A script to display the current database replication lag is available [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/pyosmium_replag.sh), which is based on the "mod_tile" one that is shipped as an example with the mod_tile source.  <code>pyosmium_replag</code> displays the replication lag in seconds; <code>pyosmium_replag -h</code> displays the replication lag in hours (or if less than an hour minutes, or seconds).  It is suggested to also create that in <code>/usr/local/sbin</code>.  Don't forget to make both scripts executable.
 
 To run the script once:
 
