@@ -12,6 +12,22 @@ Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it
 
 A simpler, but less flexible, method to update a database is to use "osm2pgsql-replication", described [here](/serving-tiles/updating-as-people-edit-osm2pgsql-replication/).  In this example we'll use "PyOsmium" to update a database initially loaded from Geofabrik with minutely updates from planet.openstreetmap.org.
 
+### Making sure that you can see debug messages
+
+It'd be really useful at this point to be able to see the output from the tile rendering process, to see that tiles marked as dirty are being processed.  By default with recent mod_tile versions, this is turned off.  To turn it on:
+
+    sudo nano /usr/lib/systemd/system/renderd.service
+
+If it is not there already, add:
+
+    Environment=G_MESSAGES_DEBUG=all
+
+after "[Service]".  Then:
+
+    sudo systemctl daemon-reload
+    sudo systemctl restart renderd
+    sudo systemctl restart apache2
+
 ## Initialising replication
 
 Important note - the tile expiry script used below assumes that tiles are written below <code>"/var/cache/renderd/"</code>.  If <code>"/etc/renderd.conf"</code> specifies another location, you'll need to modify it before expiring tiles using the scripts you're going to create here.  Because that directory will always exist, we'll also use it for workfiles needed by "pyosmium".
