@@ -8,7 +8,7 @@ permalink: /serving-tiles/updating-as-people-edit-osm2pgsql-replication/
 
 Every day there are millions of new map updates so to prevent a map becoming "stale" you can refresh the data used to create map tiles regularly.
 
-Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously.  This is the version that is distributed as part of Ubuntu 22.04, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html).
+Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously.  This is the version that is distributed as part of Ubuntu 22.04, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html).  With osm2pgsql comes [osm2pgsql-replication](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database) - that provides a relatively simple way to keep a database up to date.  A more flexible approach is to call PyOsmium directly - see [this guide](/serving-tiles/updating-as-people-edit-pyosmium/) for how to do that.
 
 It's possible to set up replication from many different sources.  OpenStreetMap itself provides minutely, hourly and daily updates, and other sources such as Geofabrik can provide daily updates that match the regional data extracts available at [download.geofabrik.de](http://download.geofabrik.de/index.html).
 
@@ -205,6 +205,6 @@ Again, note that "osm2pgsql-replication" will actually repeat downloading data a
 
 The script to perform the update can be edited as above to output a summary to a logfile and added to root's crontab:
 
-    */5 *  *   *   *     sudo -u _renderd /usr/local/sbin/update_tiles.sh
+    */5 *  *   *   *     sudo -u _renderd /usr/local/sbin/update_tiles.sh >> /var/log/tiles/run.log
 
 As we're updating based on minutely updates, and we've made the script check that it is not already running before trying to apply updates, we can run this more often than once per day; in this case every 5 minutes.
