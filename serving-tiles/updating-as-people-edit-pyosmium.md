@@ -45,7 +45,7 @@ We’ll use “trim_osc.py” from Zverik’s “regional” scripts to trim dow
 
 ## Applying updates
 
-A script to actually apply updates has been created [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/call_pyosmium.sh).  A good place to create that is <code>/usr/local/sbin</code>.  That will need some customisation:
+A script to actually apply updates has been created [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/call_pyosmium.sh).  A good place to create that is <code>/usr/local/sbin</code>.  That will need some customisation:
 
 * If you're not using "trim_osc.py", just remove the section of code between the "Trim the downloaded changes" comment and the "The osm2pgsql append line" one.
 
@@ -55,7 +55,7 @@ A script to actually apply updates has been created [here](https://github.com/So
 
 * The parameters passed to "render_expired" will need to be customised (how many zoom levels to process, and what to do with dirty tiles at each level)
 
-A script to display the current database replication lag is available [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/pyosmium_replag.sh), which is based on the "mod_tile" one that is shipped as an example with the mod_tile source.  <code>pyosmium_replag</code> displays the replication lag in seconds; <code>pyosmium_replag -h</code> displays the replication lag in hours (or if less than an hour minutes, or seconds).  It is suggested to also create that in <code>/usr/local/sbin</code>
+A script to display the current database replication lag is available [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/pyosmium_replag.sh), which is based on the "mod_tile" one that is shipped as an example with the mod_tile source.  <code>pyosmium_replag</code> displays the replication lag in seconds; <code>pyosmium_replag -h</code> displays the replication lag in hours (or if less than an hour minutes, or seconds).  It is suggested to also create that in <code>/usr/local/sbin</code>
 
 To run the script once:
 
