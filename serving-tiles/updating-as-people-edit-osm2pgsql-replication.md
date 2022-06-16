@@ -209,7 +209,7 @@ The script to perform the update can be edited as above to output a summary to a
 
 As we're updating based on minutely updates, and we've made the script check that it is not already running before trying to apply updates, we can run this more often than once per day; in this case every 5 minutes.
 
-It's a good idea to clear the "pyosmium is running" flag when renderd is restated.  To do that:
+It's a good idea to clear the "osm2pgsql-replication is running" flag when renderd is restated.  To do that:
 
     sudo nano /usr/lib/systemd/system/renderd.service
 
