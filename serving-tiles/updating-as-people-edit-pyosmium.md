@@ -24,6 +24,8 @@ The data to load was obtained from a page such as [this one](http://download.geo
 
     sudo mkdir /var/cache/renderd/pyosmium
     sudo chown _renderd /var/cache/renderd/pyosmium
+    sudo mkdir /var/log/tiles
+    sudo chown _renderd /var/log/tiles
     cd /var/cache/renderd/pyosmium
     sudo apt install pyosmium
     sudo -u _renderd pyosmium-get-changes -D 2022-06-15T20:21:49Z -f sequence.state -v
