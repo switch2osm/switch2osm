@@ -121,3 +121,16 @@ in the "[Service]" section.  Then:
 
     sudo systemctl daemon-reload
     sudo systemctl restart renderd
+
+
+## Configuring munin
+
+If you are using munin to report on "mod_tile" and "renderd" activity, you can configure it to display the database replication lag by calling "pyosmium_replag.sh" as well:
+
+    sudo nano /etc/munin/plugins/replication_delay
+    
+You can obtain the contents of the script from [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/munin/replication_delay_pyosmium).  It uses the <code>pyosmium_replag.sh</code> that we created earlier to obtain the replication delay in seconds.  Then:
+
+    sudo /etc/init.d/munin-node restart
+    
+Shortly after doing that, </code>http://yourserveraddress/munin/renderd-day.html</code> should show a "Data import lag" graph.  If it doesn't, look at the logs in <code>/var/log/munin</code>.  If you need more help understanding what is going wrong, have a look [here](https://guide.munin-monitoring.org/en/latest/develop/plugins/howto-write-plugins.html).
