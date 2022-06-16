@@ -25,6 +25,7 @@ The data to load was obtained from a page such as [this one](http://download.geo
     sudo mkdir /var/cache/renderd/pyosmium
     sudo chown _renderd /var/cache/renderd/pyosmium
     cd /var/cache/renderd/pyosmium
+    sudo apt install pyosmium
     sudo -u _renderd pyosmium-get-changes -D 2022-06-15T20:21:49Z -f sequence.state -v
 
 The last line creates a "sequence.state" file.  The actual date used in that line will need to match the data that you downloaded.
