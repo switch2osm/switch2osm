@@ -108,3 +108,16 @@ so that the script runs every 5 minutes. Replace "renderaccount" with the userna
 If an error such as "Expiry failed" appears in "/var/log/tiles/run.log" then the likely problem is that "render_expired", one of the programs called from within there, has run out of memory. If that is the case, reduce EXPIRY_MAXZOOM in the script until it works. You can get more details about what has gone wrong from the other files in "/var/log/tiles/".
 
 If an error such as "rm: cannot remove '/var/lib/mod_tile/dirty_tiles.6877':" occurs it might mean that osm2pgsql failed and it didn't produce a list of dirty tiles at the end of its run.  The location of the logfile it creates is higher up in the script.  By default it is /var/log/tiles/osm2pgsql.log , and if you look in there you should see the actual error.
+
+## Configuring munin
+
+If you are using munin to report on "mod_tile" and "renderd" activity, you can configure it to display the database replication lag by looking at the "state.txt" file:
+
+    sudo nano /etc/munin/plugins/replication_delay
+    
+You can obtain the contents of the script from [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/munin/replication_delay_osmosis).  You may need to edit that so the the correct file location is used (typically either <code>/var/cache/renderd</code> or <code>/var/lib/mod_tile</code>).  Then:
+
+    sudo /etc/init.d/munin-node restart
+    
+Shortly after doing that, </code>http://yourserveraddress/munin/renderd-day.html</code> should show a "Data import lag" graph.  If it doesn't, look at the logs in <code>/var/log/munin</code>.  If you need more help understanding what is going wrong, have a look [here](https://guide.munin-monitoring.org/en/latest/develop/plugins/howto-write-plugins.html).
+
