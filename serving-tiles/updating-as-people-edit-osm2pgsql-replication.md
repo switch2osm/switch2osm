@@ -215,7 +215,7 @@ It's a good idea to clear the "osm2pgsql-replication is running" flag when rende
 
 and add:
 
-    ExecStartPre=rm /var/cache/renderd/update_tiles.sh.running
+    ExecStartPre=rm -f /var/cache/renderd/update_tiles.sh.running
 
 in the "[Service]" section.  Then:
 
