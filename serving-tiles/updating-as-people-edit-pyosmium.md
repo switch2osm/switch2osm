@@ -115,7 +115,7 @@ It's a good idea to clear the "pyosmium is running" flag when renderd is restate
 
 and add:
 
-    ExecStartPre=rm /var/cache/renderd/pyosmium/call_pyosmium.running
+    ExecStartPre=rm -f /var/cache/renderd/pyosmium/call_pyosmium.running
 
 in the "[Service]" section.  Then:
 
