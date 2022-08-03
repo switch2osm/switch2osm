@@ -254,11 +254,13 @@ This process involves a sizable download and may take some time - not much will 
 
 ## Fonts
 
-The names used for places around the world aren't always written with latin characters (the familar western alphabet a-z). To install the necessary fonts do the following:
+In version v5.6.0 and above of Carto, fonts need to be installed manually:
 
-    sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
+cd ~/src/openstreetmap-carto/
+scripts/get-fonts.sh
 
-OpenSteetMap Carto's own installation instructions also suggest installing "Noto Emoji Regular" from source. That is needed for the emojis in an American shop name, apparently. All the other international fonts that are likely to be needed (including ones often not supported) are including in the list just installed.
+Our test data area (Azerbaijan) was chosen both because it was a small area and because some place names in that region have names containing non-latin characters.
+
 # Setting up your webserver
 ## Configure renderd
 
