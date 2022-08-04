@@ -191,7 +191,12 @@ This process involves a sizable download and may take some time - not much will 
 
 ## Fonts
 
-We installed fonts above.  OpenStreetMap Carto's own installation instructions also suggest installing "Noto Emoji Regular" from source. All the other international fonts that are likely to be needed (including ones often not supported) are including in the list previously installed.  Our test data area (Azerbaijan) was chosen both because it was a small area and because some place names in that region have names containing non-latin characters.
+In version v5.6.0 and above of Carto, fonts need to be installed manually:
+
+    cd ~/src/openstreetmap-carto/
+    scripts/get-fonts.sh
+
+Our test data area (Azerbaijan) was chosen both because it was a small area and because some place names in that region have names containing non-latin characters.
 
 # Setting up your webserver
 ## Configure renderd
