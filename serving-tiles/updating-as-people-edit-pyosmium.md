@@ -129,7 +129,7 @@ If you are using munin to report on "mod_tile" and "renderd" activity, you can c
 
     sudo nano /etc/munin/plugins/replication_delay
     
-You can obtain the contents of the script from [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/munin/replication_delay_pyosmium).  It uses the <code>pyosmium_replag.sh</code> that we created earlier to obtain the replication delay in seconds.  Then:
+You can obtain the contents of the script from [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/munin/replication_delay_pyosmium).  It uses the <code>pyosmium_replag.sh</code> that we created earlier to obtain the replication delay in seconds.  Make that script executable by anyone, then:
 
     sudo /etc/init.d/munin-node restart
     
