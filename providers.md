@@ -9,13 +9,13 @@ permalink: /providers/
 The following companies offer development services and consulting for sites wishing to switch to OpenStreetMap.
 
 * [Alantgeo](https://www.alantgeo.com.au), Australia
-* [AND Automotive Navigation Data](https://www.and.com/services-3/map-hosting/), Netherlands
 * [Camptocamp](https://camptocamp.com/), Switzerland
 * [Carto](https://carto.com/), US
 * [Champs-Libres](https://www.champs-libres.coop/), Belgium
 * [Geoapify](https://www.geoapify.com/), Germany
 * [Geofabrik](https://www.geofabrik.de/), Germany
 * [Geokeo](https://www.geokeo.com/), India
+* [GeoJunxion](https://www.geojunxion.com/) (formerly AND), Netherlands
 * [GreenInfo Network](https://www.greeninfo.org/), US (public interest groups only)
 * [Jawg](https://www.jawg.io/), France
 * [Mapbox](https://www.mapbox.com/), US
@@ -47,7 +47,6 @@ The following companies host OpenStreetMap tiles.
 
 ### Paid customers only
 
-* [AND Automotive Navigation Data](https://www.and.com/services-3/map-hosting/), Netherlands
 * [Champs-Libres](https://www.champs-libres.coop/), Belgium
 * [Geofabrik](https://www.geofabrik.de/maps/rendering.html), Germany
 * [Makina Corpus](https://makina-corpus.com/), France
