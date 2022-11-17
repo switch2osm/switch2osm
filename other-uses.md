@@ -25,8 +25,9 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 * Specialist routing APIs include [CycleStreets cycle routing](https://www.cyclestreets.net/api/) (UK and beyond)
 
 ## Vector map libraries (mobile)
-* Android libraries include the [Mapbox Android SDK](https://www.mapbox.com/android-sdk/), [mapsforge](http://mapsforge.org/), [Nutiteq Maps SDK](https://developer.nutiteq.com/), [Skobbler Android SDK](http://developer.skobbler.com/), and [Tangram ES](https://github.com/tangrams/tangram-es/).
-* iOS libraries include the [Mapbox iOS SDK](https://www.mapbox.com/ios-sdk/), [Nutiteq Maps SDK](https://developer.nutiteq.com/), [Skobbler iOS SDK](http://developer.skobbler.com/), and [Tangram ES](https://github.com/tangrams/tangram-es/).
+* Android libraries include the [MapLibre Android SDK](https://maplibre.org/projects/maplibre-native/), [Mapbox Android SDK](https://www.mapbox.com/android-sdk/), [mapsforge](http://mapsforge.org/), [Nutiteq Maps SDK](https://developer.nutiteq.com/), [Skobbler Android SDK](http://developer.skobbler.com/), and [Tangram ES](https://github.com/tangrams/tangram-es/).
+* iOS libraries include the [MapLibre iOS SDK](https://maplibre.org/projects/maplibre-native/), [Mapbox iOS SDK](https://www.mapbox.com/ios-sdk/), [Nutiteq Maps SDK](https://developer.nutiteq.com/), [Skobbler iOS SDK](http://developer.skobbler.com/), and [Tangram ES](https://github.com/tangrams/tangram-es/).
 
 ## Vector map libraries (Web)
-* [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/) and [Tangram](http://tangrams.github.io/tangram/) render vector tiles based on OSM data using WebGL for better performance.
+* [MapLibre GL JS](https://maplibre.org/projects/maplibre-gl-js/), [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/) and [Tangram](http://tangrams.github.io/tangram/) render vector tiles based on OSM data using WebGL for better performance.
+
