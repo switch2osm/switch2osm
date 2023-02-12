@@ -1,9 +1,7 @@
 title: Switch2OSM
 description: >
   Switch to OpenStreetMap and discover how you can build beautiful maps from the world’s best map data.
-baseurl: "" # the subpath of your site, e.g. /blog
-copyright: 2013–2022 OpenStreetMap and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>
-url: https://switch2osm.github.io
+copyright: 2013–2023 OpenStreetMap and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>
 github_username: switch2osm
 
 # Build settings
@@ -35,3 +33,7 @@ menu:
     url: /providers/
   - title: Find Out More
     url: /find-out-more/
+
+plugins:
+  - jekyll-gzip
+  # - jekyll-brotli
