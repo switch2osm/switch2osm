@@ -36,6 +36,7 @@ RUN bundle exec jekyll build --verbose
 # https://github.com/nginxinc/docker-nginx-unprivileged
 FROM nginxinc/nginx-unprivileged:stable-alpine as webserver
 
+RUN sed -i'' 's/#error_page  404/error_page  404/' /etc/nginx/conf.d/default.conf
 RUN echo "absolute_redirect off;" >/etc/nginx/conf.d/no-absolute_redirect.conf
 RUN echo "gzip_static on; gzip_proxied any;" >/etc/nginx/conf.d/gzip_static.conf
 # brotli_static not yet available in standard nginx distribution
