@@ -13,6 +13,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    image: switch2osm-prod
     ports:
-      - 8080:80
+      - 8080:8080

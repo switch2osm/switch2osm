@@ -1,7 +1,10 @@
-FROM ruby:2.7-alpine as build
+FROM ruby:3.1 as build
 
 # Add Gem build requirements
-RUN apk add --no-cache g++ make libxml2-dev libxslt-dev
+RUN apt-get update && apt-get install -y \
+  g++ \
+  make \
+  && rm -rf /var/lib/apt/lists/*
 
 # Create app directory
 WORKDIR /app
@@ -10,8 +13,7 @@ WORKDIR /app
 ADD Gemfile* /app/
 
 # Install Gems
-RUN gem update --system \
-    && gem install bundler -v $(grep -F -A 1 'BUNDLED WITH' Gemfile.lock | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+') \
+RUN gem install bundler -v 2.4.5 \
     && bundle config build.nokogiri --use-system-libraries \
     && bundle config --global jobs $(nproc) \
     && bundle install

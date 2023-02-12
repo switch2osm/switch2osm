@@ -1,10 +1,13 @@
 # This file is used if building for Production environments
 # It uses a multi-stage build to run jekyll to populate an nginx container
 
-FROM ruby:2.7-alpine as build
+FROM ruby:3.1 as build
 
 # Add Gem build requirements
-RUN apk add --no-cache g++ make libxml2-dev libxslt-dev
+RUN apt-get update && apt-get install -y \
+  g++ \
+  make \
+  && rm -rf /var/lib/apt/lists/*
 
 # Create app directory
 WORKDIR /app
@@ -13,11 +16,12 @@ WORKDIR /app
 ADD Gemfile* /app/
 
 # Install Gems
-RUN gem update --system \
-    && gem install bundler -v $(grep -F -A 1 'BUNDLED WITH' Gemfile.lock | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+') \
+RUN gem install bundler -v 2.4.5 \
     && bundle config build.nokogiri --use-system-libraries \
     && bundle config --global jobs $(nproc) \
-    && bundle install --deployment --no-cache \
+    && bundle config set deployment 'true' \
+    && bundle config set no-cache 'true' \
+    && bundle install \
     && bundle clean
 
 # Copy Site Files
@@ -29,8 +33,19 @@ ENV JEKYLL_ENV=production
 RUN bundle exec jekyll build --verbose
 
 #-------------------------------------------------
+# https://github.com/nginxinc/docker-nginx-unprivileged
+FROM nginxinc/nginx-unprivileged:stable-alpine as webserver
 
-FROM nginx:stable-alpine as webserver
+RUN echo "absolute_redirect off;" >/etc/nginx/conf.d/no-absolute_redirect.conf
+RUN echo "gzip_static on; gzip_proxied any;" >/etc/nginx/conf.d/gzip_static.conf
+# brotli_static not yet available in standard nginx distribution
+# RUN echo "brotli_static on; brotli_proxied any;" >/etc/nginx/conf.d/brotli_static.conf
 
 # Copy built site from build stage
 COPY --from=build /app/_site /usr/share/nginx/html
+
+# Test configuration during docker build
+RUN nginx -t
+
+# Port the container will listen on
+EXPOSE 8080
