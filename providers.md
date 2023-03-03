@@ -40,6 +40,7 @@ The following companies host OpenStreetMap tiles.
 * [Mapbox](http://mapbox.com/), US
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [MapTiles API](https://www.maptilesapi.com/), US
+* [Maptoolkit](https://www.maptoolkit.com/), Germany/Austria
 * [Nextzen](https://www.nextzen.org/), US
 * [Skobbler](http://developer.skobbler.com/), Germany
 * [Stadia Maps](https://stadiamaps.com), US
