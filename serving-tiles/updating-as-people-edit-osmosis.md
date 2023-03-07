@@ -42,6 +42,8 @@ Also in there is:
 
 That will need to be changed to whatever is the non-root username below which the "mod_tile" and "regional" source exists.  On Debian 11 it will be different to the account that you are rendering tiles as.  
 
+Also make sure that the script does NOT contain "-e$EXPIRY_METAZOOM:$EXPIRY_METAZOOM".  If it does, change the ":" to a "-": "-e$EXPIRY_METAZOOM-$EXPIRY_METAZOOM".
+
 Something else to consider is that you'll probably want to edit the OSM2PGSQL_OPTIONS to refer to the lua tag transform script that you used when loading the database, and the ".style" file that determines what columns are created.  There may be other parameters that you need to pass here too depending on what you used when creating the database.  Change "/path/to/" to the actual path, of course:
 
      OSM2PGSQL_OPTIONS="-d $DBNAME --tag-transform-script /path/to/src/openstreetmap-carto/openstreetmap-carto.lua -S /path/to/src/openstreetmap-carto/openstreetmap-carto.style"
