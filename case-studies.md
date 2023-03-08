@@ -16,12 +16,6 @@ Read [Nestoria’s story of switching from Google Maps to OpenStreetMap](http://
 
 Read [StreetEasy’s story of switching from Google Maps to OpenStreetMap](https://plus.google.com/u/0/118383351194421484817/posts/foj5A1fURGt).
 
-## Fubra
-
-> “The most popular source of map tile data out there is OpenStreetMap; we also found that, in some places, it’s updated more frequently than Google Maps thanks to the open community that a few of us at Fubra have already contributed to. Open MapQuest uses data from OpenStreetMap but adds its own style to the maps that we think looks better than Google’s. And the other thing is it’s free!”
-
-Read [Fubra’s story of switching from Google Maps to OpenStreetMap](http://www.fubra.com/blog/2011/11/24/google-maps-free-alternatives/).
-
 ## Flickr
 
 > “A fantastic project called OpenStreetMap – a free, editable map of the world, made by the people in it. What an exciting prospect to be able to see maps that are alive and have been lovingly created by citizen cartographers all over the world. What an even more exciting prospect to be able to display those maps in Flickr! We racked our brains for a place that we knew we didn’t have a very good street-level resolution for, and had something going on there right now… The 2008 Summer Olympic Games! They just kicked off in Beijing!”
