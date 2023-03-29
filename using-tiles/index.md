@@ -22,6 +22,6 @@ Apart from very limited testing purposes, you should not use the tiles supplied 
 
 You can get a list using the project [Leaflet-provider](http://leaflet-extras.github.io/leaflet-providers/preview/) preview although some of them are not free (require an API key).
 
-### Paid-for providers: see list.
+### Paid-for providers: 
 
-Or go on to find out how to generate and serve your own tiles.
+See [list](https://switch2osm.org/providers/). Or go on to find out how to generate and serve your own tiles.
