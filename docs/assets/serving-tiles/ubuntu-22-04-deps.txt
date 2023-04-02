@@ -1,0 +1,11 @@
+
+sudo apt upgrade && sudo apt install \
+    screen locate libapache2-mod-tile renderd \
+    git tar unzip wget bzip2 apache2 lua5.1 \
+    mapnik-utils python3-mapnik python3-psycopg2 \
+    python3-yaml gdal-bin npm fonts-noto-cjk \
+    fonts-noto-hinted fonts-noto-unhinted \
+    fonts-unifont fonts-hanazono postgresql \
+    postgresql-contrib postgresql-14-postgis-3 \
+    postgis postgresql-14-postgis-3-scripts \
+    osm2pgsql net-tools curl

@@ -1,0 +1,181 @@
+site_name: Switch2OSM
+site_url: https://andygol.co.ua/switch2osm-mkdocs
+
+repo_url: https://github.com/Andygol/switch2osm-mkdocs
+repo_name: Andygol/switch2osm-mkdocs
+
+edit_uri: edit/main/docs/
+
+copyright: © 2013–2023 OpenStreetMap and contributors, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
+
+theme: 
+  name: material
+
+  favicon: assets/favicon.png
+  logo: assets/img/open-street-map-medium.png
+
+  palette: 
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      primary: lime
+      scheme: default
+      accent: purple
+      toggle:
+        icon: material/weather-sunny 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: black
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - toc.follow
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+    - announce.dismiss
+
+extra:
+  alternate:
+    - name: English
+      link: en/ 
+      lang: en
+    - name: Українська
+      link: uk/
+      lang: uk
+
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://openstreetmap.org/
+    - icon: fontawesome/brands/discourse
+      link: https://community.openstreetmap.org/
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/openstreetmap 
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/OpenStreetMap/
+
+markdown_extensions:
+  - attr_list
+  - def_list
+  - toc:
+      permalink: ⚓︎ 
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: none
+
+  - admonition
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.blocks.html 
+
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+
+nav:
+  - Home: index.md
+  - Why: why-switch.md
+  - Cases: case-studies.md
+  - Basics: the-basics.md
+  - Using: 
+    - Own tiles: /using-tiles/index.md
+    - Leaflet: using-tiles/getting-started-with-leaflet.md
+    - OpenLayers: using-tiles/getting-started-with-openlayers.md
+  - Serving:
+    - Serving tiles: /serving-tiles/index.md
+    - Manually:
+      - Debian 11: serving-tiles/manually-building-a-tile-server-debian-11.md
+      - Ubuntu 22.04: serving-tiles/manually-building-a-tile-server-ubuntu-22-04-lts.md
+      - Ubuntu 20.04: serving-tiles/manually-building-a-tile-server-ubuntu-20-04-lts.md
+      - Ubuntu 18.04: serving-tiles/manually-building-a-tile-server-ubuntu-18-04-lts.md
+    - Docker: serving-tiles/using-a-docker-container.md
+    - Munin: serving-tiles/monitoring-using-munin.md
+    - Updating: 
+      - osm2pgsql: serving-tiles/updating-as-people-edit-osm2pgsql-replication.md
+      - pyosmioum: serving-tiles/updating-as-people-edit-pyosmium.md
+      - osmosis: serving-tiles/updating-as-people-edit-osmosis.md
+  - Other: other-uses.md
+  - Providers: providers.md
+  - More: find-out-more.md
+
+
+plugins:
+  - search:
+      lang:
+        - en
+        - uk
+  - macros
+  - ezlinks
+  # - section-index
+  
+        
+# This part is for organising languages in specific folders
+# Using a folder per language structure
+# https://pypi.org/project/mkdocs-static-i18n/
+  - i18n:
+      default_language: en
+      docs_structure: folder
+      languages:
+        en:
+          name: English
+        uk:
+          name: Українська
+      nav_translations:
+        en:
+          Home: Switch2OSM
+          Why: Why Switch?
+          Cases: Case Studies
+          Basics: The Basics
+          Using: Using Tiles
+          Own tiles: Switch to using OSM tiles
+          Leaflet: Getting started with Leaflet
+          OpenLayers: Getting started with OpenLayers
+          Serving: Serving Tiles
+          Serving tiles: Serving your own tiles
+          Manually: Manually building a tile server
+          Docker: 
+          Munin: 
+          Updating: Updating your database as people edit OpenStreetMap
+          Other: 
+          Providers: Providers
+          More: 
+        uk:
+          Home: Switch2OSM
+          Why: Навіщо?
+          Cases: Вже з OSM
+          Basics: Основи
+          Using: Мапа
+          Own tiles: Використання тайлів
+          Leaflet: За допомогою Leaflet
+          OpenLayers: За допомогою OpenLayers
+          Serving: Власний сервер
+          Serving tiles: Робимо власні тайли
+          Manually: Розгортаємо сервер вручну 
+          Docker: 
+          Munin: 
+          Updating: Оновлення бази даних правками з OpenStreetMap
+          Other: Інше
+          Providers: Постачальники
+          More:
