@@ -422,7 +422,7 @@ sudo service apache2 reload
 
 (I suspect that it needs doing twice because Apache gets "confused" when reconfigured when running)
 
-If you point a web browser at: <http://your.server.ip.address/index.html> you should get Ubuntu / apache's "It works!" page.
+If you point a web browser at: `http://your.server.ip.address/index.html` you should get Ubuntu / apache's "It works!" page.
 
 !!! tip
     if you don't know what IP address it will have been assigned you can likely use `ifconfig` to find out – if the network configuration is not too complicated it'll probably be the `inet addr` that is not `127.0.0.1`.
@@ -441,7 +441,7 @@ renderd -f -c /usr/local/etc/renderd.conf
 
 You may see some warnings here - don't worry about those for now. You shouldn't get any errors. If you do, save the full output in a Pastebin and ask a question about the problem somewhere like [`community.openstreetmap.org`](https://community.openstreetmap.org){: target=_blank} (linking to the Pastebin - don't include all the text in the question).
 
-Point a web browser at: <http://your.server.ip.address/hot/0/0/0.png>
+Point a web browser at: `http://your.server.ip.address/hot/0/0/0.png`
 
 You should see a map of the world in your browser and some more debug on the command line, including "DEBUG: START TILE" and "DEBUG: DONE TILE". Ignore any "DEBUG: Failed to read cmd on fd" message - it is not an error. If you don't get a tile and get other errors again, save the full output in a Pastebin and ask a question about the problem somewhere like [`community.openstreetmap.org`](https://community.openstreetmap.org){: target=_blank}.
 

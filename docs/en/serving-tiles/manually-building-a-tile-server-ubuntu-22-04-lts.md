@@ -330,7 +330,7 @@ If you're using a server at a hosting provider then it's likely that your server
 
 Note that this is just the `http` (port 80) site - you'll need to do a little bit more Apache configuration if you want to enable `https`, but that's out of the scope of these instructions. However, if you use "Let's Encrypt" to issue certificates, then the process of setting that up can also configure the Apache HTTPS site as well.
 
-Next, point a web browser at: <http://your.server.ip.address/hot/0/0/0.png>
+Next, point a web browser at: `http://your.server.ip.address/hot/0/0/0.png`
 
 You'll need to edit that of course if you changed `URI=/hot/` above. You should see a small map of the world. If you don't, investigate the errors that it displays. These will most likely be permissions errors or perhaps related to accidentally missing some steps from the instructions above. If you don't get a tile and get other errors again, save the full output in a Pastebin and ask a question about the problem somewhere like [`community.openstreetmap.org`](https://community.openstreetmap.org){: targed=_blank}.
 

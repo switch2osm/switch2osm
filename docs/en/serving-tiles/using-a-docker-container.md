@@ -69,7 +69,7 @@ docker run \
 
 and to check that it’s working, browse to:
 
-<http://your.server.ip.address/tile/0/0/0.png>
+`http://your.server.ip.address/tile/0/0/0.png`
 
 You should see a map of the world in your browser.
 
