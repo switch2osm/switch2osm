@@ -11,7 +11,7 @@ OpenStreetMap is a decentralised, volunteer-run project, so there’s no single 
 * [OpenStreetMap IRC](https://irc.openstreetmap.org/){: target=_blank} (Internet Relay Chat): 24-hour live OSM chat (use channel `#osm` or `#osm-dev`)
 * [Interactive help system](https://help.openstreetmap.org/){: target=_blank}
 * [Developer FAQ](https://wiki.openstreetmap.org/wiki/Developer_FAQ){: target=_blank}
-* [Main FAQ](https://wiki.openstreetmap.org/wiki/FAQ)
+* [Main FAQ](https://wiki.openstreetmap.org/wiki/FAQ){: target=_blank}
 
 ## Other tutorials on switching to OSM
 

@@ -23,6 +23,6 @@ Copy the following content to a file [leaflet.html](leaflet.html){: target=_blan
 
 You want to …
 
-* use a different background? → Leaflet natively supports [TMS](https://en.wikipedia.org/wiki/Tile_Map_Service{: target=blank}){: target=_blank} and [WMS](https://en.wikipedia.org/wiki/Web_Map_Service){: target=blank}. See [there](http://leafletjs.com/reference.html#tilelayer){: target=blank} which options are supported in Leaflet.
+* use a different background? → Leaflet natively supports [TMS](https://en.wikipedia.org/wiki/Tile_Map_Service{: target=blank}) and [WMS](https://en.wikipedia.org/wiki/Web_Map_Service){: target=blank}. See [there](http://leafletjs.com/reference.html#tilelayer){: target=blank} which options are supported in Leaflet.
 * add all of your company's locations? → Provide them as [GeoJSON](http://geojson.org/){: target=blank} and [include them](http://leafletjs.com/examples/geojson.html){: target=blank} in the map.
 * use a different map projection? → Use the [Proj4Leaflet](https://github.com/kartena/Proj4Leaflet){: target=blank} plugin.

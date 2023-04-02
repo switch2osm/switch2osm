@@ -20,7 +20,7 @@ To switch to OpenStreetMap, you’ll need to replace both of these.
 ![Tiles](/assets/img/tiles.png)
 The map tiles, images of (usually) 256 x 256 pixels each, are drawn (“rendered”) from a map database.
 
-If you currently use Google Maps, you’ll be using Google’s map tiles, hosted at google.com. Because the OpenStreetMap Foundation is a non-profit organisation with limited resources, you can’t just slot in the tiles from openstreetmap.org as a replacement (see the [Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/){: target=blank}){: target=_blank}. Instead, you can:
+If you currently use Google Maps, you’ll be using Google’s map tiles, hosted at google.com. Because the OpenStreetMap Foundation is a non-profit organisation with limited resources, you can’t just slot in the tiles from openstreetmap.org as a replacement (see the [Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/){: target=blank}). Instead, you can:
 
 * Generate your own tiles, by downloading the free OSM map database and rendering them;
 
@@ -38,7 +38,7 @@ There is no single canonical library: you can choose whichever suits your needs 
 
 * Leaflet – lightweight and easy-to-learn
 
-APIs are also available for mobile platforms, such as [Route-Me](https://github.com/route-me/route-me){: target=blank} (iOS){: target=_blank} and [osmdroid](https://github.com/osmdroid/osmdroid){: target=blank} (Android){: target=_blank}.
+APIs are also available for mobile platforms, such as [Route-Me](https://github.com/route-me/route-me){: target=blank} (iOS) and [osmdroid](https://github.com/osmdroid/osmdroid){: target=blank} (Android).
 
 ## The licence
 
