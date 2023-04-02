@@ -26,4 +26,4 @@ You can get a list using the project [Leaflet-provider](http://leaflet-extras.gi
 
 ### Paid-for providers
 
-See [list](/providers/). Or go on to find out how to generate and serve your own tiles.
+See [list](/providers.md). Or go on to find out how to generate and serve your own tiles.
