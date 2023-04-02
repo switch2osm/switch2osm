@@ -127,7 +127,7 @@ Now that all of the necessary software is installed, you will need to download a
 
 The style we'll use here is the one that use by the "standard" map on the openstreetmap.org website. It's chosen because it's well documented, and should work anywhere in the world (including in places with non-latin placenames). There are a couple of downsides though - it's very much a compromise designed to work globally, and it's quite complicated to understand and modify, should you need to do that.
 
-The home of "OpenStreetMap Carto" on the web is <https://github.com/gravitystorm/openstreetmap-carto/>, and it has it's own installation instructions at <https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md>, although we'll cover everything that needs to be done here.
+The home of "OpenStreetMap Carto" on the web is <https://github.com/gravitystorm/openstreetmap-carto/>{: target=_blank}, and it has it's own installation instructions at <https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md>{: target=_blank}, although we'll cover everything that needs to be done here.
 
 Here we're assuming that we're storing the stylesheet details in a directory below `src` below the home directory of the whichever non-root account you are using:
 
@@ -163,7 +163,7 @@ You now have a Mapnik XML stylesheet at `/home/youraccountname/src/openstreetmap
 
 Initially, we'll load only a small amount of test data. Other download locations are available, but `download.geofabrik.de` has a wide range of options. In this example we'll download the data for Azerbaijan, which is currently about 32Mb.
 
-Browse to <https://download.geofabrik.de/asia/azerbaijan.html> and note the "This file was last modified" date (e.g. "{{ dl_timestamp }}"). We'll need that later if we want to update the database with people's subsequent changes to OpenStreetMap. Download it as follows:
+Browse to <https://download.geofabrik.de/asia/azerbaijan.html>{: target=_blank} and note the "This file was last modified" date (e.g. "{{ dl_timestamp }}"). We'll need that later if we want to update the database with people's subsequent changes to OpenStreetMap. Download it as follows:
 
 ```sh
 mkdir ~/data

@@ -126,7 +126,7 @@ python3
 
 Стиль, який ми будемо використовувати,&nbsp;– це стиль який застосовується для створення "Стандартного" шару на сайті openstreetmap.org. Ми обрали його через гарну документацію і те, що він здатен працювати для будь-якої частини світу, навіть там де не використовується латинка. Але у нього є й певні недоліки&nbsp;– це компромісні рішення для того, щоб працювати в глобальних масштабах, він дуже складний для розуміння та внесення змін, якщо вам доведеться їх вносити.
 
-Код стилю "OpenStreetMap Carto" з вебсайту openstreetmap.org знаходиться на GitHub&nbsp;– <https://github.com/gravitystorm/openstreetmap-carto/> та також має власні інструкції зі встановлення&nbsp;– <https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md>. Про те, що потрібно зробити, ми розповімо тут.
+Код стилю "OpenStreetMap Carto" з вебсайту openstreetmap.org знаходиться на GitHub&nbsp;– <https://github.com/gravitystorm/openstreetmap-carto/>{: target=_blank} та також має власні інструкції зі встановлення&nbsp;– <https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md>{: target=_blank}. Про те, що потрібно зробити, ми розповімо тут.
 
 Передбачається що ми розміщуємо стиль в теці `~/src` домашньої директорії звичайного користувача (не root):
 
@@ -162,7 +162,7 @@ carto project.mml > mapnik.xml
 
 Для початку, завантажимо невеличку частину тестових даних. Серед різномаїття місць для отримання даних, оберемо `download.geofabrik.de`, що містить великий перелік різних варіантів для завантаження. Візьмемо для прикладу Азербайджан (~32.4 Мб).
 
-Перейдіть за посиланням <https://download.geofabrik.de/asia/azerbaijan.html> та зверніть увагу на дату "This file was last modified" (щось схоже на "{{ dl_timestamp }}"). Вона нам знадобиться потім, коли у нас виникне потреба оновити наші дані даними, які учасники OpenStreetMap додали з моменту нашого імпорту. Завантажимо дані:
+Перейдіть за посиланням <https://download.geofabrik.de/asia/azerbaijan.html>{: target=_blank} та зверніть увагу на дату "This file was last modified" (щось схоже на "{{ dl_timestamp }}"). Вона нам знадобиться потім, коли у нас виникне потреба оновити наші дані даними, які учасники OpenStreetMap додали з моменту нашого імпорту. Завантажимо дані:
 
 ```sh
 mkdir ~/data

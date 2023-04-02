@@ -153,7 +153,7 @@ python3
 
 ## Встановлення mod_tile та renderd
 
-Далі, ми встановимо `mod_tile` та `renderd`. `mod_tile`&nbsp;– модуль Apache, який обробляє запити на показ тайлів; `renderd`&nbsp;– фонова служба, яка відповідає за генерацію тайлів на запит `mod_tile`. Ми будемо використовувати гілку "switch2osm" з <https://github.com/SomeoneElseOSM/mod_tile>, яка своєю чергою базується на коді <https://github.com/openstreetmap/mod_tile>, але змінена таким чином, щоб працювати на {{ dist }}, також вона містить пару інших змін потрібних для роботи зі стандартним сервером на Ubuntu на відміну від того, що використовується на тайлових серверах OpenStreetMap.
+Далі, ми встановимо `mod_tile` та `renderd`. `mod_tile`&nbsp;– модуль Apache, який обробляє запити на показ тайлів; `renderd`&nbsp;– фонова служба, яка відповідає за генерацію тайлів на запит `mod_tile`. Ми будемо використовувати гілку "switch2osm" з <https://github.com/SomeoneElseOSM/mod_tile>{: target=_blank}, яка своєю чергою базується на коді <https://github.com/openstreetmap/mod_tile>{: target=_blank}, але змінена таким чином, щоб працювати на {{ dist }}, також вона містить пару інших змін потрібних для роботи зі стандартним сервером на Ubuntu на відміну від того, що використовується на тайлових серверах OpenStreetMap.
 
 ### Компіляція mod_tile з сирців
 
@@ -203,7 +203,7 @@ sudo ldconfig
 
 Стиль, який ми будемо використовувати,&nbsp;– це стиль який застосовується для створення "Стандартного" шару на сайті openstreetmap.org. Ми обрали його через гарну документацію і те, що він здатен працювати для будь-якої частини світу, навіть там де не використовується латинка. Але у нього є й певні недоліки&nbsp;– це компромісні рішення для того, щоб працювати в глобальних масштабах, він дуже складний для розуміння та внесення змін, якщо вам доведеться їх вносити.
 
-Код стилю "OpenStreetMap Carto" з веб-сайту openstreetmap.org знаходиться на GitHub&nbsp;– <https://github.com/gravitystorm/openstreetmap-carto/> та також має власні інструкції зі встановлення&nbsp;– <https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md>. Про те, що потрібно зробити, ми розповімо тут.
+Код стилю "OpenStreetMap Carto" з веб-сайту openstreetmap.org знаходиться на GitHub&nbsp;– <https://github.com/gravitystorm/openstreetmap-carto/>{: target=_blank} та також має власні інструкції зі встановлення&nbsp;– <https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md>{: target=_blank}. Про те, що потрібно зробити, ми розповімо тут.
 
 Передбачається що ми розміщуємо стиль в теці `~/src` домашньої директорії користувача `renderaccount` (або будь-якого іншого, якого ви створили до цього)
 
@@ -239,7 +239,7 @@ carto project.mml > mapnik.xml
 
 Для початку, завантажимо невеличку частину тестових даних. Серед різномаїття місць для отримання даних, оберемо `download.geofabrik.de`, що містить великий перелік різних варіантів для завантаження. Візьмімо для прикладу Азербайджан (~32.4 Мб).
 
-Перейдіть за посиланням <https://download.geofabrik.de/asia/azerbaijan.html> та зверніть увагу на дату "This file was last modified" (щось схоже на "{{ dl_timestamp }}"). Вона нам знадобиться потім, коли у нас виникне потреба оновити наші дані даними, які учасники OpenStreetMap додали з моменту нашого імпорту. Завантажимо дані:
+Перейдіть за посиланням <https://download.geofabrik.de/asia/azerbaijan.html>{: target=_blank} та зверніть увагу на дату "This file was last modified" (щось схоже на "{{ dl_timestamp }}"). Вона нам знадобиться потім, коли у нас виникне потреба оновити наші дані даними, які учасники OpenStreetMap додали з моменту нашого імпорту. Завантажимо дані:
 
 ```sh
 mkdir ~/data
