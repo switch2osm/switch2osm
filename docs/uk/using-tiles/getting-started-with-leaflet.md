@@ -19,8 +19,9 @@ title: Використання Leaflet
 --8<-- "docs/uk/using-tiles/leaflet.html"
 ```
 
-
 Докладні пояснення щодо коду дивіться на офіційному сайті. [^1]
+
+[^1]: Швидкий старт&nbsp;– <https://leafletjs.com/examples/quick-start/>{: target=blank}
 
 ## Додаткові посилання
 
@@ -29,5 +30,3 @@ title: Використання Leaflet
 * використовувати інше тло?&nbsp;→ Leaflet має підтримку [TMS](https://uk.wikipedia.org/wiki/Tile_Map_Service){: target=blank} та [WMS](https://uk.wikipedia.org/wiki/Web_Map_Service){: target=blank}. Подивіться [тут](http://leafletjs.com/reference.html#tilelayer){: target=blank}, які інші можливості має Leaflet.
 * додати розташування всіх офісів вашої компанії?&nbsp;→ Збережіть координати у файл [GeoJSON](http://geojson.org/){: target=blank} та [додайте їх](http://leafletjs.com/examples/geojson.html){: target=blank} на мапу.
 * використовувати іншу картографічну проєкцію?&nbsp;→ Втулок [Proj4Leaflet](https://github.com/kartena/Proj4Leaflet){: target=blank} допоможе вам в цьому.
-
-[^1]: Швидкий старт&nbsp;– <https://leafletjs.com/examples/quick-start/>{: target=blank}

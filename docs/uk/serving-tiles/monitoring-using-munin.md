@@ -16,7 +16,7 @@ sudo apt install munin-node munin libcgi-fast-perl libapache2-mod-fcgid
 
 Якщо ви подивитесь у `/etc/apache2/conf-available`, ви побачите, що `munin.conf` є символічним посиланням на `../../munin/apache24.conf`, що насправді є `/etc/munin/apache24.conf`.
 
-Файл `/etc/munin/apache24.conf` є конфігураційним файлом для Apache. У ньому, якщо ви бажаєте мати доступ до munin не тільки локально, змініть в обох випадках `Require local` на `Require all granted`.
+Файл `/etc/munin/apache24.conf` є конфігураційним файлом `munin` для Apache. У ньому, якщо ви бажаєте мати доступ до `munin` не тільки локально, змініть в обох випадках `Require local` на `Require all granted`.
 
 Відредагуйте `/etc/munin/munin.conf`. Розкоментуйте наступні рядки:
 

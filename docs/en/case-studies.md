@@ -16,7 +16,7 @@ Read [Nestoria’s story of switching from Google Maps to OpenStreetMap](http://
 
 > “We at StreetEasy decided to build our own maps using, among other tools, OpenStreetMap, TileMill, MapBox and Leaflet, instead of paying hundreds of thousands of dollars per year to Google. And yes, the money pushed us into doing it, but we’re happier with the result because we now control the contents of our maps.”
 
-Read [StreetEasy’s story of switching from Google Maps to OpenStreetMap](https://plus.google.com/u/0/118383351194421484817/posts/foj5A1fURGt){: target=blank}.
+Read [StreetEasy’s story of switching from Google Maps to OpenStreetMap](https://medium.com/devseed/streeteasy-makes-the-switch-to-mapbox-from-google-3784c10a041f){: target=blank}.
 
 ## Flickr
 

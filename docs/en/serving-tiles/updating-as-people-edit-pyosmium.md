@@ -10,7 +10,7 @@ Every day there are millions of new map updates so to prevent a map becoming "st
 
 Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously. This is the version that is distributed as part of Ubuntu 22.04, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html){: target=_blank}.
 
-A simpler, but less flexible, method to update a database is to use "osm2pgsql-replication", described [here](/serving-tiles/updating-as-people-edit-osm2pgsql-replication/). In this example, we'll use `PyOsmium` to update a database initially loaded from Geofabrik with minutely updates from <https://planet.openstreetmap.org>{: target=_blank}.
+A simpler, but less flexible, method to update a database is to use `osm2pgsql-replication`, described [here](/serving-tiles/updating-as-people-edit-osm2pgsql-replication/). In this example, we'll use `PyOsmium` to update a database initially loaded from Geofabrik with minutely updates from <https://planet.openstreetmap.org>{: target=_blank}.
 
 ## Making sure that you can see debug messages
 

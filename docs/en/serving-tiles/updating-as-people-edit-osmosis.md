@@ -18,7 +18,7 @@ sudo apt install osmosis
 
 (that'll eventually say "done.")
 
-We'll use "trim_osc.py" from Zverik's "regional" scripts to trim down the updates from OpenStreetMap.org down to just the area that we're interested in. We do this so that the postgres database doesn't grow significantly as updates are applied to it. We will also need to fetch some dependencies for that.
+We'll use `trim_osc.py` from Zverik's "regional" scripts to trim down the updates from OpenStreetMap.org down to just the area that we're interested in. We do this so that the postgres database doesn't grow significantly as updates are applied to it. We will also need to fetch some dependencies for that.
 
 ```sh
 cd ~/src
@@ -127,7 +127,7 @@ You may see a message "problems with history file" - don't worry if you do. On n
 # m h  dom mon dow   command
 ```
 
-These fields are "minutes", "hours", "day of month", "month", "day of week" and "command". We'll add the following line:
+These fields are `m` – "minutes", `h` –"hours", `dom` – "day of month", `mon` – "month", `dow` – "day of week" and `command`. We'll add the following line:
 
 ```sh
 */5  * *   *   *     /home/renderaccount/src/mod_tile/openstreetmap-tiles-update-expire
@@ -155,4 +155,4 @@ You can obtain the contents of the script from [here](https://raw.githubusercont
 sudo /etc/init.d/munin-node restart
 ```
 
-Shortly after doing that, `http://yourserveraddress/munin/renderd-day.html` should show a "Data import lag" graph. If it doesn't, look at the logs in `/var/log/munin`. If you need more help to understand what is going wrong, have a look [here](https://guide.munin-monitoring.org/en/latest/develop/plugins/howto-write-plugins.html){: target=_blank}.
+Shortly after doing that, `http://your.server.address/munin/renderd-day.html` should show a "Data import lag" graph. If it doesn't, look at the logs in `/var/log/munin`. If you need more help to understand what is going wrong, have a look [here](https://guide.munin-monitoring.org/en/latest/develop/plugins/howto-write-plugins.html){: target=_blank}.

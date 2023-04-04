@@ -2,7 +2,6 @@
 layout: docs
 title: Manually building a tile server (Debian 11)
 dist: Debian 11
-maintainers: Debian maintainers
 dl_timestamp: "2020-11-13T21:42:03Z"
 lang: en
 ---
@@ -14,17 +13,17 @@ lang: en
 
 ## Software installation
 
-The OSM tile server stack is a collection of programs and libraries that work together to create a tile server. As so often with OpenStreetMap, there are many ways to achieve this goal and nearly all of the components have alternatives that have various specific advantages and disadvantages. This tutorial describes the most standard version that is similar to that used on the main OpenStreetMap.org tile servers.
+The OSM tile server stack is a collection of programs and libraries that work together to create a tile server. As so often with OpenStreetMap, there are many ways to achieve this goal, and nearly all of the components have alternatives that have various specific advantages and disadvantages. This tutorial describes the most standard version that is similar to that used on the main OpenStreetMap.org tile servers.
 
 It consists of 5 main components: `mod_tile`, `renderd`, `mapnik`, `osm2pgsql` and a `postgresql/postgis` database. Mod_tile is an apache module that serves cached tiles and decides which tiles need re-rendering&nbsp;– either because they are not yet cached or because they are outdated. Renderd provides a priority queueing system for different sorts of requests to manage and smooth out the load from rendering requests. Mapnik is the software library that does the actual rendering and is used by `renderd`.
 
-Thanks to the work done by the {{ maintainers }} to incorporate the latest versions of these packages into {{ dist }}, these instructions are somewhat shorter than previous versions.
+Thanks to the work done by the Debian maintainers to incorporate the latest versions of these packages into {{ dist }}, these instructions are somewhat shorter than previous versions.
 
 These instructions are have been written and tested against a newly-installed {{ dist }} server. If you have got other versions of some software already installed (perhaps you upgraded from an earlier version, or you set up some PPAs to load from) then you may need to make some adjustments.
 
 In order to build these components, a variety of dependencies need to be installed first.
 
-Debian doesn't come with `sudo` by default, so we'll need to log on as root to do the first part:
+Debian doesn't come with `sudo` by default, so we'll need to log on as `root` to do the first part:
 
 ```sh
 --8<-- "docs/assets/serving-tiles/debian-deps.txt"
@@ -45,7 +44,7 @@ sudo whoami
 
 That should return `root`.
 
-At this point, a couple of new accounts have been added. You can see them with `tail /etc/passwd`. `postgres` is used for managing the databases that we use to hold data for rendering. `_renderd` is used for the renderd daemon, and we'll need to make sure lots of the commands below are run as that user.
+At this point, a couple of new accounts have been added. You can see them with `tail /etc/passwd`. `postgres` is used for managing the databases that we use to hold data for rendering. `_renderd` is used for the `renderd` daemon, and we'll need to make sure lots of the commands below are run as that user.
 
 Now you need to create a postgis database. The defaults of various programs assume the database is called `gis` and we will use the same convention in this tutorial, although this is not necessary. Note that `_renderd` below matches the user that the `renderd` daemon will run from.
 
@@ -104,7 +103,7 @@ exit
 ```
 
 (to exit back to be the user that we were before we did `sudo -u postgres -i` above)
-<!-- DB init stop -->
+
 ## Mapnik
 
 Mapnik was installed above. We'll check that it has been installed correctly by doing this:
@@ -129,7 +128,7 @@ The style we'll use here is the one that use by the "standard" map on the openst
 
 The home of "OpenStreetMap Carto" on the web is <https://github.com/gravitystorm/openstreetmap-carto/>{: target=_blank}, and it has it's own installation instructions at <https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md>{: target=_blank}, although we'll cover everything that needs to be done here.
 
-Here we're assuming that we're storing the stylesheet details in a directory below `src` below the home directory of the whichever non-root account you are using:
+Here we're assuming that we're storing the stylesheet details in a directory below `~/src` below the home directory of the whichever non-root account you are using:
 
 ```sh
 mkdir ~/src
@@ -171,7 +170,6 @@ cd ~/data
 wget https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
 ```
 
-
 The following command will insert the OpenStreetMap data you downloaded earlier into the database. This step is very disk I/O intensive; importing the full planet might take many hours, days or weeks depending on the hardware. For smaller extracts the import time is much faster accordingly, and you may need to experiment with different `-C` values to fit within your machine's available memory. Note that the `_renderd` user is used for this process.
 
 ```sh
@@ -187,43 +185,33 @@ sudo -u _renderd \
 It's worth explaining a little bit about what those options mean:
 
 `-d gis`
-
 : The database to work with (`gis` used to be the default; now it must be specified).
 
 `--create`
-
 : Load data into an empty database rather than trying to append to an existing one.
 
 `--slim`
-
 : osm2pgsql can use different table layouts; `slim` tables works for rendering.
 
 `-G`
-
 : Determines how multipolygons are processed.
 
 `--hstore`
-
 : Allows tags for which there are no explicit database columns to be used for rendering.
 
-`--tag-transform-script`
-
+`--tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua`
 : Defines the lua script used for tag processing. This an easy is a way to process OSM tags before the style itself processes them, making the style logic potentially much simpler.
 
 `-C 2500`
-
 : Allocate 2.5 Gb of memory to osm2pgsql to the import process. If you have less memory you could try a smaller number, and if the import process is killed because it runs out of memory you'll need to try a smaller number or a smaller OSM extract.
 
 `--number-processes 1`
-
 : Use 1 CPU. If you have more cores available you can use more.
 
-`-S`
-
+`-S ~/src/openstreetmap-carto/openstreetmap-carto.style`
 : Create the database columns in this file (actually these are unchanged from "openstreetmap-carto")
 
 `~/data/azerbaijan-latest.osm.pbf`
-
 : The final argument is the data file to load.
 
 That command will complete with something like "Osm2pgsql took 238s overall".
@@ -345,7 +333,6 @@ sudo nano sample_leaflet.html
 Edit so that the IP address matches `your.server.address` rather than just saying `127.0.0.1`. That should allow you to access this server from others. Then browse to `http://your.server.address/sample_leaflet.html`.
 
 The initial map display will take a little while. You'll be able to zoom in and out, but depending on server speed some tiles may initially display as grey because they can't be rendered in time for the browser. However, once done they’ll be ready for the next time that they are needed. If you look in `/var/log/syslog` you should see requests for tiles.
-
 
 If desired, you can increase the setting `ModTileMissingRequestTimeout` in `/etc/apache2/conf-available/renderd.conf` from 10 seconds to perhaps 30 or 60, in order to wait longer for tiles to be rendered in the background before a grey tile is given to the user. Make sure you `#!sh sudo service renderd restart` and `#!sh sudo service apache2 restart` after changing it.
 

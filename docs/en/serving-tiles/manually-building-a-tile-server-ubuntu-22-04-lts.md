@@ -2,7 +2,6 @@
 layout: docs
 title: Manually building a tile server (Ubuntu 22.04)
 dist: Ubuntu 22.04
-maintainers: Debian and Ubuntu maintainers
 dl_timestamp: "2022-04-22T20:21:40Z"
 lang: en
 ---
@@ -17,9 +16,9 @@ lang: en
 The OSM tile server stack is a collection of programs and libraries that work together to create a tile server. As so often with OpenStreetMap, there are many ways to achieve this goal and nearly all of the components have alternatives that have various specific advantages and disadvantages. This tutorial describes the most standard version that is similar to that used on the main OpenStreetMap.org tile servers.
 
 It consists of 5 main components: `mod_tile`, `renderd`, `mapnik`, `osm2pgsql` and a `postgresql/postgis` database. Mod_tile is an apache module that serves cached tiles and decides which tiles need re-rendering &nbsp;– either because they are not yet cached or because they are outdated. Renderd provides a priority queueing system for different sorts of requests to manage and smooth out the load from rendering requests. Mapnik is the software library that does the actual rendering and is used by renderd.
-<!--  -->
-Thanks to the work done by the {{ maintainers }} to incorporate the latest versions of these packages into {{ dist }}, these instructions are somewhat shorter than previous versions.
-<!--  -->
+
+Thanks to the work done by the Debian and Ubuntu maintainers to incorporate the latest versions of these packages into {{ dist }}, these instructions are somewhat shorter than previous versions.
+
 These instructions are have been written and tested against a newly-installed {{ dist }} server. If you have got other versions of some software already installed (perhaps you upgraded from an earlier version, or you set up some PPAs to load from) then you may need to make some adjustments.
 
 In order to build these components, a variety of dependencies need to be installed first.
@@ -30,7 +29,7 @@ This guide assumes that you run everything from a non-root user via `sudo`. Don'
 --8<-- "docs/assets/serving-tiles/ubuntu-22-04-deps.txt"
 ```
 
-At this point, a couple of new accounts have been added. You can see them with `tail /etc/passwd`. `postgres` is used for managing the databases that we use to hold data for rendering. `_renderd` is used for the renderd daemon, and we'll need to make sure lots of the commands below are run as that user.
+At this point, a couple of new accounts have been added. You can see them with `tail /etc/passwd`. `postgres` is used for managing the databases that we use to hold data for rendering. `_renderd` is used for the `renderd` daemon, and we'll need to make sure lots of the commands below are run as that user.
 
 Now you need to create a postgis database. The defaults of various programs assume the database is called gis and we will use the same convention in this tutorial, although this is not necessary. Note that `_renderd` below matches the user that the `renderd` daemon will run from.
 
@@ -89,7 +88,7 @@ exit
 ```
 
 (to exit back to be the user that we were before we did `sudo -u postgres -i` above)
-<!-- DB init stop -->
+
 ## Mapnik
 
 Mapnik was installed above. We'll check that it has been installed correctly by doing this:
@@ -114,7 +113,7 @@ The style we'll use here is the one that use by the "standard" map on the openst
 
 The home of "OpenStreetMap Carto" on the web is <https://github.com/gravitystorm/openstreetmap-carto/>{: target=_blank} and it has it's own installation instructions at <https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md>{: target=_blank}, although we'll cover everything that needs to be done here.
 
-Here we're assuming that we're storing the stylesheet details in a directory below `src` below the home directory of whichever non-root user account you are using; we'll change access so that the `_renderd` user can access it below.
+Here we're assuming that we're storing the stylesheet details in a directory below `~/src` below the home directory of whichever non-root user account you are using; we'll change access so that the `_renderd` user can access it below.
 
 ```sh
 mkdir ~/src
@@ -156,7 +155,7 @@ cd ~/data
 wget https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
 ```
 
-Next, we need to make sure that the `_renderd` user can access the stylesheet. In order to do this it needs access to wherever you downloaded it, and by default it won't have access to your home directory. If it's in `src` below your user account then
+Next, we need to make sure that the `_renderd` user can access the stylesheet. In order to do this it needs access to wherever you downloaded it, and by default it won't have access to your home directory. If it's in `~/src` below your user account then
 
 ```sh
 chmod o+rx ~
@@ -179,43 +178,33 @@ sudo -u _renderd \
 It's worth explaining a little bit about what those options mean:
 
 `-d gis`
-
 : The database to work with (`gis` used to be the default; now it must be specified).
 
 `--create`
-
 : Load data into an empty database rather than trying to append to an existing one.
 
 `--slim`
-
 : osm2pgsql can use different table layouts; "slim" tables works for rendering.
 
 `-G`
-
 : Determines how multipolygons are processed.
 
 `--hstore`
-
 : Allows tags for which there are no explicit database columns to be used for rendering.
 
-`--tag-transform-script`
-
+`--tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua`
 : Defines the lua script used for tag processing. This an easy is a way to process OSM tags before the style itself processes them, making the style logic potentially much simpler.
 
 `-C 2500`
-
 : Allocate 2.5 Gb of memory to osm2pgsql to the import process. If you have less memory you could try a smaller number, and if the import process is killed because it runs out of memory you'll need to try a smaller number or a smaller OSM extract.
 
 `--number-processes 1`
-
 : Use 1 CPU. If you have more cores available you can use more.
 
-`-S`
-
+`-S ~/src/openstreetmap-carto/openstreetmap-carto.style`
 : Create the database columns in this file (actually these are unchanged from "openstreetmap-carto")
 
 `~/data/azerbaijan-latest.osm.pbf`
-
 : The final argument is the data file to load.
 
 That command will complete with something like "osm2pgsql took 163s (2m 43s) overall".
@@ -276,7 +265,7 @@ TILESIZE=256
 MAXZOOM=20
 ```
 
-The location of the XML file `/home/accountname/src/openstreetmap-carto/mapnik.xml` will need to be changed to the actual location on your system. You can change `[s2o]` and `URI=/hot/` as well if you like. If you want to render more than one set of tiles from one server you can - just add another section like `[s2o]` with a different name referring to a different map style. If you want it to refer to a different database to the default "gis" you can, but that's out of the scope of this document. If you've only got 2Gb or so of memory you'll also want to reduce `num_threads` to 2. `URI=/hot/` was chosen so that the tiles generated here can more easily be used in place of the HOT tile layer at OpenStreetMap.org. You can use something else here, but `/hot/` is as good as anything.
+The location of the XML file `/home/accountname/src/openstreetmap-carto/mapnik.xml` will need to be changed to the actual location on your system. You can change `[s2o]` and `URI=/hot/` as well if you like. If you want to render more than one set of tiles from one server you can - just add another section like `[s2o]` with a different name referring to a different map style. If you want it to refer to a different database to the default `gis` you can, but that's out of the scope of this document. If you've only got 2Gb or so of memory you'll also want to reduce `num_threads` to 2. `URI=/hot/` was chosen so that the tiles generated here can more easily be used in place of the HOT tile layer at OpenStreetMap.org. You can use something else here, but `/hot/` is as good as anything.
 
 When this guide was first written, the version of Mapnik provided by Ubuntu 22.04 was 3.1, and the `plugins_dir` setting in the `[mapnik]` part of the file was `/usr/lib/mapnik/3.1/input`. That "3.1" may change again in the future. If an error occurs when trying to render tiles such as this:
 

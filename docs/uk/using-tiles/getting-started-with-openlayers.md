@@ -10,7 +10,7 @@ lang: uk
 
 [OpenLayers](http://openlayers.org/){: target=blank}&nbsp;– це багатофункціональна бібліотека JavaScript для показу мап. Вона розповсюджується на умовах дозвільної Ліцензії BSD для коду з відкритими сирцями, тож її можна використовувати на будь-якому сайті без побоювань порушення юридичних норм. Сирці бібліотеки доступні на [GitHub](https://github.com/openlayers/ol3/){: target=blank}.
 
-Радимо ознайомитись з детальними [прикладами](http://openlayers.org/en/latest/examples/){: target=blank} та [описом API](http://openlayers.org/en/latest/apidoc/){: target=blank} з офіційного сайту для детальнішого опрацювання.
+<!-- Радимо ознайомитись з детальними [прикладами](http://openlayers.org/en/latest/examples/){: target=blank} та [описом API](http://openlayers.org/en/latest/apidoc/){: target=blank} з офіційного сайту для детальнішого опрацювання. -->
 
 ## Швидкий старт
 

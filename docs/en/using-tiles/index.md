@@ -12,9 +12,9 @@ You can switch a website to OpenStreetMap in under an hour. Choose a JavaScript 
 
 Unlike commercial online map providers, OpenStreetMap does not provide an “official” JavaScript library which you are required to use. Rather, you can use any library that meets your needs. The most popular is Leaflet, an open-source library. OpenLayers 3, another well know library, can also be a good fit.
 
-[Getting started with Leaflet – a light web maps library](/using-tiles/getting-started-with-leaflet/)
+[Getting started with Leaflet – a light web maps library](/using-tiles/getting-started-with-leaflet.md)
 
-[Getting started with Openlayers –  a full feature library for web maps](/using-tiles/getting-started-with-openlayers/)
+[Getting started with Openlayers – a full feature library for web maps](/using-tiles/getting-started-with-openlayers.md)
 
 ## Choosing a tile provider
 

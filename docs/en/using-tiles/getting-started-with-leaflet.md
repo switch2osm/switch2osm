@@ -19,6 +19,10 @@ Copy the following content to a file [leaflet.html](leaflet.html){: target=_blan
 --8<-- "docs/en/using-tiles/leaflet.html"
 ```
 
+See the official website for a detailed explanation of the code. [^1]
+
+[^1]: Quick Start&nbsp;– <https://leafletjs.com/examples/quick-start/>{: target=blank}
+
 ## Further links
 
 You want to …

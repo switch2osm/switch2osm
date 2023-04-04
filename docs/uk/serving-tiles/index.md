@@ -30,7 +30,7 @@ lang: uk
 
 * [Geofabrik](https://download.geofabrik.de/){: target=_blank} (країни та регіони)
 * [Protomaps Extracts](https://protomaps.com/extracts){: target=_blank} (щохвилинні оновлення міст та невеличких країн)
-* [download.openstreetmap.fr](http://download.openstreetmap.fr/){: target=_blank}
+* [download.openstreetmap.fr](https://download.openstreetmap.fr/){: target=_blank}
 
 ## Інструментарій
 

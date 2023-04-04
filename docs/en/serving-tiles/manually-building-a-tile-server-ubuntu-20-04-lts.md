@@ -2,7 +2,6 @@
 layout: docs
 title: Manually building a tile server (20.04 LTS)
 dist: Ubuntu 20.04
-maintainers: Debian and Ubuntu maintainers
 dl_timestamp: "2020-05-02T20:59:02Z"
 lang: en
 ---
@@ -203,7 +202,7 @@ The style we'll use here is the one that use by the "standard" map on the openst
 
 The home of "OpenStreetMap Carto" on the web is <https://github.com/gravitystorm/openstreetmap-carto/>{: target=_blank} and it has it's own installation instructions at <https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md>{: target=_blank} although we'll cover everything that needs to be done here.
 
-Here we're assuming that we're storing the stylesheet details in a directory below `src` below the home directory of the `renderaccount` user (or whichever other one you are using)
+Here we're assuming that we're storing the stylesheet details in a directory below `~/src` below the home directory of the `renderaccount` user (or whichever other one you are using)
 
 ```sh
 cd ~/src
@@ -259,43 +258,33 @@ osm2pgsql -d gis --create --slim  -G --hstore \
 It's worth explaining a little bit about what those options mean:
 
 `-d gis`
-
 : The database to work with (`gis` used to be the default; now it must be specified).
 
 `--create`
-
 : Load data into an empty database rather than trying to append to an existing one.
 
 `--slim`
-
 : osm2pgsql can use different table layouts; `slim` tables works for rendering.
 
 `-G`
-
 : Determines how multipolygons are processed.
 
 `--hstore`
-
 : Allows tags for which there are no explicit database columns to be used for rendering.
 
-`--tag-transform-script`
-
+`--tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua`
 : Defines the lua script used for tag processing. This an easy is a way to process OSM tags before the style itself processes them, making the style logic potentially much simpler.
 
 `-C 2500`
-
 : Allocate 2.5 Gb of memory to osm2pgsql to the import process. If you have less memory you could try a smaller number, and if the import process is killed because it runs out of memory you'll need to try a smaller number or a smaller OSM extract.
 
 `--number-processes 1`
-
 : Use 1 CPU. If you have more cores available you can use more.
 
-`-S`
-
+`-S ~/src/openstreetmap-carto/openstreetmap-carto.style`
 : Create the database columns in this file (actually these are unchanged from "openstreetmap-carto")
 
 `~/data/azerbaijan-latest.osm.pbf`
-
 : The final argument is the data file to load.
 
 That command will complete with something like "Osm2pgsql took 238s overall".
@@ -349,8 +338,7 @@ A couple of lines in here may need changing. In the `renderd` section:
 num_threads=4
 ```
 
-If you've only got 2Gb or so of memory you'll want to reduce this to 2.
-The `ajt` section corresponds to a "named map style" called `ajt`. You can have more than one of these sections if you want, provided that the URI is different for each. The `XML` line will need changing to something like:
+If you've only got 2Gb or so of memory you'll want to reduce this to 2. The `ajt` section corresponds to a "named map style" called `ajt`. You can have more than one of these sections if you want, provided that the URI is different for each. The `XML` line will need changing to something like:
 
 ```ini
 XML=/home/renderaccount/src/openstreetmap-carto/mapnik.xml

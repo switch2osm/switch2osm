@@ -8,7 +8,7 @@ lang: uk
 
 Щодня зʼявляються мільйони нових оновлень на мапі, щоб не допустити, щоб ваша мапа стала «застарілою», ви можете регулярно оновлювати дані, які використовуються для створення тайлів.
 
-З переходом на останню версію `osm2pgsql` (версія 1.4.2 та свіжіше) оновлювати дані стало на багато простіше ніж раніш. Ця версія розповсюджується в складі Ubuntu 22.04, її можна встановити слідуючи [інструкції з osm2pgsql.org](https://osm2pgsql.org/doc/install.html){: target=_blank}. Разом з osm2pgsql йде [osm2pgsql-replication](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database){: target=_blank}&nbsp;– що надає порівняно простий спосіб підтримувати дані в базі в актуальному стані. Більш гнучким способом буде безпосередній виклик PyOsmium, [тут докладніше](/serving-tiles/updating-as-people-edit-pyosmium/) про це.
+З переходом на останню версію `osm2pgsql` (версія 1.4.2 та свіжіше) оновлювати дані стало на багато простіше ніж раніш. Ця версія розповсюджується в складі Ubuntu 22.04, її можна встановити слідуючи [інструкції з osm2pgsql.org](https://osm2pgsql.org/doc/install.html){: target=_blank}. Разом з osm2pgsql йде [osm2pgsql-replication](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database){: target=_blank}&nbsp;– що надає порівняно простий спосіб підтримувати дані в базі в актуальному стані. Більш гнучким способом буде безпосередній виклик `PyOsmium`, [тут докладніше](/serving-tiles/updating-as-people-edit-pyosmium/) про це.
 
 Ви можете налаштувати отримання даних з різних джерел. OpenStreetMap надає можливість отримувати щохвилинні, щогодинні та щоденні оновлення, інші джерела можуть надавати щоденні оновлення, наприклад Geofabrik надає щоденні оновлення регіональних витягів даних, які можна отримати на [download.geofabrik.de](http://download.geofabrik.de/index.html){: target=_blank}.
 
@@ -85,7 +85,7 @@ render_expired --map=s2o --min-zoom=13 --touch-from=13 --delete-from=19 --max-zo
 rm /var/cache/renderd/dirty_tiles.txt
 ```
 
-що збігається з [типовими параметрами](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/openstreetmap-tiles-update-expire#L58){: target=_blank}, які використовуються в скрипті для osmosis&nbsp;- тайли до z12 ігноруються, тайли масштабів від z13 до z19 позначаються як dirty, а тайли на 20-у масштаби вилучаються. Приклад можна також знайти [тут](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/expire_tiles.sh){: target=_blank}.
+що збігається з [типовими параметрами](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/openstreetmap-tiles-update-expire#L58){: target=_blank}, які використовуються в скрипті для osmosis&nbsp;- тайли до z12 ігноруються, тайли масштабів від z13 до z19 позначаються як `dirty`, а тайли на 20-у масштаби вилучаються. Приклад можна також знайти [тут](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/expire_tiles.sh){: target=_blank}.
 
 Далі:
 
@@ -194,7 +194,7 @@ render: file:///var/cache/renderd/tiles/s2o/18/17/245/244/200/0.meta
 Read and expanded 42800 tiles from list.
 ```
 
-по завершеню будуть йти підсумки:
+по завершенню будуть йти підсумки:
 
 ```log
 Read and expanded 121200 tiles from list.
@@ -245,8 +245,7 @@ Jun  5 16:36:58 ubuntuvm75 renderd[5838]: Connection 0, fd 5 closed, now 0 left,
 
 ## Використання щохвилинних оновлень з openstreetmap.org
 
-Також можна використовувати оновлення з openstreetmap.org.  
-Вони охоплюють весь світ, через що будуть більшими, ніж набір оновлень за той самий проміжок часу для якогось регіону зі, скажімо напр. Geofabrik. Налаштуємо це
+Також можна використовувати оновлення з openstreetmap.org. Вони охоплюють весь світ, через що будуть більшими, ніж набір оновлень за той самий проміжок часу для якогось регіону зі, скажімо напр. Geofabrik. Налаштуємо це
 
 ```sh
 sudo -u _renderd \

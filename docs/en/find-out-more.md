@@ -46,4 +46,4 @@ Switch2osm is a community driven site coordinated by [Richard Fairhurst](http://
 
 Comments or suggestions? Please make contact via IRC at the first instance.
 
-If you want to get in touch with the local community: contact [forum](https://community.openstreetmap.org/){: target=_blank} or other Communication channels.
+If you would like to contact the local community, please get in touch to them via the [forum](https://community.openstreetmap.org/){: target=_blank} or other communication channel.

@@ -59,7 +59,7 @@ In this example, the date shown there corresponds to the date visible [on this p
 
 ### Creating scripts to apply updates
 
-Next, we'll create somewhere for expiry logfiles to be written and scripts to apply any pending updates and expire any affected tiles. When we expire a tile we can rerender it, mark it as dirty, or delete it.
+Next, we'll create somewhere for expiry logfiles to be written and scripts to apply any pending updates and expire any affected tiles. When we expire a tile we can rerender it, mark it as `dirty`, or delete it.
 
 ```sh
 sudo mkdir /var/log/tiles
@@ -76,7 +76,7 @@ render_expired --map=s2o --min-zoom=13 --max-zoom=20 \
 rm /var/cache/renderd/dirty_tiles.txt
 ```
 
-The `dirty` tile list needs to be writable by the `_renderd` account that we will run this script from. See the [man page](https://manpages.ubuntu.com/manpages/jammy/en/man1/render_expired.1.html){: target=_blank} for possible settings for the other parameters. The example above will try and rerender all dirty tiles from zoom level 13 upwards. A more realistic example would be something like:
+The `dirty` tile list needs to be writable by the `_renderd` account that we will run this script from. See the [man page](https://manpages.ubuntu.com/manpages/jammy/en/man1/render_expired.1.html){: target=_blank} for possible settings for the other parameters. The example above will try and rerender all `dirty` tiles from zoom level 13 upwards. A more realistic example would be something like:
 
 ```sh title="expire_tiles.sh"
 #!/bin/bash
@@ -85,7 +85,7 @@ render_expired --map=s2o --min-zoom=13 --touch-from=13 --delete-from=19 --max-zo
 rm /var/cache/renderd/dirty_tiles.txt
 ```
 
-which matches the [defaults](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/openstreetmap-tiles-update-expire#L58){: target=_blank} that the older osmosis scripts used - tiles up to zoom level 12 are ignored, tiles from zoom levels 13 to 19 are marked as dirty and zoom level 20 tiles are deleted. That example can also be found [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/expire_tiles.sh){: target=_blank}.
+which matches the [defaults](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/openstreetmap-tiles-update-expire#L58){: target=_blank} that the older osmosis scripts used - tiles up to zoom level 12 are ignored, tiles from zoom levels 13 to 19 are marked as `dirty` and zoom level 20 tiles are deleted. That example can also be found [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/expire_tiles.sh){: target=_blank}.
 
 Next:
 
@@ -110,7 +110,7 @@ osm2pgsql-replication \
     --expire-output=/var/cache/renderd/dirty_tiles.txt
 ```
 
-Everything in the "osm2pgsql-replication update" line after `--` is passed as parameters to osm2pgsql - they will all need to match what the database was loaded with in the first place. Before the `--`, `-d gis` just defines what database we're using and `--max-diff-size 10` how much data to process at once, but note that osm2pgsql-replication will actually repeat downloading data and updating the database until there is no more to process, which may take some time. The `--max diff-size` determines how much data is fetched on each iteration. The `--post-processing /usr/local/sbin/expire_tiles.sh` just calls our other script.
+Everything in the `osm2pgsql-replication update` line after `--` is passed as parameters to osm2pgsql - they will all need to match what the database was loaded with in the first place. Before the `--`, `-d gis` just defines what database we're using and `--max-diff-size 10` how much data to process at once, but note that `osm2pgsql-replication` will actually repeat downloading data and updating the database until there is no more to process, which may take some time. The `--max diff-size` determines how much data is fetched on each iteration. The `--post-processing /usr/local/sbin/expire_tiles.sh` just calls our other script.
 
 Make both scripts executable:
 

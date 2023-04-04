@@ -70,13 +70,12 @@ psql
 \c gis
 ```
 
-(у відповідь ви побачите:
-"You are now connected to database `'gis'` as user `'postgres'`" <br/>
-\["Тепер ви підʼєднані до бази даних `'gis'` як користувач `'postgres'`"\])
+(у відповідь ви побачите: "You are now connected to database 'gis' as user 'postgres'" <br/>\["Тепер ви підʼєднані до бази даних 'gis' як користувач 'postgres'"\])
 
 ```sql
 CREATE EXTENSION postgis;
 ```
+
 (у відповідь ви побачите: CREATE EXTENSION)
 
 ```sql
@@ -178,13 +177,13 @@ python
 
 ## Встановлення mod_tile та renderd
 
-Далі, ми встановимо mod_tile та renderd. `mod_tile`&nbsp;– модуль Apache, який обробляє запити на показ тайлів; `renderd`&nbsp;– фонова служба, яка відповідає за генерацію тайлів на запит "mod_tile". Ми будемо використовувати гілку "switch2osm" з <https://github.com/SomeoneElseOSM/mod_tile>{: target=_blank}, яка своєю чергою базується на коді <https://github.com/openstreetmap/mod_tile>{: target=_blank}, але змінена таким чином, щоб працювати на {{ dist }}, також вона містить пару інших змін потрібних для роботи зі стандартним сервером на Ubuntu на відміну від того, що використовується на тайлових серверах OpenStreetMap.
+Далі, ми встановимо mod_tile та renderd. `mod_tile`&nbsp;– модуль Apache, який обробляє запити на показ тайлів; `renderd`&nbsp;– фонова служба, яка відповідає за генерацію тайлів на запит `mod_tile`. Ми будемо використовувати гілку `switch2osm` з <https://github.com/SomeoneElseOSM/mod_tile>{: target=_blank}, яка своєю чергою базується на коді <https://github.com/openstreetmap/mod_tile>{: target=_blank}, але змінена таким чином, щоб працювати на {{ dist }}, також вона містить пару інших змін потрібних для роботи зі стандартним сервером на Ubuntu на відміну від того, що використовується на тайлових серверах OpenStreetMap.
 
 ### Компіляція mod_tile з сирців
 
 ```sh
 cd ~/src
-git clone -b switch2osm https://github.com/SomeoneElseOSM/mod_tile
+git clone -b switch2osm git://github.com/SomeoneElseOSM/mod_tile.git
 cd mod_tile
 ./autogen.sh
 ```
@@ -237,7 +236,7 @@ git clone https://github.com/gravitystorm/openstreetmap-carto
 cd openstreetmap-carto
 ```
 
-Далі, встановимо потрібну версію компілятора "carto". Це більш свіжа версія, ніж та що є в Ubuntu, тож нам потрібно зробити наступне:
+Далі, встановимо потрібну версію компілятора `carto`. Це більш свіжа версія, ніж та що є в Ubuntu, тож нам потрібно зробити наступне:
 
 ```sh
 sudo apt-get install nodejs-dev node-gyp libssl1.0-dev
@@ -354,9 +353,9 @@ scripts/get-fonts.sh
 sudo nano /usr/local/etc/renderd.conf
 ```
 
-Нам потрібно змінити пару рядків. В розділі "renderd":
+Нам потрібно змінити пару рядків. В розділі `renderd`:
 
-```sh
+```ini
 num_threads=4
 ```
 
@@ -412,14 +411,14 @@ sudo a2enconf mod_tile
 sudo nano /etc/apache2/sites-available/000-default.conf
 ```
 
-Додайте наступне між рядками `ServerAdmin` та "DocumentRoot":
+Додайте наступне між рядками `ServerAdmin` та `DocumentRoot`:
 
 ```ini
 LoadTileConfigFile /usr/local/etc/renderd.conf
 ModTileRenderdSocketName /var/run/renderd/renderd.sock
-## Час очікування, перш ніж відмовитись від генерації тайлу
+# Час очікування, перш ніж відмовитись від генерації тайлу
 ModTileRequestTimeout 0
-## Час очікування, перш ніж відмовитись від генерації відсутнього тайлу
+# Час очікування, перш ніж відмовитись від генерації відсутнього тайлу
 ModTileMissingRequestTimeout 30
 ```
 
@@ -435,11 +434,11 @@ sudo service apache2 reload
 Якщо ви перейдете в оглядачі на: `http://ip.вашого.сервера/index.html`, ви маєте побачити стандартну сторінку apache в Ubuntu&nbsp;– "It works!".
 
 !!! tip "Порада"
-    якщо ви не знаєте IP адресу призначену серверу, її можна дізнатись за допомогою команди "ifconfig"&nbsp;– якщо мережеві налаштування не надто складні, то це має бути щось типу `inet addr` відмінне від `127.0.0.1`.
+    якщо ви не знаєте IP адресу призначену серверу, її можна дізнатись за допомогою команди `ifconfig`&nbsp;– якщо мережеві налаштування не надто складні, то це має бути щось типу `inet addr` відмінне від `127.0.0.1`.
 
 Якщо ви використовуєте сервер постачальника послуг хостингу, то, швидше за все, внутрішня адреса вашого сервера буде відрізнятися від зовнішньої адреси, яка була надана вам, але ця зовнішня IP-адреса вже буде надіслана вам, і, ймовірно, ви її використовуєте зараз для доступу до сервера.
 
-Зауважте, що це лише сайт "http" (порт 80)&Зауважте, що це лише сайт `http` (порт 80)&nbsp;– вам потрібно витратити трохи більше часу для налаштування Apache на використання `https`, але це виходить за межі цих інструкцій. Однак якщо ви використовуєте "Let's Encrypt" для отримання сертифікатів, інструкція зі встановлення може також містити поради щодо налаштування сайту Apache для використання https.
+Зауважте, що це лише сайт `http` (порт 80)&nbsp;– вам потрібно витратити трохи більше часу для налаштування Apache на використання `https`, але це виходить за межі цих інструкцій. Однак якщо ви використовуєте "Let's Encrypt" для отримання сертифікатів, інструкція зі встановлення може також містити поради щодо налаштування сайту Apache для використання https.
 
 ### Перший запуск renderd
 

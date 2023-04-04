@@ -8,6 +8,9 @@ edit_uri: edit/main/docs/
 
 copyright: © 2013–2023 OpenStreetMap and contributors, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
 
+extra_css:
+  - stylesheets/extra.css
+
 theme: 
   name: material
 
@@ -49,10 +52,10 @@ theme:
 extra:
   alternate:
     - name: English
-      link: en/ 
+      link: ./en/ 
       lang: en
     - name: Українська
-      link: uk/
+      link: ./uk/
       lang: uk
 
   social:
