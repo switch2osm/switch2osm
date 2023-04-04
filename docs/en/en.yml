@@ -1,0 +1,27 @@
+extra:
+    alternate:
+      - name: English
+        link: ./en/ 
+        lang: en
+
+plugins:
+  - i18n:
+      nav_translations:
+        en:
+          Home: Switch2OSM
+          Why: Why Switch?
+          Cases: Case Studies
+          Basics: The Basics
+          Using: Using Tiles
+          Own tiles: Switch to using OSM tiles
+          Leaflet: Getting started with Leaflet
+          OpenLayers: Getting started with OpenLayers
+          Serving: Serving Tiles
+          Serving tiles: Serving your own tiles
+          Manually: Manually building a tile server
+          Docker: 
+          Munin: 
+          Updating: Updating your database as people edit OpenStreetMap
+          Other: 
+          Providers: Providers
+          More: 
