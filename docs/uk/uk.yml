@@ -2,15 +2,15 @@ uk:
   extra:
       alternate:
         - name: Українська
-          link: ./uk/
+          link: ./uk/ 
           lang: uk
 
   plugins:
     - i18n:
         nav_translations:
-          uk:
+          en:
             Home: Switch2OSM
-            Why: Навіщо?
+            Why: "Навіщо?"
             Cases: Вже з OSM
             Basics: Основи
             Using: Мапа
@@ -19,10 +19,10 @@ uk:
             OpenLayers: За допомогою OpenLayers
             Serving: Власний сервер
             Serving tiles: Робимо власні тайли
-            Manually: Розгортаємо сервер вручну 
+            Manually: Розгортаємо сервер вручну
             Docker: 
             Munin: 
             Updating: Оновлення бази даних правками з OpenStreetMap
             Other: Інше
             Providers: Постачальники
-            More:
+            More: 
