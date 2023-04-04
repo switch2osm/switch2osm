@@ -58,7 +58,7 @@ extra:
       link: ./uk/
       lang: uk
     - name: Help to translate
-      link: https://app.transifex.com/osm-ua/switch2osm/dashboard/
+      link: https://app.transifex.com/osm-ua/switch2osm/dashboard/#
 
   social:
     - icon: fontawesome/solid/globe
