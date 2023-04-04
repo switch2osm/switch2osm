@@ -2,7 +2,7 @@ uk:
   extra:
       alternate:
         - name: Українська
-          link: ./uk/ 
+          link: ./uk/
           lang: uk
 
   plugins:
@@ -25,4 +25,4 @@ uk:
             Updating: Оновлення бази даних правками з OpenStreetMap
             Other: Інше
             Providers: Постачальники
-            More: 
+            More:
