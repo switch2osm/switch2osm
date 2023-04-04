@@ -8,9 +8,9 @@ uk:
   plugins:
     - i18n:
         nav_translations:
-          en:
+          uk:
             Home: Switch2OSM
-            Why: "Навіщо?"
+            Why: Навіщо?
             Cases: Вже з OSM
             Basics: Основи
             Using: Мапа
