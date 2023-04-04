@@ -1,27 +1,28 @@
-extra:
-    alternate:
-      - name: Українська
-        link: ./uk/
-        lang: uk
+uk:
+  extra:
+      alternate:
+        - name: Українська
+          link: ./uk/
+          lang: uk
 
-plugins:
-  - i18n:
-      nav_translations:
-        uk:
-          Home: Switch2OSM
-          Why: Навіщо?
-          Cases: Вже з OSM
-          Basics: Основи
-          Using: Мапа
-          Own tiles: Використання тайлів
-          Leaflet: За допомогою Leaflet
-          OpenLayers: За допомогою OpenLayers
-          Serving: Власний сервер
-          Serving tiles: Робимо власні тайли
-          Manually: Розгортаємо сервер вручну 
-          Docker: 
-          Munin: 
-          Updating: Оновлення бази даних правками з OpenStreetMap
-          Other: Інше
-          Providers: Постачальники
-          More:
+  plugins:
+    - i18n:
+        nav_translations:
+          uk:
+            Home: Switch2OSM
+            Why: Навіщо?
+            Cases: Вже з OSM
+            Basics: Основи
+            Using: Мапа
+            Own tiles: Використання тайлів
+            Leaflet: За допомогою Leaflet
+            OpenLayers: За допомогою OpenLayers
+            Serving: Власний сервер
+            Serving tiles: Робимо власні тайли
+            Manually: Розгортаємо сервер вручну 
+            Docker: 
+            Munin: 
+            Updating: Оновлення бази даних правками з OpenStreetMap
+            Other: Інше
+            Providers: Постачальники
+            More:
