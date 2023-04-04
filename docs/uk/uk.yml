@@ -19,7 +19,7 @@ uk:
             OpenLayers: За допомогою OpenLayers
             Serving: Власний сервер
             Serving tiles: Робимо власні тайли
-            Manually: Розгортаємо сервер вручну 
+            Manually: Розгортаємо сервер вручну
             Docker: 
             Munin: 
             Updating: Оновлення бази даних правками з OpenStreetMap

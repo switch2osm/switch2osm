@@ -1,28 +1,43 @@
 en:
   extra:
       alternate:
+        # Replace "English" with the name of the translated language
         - name: English
-          link: ./en/ 
+          # ISO code of the translated language
+          link: ./en/
+          # ISO code of the translated language
           lang: en
 
   plugins:
     - i18n:
         nav_translations:
           en:
+            # Menu item name for the /index.md
             Home: Switch2OSM
+            # Menu item name for the /why-switch.md
             Why: Why Switch?
+            # Menu item name for the /case-studies.md
             Cases: Case Studies
+            # Menu item name for the /the-basics.md
             Basics: The Basics
+            # Menu item name for the "Using Tiles" tab
             Using: Using Tiles
+            # Menu item name for the side menu "Switch to using OSM tiles"
             Own tiles: Switch to using OSM tiles
+            # Menu item name for the side menu
             Leaflet: Getting started with Leaflet
+            # Menu item name for the side menu
             OpenLayers: Getting started with OpenLayers
+            # Menu item name for the "Serving Tiles" tab
             Serving: Serving Tiles
             Serving tiles: Serving your own tiles
             Manually: Manually building a tile server
             Docker: 
             Munin: 
             Updating: Updating your database as people edit OpenStreetMap
+            # Menu item name for the /other-uses.md
             Other: Other Uses
+            # Menu item name for the /providers.md
             Providers: Providers
-            More: 
+            # Menu item name for the /find-out-more.md
+            More:
