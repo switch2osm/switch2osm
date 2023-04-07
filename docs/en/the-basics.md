@@ -10,14 +10,14 @@ lang: en
 
 Your current map provider gives you two things:
 
-* A set of ’tiles’ (square map images) that are placed together to make the map
+* A set of `tiles` (square map images) that are placed together to make the map
 * A JavaScript API, or equivalent library for mobile apps, to view them
 
 To switch to OpenStreetMap, you’ll need to replace both of these.
 
 ## The tiles
 
-![Tiles](/assets/img/tiles.png)
+![Tiles](/assets/img/tiles.png){ align=left }
 The map tiles, images of (usually) 256 x 256 pixels each, are drawn (“rendered”) from a map database.
 
 If you currently use Google Maps, you’ll be using Google’s map tiles, hosted at google.com. Because the OpenStreetMap Foundation is a non-profit organisation with limited resources, you can’t just slot in the tiles from openstreetmap.org as a replacement (see the [Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/){: target=blank}). Instead, you can:
