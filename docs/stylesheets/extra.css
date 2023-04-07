@@ -1,53 +1,29 @@
-.col-home-text{
-display: inline-block;
-width: 77%;
-margin: 0;
-@media(max-width: #{ $sc-small}){
-    width: 100%;
+.row {
+    display: flex;
+    /* padding-left: 50px;
+    padding-right: 50px; */
 }
-    p {
-    padding: 30px 10px;
-    }
+.column {
+    padding: 0px;
 }
-
-.home-testimonials-text{
-display: inline-grid;
-width: 75%;
-margin: 0;
-@media(max-width: #{ $sc-small}){
-    width: 100%;
-}
+.column.right-side {
+    flex: 1;
+    padding-left: 20px;
 }
 
-.col-home-img {
-@media(max-width: #{ $sc-small}){
-    margin: 0;
-    width: 100%;
+.column.left-side {
+    flex: 1;
+    padding-right: 20px;
 }
-margin: 0px 40px 0px 0px;
-width: 17%;
-display: inline-block;
-img {
-    @media(max-width: #{ $sc-small}){
-    margin: 0;
-    padding: 0 50px;
-    }
-    margin: -80px 0 0 35px;
-}
-}
-
-.home-testimonials {
-margin: 0px 50px 0px 20px;
-width: 12%;
-display: inline-block;
-@media(max-width: #{ $sc-small}){
-    display: none;
-}
-img {
-padding: 55px 15px 0 0;
-    }
+.column.main {
+    flex: 5;
 }
 
 .quote {
-color: #9c9e9a;
+    color: #9c9e9a;
+}
+
+.column.left-side p span {
+    color: LightGray; 
+    font-size: 10em;
 }
