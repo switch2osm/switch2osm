@@ -6,7 +6,7 @@ repo_name: Andygol/switch2osm-mkdocs
 
 edit_uri: edit/main/docs/
 
-copyright: © 2013–2023 OpenStreetMap and contributors, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
+copyright: © 2013–2023 OpenStreetMap and contributors, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
 
 extra_css:
   - stylesheets/extra.css
@@ -15,7 +15,8 @@ theme:
   name: material
 
   favicon: assets/favicon.png
-  logo: assets/img/open-street-map-medium.png
+  icon:
+    logo: simple/openstreetmap
 
   palette: 
 
@@ -23,7 +24,7 @@ theme:
     - media: "(prefers-color-scheme: light)"
       primary: lime
       scheme: default
-      accent: purple
+      accent: deep orange
       toggle:
         icon: material/weather-sunny 
         name: Switch to dark mode
@@ -85,6 +86,10 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.blocks.html 
 
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -133,6 +138,7 @@ plugins:
         - uk
   - macros
   - ezlinks
+  - glightbox
   # - section-index
   
         
