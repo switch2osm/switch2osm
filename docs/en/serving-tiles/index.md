@@ -8,7 +8,9 @@ lang: en
 
 Tiles from a third-party provider are the simplest way to make the switch to OpenStreetMap, and offer clarity of cost. However, if you’d like to take full control of your destiny, you can render and serve your own tiles. This section explains how.
 
-![serving tiles](serving-tiles.png)
+![raw osm data](/assets/img/raw-osm-data.png){ data-title="Raw OSM data" data-description="Raw OpenStreetMap data with the default map paint style in JOSM, retrieved via OSM API for editing. https://www.openstreetmap.org/#map=16/18.0253/-63.0485" } | ![tile server](/assets/img/vector_tiles_pyramid_structure_window.png){ data-title="Map tiles pyramid" data-description="Each zoom level of the map is cut into small parts called tiles. Usually, the size of one tile is 256×256 pixels." } | ![map usage](/assets/img/map-usage.png){ data-title="Tiles are served in your website" data-description="The tiles prepared by your tile server are then displayed in the client's web browser or other application." }
+:--:|:--:|:--:
+:simple-openstreetmap: :material-database-import: OpenStreetMap raw data | :material-server: :material-checkerboard-plus: Your own tile server | :fontawesome-solid-users: :octicons-browser-16: Users browsing your website
 
 ## Is it for you?
 

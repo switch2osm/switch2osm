@@ -8,7 +8,9 @@ lang: uk
 
 Тайли від сторонніх постачальників&nbsp;– це найпростіший спосіб переходу на OpenStreetMap, до того ж він дозволяє точно виміряти ваші витрати. Однак, якщо ви бажаєте мати повний контроль над долею, ви можете створювати та розповсюджувати ваші власні тайли. В цьому розділі йдеться про те, як це зробити.
 
-![serving tiles](serving-tiles.png)
+![сирцеві дані osm](/assets/img/raw-osm-data.png){ data-title="Сирцеві дані OSM" data-description="Сирцеві дані OpenStreetMap, зі стандартним стилем показу даних в JOSM, отримані для редагування через OSM API. https://www.openstreetmap.org/#map=16/18.0253/-63.0485" } | ![тайловий сервер](/assets/img/vector_tiles_pyramid_structure_window.png){ data-title="Піраміда тайлів мапи" data-description="Кожен рівень масштабування розбивається на маленькі шматки, які називаються тайлами. Зазвичай, розмір одного тайлу – 256×256 пікселів." } | ![використання мап](/assets/img/map-usage.png){ data-title="Тайли зібрані в мапу на вашому вебсайті" data-description="Тайли, створені вашим тайловим серером, потім показуються у вигляді цільної мапи в оглядачі клієнта чи в іншому застосунку." }
+:--:|:--:|:--:
+:simple-openstreetmap: :material-database-import: Сирцеві дані OpenStreetMap | :material-server: :material-checkerboard-plus: Ваш власний тайловий сервер | :fontawesome-solid-users: :octicons-browser-16: Відвідувачі переглядають мапу на вашому вебсайті
 
 ## Ви точно цього бажаєте?
 
