@@ -17,7 +17,7 @@ lang: uk
 ## Служби геокодування
 
 * [Gisgraphy](https://www.gisgraphy.com){: target=_blank}&nbsp;– геокодер з відкритими сирцями, який надає API/вебсервіси для прямого та зворотнього геокодування з автодоповненням, інтерполяцією, з відхиленням розташування, пошуком поруч, все це можна запускати як офлайн, так і у вигляді веб-служби. Він надає можливість імпортувати дані не тільки з OpenStreetMap, але й з Openadresses, Geonames та інших джерел.
-* [Nominatim](https://nominatim.org){: target=_blank}&nbsp;– програмне забезпечення, що використовується для геокодінгу на сайті <https://openstreetmap.org/>{: target=_blank} (місце ↔ координати).
+* [Nominatim](https://nominatim.org){: target=_blank}&nbsp;– програмне забезпечення, що використовується для геокодінгу на сайті OpenStreetMap (місце ↔ координати).
 * [OpenCage](https://opencagedata.com/){: target=_blank}&nbsp;– надає API для геокодінгу, що агрегує дані з Nominatim та інших відкритих джерел.
 * [OSMNames](https://osmnames.org/){: target=_blank} – містить перелік місць з OpenStreetMap. Доступний для завантаження. Посортований. З описом територій (bbox) та ієрархій. Придатний для геокодування.
 
