@@ -218,7 +218,7 @@ cd ~/src/openstreetmap-carto/
 sudo -u _renderd psql -d gis -f indexes.sql
 ```
 
-Скрипт має повідомити "CREATE INDEX" 14 разів.
+Скрипт має повідомити `CREATE INDEX` 14 разів.
 
 ### Завантаження Shapefile
 
