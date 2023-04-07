@@ -19,6 +19,12 @@ mkdocs serve
 
 Open <http://127.0.0.1:8000/switch2osm-mkdocs/> in your browser.
 
+## Translation
+
+![](assets/help-to-translate.png)
+
+Translation into other languages is carried out on [Transifex](https://app.transifex.com/osm-ua/switch2osm/dashboard/). Click "Help with translation" in the language switcher to get there.
+
 ## Copyright
 
 © 2013–2023 OpenStreetMap and contributors, [CC BY-SA](http://creativecommons.org/licenses/by-sa/2.0/)
