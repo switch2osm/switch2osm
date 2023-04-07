@@ -296,7 +296,7 @@ sudo -u _renderd /usr/local/sbin/update_tiles.sh
 
 Рекомендується очистити прапор "osm2pgsql-replication is running" під час перезапуску `renderd`. Щоб зробити це:
 
- ```sh
+```sh
 sudo nano /usr/lib/systemd/system/renderd.service
 ```
 
