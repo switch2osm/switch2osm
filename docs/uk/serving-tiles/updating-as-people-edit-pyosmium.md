@@ -136,7 +136,7 @@ sudo -u _renderd crontab -e
 
 Рекомендується очистити прапор "pyosmium is running" під час перезапуску `renderd`. Щоб зробити це:
 
- ```sh
+```sh
 sudo nano /usr/lib/systemd/system/renderd.service
 ```
 
