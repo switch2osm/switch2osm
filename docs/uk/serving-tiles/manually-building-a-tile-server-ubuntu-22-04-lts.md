@@ -310,7 +310,7 @@ sudo /etc/init.d/apache2 restart
 Apr 23 11:14:10 servername apachectl[2031]: [Sat Apr 23 11:14:10.190678 2022] [tile:notice] [pid 2031:tid 140608477239168] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/cache/renderd/tiles with extension .png and mime type image/png
 ```
 
-Далі, відкрийте в оглядачі `http://ip.вашого.сервера/index.html` (замініть ip.вашого.сервера на відповідну адресу). Ви маєте побачити типову сторінку сервера Apache2 встановленого в Ubuntu.
+Далі, відкрийте в оглядачі `http://ip.вашого.сервера/index.html` (замініть `ip.вашого.сервера` на відповідну адресу). Ви маєте побачити типову сторінку сервера Apache2 встановленого в Ubuntu.
 
 !!! tip "Порада"
     якщо ви не знаєте IP адресу призначену серверу, її можна дізнатись за допомогою команди `ifconfig`&nbsp;– якщо мережеві налаштування не надто складні, то це має бути щось типу `inet addr` відмінне від `127.0.0.1`.
