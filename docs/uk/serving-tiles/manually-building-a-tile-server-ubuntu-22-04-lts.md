@@ -248,7 +248,7 @@ scripts/get-fonts.sh
 
 ### Конфігурація renderd
 
-Налаштування `renderd` в Ubuntu 22.04 знаходяться у файлі `/etc/renderd.conf`. Відредагуємо його за допомогою текстового редактора, такого як nano:
+Налаштування `renderd` в {{ dist }} знаходяться у файлі `/etc/renderd.conf`. Відредагуємо його за допомогою текстового редактора, такого як nano:
 
 ```sh
 sudo nano /etc/renderd.conf
