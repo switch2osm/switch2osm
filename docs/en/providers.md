@@ -23,6 +23,7 @@ The following companies offer development services and consulting for sites wish
 * [Makina Corpus](https://makina-corpus.com/){: target=_blank}, France
 * [Mapbox](https://www.mapbox.com/){: target=_blank}, US
 * [MapTiler](https://www.maptiler.com/){: target=_blank}, Switzerland
+* [Maptoolkit](https://www.maptoolkit.com/){: target=_blank}, Germany/Austria
 * [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/){: target=_blank}, Germany
 * [SmartMaps by YellowMap](https://www.smartmaps.net/en/){: target=_blank}, Germany
 * [Stadia Maps](https://stadiamaps.com){: target=_blank}, US
@@ -41,6 +42,7 @@ The following companies host OpenStreetMap tiles.
 * [Mapbox](http://mapbox.com/){: target=_blank}, US
 * [MapTiler](https://www.maptiler.com/){: target=_blank}, Switzerland
 * [MapTiles API](https://www.maptilesapi.com/){: target=_blank}, US
+* [Maptoolkit](https://www.maptoolkit.com/){: target=_blank}, Germany/Austria
 * [Nextzen](https://www.nextzen.org/){: target=_blank}, US
 * [SmartMaps by YellowMap](https://www.smartmaps.net/en/){: target=_blank}, Germany
 * [Stadia Maps](https://stadiamaps.com){: target=_blank}, US
