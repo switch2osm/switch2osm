@@ -28,6 +28,8 @@ en:
             Leaflet: Getting started with Leaflet
             # Menu item name for the side menu
             OpenLayers: Getting started with OpenLayers
+            # Menu item name for the side menu
+            Vector Tiles: Power of Vector Map Tiles
             # Menu item name for the "Serving Tiles" tab
             Serving: Serving Tiles
             Serving tiles: Serving your own tiles
@@ -35,6 +37,10 @@ en:
             Docker: 
             Munin: 
             Updating: Updating your database as people edit OpenStreetMap
+            Serving vector tiles: Vector Map Tiles
+            # Steps to Serve Vector Map Tiles
+            Steps: General steps
+            TileServer GL: Getting started with TileServer GL
             # Menu item name for the /other-uses.md
             Other: Other Uses
             # Menu item name for the /providers.md

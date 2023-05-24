@@ -113,6 +113,7 @@ nav:
     - Own tiles: /using-tiles/index.md
     - Leaflet: using-tiles/getting-started-with-leaflet.md
     - OpenLayers: using-tiles/getting-started-with-openlayers.md
+    - Vector Tiles: using-tiles/vector-map-tiles.md
   - Serving:
     - Serving tiles: /serving-tiles/index.md
     - Manually:
@@ -124,8 +125,11 @@ nav:
     - Munin: serving-tiles/monitoring-using-munin.md
     - Updating: 
       - osm2pgsql: serving-tiles/updating-as-people-edit-osm2pgsql-replication.md
-      - pyosmioum: serving-tiles/updating-as-people-edit-pyosmium.md
+      - pyosmium: serving-tiles/updating-as-people-edit-pyosmium.md
       - osmosis: serving-tiles/updating-as-people-edit-osmosis.md
+    - Serving vector tiles: 
+      - Steps: serving-tiles/serving-vector-tiles.md
+      - TileServer GL: serving-tiles/serving-vector-tiles-with-tileserver-gl.md
   - Other: other-uses.md
   - Providers: providers.md
   - More: find-out-more.md
@@ -163,12 +167,16 @@ plugins:
           Own tiles: Switch to using OSM tiles
           Leaflet: Getting started with Leaflet
           OpenLayers: Getting started with OpenLayers
+          Vector Tiles: Power of Vector Map Tiles
           Serving: Serving Tiles
           Serving tiles: Serving your own tiles
           Manually: Manually building a tile server
           Docker: 
           Munin: 
           Updating: Updating your database as people edit OpenStreetMap
+          Serving vector tiles: Vector Map Tiles
+          Steps: General steps
+          TileServer GL: Getting started with TileServer GL
           Other: 
           Providers: Providers
           More: 
