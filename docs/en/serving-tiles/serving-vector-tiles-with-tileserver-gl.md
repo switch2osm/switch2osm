@@ -110,3 +110,6 @@ docker run -d --rm -it -v $(pwd)/opentiles:/data -p 8080:80 klokantech/tileserve
 Your tile server is now running, and you can access it at `http://[server_address]:8080/`.
 
 TileServer GL offers a flexible and scalable solution for serving your own map tiles. By following these steps, you can set up your tile server, configure data sources and map styles, and start serving vector or raster tiles to enhance your mapping applications. Refer to the TileServer GL documentation for more detailed instructions and advanced features to further customize your tile server setup.
+
+!!! tip
+    It is also useful to mention an article ["How to deploy an OSM tile server"](https://www.blef.fr/how-to-deploy-tile-server/){: target=_blank} written by Christophe Blefari. The article provides detailed instructions and guidance on deploying your own OpenStreetMap (OSM) tile server. It covers various aspects, including software installation, data preparation, styling, and server configuration.
