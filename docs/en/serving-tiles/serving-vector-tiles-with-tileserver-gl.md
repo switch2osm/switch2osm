@@ -17,7 +17,7 @@ Open your terminal or command prompt and run the following command to install Ti
 npm install -g tileserver-gl
 ```
 
-or you can utilize Docker Container
+or you can utilize Docker image
 
 ```sh
 docker pull klokantech/tileserver-gl:latest
