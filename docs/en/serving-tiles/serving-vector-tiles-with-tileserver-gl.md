@@ -70,9 +70,9 @@ Use one of the regional extracts for your data, for example
 wget https://download.openstreetmap.fr/extracts/europe/ukraine/kiev-latest.osm.pbf
 ```
 
-You can also create your own extract in different GIS formats using services <https://extract.bbbike.org>{: target=_blank}.
+You can also create your own extract in different GIS formats using services similar to <https://extract.bbbike.org>{: target=_blank}.
 
-Copy the downloaded OSM data (*.osm.pbf) into the `/opt/osm/tilemaker/build/` folder:
+Copy the downloaded OSM data (`*.osm.pbf`) into the `/opt/osm/tilemaker/build/` folder:
 
 ```sh
 cp *.osm.pbf /opt/osm/tilemaker/build/
