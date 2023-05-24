@@ -11,7 +11,7 @@ uk:
   plugins:
     - i18n:
         nav_translations:
-          en:
+          uk:
             # Menu item name for the /index.md
             Home: Switch2OSM
             # Menu item name for the /why-switch.md
