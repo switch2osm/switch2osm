@@ -1,0 +1,16 @@
+version: '2'
+
+# NOTE:
+# This file automatically overrides (merged with) docker-compose.yml
+# It is used for adding features required for local development:
+#
+
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Mount in the local directory into container
+      - .:/app
