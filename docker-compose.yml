@@ -1,0 +1,17 @@
+version: '2'
+
+# NOTE:
+# THIS IS FOR PRODUCTION BUILDS, see docker-compose.override.yml for additional config used for local dev
+# See docker-compose.override.yml which is combined with docker-compose.yml when an explicit docker-compose file is not specified: eg: "docker compose up"
+
+# Production build: docker compose -f docker-compose.yml build
+# Dev build: docker compose build
+
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - 8080:8080
