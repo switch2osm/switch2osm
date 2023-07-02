@@ -24,7 +24,7 @@ In order to build these components, a variety of dependencies need to be install
 Debian doesn't come with `sudo` by default, so we'll need to log on as `root` to do the first part:
 
 ```sh
---8<-- "docs/assets/serving-tiles/debian-deps.txt"
+--8<-- "docs/assets/serving-tiles/debian12-deps.txt"
 ```
 
 While still logged on as root we'll ensure that the main user account that we are using can `sudo` to root. You'll want to change `youruseraccount` to whatever account you are using in the line below. Don't try and do everything below as `root`; it won't work.
