@@ -17,7 +17,7 @@ These instructions are have been written and tested against a newly-installed De
 In order to build these components, a variety of dependencies need to be installed first.  Debian doesn't come with "sudo" by default, so we'll need to log on as root to do the first part:
 
     su -
-    apt install sudo screen locate libapache2-mod-tile renderd git tar unzip wget bzip2 apache2 lua5.1 mapnik-utils python3-mapnik python3-psycopg2 python3-yaml gdal-bin npm fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
+    apt install sudo screen locate libapache2-mod-tile renderd git tar unzip wget bzip2 apache2 lua5.1 mapnik-utils python3-mapnik python3-psycopg2 python3-yaml gdal-bin npm postgresql postgresql-contrib postgis postgresql-15-postgis-3 postgresql-15-postgis-3-scripts osm2pgsql net-tools curl
 
 While still logged on as root we'll ensure that the main user account that we are using can "sudo" to root.  You'll want to change "youruseraccount" to whatever account you are using in the line below.  Don't try and do everything below as root; it won't work.
 
