@@ -16,11 +16,11 @@ lang: uk
 
 І генерація тайлів, і їх розповсюдження вимагають наявності доволі потужного обладнання, особливо, якщо вам треба мати глобальне покриття та регулярні оновлення.
 
-Для розгортання власного тайлового сервера ми радимо використовувати [Ubuntu Linux](https://ubuntu.com/){: target=_blank} або [Debian 11](https://www.debian.org/releases/testing/){: target=_blank}.
+Для розгортання власного тайлового сервера ми радимо використовувати [Ubuntu Linux](https://ubuntu.com/){: target=_blank} або [Debian](https://www.debian.org/releases/){: target=_blank}.
 
 ## Варіанти
 
-1. Встановлення на [Debian 11](manually-building-a-tile-server-debian-11.md), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts.md), [Ubuntu 20.04](manually-building-a-tile-server-ubuntu-20-04-lts.md) або на [Ubuntu 18.04](manually-building-a-tile-server-ubuntu-18-04-lts.md).
+1. Встановлення на [Debian 12](manually-building-a-tile-server-debian-12.md), [Debian 11](manually-building-a-tile-server-debian-11.md), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts.md), [Ubuntu 20.04](manually-building-a-tile-server-ubuntu-20-04-lts.md) або на [Ubuntu 18.04](manually-building-a-tile-server-ubuntu-18-04-lts.md).
 
 2. Використання [docker](using-a-docker-container.md).
 
