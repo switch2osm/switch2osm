@@ -16,11 +16,11 @@ Tiles from a third-party provider are the simplest way to make the switch to Ope
 
 Both generating and serving tiles incur significant hardware requirements, especially if you need global coverage and regular updates.
 
-If you are setting up your own tile server, we recommend that you use [Ubuntu Linux](https://ubuntu.com/){: target=_blank} or [Debian 11](https://www.debian.org/releases/testing/){: target=_blank}.
+If you are setting up your own tile server, we recommend that you use [Ubuntu Linux](https://ubuntu.com/){: target=_blank} or [Debian](https://www.debian.org/releases/){: target=_blank}.
 
 ## The options
 
-1. Install locally on [Debian 11](manually-building-a-tile-server-debian-11.md), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts.md), [Ubuntu 20.04](manually-building-a-tile-server-ubuntu-20-04-lts.md) or [Ubuntu 18.04](manually-building-a-tile-server-ubuntu-18-04-lts.md).
+1. Install locally on [Debian 12](manually-building-a-tile-server-debian-12.md), [Debian 11](manually-building-a-tile-server-debian-11.md), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts.md), [Ubuntu 20.04](manually-building-a-tile-server-ubuntu-20-04-lts.md) or [Ubuntu 18.04](manually-building-a-tile-server-ubuntu-18-04-lts.md).
 
 2. Use [docker](using-a-docker-container.md).
 

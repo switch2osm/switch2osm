@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: Manually building a tile server (Debian 11)
-dist: Debian 11
+title: Manually building a tile server (Debian 12)
+dist: Debian 12
 dl_timestamp: "2020-11-13T21:42:03Z"
 lang: en
 ---
@@ -9,15 +9,13 @@ lang: en
 # {{ title }}
 
 !!! info ""
-    This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/){: target=_blank} 11 (bullseye), and were tested in November 2020.
+    This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/){: target=_blank} 12 (bookworm), and were tested in July 2023.
 
 ## Software installation
 
 The OSM tile server stack is a collection of programs and libraries that work together to create a tile server. As so often with OpenStreetMap, there are many ways to achieve this goal, and nearly all of the components have alternatives that have various specific advantages and disadvantages. This tutorial describes the most standard version that is similar to that used on the main OpenStreetMap.org tile servers.
 
 It consists of 5 main components: `mod_tile`, `renderd`, `mapnik`, `osm2pgsql` and a `postgresql/postgis` database. Mod_tile is an apache module that serves cached tiles and decides which tiles need re-rendering&nbsp;– either because they are not yet cached or because they are outdated. Renderd provides a priority queueing system for different sorts of requests to manage and smooth out the load from rendering requests. Mapnik is the software library that does the actual rendering and is used by `renderd`.
-
-Thanks to the work done by the Debian maintainers to incorporate the latest versions of these packages into {{ dist }}, these instructions are somewhat shorter than previous versions.
 
 These instructions are have been written and tested against a newly-installed {{ dist }} server. If you have got other versions of some software already installed (perhaps you upgraded from an earlier version, or you set up some PPAs to load from) then you may need to make some adjustments.
 
@@ -146,7 +144,7 @@ carto -v
 
 That should respond with a number that is at least as high as:
 
-```sh
+```log
 1.2.0
 ```
 
@@ -275,12 +273,43 @@ MAXZOOM=20
 
 The location of the XML file `/home/accountname/src/openstreetmap-carto/mapnik.xml` will need to be changed to the actual location on your system. You can change `[s2o]` and `URI=/hot/` as well if you like. If you want to render more than one set of tiles from one server you can - just add another section like `[s2o]` with a different name referring to a different map style. If you want it to refer to a different database to the default `gis` you can, but that's out of the scope of this document. If you've only got 2Gb or so of memory, you'll also want to reduce `num_threads` to 2. `URI=/hot/` was chosen so that the tiles generated here can more easily be used in place of the HOT tile layer at OpenStreetMap.org. You can use something else here, but `/hot/` is as good as anything.
 
-When this guide was first written, the version of Mapnik provided by Debian was 3.0, and the `plugins_dir` setting in the `[mapnik]` part of the file was `/usr/lib/mapnik/3.0/input`. At the time of writing that's changed to 3.1, and so the relevant value is `/usr/lib/mapnik/3.1/input`. It may change again in the future. If an error occurs when trying to render tiles such as this:
+The version of Mapnik provided by {{ dist }} at release was 3.1, and therefore the `plugins_dir` setting in the `[mapnik]` part of the file was `/usr/lib/mapnik/3.1/input`. This may change in the future. If an error occurs when trying to render tiles such as this:
 
 !!! warning ""
     An error occurred while loading the map layer 's2o': Could not create datasource for type: 'postgis' (no datasource plugin directories have been successfully registered) encountered during parsing of layer 'landcover-low-zoom'
 
 then look in `/usr/lib/mapnik` and see what version directories there are, and also look in `/usr/lib/mapnik/(version)/input` to make sure that a file `postgis.input` exists there.
+
+Now that we've told `renderd` how to react to tile rendering requests we need to tell the Apache web server to send them.  Unfortunately, the configuration for this has been removed from recent versions of `mod_tile`. It can, however, currently be installed from here
+
+```sh
+cd /etc/apache2/conf-available/
+sudo wget https://raw.githubusercontent.com/openstreetmap/mod_tile/python-implementation/etc/apache2/renderd.conf
+sudo a2enconf renderd
+sudo systemctl reload apache2
+```
+
+### Making sure that you can see debug messages
+
+It'd be really useful at this point to be able to see the output from the tile rendering process, including any errors. By default, with recent `mod_tile` versions, this is turned off. To turn it on:
+
+```sh
+sudo nano /usr/lib/systemd/system/renderd.service
+```
+
+If it is not there already, add:
+
+```ini
+Environment=G_MESSAGES_DEBUG=all
+```
+
+after "[Service]". Then:
+
+```sh
+sudo systemctl daemon-reload
+sudo systemctl restart renderd
+sudo systemctl restart apache2
+```
 
 ### Configuring Apache
 
@@ -295,17 +324,25 @@ After doing so, restart `renderd`:
 sudo /etc/init.d/renderd restart
 ```
 
-If you look at `/var/log/syslog`, you should see messages from the `renderd` service. There will initially be some font errors - don't worry about those for now. Next:
+If you look at the system log, you should see messages from the `renderd` service. Note that on {{ dist }}, messages are no longer written to `/var/log/syslog` by default - to follow messages as they are written, do this:
+
+```sh
+sudo journalctl -ef
+```
+
+See [here](https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.en.html#changes-to-system-logging):{: target=_blank} for more details.
 
 ```sh
 sudo /etc/init.d/apache2 restart
 ```
 
-In `syslog` you should see a message like:
+Using `#!sh sudo journalctl -ef` you should see a line such as:
 
 ```log
-Nov 14 14:24:55 servername apachectl[19119]: [Sat Nov 14 14:24:55.526717 2020] [tile:notice] [pid 19119:tid 140525098995008] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/lib/mod_tile with extension .png and mime type image/png
+Jul 01 01:50:28 h4-debian-16gb-fsn1-1 apachectl[34625]: [Sat Jul 01 01:50:28.260957 2023] [tile:notice] [pid 34625:tid 281473357369376] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/cache/renderd/tiles with extension .png and mime type image/png
 ```
+
+If this does not appear it probably means that the configuration file for mod_tile `/etc/apache2/conf-available/renderd.conf` is either not set up or enabled properly - see the `wget` section above.
 
 Next, point a web browser at `http://your.server.ip.address/index.html` (change `your.server.ip.address` to your actual server address). You should see "Apache2 Debian Default Page".
 
@@ -332,7 +369,7 @@ sudo nano sample_leaflet.html
 
 Edit so that the IP address matches `your.server.address` rather than just saying `127.0.0.1`. That should allow you to access this server from others. Then browse to `http://your.server.address/sample_leaflet.html`.
 
-The initial map display will take a little while. You'll be able to zoom in and out, but depending on server speed some tiles may initially display as grey because they can't be rendered in time for the browser. However, once done they’ll be ready for the next time that they are needed. If you look in `/var/log/syslog` you should see requests for tiles.
+The initial map display will take a little while. You'll be able to zoom in and out, but depending on server speed some tiles may initially display as grey because they can't be rendered in time for the browser. However, once done, they’ll be ready for the next time that they are needed. If you look in `/var/log/syslog` you should see requests for tiles.
 
 If desired, you can increase the setting `ModTileMissingRequestTimeout` in `/etc/apache2/conf-available/renderd.conf` from 10 seconds to perhaps 30 or 60, in order to wait longer for tiles to be rendered in the background before a grey tile is given to the user. Make sure you `#!sh sudo service renderd restart` and `#!sh sudo service apache2 restart` after changing it.
 
