@@ -4,7 +4,7 @@ title: Manually building a tile server (Debian 11)
 permalink: /serving-tiles/manually-building-a-tile-server-debian-11/
 ---
 
-This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/) 11 testing (bullseye), and were tested in November 2020.
+This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/) 11 (bullseye), and were tested in November 2020.
 
 # Software installation
 
@@ -14,7 +14,7 @@ It consists of 5 main components: mod_tile, renderd, mapnik, osm2pgsql and a pos
 
 Thanks to the work done by the Debian maintainers to incorporate the latest versions of these packages into Debian 11, these instructions are somewhat shorter than previous versions.
 
-These instructions are have been written and tested against a newly-installed Debian 11 Testing server. Debian 11 hasn't been released yet, so of course things may change.  If you have got other versions of some software already installed (perhaps you upgraded from an earlier version, or you set up some PPAs to load from) then you may need to make some adjustments.
+These instructions are have been written and tested against a newly-installed Debian 11 server. If you have got other versions of some software already installed (perhaps you upgraded from an earlier version, or you set up some PPAs to load from) then you may need to make some adjustments.
 
 In order to build these components, a variety of dependencies need to be installed first.  Debian doesn't come with "sudo" by default, so we'll need to log on as root to do the first part:
 
@@ -237,7 +237,7 @@ In syslog you should see a message like:
 
     Nov 14 14:24:55 servername apachectl[19119]: [Sat Nov 14 14:24:55.526717 2020] [tile:notice] [pid 19119:tid 140525098995008] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/lib/mod_tile with extension .png and mime type image/png
 
-Next, point a web browser at "http://yourserveripaddress/index.html" (change yourserveripaddress to your actual server address).  You should see "Debian Logo Apache2 Debian Default Page".
+Next, point a web browser at "http://yourserveripaddress/index.html" (change yourserveripaddress to your actual server address).  You should see "Apache2 Debian Default Page".
 
 If you don't know what IP address it will have been assigned you can likely use "ifconfig" to find out - if the network configuration is not too complicated it'll probably be the "inet addr" that is not "127.0.0.1"). If you're using a server at a hosting provider then it's likely that your server's internal address will be different to the external address that has been allocated to you, but that external IP address will have already been sent to you and it'll probably be the one that you're accessing the server on currently.
 
@@ -245,7 +245,7 @@ Note that this is just the "http" (port 80) site - you'll need to do a little bi
 
 Next, point a web browser at: http://yourserveripaddress/hot/0/0/0.png
 
-You'll need to edit that of course if you changed "URI=/hot/" above.  You should see a small map of the world.  If you don't, ivestigate the errors that it displays.  These will most likely be permissions errors or perhaps related to accidentally missing some steps from the instructions above.  If you don't get a tile and get other errors again save the full output in a pastebin and ask a question about the problem somewhere like help.openstreetmap.org.
+You'll need to edit that of course if you changed "URI=/hot/" above.  You should see a small map of the world.  If you don't, investigate the errors that it displays.  These will most likely be permissions errors or perhaps related to accidentally missing some steps from the instructions above.  If you don't get a tile and get other errors again save the full output in a pastebin and ask a question about the problem somewhere like help.openstreetmap.org.
 
 # Viewing tiles
 

@@ -1,10 +1,10 @@
 ---
 layout: docs
-title: Manually building a tile server (Ubuntu 21.04)
-permalink: /serving-tiles/manually-building-a-tile-server-ubuntu-21/
+title: Manually building a tile server (Debian 12)
+permalink: /serving-tiles/manually-building-a-tile-server-debian-12/
 ---
 
-This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Ubuntu Linux](https://en.wikipedia.org/wiki/Ubuntu) [21.04](http://www.releases.ubuntu.com/21.04/) (Hirsute Hippo), and were tested in September 2021.
+This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/) 12 stable (bookworm), and were tested in July 2023.
 
 # Software installation
 
@@ -12,20 +12,23 @@ The OSM tile server stack is a collection of programs and libraries that work to
 
 It consists of 5 main components: mod_tile, renderd, mapnik, osm2pgsql and a postgresql/postgis database. Mod_tile is an apache module that serves cached tiles and decides which tiles need re-rendering - either because they are not yet cached or because they are outdated. Renderd provides a priority queueing system for different sorts of requests to manage and smooth out the load from rendering requests. Mapnik is the software library that does the actual rendering and is used by renderd.
 
-Thanks to the work done by the Debian and Ubuntu maintainers to incorporate the latest versions of these packages into Ubuntu 21.04, these instructions are somewhat shorter than previous versions.
+These instructions are have been written and tested against a newly-installed Debian 12 server. If you have got other versions of some software already installed (perhaps you upgraded from an earlier version, or you set up some PPAs to load from) then you may need to make some adjustments.
 
-These instructions are have been written and tested against a newly-installed Ubuntu 21.04  server. If you have got other versions of some software already installed (perhaps you upgraded from an earlier version, or you set up some PPAs to load from) then you may need to make some adjustments.
+In order to build these components, a variety of dependencies need to be installed first.  Debian doesn't come with "sudo" by default, so we'll need to log on as root to do the first part:
 
-In order to build these components, a variety of dependencies need to be installed first.
-
-This guide assumes that you run everything from a non-root user via "sudo".  Don't try and do everything below as root; it won't work.
-
-    sudo -i
-    apt update
-    apt upgrade
+    su -
     apt install sudo screen locate libapache2-mod-tile renderd git tar unzip wget bzip2 apache2 lua5.1 mapnik-utils python3-mapnik python3-psycopg2 python3-yaml gdal-bin npm fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
 
-At this point, a couple of new accounts have been added.  You can see them with "tail /etc/passwd".  "postgres" is used for managing the databases that we use to hold data for rendering.  "_renderd" is used for the renderd daemon, and we'll need to make sure lots of the commands below are run as that user.
+While still logged on as root we'll ensure that the main user account that we are using can "sudo" to root.  You'll want to change "youruseraccount" to whatever account you are using in the line below.  Don't try and do everything below as root; it won't work.
+
+    usermod -aG sudo youruseraccount
+    exit
+
+That returns to your user account.  Logoff and logon again, and then:
+
+    sudo whoami
+
+That should return "root".  At this point, a couple of new accounts have been added.  You can see them with "tail /etc/passwd".  "postgres" is used for managing the databases that we use to hold data for rendering.  "_renderd" is used for the renderd daemon, and we'll need to make sure lots of the commands below are run as that user.
 
 Now you need to create a postgis database. The defaults of various programs assume the database is called gis and we will use the same convention in this tutorial, although this is not necessary.  Note that "_renderd" below matches the user that the renderd daemon will run from.
 
@@ -87,7 +90,7 @@ The style we'll use here is the one that use by the "standard" map on the openst
 
 The home of "OpenStreetMap Carto" on the web is https://github.com/gravitystorm/openstreetmap-carto/ and it has it's own installation instructions at https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md , although we'll cover everything that needs to be done here.
 
-Here we're assuming that we're storing the stylesheet details in a directory below "src" below the home directory of whichever non-root user account you are using; we'll change access so that the "_renderd" user can access it below.
+Here we're assuming that we're storing the stylesheet details in a directory below "src" below the home directory of the whichever non-root account you are using:
 
     mkdir ~/src
     cd ~/src
@@ -107,22 +110,16 @@ Then we convert the carto project into something that Mapnik can understand:
 
     carto project.mml > mapnik.xml
 
-You now have a Mapnik XML stylesheet at /home/youruseraccount/src/openstreetmap-carto/mapnik.xml .
+You now have a Mapnik XML stylesheet at /home/youraccountname/src/openstreetmap-carto/mapnik.xml .
 # Loading data
 
 Initially, we'll load only a small amount of test data. Other download locations are available, but "download.geofabrik.de" has a wide range of options. In this example we'll download the data for Azerbaijan, which is currently about 32Mb.
 
-Browse to https://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2021-09-16T20:21:14Z"). We'll need that later if we want to update the database with people's susbsequent changes to OpenStreetMap. Download it as follows:
+Browse to https://download.geofabrik.de/asia/azerbaijan.html and note the "This file was last modified" date (e.g. "2020-11-13T21:42:03Z"). We'll need that later if we want to update the database with people's susbsequent changes to OpenStreetMap. Download it as follows:
 
     mkdir ~/data
     cd ~/data
     wget https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
-
-Next, we need to make sure that the "_renderd" user can access the stylesheet. In order to do this it needs access to wherever you downloaded it, and by default it won't have access to your home directory.  If it's in "src" below your user account then
-
-    chmod o+rx ~
-
-will work.  If you don't want to do this you can move it and amend references to the file locations in subsequent commands.
 
 The following command will insert the OpenStreetMap data you downloaded earlier into the database. This step is very disk I/O intensive; importing the full planet might take many hours, days or weeks depending on the hardware. For smaller extracts the import time is much faster accordingly, and you may need to experiment with different -C values to fit within your machine's available memory.  Note that the "_renderd" user is used for this process.
 
@@ -190,12 +187,17 @@ This process involves a sizable download and may take some time - not much will 
 
 ## Fonts
 
-We installed fonts above.  OpenSteetMap Carto's own installation instructions also suggest installing "Noto Emoji Regular" from source. All the other international fonts that are likely to be needed (including ones often not supported) are including in the list previously installed.  Our test data area (Azerbaijan) was chosen both because it was a small area and because some place names in that region have names containing non-latin characters.
+In version v5.6.0 and above of Carto, fonts need to be installed manually:
+
+    cd ~/src/openstreetmap-carto/
+    scripts/get-fonts.sh
+
+Our test data area (Azerbaijan) was chosen both because it was a small area and because some place names in that region have names containing non-latin characters.
 
 # Setting up your webserver
 ## Configure renderd
 
-The config file for "renderd" on Ubuntu 21.04 is "/etc/renderd.conf". Edit that with a text editor such as nano:
+The config file for "renderd" on Debian is "/etc/renderd.conf". Edit that with a text editor such as nano:
 
     sudo nano /etc/renderd.conf
 
@@ -203,7 +205,6 @@ Add a section like the following at the end:
 
     [s2o]
     URI=/hot/
-    TILEDIR=/var/lib/mod_tile
     XML=/home/accountname/src/openstreetmap-carto/mapnik.xml
     HOST=localhost
     TILESIZE=256
@@ -211,11 +212,36 @@ Add a section like the following at the end:
 
 The location of the XML file "/home/accountname/src/openstreetmap-carto/mapnik.xml" will need to be changed to the actual location on your system.  You can change "[s2o]" and "URI=/hot/" as well if you like.  If you want to render more than one set of tiles from one server you can - just add another section like "[s2o]" with a different name referring to a different map style.  If you want it to refer to a different database to the default "gis" you can, but that's out of the scope of this document.  If you've only got 2Gb or so of memory you'll also want to reduce "num_threads" to 2.  "URI=/hot/" was chosen so that the tiles generated here can more easily be used in place of the HOT tile layer at OpenStreetMap.org. You can use something else here, but "/hot/" is as good as anything.
 
-When this guide was first written, the version of Mapnik provided by Ubuntu 21.04 was 3.1, and the "plugins_dir" setting in the "[mapnik]" part of the file was "/usr/lib/mapnik/3.1/input".  That "3.1" may change again in the future.  If an error occurs when trying to render tiles such as this:
+The version of Mapnik provided by Debian 12 at release was 3.1, and therefore the “plugins_dir” setting in the “[mapnik]” part of this file is “/usr/lib/mapnik/3.1/input”.  This may change in the future. If an error occurs when trying to render tiles such as this:
 
     An error occurred while loading the map layer 's2o': Could not create datasource for type: 'postgis' (no datasource plugin directories have been successfully registered)  encountered during parsing of layer 'landcover-low-zoom'
     
 then look in "/usr/lib/mapnik" and see what version directories there are, and also look in "/usr/lib/mapnik/(version)/input" to make sure that a file "postgis.input" exists there.
+
+Now that we've told "renderd" how to react to tile rendering requests we need to tell the apache web server to send them.  Unfortunately, the configuration for this has been removed from recent versions of mod_tile.  It can however, currently be installed from here
+
+    cd /etc/apache2/conf-available/
+    sudo wget https://raw.githubusercontent.com/openstreetmap/mod_tile/python-implementation/etc/apache2/renderd.conf
+    sudo a2enconf renderd
+    sudo systemctl reload apache2
+
+
+### Making sure that you can see debug messages
+
+It'd be really useful at this point to be able to see the output from the tile rendering process, including any errors.  By default with recent mod_tile versions, this is turned off.  To turn it on:
+
+    sudo nano /usr/lib/systemd/system/renderd.service
+
+If it is not there already, add:
+
+    Environment=G_MESSAGES_DEBUG=all
+
+after "[Service]".  Then:
+
+    sudo systemctl daemon-reload
+    sudo systemctl restart renderd
+    sudo systemctl restart apache2
+
 ## Configuring Apache
 
     sudo mkdir /var/lib/mod_tile
@@ -225,15 +251,21 @@ After doing so, restart renderd:
 
     sudo /etc/init.d/renderd restart
 
-If you look at /var/log/syslog, you should see messages from the "renderd" service.  There will initially be some font errors - don't worry about those for now.  Next:
+If you look at the system log, you should see messages from the “renderd” service.  Note that on Debian 12, messages are no longer written to '/var/log/syslog' by default - to follow messages as they are written, do this: 
+
+    sudo journalctl -ef
+
+See [here](https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.en.html#changes-to-system-logging) for more details.
 
     sudo /etc/init.d/apache2 restart
     
-In syslog you should see a message like:
+Using "sudo journalctl -ef" you should see a line such as:
 
-    Sep 18 12:25:14 servername apachectl[42239]: [Sat Sep 18 12:25:14.749940 2021] [tile:notice] [pid 42239:tid 139637396966720] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/lib/mod_tile with extension .png and mime type image/png
+    Jul 01 01:50:28 h4-debian-16gb-fsn1-1 apachectl[34625]: [Sat Jul 01 01:50:28.260957 2023] [tile:notice] [pid 34625:tid 281473357369376] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/cache/renderd/tiles with extension .png and mime type image/png
 
-Next, point a web browser at "http://yourserveripaddress/index.html" (change yourserveripaddress to your actual server address).  You should see "Apache2 Ubuntu Default Page".
+If this does not appear it probably means that the configuration file for mod_tile "/etc/apache2/conf-available/renderd.conf" is either not set up or enabled properly - see the "wget" section above.
+
+Next, point a web browser at "http://yourserveripaddress/index.html" (change yourserveripaddress to your actual server address).  You should see "Apache2 Debian Default Page".
 
 If you don't know what IP address it will have been assigned you can likely use "ifconfig" to find out - if the network configuration is not too complicated it'll probably be the "inet addr" that is not "127.0.0.1"). If you're using a server at a hosting provider then it's likely that your server's internal address will be different to the external address that has been allocated to you, but that external IP address will have already been sent to you and it'll probably be the one that you're accessing the server on currently.
 
@@ -255,6 +287,6 @@ Edit so that the IP address matches yourserveraddress rather than just saying "1
 
 The initial map display will take a little while.  You'll be able to zoom in and out, but depending on server speed some tiles may initially display as grey because they can't be rendered in time for the browser.  However, once done they’ll be ready for the next time that they are needed.  If you look in /var/log/syslog you should see requests for tiles. 
 
-If desired, you can increase the setting “ModTileMissingRequestTimeout” in “/etc/apache2/conf-available/renderd.conf” from 10 seconds to perhaps 30 or 60, in order to wait longer for tiles to be rendered in the background before a grey tile is given to the user. Make sure you “sudo service renderd restart” and “sudo service apache2 restart” after changing it.
+If desired, you can increase the setting "ModTileMissingRequestTimeout" in "/etc/apache2/conf-available/renderd.conf" from 10 seconds to perhaps 30 or 60, in order to wait longer for tiles to be rendered in the background before a grey tile is given to the user.  Make sure you "sudo service renderd restart" and "sudo service apache2 restart" after changing it.
 
 Congratulations. Head over to the [using tiles](https://switch2osm.github.io/using-tiles/) section to create a map that uses your new tile server.
