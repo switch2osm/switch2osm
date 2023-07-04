@@ -8,7 +8,7 @@ lang: uk
 
 Щодня зʼявляються мільйони нових оновлень на мапі, щоб не допустити, щоб ваша мапа стала «застарілою», ви можете регулярно оновлювати дані, які використовуються для створення тайлів.
 
-З переходом на останню версію `osm2pgsql` (версія 1.4.2 та свіжіше) оновлювати дані стало на багато простіше ніж раніш. Ця версія розповсюджується в складі Ubuntu 22.04, її можна встановити слідуючи [інструкції з osm2pgsql.org](https://osm2pgsql.org/doc/install.html){: target=_blank}. Разом з `osm2pgsql` йде [osm2pgsql-replication](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database){: target=_blank}&nbsp;– що надає порівняно простий спосіб підтримувати дані в базі в актуальному стані. Більш гнучким способом буде безпосередній виклик `PyOsmium`, [тут докладніше](/serving-tiles/updating-as-people-edit-pyosmium/) про це.
+З переходом на останню версію `osm2pgsql` (версія 1.4.2 та свіжіше) оновлювати дані стало на багато простіше ніж раніш. Версія  1.6.0 постачається в складі Ubuntu 22.04; версія 1.8.0&nbsp;– як частина Debian 12, їх можна встановити слідуючи [інструкції з osm2pgsql.org](https://osm2pgsql.org/doc/install.html){: target=_blank}. Разом з `osm2pgsql` йде [osm2pgsql-replication](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database){: target=_blank}&nbsp;– що надає порівняно простий спосіб підтримувати дані в базі в актуальному стані. Більш гнучким способом буде безпосередній виклик `PyOsmium`, [тут докладніше](/serving-tiles/updating-as-people-edit-pyosmium/) про це.
 
 Ви можете налаштувати отримання даних з різних джерел. OpenStreetMap надає можливість отримувати щохвилинні, щогодинні та щоденні оновлення, інші джерела можуть надавати щоденні оновлення, наприклад Geofabrik надає щоденні оновлення регіональних витягів даних, які можна отримати на [download.geofabrik.de](http://download.geofabrik.de/index.html){: target=_blank}.
 
@@ -39,7 +39,7 @@ sudo -u _renderd \
 
 Важлива примітка&nbsp;– скрипт, що перевіряє актуальність даних передбачає що готові тайли знаходяться в теці `/var/cache/renderd/`. Якщо в `/etc/renderd.conf` зазначено інше місце, вам потрібно внести відповідні зміни, щоби скрипт, який ми створимо, мав змогу відстежувати актуальність даних.
 
-Далі, ініціалізуйте реплікацію. Як йдеться [тут](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database){: target=_blank}, завантажте дані з Geofabrik (або [download.openstreetmap.fr](https://download.openstreetmap.fr/){: target=_blank}) потрібні для процесу реплікації (URL, з якого будуть отримуватись оновлення та дату початку).
+Далі, ініціалізуйте реплікацію. Як йдеться [тут](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database){: target=_blank}, завантажені дані з Geofabrik (або [download.openstreetmap.fr](https://download.openstreetmap.fr/){: target=_blank}) містять всі необхідні для процесу реплікації відомості (URL, з якого будуть отримуватись оновлення та дату початку).
 
 ```sh
 sudo -u _renderd \
@@ -149,6 +149,12 @@ sudo systemctl restart apache2
 sudo tail -f /var/log/syslog
 ```
 
+або, якщо ви використовуєте Debian 12, який не має типово файл "syslog":
+
+```sh
+sudo journalctl -ef
+```
+
 ви маєте побачити повідомлення про результати обробки запитів у `mod_tile`.
 
 Виконайте скрипт:
@@ -160,11 +166,11 @@ sudo -u _renderd /usr/local/sbin/update_tiles.sh
 Якщо оновлень, які очікують на обробку, немає (Geofabrik надає оновлення раз на добу) ви побачите щось схоже на це:
 
 ```log
-2022-06-05 16:13:48 [INFO]: Using replication service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'. Current sequence 3356 (2022-06-04 20:21:41+00:00).
-2022-06-05 16:13:49 [INFO]: Database already up-to-date.
+2023-07-02 16:57:03 [INFO]: Using replication service 'http://download.geofabrik.de/europe/britain-and-ireland-updates'. Current sequence 3743 (2023-07-01 20:21:30+00:00).
+2023-07-02 16:57:03 [INFO]: Database already up-to-date.
 ```
 
-Якщо оновлення є, ви побачите таке:
+Якщо оновлення є, ви побачите щось схоже на:
 
 ```log
 2022-06-05 16:29:32 [INFO]: Using replication service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'. Current sequence 3355 (2022-06-03 20:21:26+00:00).
@@ -212,7 +218,7 @@ Total tiles ignored (not on disk): 10765
 2022-06-05 16:36:58 [INFO]: Data imported until 2022-06-04 20:21:41+00:00. Backlog remaining: 20:15:17.919969
 ```
 
-Лог-файл буде десь таким:
+Лог буде десь таким:
 
 ```log
 Jun  5 16:36:40 ubuntuvm75 renderd[5838]: Data is available now on 1 fds
@@ -233,7 +239,7 @@ Jun  5 16:36:58 ubuntuvm75 renderd[5838]: Connection 0, fd 5 closed, now 0 left,
 
 ### Щоденне виконання
 
-Скрипт для виконання оновлення можна додати до розкладу crontab облікового запису root. По-перше, змініть `update_tiles.sh`, щоб бачити лише підсумковий результат. Ви можете взяти код [звідси](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles.sh){: target=_blank}. Знов таки ж, замініть `renderaccount` на відповідний обліковий запис (не-root), який ви використовуєте.
+Скрипт для виконання оновлення можна додати до розкладу crontab облікового запису root. По-перше, змініть `update_tiles.sh`, щоб бачити лише підсумковий результат. Ви можете взяти код [звідси](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles.sh){: target=_blank}. Знов таки ж, замініть `renderaccount` на відповідний обліковий запис (не-root), який ви використовуєте. Ви також можете налаштувати кількість потоків і обсяг використовуваної памʼяті.
 
 Додайте в crontab облікового запису root:
 
@@ -280,7 +286,7 @@ sudo -u _renderd \
 sudo -u _renderd /usr/local/sbin/update_tiles.sh
 ```
 
-Знов, зауважте, що `osm2pgsql-replication` буде постійно завантажувати дані та оновлювати базу допоки вони є, параметр `--max diff-size` визначає обсяг даних який скрипт буде обробляти за одну ітерацію. По завершенні ви побачите:
+Знов, зауважте, що `osm2pgsql-replication` буде постійно завантажувати дані та оновлювати базу допоки вони є, параметр `--max diff-size` визначає обсяг даних який скрипт буде обробляти за одну ітерацію. По завершенні ви побачите щось схоже на це:
 
 ```log
 2022-06-05 22:30:47 [INFO]: Data imported until 2022-06-05 21:45:42+00:00. Backlog remaining: 0:45:05.948787
