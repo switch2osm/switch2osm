@@ -8,7 +8,7 @@ permalink: /serving-tiles/updating-as-people-edit-osm2pgsql-replication/
 
 Every day there are millions of new map updates so to prevent a map becoming "stale" you can refresh the data used to create map tiles regularly.
 
-Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously.  This is the version that is distributed as part of Ubuntu 22.04, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html).  With osm2pgsql comes [osm2pgsql-replication](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database) - that provides a relatively simple way to keep a database up to date.  A more flexible approach is to call PyOsmium directly - see [this guide](/serving-tiles/updating-as-people-edit-pyosmium/) for how to do that.
+Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously.  Version 1.6.0 is distributed as part of Ubuntu 22.04; version 1.8.0 as part of Debian 12, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html).  With osm2pgsql comes [osm2pgsql-replication](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database) - that provides a relatively simple way to keep a database up to date.  A more flexible approach is to call PyOsmium directly - see [this guide](/serving-tiles/updating-as-people-edit-pyosmium/) for how to do that.
 
 It's possible to set up replication from many different sources.  OpenStreetMap itself provides minutely, hourly and daily updates, and other sources such as Geofabrik can provide daily updates that match the regional data extracts available at [download.geofabrik.de](http://download.geofabrik.de/index.html).
 
@@ -28,7 +28,7 @@ Next, load the database.  The numbers here for processes and memory can be varie
 
 Important note - the tile expiry script used below assumes that tiles are written below <code>"/var/cache/renderd/"</code>.  If <code>"/etc/renderd.conf"</code> specifies another location, you'll need to modify it before expiring tiles using the scripts you're going to create here.
 
-Then, initialise replication.  As described [here](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database) downloads from Geofabrik (and [download.openstreetmap.fr](https://download.openstreetmap.fr/)) contain all the information needed for replication (the URL from which to download updates and what date to start from).
+Then, initialise replication.  As described [here](https://osm2pgsql.org/doc/manual.html#updating-an-existing-database) files downloaded from Geofabrik (and [download.openstreetmap.fr](https://download.openstreetmap.fr/)) contain all the information needed for replication (the URL from which to download updates and what date to start from).
 
     sudo -u _renderd osm2pgsql-replication init -d gis --osm-file ~/data/greater-london-latest.osm.pbf
 
@@ -99,6 +99,10 @@ In another session:
 
     sudo tail -f /var/log/syslog
 
+or if you are using Debian 12, which does not have a "syslog" file by default:
+
+    sudo journalctl -ef
+
 and you should now see some output corresponding to mod_tile requests.
 
 Run the script once:
@@ -107,10 +111,10 @@ Run the script once:
 
 If there are no pending updates (Geofabrik updates for these files appear daily) then something like this will be shown:
 
-    2022-06-05 16:13:48 [INFO]: Using replication service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'. Current sequence 3356 (2022-06-04 20:21:41+00:00).
-    2022-06-05 16:13:49 [INFO]: Database already up-to-date.
+    2023-07-02 16:57:03 [INFO]: Using replication service 'http://download.geofabrik.de/europe/britain-and-ireland-updates'. Current sequence 3743 (2023-07-01 20:21:30+00:00).
+    2023-07-02 16:57:03 [INFO]: Database already up-to-date.
 
-If there are pending updates, then instead you will see:
+If there are pending updates, then instead you will see something like:
 
     2022-06-05 16:29:32 [INFO]: Using replication service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'. Current sequence 3355 (2022-06-03 20:21:26+00:00).
     2022-06-05 16:29:33  osm2pgsql version 1.6.0
@@ -152,7 +156,7 @@ at the end totals will be printed:
     Total tiles ignored (not on disk): 10765
     2022-06-05 16:36:58 [INFO]: Data imported until 2022-06-04 20:21:41+00:00. Backlog remaining: 20:15:17.919969
 
-In the logfile, output will include something like:
+In the log, output will include something like:
 
     Jun  5 16:36:40 ubuntuvm75 renderd[5838]: Data is available now on 1 fds
     Jun  5 16:36:40 ubuntuvm75 renderd[5838]: Got incoming connection, fd 5, number 0, total conns 1, total slots 1
@@ -171,7 +175,7 @@ In the logfile, output will include something like:
 
 ### Running every day
 
-The script to perform the update can be added to root's crontab.  First, amend <code>update_tiles.sh</code> to do some error checking at startup, and to append a summary to a logfile only.  You can get a copy of that from [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles.sh).  Again, change "renderaccount" to the name of whatever non-root account you are using here.  
+The script to perform the update can be added to root's crontab.  First, amend <code>update_tiles.sh</code> to do some error checking at startup, and to append a summary to a logfile only.  You can get a copy of that from [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles.sh).  Again, change "renderaccount" to the name of whatever non-root account you are using here.  You can also adjust the number of threads and the amount of memory cache used.
 
 Then add to root's crontab:
 
@@ -199,7 +203,7 @@ Once initialisation has been done, set up the same scripts described in "Creatin
 
     sudo -u _renderd /usr/local/sbin/update_tiles.sh
 
-Again, note that "osm2pgsql-replication" will actually repeat downloading data and updating the database until there is no more to process, and the <code>"--max diff-size"</code> in the script determines how much data is fetched on each iteration.  Eventually, it will complete, ending with:
+Again, note that "osm2pgsql-replication" will actually repeat downloading data and updating the database until there is no more to process, and the <code>"--max diff-size"</code> in the script determines how much data is fetched on each iteration.  Eventually, it will complete, ending with something like:
 
     2022-06-05 22:30:47 [INFO]: Data imported until 2022-06-05 21:45:42+00:00. Backlog remaining: 0:45:05.948787
 
