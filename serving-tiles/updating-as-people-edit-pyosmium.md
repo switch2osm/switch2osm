@@ -8,7 +8,7 @@ permalink: /serving-tiles/updating-as-people-edit-pyosmium/
 
 Every day there are millions of new map updates so to prevent a map becoming "stale" you can refresh the data used to create map tiles regularly.
 
-Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously.  This is the version that is distributed as part of Ubuntu 22.04, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html).  
+Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously.  Suitable versions are distributed as part of Ubuntu 22.04 and Debian 12, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html).  
 
 A simpler, but less flexible, method to update a database is to use "osm2pgsql-replication", described [here](/serving-tiles/updating-as-people-edit-osm2pgsql-replication/).  In this example we'll use "PyOsmium" to update a database initially loaded from Geofabrik with minutely updates from planet.openstreetmap.org.
 
@@ -36,7 +36,7 @@ For the sake of this example, we'll assume that you've loaded your database in t
 
     sudo -u _renderd osm2pgsql -d gis --create --slim  -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -C 3000 --number-processes 4 -S ~/src/openstreetmap-carto/openstreetmap-carto.style ~/data/greater-london-latest.osm.pbf
 
-The data to load was obtained from a page such as [this one](http://download.geofabrik.de/europe/great-britain/england/greater-london.html), which says "... and contains all OSM data up to 2022-06-15T20:21:49Z".  We'll use that date when setting up replication below:
+The data to load was obtained from a page such as [this one](http://download.geofabrik.de/europe/great-britain/england/greater-london.html), which says something like "... and contains all OSM data up to 2023-07-02T20:21:43Z".  We'll use that date when setting up replication below:
 
     sudo mkdir /var/cache/renderd/pyosmium
     sudo chown _renderd /var/cache/renderd/pyosmium
@@ -44,7 +44,7 @@ The data to load was obtained from a page such as [this one](http://download.geo
     sudo chown _renderd /var/log/tiles
     cd /var/cache/renderd/pyosmium
     sudo apt install pyosmium
-    sudo -u _renderd pyosmium-get-changes -D 2022-06-15T20:21:49Z -f sequence.state -v
+    sudo -u _renderd pyosmium-get-changes -D 2023-07-02T20:21:43Z -f sequence.state -v
 
 The last line creates a "sequence.state" file.  The actual date used in that line will need to match the data that you downloaded.
 
@@ -81,21 +81,21 @@ To run the script once:
 
 As it runs, it creates workfiles (and the verbose output from the commands that it runs) in <code>/var/cache/renderd/pyosmium</code>.  At completion you should see something like:
 
-    Pyosmium update started:  Thu 16 Jun 09:26:14 UTC 2022
+    Pyosmium update started:  Mon Jul 3 11:15:36 PM UTC 2023
     Filtering newchange.osc.gz
     Importing newchange.osc.gz
-    2022-06-16 09:28:36  osm2pgsql took 61s (1m 1s) overall.
+    2023-07-03 23:17:44  osm2pgsql took 45s overall.
     Expiring tiles
     
     Total for all tiles rendered
-    Meta tiles rendered: Rendered 0 tiles in 0.15 seconds (0.00 tiles/s)
-    Total tiles rendered: Rendered 0 tiles in 0.15 seconds (0.00 tiles/s)
-    Total tiles in input: 11157
-    Total tiles expanded from input: 4563
+    Meta tiles rendered: Rendered 0 tiles in 1.54 seconds (0.00 tiles/s)
+    Total tiles rendered: Rendered 0 tiles in 1.54 seconds (0.00 tiles/s)
+    Total tiles in input: 2334224
+    Total tiles expanded from input: 305839
     Total meta tiles deleted: 0
-    Total meta tiles touched: 10
-    Total tiles ignored (not on disk): 4553
-    Database Replication Lag: 2 day(s) and 6 hour(s)
+    Total meta tiles touched: 0
+    Total tiles ignored (not on disk): 305839
+    Database Replication Lag: 1 day(s) and 1 hour(s)
 
 The amount downloaded per run can be tuned in the script by changing the size (<code>-s</code>) parameter to <code>pyosmium-get-changes</code>.  This size is in MB - the script is set to 20 by default, and if not specified 100MB at a time is downloaded.
 
@@ -133,4 +133,4 @@ You can obtain the contents of the script from [here](https://raw.githubusercont
 
     sudo /etc/init.d/munin-node restart
     
-Shortly after doing that, </code>http://yourserveraddress/munin/renderd-day.html</code> should show a "Data import lag" graph.  If it doesn't, look at the logs in <code>/var/log/munin</code>.  If you need more help understanding what is going wrong, have a look [here](https://guide.munin-monitoring.org/en/latest/develop/plugins/howto-write-plugins.html).
+Shortly after doing that, <code>http://yourserveraddress/munin/renderd-day.html</code> should show a "Data import lag" graph.  If it doesn't, look at the logs in <code>/var/log/munin</code>.  If you need more help understanding what is going wrong, have a look [here](https://guide.munin-monitoring.org/en/latest/develop/plugins/howto-write-plugins.html).
