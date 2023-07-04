@@ -8,7 +8,7 @@ lang: uk
 
 Щодня зʼявляються мільйони нових оновлень на мапі, щоб не допустити, щоб ваша мапа стала «застарілою», ви можете регулярно оновлювати дані, які використовуються для створення тайлів.
 
-З переходом на останню версію osm2pgsql (версія 1.4.2 та свіжіше) оновлювати дані стало на багато простіше ніж раніше. Ця версія розповсюджується в складі Ubuntu 22.04, її можна встановити слідуючи [інструкції з osm2pgsql.org](https://osm2pgsql.org/doc/install.html){: target=_blank}.
+З переходом на останню версію osm2pgsql (версія 1.4.2 та свіжіше) оновлювати дані стало на багато простіше ніж раніше. Відповідні версії розповсюджується в складі Ubuntu 22.04 та Debian 12, їх можна встановити слідуючи [інструкції з osm2pgsql.org](https://osm2pgsql.org/doc/install.html){: target=_blank}.
 
 Простіший, але менш гнучкий метод оновлення даних,&nbsp;– використання `osm2pgsql-replication` (див [тут](/serving-tiles/updating-as-people-edit-osm2pgsql-replication/)). Тут для оновлення даних в нашій базі ми будемо використовувати `PyOsmium` для оновлення даних, які ми отримали з Geofabrik хвилинними оновленнями з <https://planet.openstreetmap.org/>{: target=_blank}.
 
@@ -50,7 +50,7 @@ sudo -u _renderd \
     ~/data/greater-london-latest.osm.pbf
 ```
 
-Дані для завантаження були отримані зі сторінки [Greater London](http://download.geofabrik.de/europe/great-britain/england/greater-london.html){: target=_blank}, на якій зазначено "… and contains all OSM data up to 2022-06-15T20:21:49Z" (… містить всі дані OSM станом на …). Ми будемо використовувати цю дату для налаштування реплікації:
+Дані для завантаження були отримані зі сторінки [Greater London](http://download.geofabrik.de/europe/great-britain/england/greater-london.html){: target=_blank}, на якій зазначено, щось схоже на "… and contains all OSM data up to 2023-07-02T20:21:43Z" (… містить всі дані OSM станом на …). Ми будемо використовувати цю дату для налаштування реплікації:
 
 ```sh
 sudo mkdir /var/cache/renderd/pyosmium
@@ -59,7 +59,7 @@ sudo mkdir /var/log/tiles
 sudo chown _renderd /var/log/tiles
 cd /var/cache/renderd/pyosmium
 sudo apt install pyosmium
-sudo -u _renderd pyosmium-get-changes -D 2022-06-15T20:21:49Z -f sequence.state -v
+sudo -u _renderd pyosmium-get-changes -D 2023-07-02T20:21:43Z -f sequence.state -v
 ```
 
 Останній рядок створює файл `sequence.state`. Дата в цім рядку має збігатись з датою даних, завантажених раніше.
@@ -101,21 +101,21 @@ sudo -u _renderd /usr/local/sbin/call_pyosmium.sh
 Після запуску, скрипт створить робочі файли, також ви побачите докладну інформацію про його роботу у `/var/cache/renderd/pyosmium`. По завершенню роботи ви маєте побачити такий звіт:
 
 ```log
-Pyosmium update started:  Thu 16 Jun 09:26:14 UTC 2022
+Pyosmium update started:  Mon Jul 3 11:15:36 PM UTC 2023
 Filtering newchange.osc.gz
 Importing newchange.osc.gz
-2022-06-16 09:28:36  osm2pgsql took 61s (1m 1s) overall.
+2023-07-03 23:17:44  osm2pgsql took 45s overall.
 Expiring tiles
 
 Total for all tiles rendered
-Meta tiles rendered: Rendered 0 tiles in 0.15 seconds (0.00 tiles/s)
-Total tiles rendered: Rendered 0 tiles in 0.15 seconds (0.00 tiles/s)
-Total tiles in input: 11157
-Total tiles expanded from input: 4563
+Meta tiles rendered: Rendered 0 tiles in 1.54 seconds (0.00 tiles/s)
+Total tiles rendered: Rendered 0 tiles in 1.54 seconds (0.00 tiles/s)
+Total tiles in input: 2334224
+Total tiles expanded from input: 305839
 Total meta tiles deleted: 0
-Total meta tiles touched: 10
-Total tiles ignored (not on disk): 4553
-Database Replication Lag: 2 day(s) and 6 hour(s)
+Total meta tiles touched: 0
+Total tiles ignored (not on disk): 305839
+Database Replication Lag: 1 day(s) and 1 hour(s)
 ```
 
 Ви можете налаштувати обсяг даних, які завантажуються за один запит до сервера, параметром `-s` в `pyosmium-get-changes`. Розмір зазначається в Мб, типово скрипт завантажуватимете 20 Мб, якщо не зазначити обсяг явним чином&nbsp;– 100 Мб за раз.
@@ -136,7 +136,7 @@ sudo -u _renderd crontab -e
 
 Рекомендується очистити прапор "pyosmium is running" під час перезапуску `renderd`. Щоб зробити це:
 
-```sh
+ ```sh
 sudo nano /usr/lib/systemd/system/renderd.service
 ```
 
