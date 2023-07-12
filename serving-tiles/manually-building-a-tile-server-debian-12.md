@@ -285,8 +285,8 @@ In order to see tiles, we’ll cheat and use an html file “sample_leaflet.html
 
 Edit so that the IP address matches yourserveraddress rather than just saying "127.0.0.1".  That should allow you to access this server from others.  Then browse to "http://yourserveraddress/sample_leaflet.html".
 
-The initial map display will take a little while.  You'll be able to zoom in and out, but depending on server speed some tiles may initially display as grey because they can't be rendered in time for the browser.  However, once done they’ll be ready for the next time that they are needed.  If you look in /var/log/syslog you should see requests for tiles. 
+The initial map display will take a little while.  You'll be able to zoom in and out, but depending on server speed some tiles may initially display as grey because they can't be rendered in time for the browser.  However, once done they’ll be ready for the next time that they are needed.  If you look in the system log you should see requests for tiles. 
 
-If desired, you can increase the setting "ModTileMissingRequestTimeout" in "/etc/apache2/conf-available/renderd.conf" from 10 seconds to perhaps 30 or 60, in order to wait longer for tiles to be rendered in the background before a grey tile is given to the user.  Make sure you "sudo service renderd restart" and "sudo service apache2 restart" after changing it.
+If desired, you can increase the settings "ModTileRequestTimeout" and "ModTileMissingRequestTimeout" in "/etc/apache2/conf-available/renderd.conf" from 3 and 10 seconds to perhaps 30 or 60, in order to wait longer for tiles to be rendered in the background before a grey tile is given to the user.  Make sure you "sudo service renderd restart" and "sudo service apache2 restart" after changing it.
 
 Congratulations. Head over to the [using tiles](https://switch2osm.github.io/using-tiles/) section to create a map that uses your new tile server.
