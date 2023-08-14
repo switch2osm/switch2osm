@@ -4,13 +4,15 @@ title: Using a Docker container
 permalink: /serving-tiles/using-a-docker-container/
 ---
 
-If you just want to try things out or you're using an OS other than Ubuntu, and you're using Docker for containerisation, you can try [this](https://github.com/Overv/openstreetmap-tile-server/blob/master/README.md) (thanks to all the contributors there).  It's based on the instructions [here](https://switch2osm.org/serving-tiles/manually-building-a-tile-server-18-04-lts/), but is a pre-built container you can install.
+If you just want to try things out or you're using an OS other than Ubuntu, and you're using Docker for containerisation, you can try [this](https://github.com/Overv/openstreetmap-tile-server) (thanks to all the contributors there).  It's based on the instructions [here](https://switch2osm.org/serving-tiles/manually-building-a-tile-server-ubuntu-22-04-lts/), but is a pre-built container you can install.
 
 # Docker
 
-If you don't already have Docker installed, there are lots of "how-tos" around - see for example [here](https://www.openstreetmap.org/user/SomeoneElse/diary/45070) and the links from there.
+If you don't already have Docker installed, there are lots of "how-tos" around - see for example [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-debian-10).
 
-# OpenStreetmap Data
+You'll need around 30GB of disk space for even a small data extract, because the worldwide boundary data that is added to the database is quite large.
+
+# OpenStreetMap Data
 
 In this example run-through I’ll download data for Zambia and import it, but any OSM .pbf file should work.  For testing, try a small .pbf first.  When logged in as the non-root user that you run Docker from, download the data for Zambia:
 
@@ -19,39 +21,45 @@ In this example run-through I’ll download data for Zambia and import it, but a
 
 Create a docker volume for the data:
 
-    docker volume create openstreetmap-data
+    docker volume create osm-data
 
 And install it and import the data:
 
-    time docker run -v /home/renderaccount/zambia-latest.osm.pbf:/data.osm.pbf -v openstreetmap-data:/var/lib/postgresql/12/main overv/openstreetmap-tile-server:1.3.10 import
+    docker run  -v /home/renderaccount/zambia-latest.osm.pbf:/data/region.osm.pbf  -v osm-data:/data/database/  overv/openstreetmap-tile-server  import
 
-The path to the data file needs to be the absolute path to the data file - it can't be a relative path.  In this example it's in the root directory of the "renderaccount" user.
+The path to the data file needs to be the absolute path to the data file - it can't be a relative path.  In this example it's in the root directory of the "renderaccount" user.  Also, if something goes wrong, you'll need to "docker volume rm osm-data" and restart from "docker volume create osm-data" above.  At the end of the process you should see:
+
+    INFO:root:  Import complete
+
+If you see something like:
+
+    /data/region.osm.pbf: Is a directory
+
+or
+
+    createuser: error: creation of new role failed: ERROR:  role "renderer" already exists
+
+then something has gone wrong; you'll need to use "docker ps -a" to identify the failed container; "docker rm" (followed by the container id) to delete it, and then delete and recreate "osm-data" as described above.
 
 How long this takes depends very much on the local network speed and the size of the area that you are loading. Zambia, used in this example, is relatively small.
 
-Note that if something goes wrong the error messages may be somewhat cryptic - you might get “… is a directory” if the data file isn’t found. The “time” at the start of the command isn’t necessary for the installation and import; it just tells you how long it took for future reference.  Also, the postgres version used by this container changed between versions 1.3.5 and 1.3.6 (see [here](https://github.com/Overv/openstreetmap-tile-server/releases/tag/v1.3.6)).  This means that an "openstreetmap-data" created with an earlier version won't work - you will need to remove it with "docker volume rm openstreetmap-data" and recreate.
+Note that if something goes wrong the error messages may be somewhat cryptic, and unfortunately the import process can't be restarted after failure.  Also, note that newer versions of the Docker container might use newer versions of postgres, so an “osm-data” created with an earlier version might not work - you may need to remove it with “docker volume rm osm-data” and recreate.
 
-For more details about what it’s actually doing, have a look at [this file](https://github.com/Overv/openstreetmap-tile-server/blob/master/Dockerfile). You’ll see that it closely matches the “manually building a tile server” instructions [here](https://switch2osm.org/serving-tiles/manually-building-a-tile-server-18-04-lts/), with some minor changes such as the tile URL and the internal account used. Internally you can see that it’s using Ubuntu 18.04.  You don’t need to interact with that directly, but you can (via "docker exec -it mycontainernumber bash") if you want to).
-
-When the import is complete you should see something like this:
-
-    Osm2pgsql took 568s overall
-
-    real    9m34.378s
-    user    0m0.030s
-    sys     0m0.060s
-
-That tells you how long things took in total (in this case 9.5 minutes). 
+For more details about what it’s actually doing, have a look at [this file](https://github.com/Overv/openstreetmap-tile-server/blob/master/Dockerfile). You’ll see that it closely matches the “manually building a tile server” instructions [here](https://switch2osm.org/serving-tiles/manually-building-a-tile-server-22-04-lts/), with some minor changes such as the tile URL and the internal account used. Internally you can see that it’s using Ubuntu 22.04.  You don’t need to interact with that directly, but you can (via "docker exec -it mycontainernumber bash") if you want to.
 
 To start the tile server running:
 
-    docker run -p 80:80 -v openstreetmap-data:/var/lib/postgresql/12/main -d overv/openstreetmap-tile-server:1.3.10 run
+    docker run -p 8080:80 -v osm-data:/data/database -d overv/openstreetmap-tile-server run
 
-and to check that it’s working, browse to:
+and to check that it’s working, from a new incognito window browse to:
 
-    http://your.server.ip.address/tile/0/0/0.png
+    http://your.server.ip.address:8080/tile/0/0/0.png
 
-You should see a map of the world in your browser.
+You should see a map of the world in your browser.  Then try:
+
+    http://your.server.ip.address:8080
+
+for a map that you can zoom in and out of.  Tiles (especially at low zoom levels) will take a short period of time to appear.
 
 ## More Information
 
@@ -59,6 +67,6 @@ This docker container actually supports a lot more than the simple example here 
 
 ## Viewing tiles
 
-For a simple “slippy map” we can use an html file “sample_leaflet.html” which is [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/extra/sample_leaflet.html) in mod_tile’s “extra” folder. Edit “hot” in the URL in that file to read “tile”, and then just open that file in a web browser on the machine where you installed the docker container. If that isn’t possible because you’re installing on a server without a local web browser, you’ll also need to edit it to replace “127.0.0.1” with the IP address of the server and copy it to below “/var/www/html” on that server.
+For a simple “slippy map” that you can modify, you can use an html file “sample_leaflet.html” which is [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/extra/sample_leaflet.html) in mod_tile’s “extra” folder. Edit “hot” in the URL in that file to read “tile”, and then just open that file in a web browser on the machine where you installed the docker container. If that isn’t possible because you’re installing on a server without a local web browser, you’ll also need to edit it to replace “127.0.0.1” with the IP address of the server and copy it to below “/var/www/html” on that server.
 
-If you want to load a different area, just repeat the process from “wget” above. It’ll be quicker the next time because the static data needed by the map style won’t be needed.
+If you want to load a different area, just repeat the process from “wget” above. Unfortunately it is necesary to delete and recreate "osm-data" every time you want to load some new data.
