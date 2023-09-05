@@ -10,7 +10,7 @@ lang: uk
 
 З переходом на останню версію osm2pgsql (версія 1.4.2 та свіжіше) оновлювати дані стало на багато простіше ніж раніше. Відповідні версії розповсюджується в складі Ubuntu 22.04 та Debian 12, їх можна встановити слідуючи [інструкції з osm2pgsql.org](https://osm2pgsql.org/doc/install.html){: target=_blank}.
 
-Простіший, але менш гнучкий метод оновлення даних,&nbsp;– використання `osm2pgsql-replication` (див [тут](/serving-tiles/updating-as-people-edit-osm2pgsql-replication.md)). Тут для оновлення даних в нашій базі ми будемо використовувати `PyOsmium` для оновлення даних, які ми отримали з Geofabrik хвилинними оновленнями з <https://planet.openstreetmap.org/>{: target=_blank}.
+Простіший, але менш гнучкий метод оновлення даних,&nbsp;– використання `osm2pgsql-replication` (див [тут](/serving-tiles/updating-as-people-edit-osm2pgsql-replication.md)). Тут для оновлення даних в нашій базі ми будемо використовувати `PyOsmium` для оновлення даних, які ми отримали з Geofabrik хвилинними оновленнями з <https://planet.openstreetmap.org>{: target=_blank}.
 
 ## Переконайтесь, що ви отримуєте повідомлення для відлагодження
 
