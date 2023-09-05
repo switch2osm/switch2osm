@@ -1,49 +1,49 @@
 uk:
-  extra:
-      alternate:
-        # Replace "English" with the name of the translated language
-        - name: Українська
-          # ISO code of the translated language
-          link: ./uk/
-          # ISO code of the translated language
-          lang: uk
-
   plugins:
     - i18n:
-        nav_translations:
-          uk:
-            # Menu item name for the /index.md
-            Home: Switch2OSM
-            # Menu item name for the /why-switch.md
-            Why: "Навіщо?"
-            # Menu item name for the /case-studies.md
-            Cases: Вже з OSM
-            # Menu item name for the /the-basics.md
-            Basics: Основи
-            # Menu item name for the "Using Tiles" tab
-            Using: Мапа
-            # Menu item name for the side menu "Switch to using OSM tiles"
-            Own tiles: Використання тайлів
-            # Menu item name for the side menu
-            Leaflet: За допомогою Leaflet
-            # Menu item name for the side menu
-            OpenLayers: За допомогою OpenLayers
-            # Menu item name for the side menu
-            Vector Tiles: Переваги векторних тайлів
-            # Menu item name for the "Serving Tiles" tab
-            Serving: Власний сервер
-            Serving tiles: Робимо власні тайли
-            Manually: Розгортаємо сервер вручну
-            Docker: 
-            Munin: 
-            Updating: Оновлення бази даних правками з OpenStreetMap
-            Serving vector tiles: Векторні тайли
-            # Steps to Serve Vector Map Tiles
-            Steps: Загальні кроки
-            TileServer GL: Розгортання TileServer GL
-            # Menu item name for the /other-uses.md
-            Other: Інше
-            # Menu item name for the /providers.md
-            Providers: Постачальники
-            # Menu item name for the /find-out-more.md
-            More:
+        languages:
+          # ISO code of your language 
+          - locale: uk
+            # Name of your languge
+            name: Українська
+            # Translate copyright statement
+            copyright: "© 2013–2023 Учасники OpenStreetMap, <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />Матеріали цього сайту ліцензуються на умовах Ліцензії – <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>."
+            nav_translations:
+              # Menu item name for the /index.md
+              Home: Switch2OSM
+              # Menu item name for the /why-switch.md
+              Why: "Навіщо?"
+              # Menu item name for the /case-studies.md
+              Cases: Вже з OSM
+              # Menu item name for the /the-basics.md
+              Basics: Основи
+              # Menu item name for the "Using Tiles" tab
+              Using: Мапа
+              # Menu item name for the side menu
+              Leaflet: За допомогою Leaflet
+              # Menu item name for the side menu
+              OpenLayers: За допомогою OpenLayers
+              # Menu item name for the side menu
+              Vector Tiles: Переваги векторних тайлів
+              # Menu item name for the "Serving Tiles" tab
+              Serving: Власний сервер
+              # Serving tiles: Manually building a tile server
+              Manually: Розгортаємо сервер вручну
+              # Serving tiles: Using a Docker container
+              Docker: Використання контейнера Docker
+              # Serving tiles: Monitoring using Munin
+              Munin: Моніторинг за допомогою Munin
+              # Serving tiles: Updating your database as people edit OpenStreetMap
+              Updating: Оновлення бази даних правками з OpenStreetMap
+              # Serving tiles: Vector Map Tiles
+              Serving vector tiles: Векторні тайли
+              # Vector Map Tiles: Steps to Serve Vector Map Tiles
+              Steps: Загальні кроки
+              # Vector Map Tiles: Getting started with TileServer GL
+              TileServer GL: Розгортання TileServer GL
+              # Menu item name for the /other-uses.md
+              Other: Інше
+              # Menu item name for the /providers.md
+              Providers: Постачальники
+              # Menu item name for the /find-out-more.md
+              More: Отримання допомоги
