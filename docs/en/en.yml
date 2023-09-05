@@ -1,17 +1,13 @@
-en:
-  extra:
-      alternate:
-        # Replace "English" with the name of the translated language
-        - name: English
-          # ISO code of the translated language
-          link: ./en/
-          # ISO code of the translated language
-          lang: en
-
-  plugins:
-    - i18n:
-        nav_translations:
-          en:
+plugins:
+  - i18n:
+      languages:
+        # ISO code of your language 
+        - locale: en
+          # Name of your languge
+          name: English
+          # Translate copyright statement
+          copyright: © 2013–2023 OpenStreetMap and contributors, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
+          nav_translations:
             # Menu item name for the /index.md
             Home: Switch2OSM
             # Menu item name for the /why-switch.md
@@ -22,8 +18,6 @@ en:
             Basics: The Basics
             # Menu item name for the "Using Tiles" tab
             Using: Using Tiles
-            # Menu item name for the side menu "Switch to using OSM tiles"
-            Own tiles: Switch to using OSM tiles
             # Menu item name for the side menu
             Leaflet: Getting started with Leaflet
             # Menu item name for the side menu
@@ -32,18 +26,23 @@ en:
             Vector Tiles: Power of Vector Map Tiles
             # Menu item name for the "Serving Tiles" tab
             Serving: Serving Tiles
-            Serving tiles: Serving your own tiles
+            # Serving tiles: Manually building a tile server
             Manually: Manually building a tile server
-            Docker: 
-            Munin: 
+            # Serving tiles: Using a Docker container
+            Docker: Using a Docker container
+            # Serving tiles: Monitoring using Munin
+            Munin: Monitoring using Munin
+            # Serving tiles: Updating your database as people edit OpenStreetMap
             Updating: Updating your database as people edit OpenStreetMap
+            # Serving tiles: Vector Map Tiles
             Serving vector tiles: Vector Map Tiles
-            # Steps to Serve Vector Map Tiles
+            # Vector Map Tiles: Steps to Serve Vector Map Tiles
             Steps: General steps
+            # Vector Map Tiles: Getting started with TileServer GL
             TileServer GL: Getting started with TileServer GL
             # Menu item name for the /other-uses.md
             Other: Other Uses
             # Menu item name for the /providers.md
             Providers: Providers
             # Menu item name for the /find-out-more.md
-            More:
+            More: Getting help

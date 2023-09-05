@@ -14,7 +14,7 @@ hide:
 
 Ваші мапи не відрізняються від інших? Ви платите занадто лише за те, щоб додати мапу на ваш вебсайт? Переходьте на OpenStreetMap та дізнайтеся, як можна створювати красиві мапи на основі найкращих даних у світі.
 
-[Мапи OSM](using-tiles/){ .md-button .md-button--primary } [Ваш сервер](serving-tiles/){ .md-button }
+[Мапи OSM](/using-tiles/index.md){ .md-button .md-button--primary } [Ваш сервер](/serving-tiles/index.md){ .md-button }
 
 ///
 

@@ -6,7 +6,7 @@ lang: en
 
 # {{ title }}
 
-If you just want to try things out, or you're using an OS other than Ubuntu, and you're using Docker for containerisation, you can try [this](https://github.com/Overv/openstreetmap-tile-server){: target=_blank} (thanks to all the contributors there).  It's based on the instructions [here](/serving-tiles/manually-building-a-tile-server-ubuntu-22-04-lts/), but is a pre-built container you can install.
+If you just want to try things out, or you're using an OS other than Ubuntu, and you're using Docker for containerisation, you can try [this](https://github.com/Overv/openstreetmap-tile-server){: target=_blank} (thanks to all the contributors there).  It's based on the instructions [here](/serving-tiles/manually-building-a-tile-server-ubuntu-22-04-lts.md), but is a pre-built container you can install.
 
 ## Docker
 
@@ -63,7 +63,7 @@ How long this takes depends very much on the local network speed and the size of
 
 Note that if something goes wrong the error messages may be somewhat cryptic, and unfortunately the import process can't be restarted after failure.  Also, note that newer versions of the Docker container might use newer versions of postgres, so an `osm-data` created with an earlier version might not work - you may need to remove it with `#!sh docker volume rm osm-data` and recreate.
 
-For more details about what it’s actually doing, have a look at [this file](https://github.com/Overv/openstreetmap-tile-server/blob/master/Dockerfile){: target=_blank}. You’ll see that it closely matches the “manually building a tile server” instructions [here](/serving-tiles/manually-building-a-tile-server-ubuntu-22-04-lts/), with some minor changes such as the tile URL and the internal account used. Internally you can see that it’s using Ubuntu 22.04.  You don’t need to interact with that directly, but you can (via `#!sh docker exec -it mycontainernumber bash`) if you want to.
+For more details about what it’s actually doing, have a look at [this file](https://github.com/Overv/openstreetmap-tile-server/blob/master/Dockerfile){: target=_blank}. You’ll see that it closely matches the “manually building a tile server” instructions [here](/serving-tiles/manually-building-a-tile-server-ubuntu-22-04-lts.md), with some minor changes such as the tile URL and the internal account used. Internally you can see that it’s using Ubuntu 22.04.  You don’t need to interact with that directly, but you can (via `#!sh docker exec -it mycontainernumber bash`) if you want to.
 
 To start the tile server running:
 

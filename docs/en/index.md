@@ -14,7 +14,7 @@ hide:
 
 Do your maps look like everyone else’s? Are you paying high fees just to include maps on your website? Switch to OpenStreetMap and discover how you can build beautiful maps from the world’s best map data.
 
-[Using Tiles](using-tiles/){ .md-button .md-button--primary } [Serving Tiles](serving-tiles/){ .md-button }
+[Using Tiles](/using-tiles/index.md){ .md-button .md-button--primary } [Serving Tiles](/serving-tiles/index.md){ .md-button }
 
 ///
 

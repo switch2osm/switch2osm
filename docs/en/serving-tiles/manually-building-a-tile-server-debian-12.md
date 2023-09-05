@@ -373,4 +373,4 @@ The initial map display will take a little while. You'll be able to zoom in and 
 
 If desired, you can increase the setting `ModTileRequestTimeout` and `ModTileMissingRequestTimeout` in `/etc/apache2/conf-available/renderd.conf` from 3 and 10 seconds to perhaps 30 or 60, in order to wait longer for tiles to be rendered in the background before a grey tile is given to the user. Make sure you `#!sh sudo service renderd restart` and `#!sh sudo service apache2 restart` after changing it.
 
-Congratulations. Head over to the [using tiles](/using-tiles/) section to create a map that uses your new tile server.
+Congratulations. Head over to the [using tiles](/using-tiles/index.md) section to create a map that uses your new tile server.

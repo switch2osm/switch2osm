@@ -476,4 +476,4 @@ That will show a line every time a tile is requested, and one every time renderi
 
 When you load that page you should see some tile requests. Zoom out gradually. You’ll see requests for new tiles show up in the ssh connection. Some low-zoom tiles may take a long time (several minutes) to render for the first time, but once done they’ll be ready for the next time that they are needed.
 
-Congratulations. Head over to the [using tiles](/using-tiles/) section to create a map that uses your new tile server.
+Congratulations. Head over to the [using tiles](/using-tiles/index.md) section to create a map that uses your new tile server.

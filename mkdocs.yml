@@ -11,9 +11,8 @@ copyright: © 2013–2023 OpenStreetMap and contributors, <a rel="license" href=
 extra_css:
   - stylesheets/extra.css
 
-theme: 
+theme:
   name: material
-
   favicon: assets/favicon.png
   icon:
     logo: simple/openstreetmap
@@ -51,22 +50,14 @@ theme:
     - announce.dismiss
 
 extra:
-  alternate:
-    - name: English
-      link: ./en/ 
-      lang: en
-    - name: Українська
-      link: ./uk/
-      lang: uk
-    - name: Help to translate
-      link: https://app.transifex.com/osm-ua/switch2osm/dashboard/#
-
   social:
+    - icon: material/translate
+      link: https://app.transifex.com/osm-ua/switch2osm/dashboard/#/
     - icon: fontawesome/solid/globe
       link: https://openstreetmap.org/
     - icon: fontawesome/brands/discourse
       link: https://community.openstreetmap.org/
-    - icon: fontawesome/brands/twitter
+    - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/openstreetmap 
     - icon: fontawesome/brands/facebook
       link: https://www.facebook.com/OpenStreetMap/
@@ -110,12 +101,14 @@ nav:
   - Cases: case-studies.md
   - Basics: the-basics.md
   - Using: 
-    - Own tiles: /using-tiles/index.md
+    # - Own tiles: using-tiles/index.md
+    - using-tiles/index.md
     - Leaflet: using-tiles/getting-started-with-leaflet.md
     - OpenLayers: using-tiles/getting-started-with-openlayers.md
     - Vector Tiles: using-tiles/vector-map-tiles.md
   - Serving:
-    - Serving tiles: /serving-tiles/index.md
+    # - Serving tiles: serving-tiles/index.md
+    - serving-tiles/index.md
     - Manually:
       - Debian 12: serving-tiles/manually-building-a-tile-server-debian-12.md
       - Debian 11: serving-tiles/manually-building-a-tile-server-debian-11.md
@@ -135,7 +128,6 @@ nav:
   - Providers: providers.md
   - More: find-out-more.md
 
-
 plugins:
   - search:
       lang:
@@ -144,62 +136,62 @@ plugins:
   - macros
   - ezlinks
   - glightbox
-  # - section-index
-  
-        
+  - section-index
+
 # This part is for organising languages in specific folders
 # Using a folder per language structure
-# https://pypi.org/project/mkdocs-static-i18n/
+# https://ultrabug.github.io/mkdocs-static-i18n/
   - i18n:
-      default_language: en
       docs_structure: folder
+      reconfigure_material: true
       languages:
-        en:
+        - locale: en
           name: English
-        uk:
+          default: true
+          nav_translations:
+            Home: Switch2OSM
+            Why: Why Switch?
+            Cases: Case Studies
+            Basics: The Basics
+            Using: Using Tiles
+            # Own tiles: Switch to using OSM tiles
+            Leaflet: Getting started with Leaflet
+            OpenLayers: Getting started with OpenLayers
+            Vector Tiles: Power of Vector Map Tiles
+            Serving: Serving Tiles
+            # Serving tiles: Serving your own tiles
+            Manually: Manually building a tile server
+            Docker: Using a Docker container
+            Munin: Monitoring using Munin
+            Updating: Updating your database as people edit OpenStreetMap
+            Serving vector tiles: Vector Map Tiles
+            Steps: General steps
+            TileServer GL: Getting started with TileServer GL
+            Other: Other Uses
+            Providers: Providers
+            More: Getting help
+        - locale: uk
           name: Українська
-      nav_translations:
-        en:
-          Home: Switch2OSM
-          Why: Why Switch?
-          Cases: Case Studies
-          Basics: The Basics
-          Using: Using Tiles
-          Own tiles: Switch to using OSM tiles
-          Leaflet: Getting started with Leaflet
-          OpenLayers: Getting started with OpenLayers
-          Vector Tiles: Power of Vector Map Tiles
-          Serving: Serving Tiles
-          Serving tiles: Serving your own tiles
-          Manually: Manually building a tile server
-          Docker: 
-          Munin: 
-          Updating: Updating your database as people edit OpenStreetMap
-          Serving vector tiles: Vector Map Tiles
-          Steps: General steps
-          TileServer GL: Getting started with TileServer GL
-          Other: 
-          Providers: Providers
-          More: 
-        uk:
-          Home: Switch2OSM
-          Why: "Навіщо?"
-          Cases: Вже з OSM
-          Basics: Основи
-          Using: Мапа
-          Own tiles: Використання тайлів
-          Leaflet: За допомогою Leaflet
-          OpenLayers: За допомогою OpenLayers
-          Vector Tiles: Переваги векторних тайлів
-          Serving: Власний сервер
-          Serving tiles: Робимо власні тайли
-          Manually: Розгортаємо сервер вручну
-          Docker: 
-          Munin: 
-          Updating: Оновлення бази даних правками з OpenStreetMap
-          Serving vector tiles: Векторні тайли
-          Steps: Загальні кроки
-          TileServer GL: Розгортання TileServer GL
-          Other: Інше
-          Providers: Постачальники
-          More:
+          copyright: © 2013–2023 Учасники OpenStreetMap, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />Матеріали цього сайту ліцензуються на умовах Ліцензії – <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/deed.uk" target="_blank">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
+          nav_translations:
+            Home: Switch2OSM
+            Why: Навіщо?
+            Cases: Вже з OSM
+            Basics: Основи
+            Using: Мапа
+            Own tiles: Використання тайлів
+            Leaflet: За допомогою Leaflet
+            OpenLayers: За допомогою OpenLayers
+            Vector Tiles: Переваги векторних тайлів
+            Serving: Власний сервер
+            Serving tiles: Робимо власні тайли
+            Manually: Розгортаємо сервер вручну
+            Docker: Використання контейнера Docker
+            Munin: Моніторинг за допомогою Munin
+            Updating: Оновлення бази даних правками з OpenStreetMap
+            Serving vector tiles: Векторні тайли
+            Steps: Загальні кроки
+            TileServer GL: Розгортання TileServer GL
+            Other: Інше
+            Providers: Постачальники
+            More: Отримання допомоги
