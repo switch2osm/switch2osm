@@ -133,6 +133,7 @@ plugins:
       lang:
         - en
         - uk
+        - zh-TW
   - macros
   - ezlinks
   - glightbox
@@ -195,3 +196,26 @@ plugins:
             Other: Інше
             Providers: Постачальники
             More: Отримання допомоги
+        - locale: zh-TW
+          name: 台灣華語
+          copyright: "© 2013–2023 開放街圖與貢獻者。 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />這些資料採用 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\">創用CC相同方式分享 2.0 未本地化授權條款</a>。"
+          nav_translations:
+            Home: Switch2OSM
+            Why: 為什麼更換？
+            Cases: 案例分析
+            Basics: 基本資訊
+            Using: 使用圖磚
+            Leaflet: 開始使用 Leaflet
+            OpenLayers: 開始使用 OpenLayers
+            Vector Tiles: 向量地圖圖磚的威力
+            Serving: 供給圖磚
+            Manually: 手動建構圖磚伺服器
+            Docker: 使用 Docker 容器
+            Munin: 採用 Munin 監控
+            Updating: 在人們編輯過開放街圖之後更新資料庫
+            Serving vector tiles: 向量地圖圖磚
+            Steps: 一般步驟
+            TileServer GL: 開始使用 TileServer GL
+            Other: 其他用途
+            Providers: 提供者
+            More: 取得協助
