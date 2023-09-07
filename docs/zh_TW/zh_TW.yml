@@ -1,0 +1,49 @@
+zh_TW:
+  plugins:
+    - i18n:
+        languages:
+          # ISO code of your language 
+          - locale: zh-tw
+            # Name of your languge
+            name: 台灣華語
+            # Translate copyright statement
+            copyright: "© 2013–2023 開放街圖與貢獻者。 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />這些資料採用 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\">創用CC相同方式分享 2.0 未本地化授權條款</a>。"
+            nav_translations:
+              # Menu item name for the /index.md
+              Home: Switch2OSM
+              # Menu item name for the /why-switch.md
+              Why: 為什麼更換？
+              # Menu item name for the /case-studies.md
+              Cases: 案例分析
+              # Menu item name for the /the-basics.md
+              Basics: 基本資訊
+              # Menu item name for the "Using Tiles" tab
+              Using: 使用圖磚
+              # Menu item name for the side menu
+              Leaflet: 開始使用 Leaflet
+              # Menu item name for the side menu
+              OpenLayers: 開始使用 OpenLayers
+              # Menu item name for the side menu
+              Vector Tiles: 向量地圖圖磚的威力
+              # Menu item name for the "Serving Tiles" tab
+              Serving: 供給圖磚
+              # Serving tiles: Manually building a tile server
+              Manually: 手動建構圖磚伺服器
+              # Serving tiles: Using a Docker container
+              Docker: 使用 Docker 容器
+              # Serving tiles: Monitoring using Munin
+              Munin: 採用 Munin 監控
+              # Serving tiles: Updating your database as people edit OpenStreetMap
+              Updating: 在人們編輯過開放街圖之後更新資料庫
+              # Serving tiles: Vector Map Tiles
+              Serving vector tiles: 向量地圖圖磚
+              # Vector Map Tiles: Steps to Serve Vector Map Tiles
+              Steps: 一般步驟
+              # Vector Map Tiles: Getting started with TileServer GL
+              TileServer GL: 開始使用 TileServer GL
+              # Menu item name for the /other-uses.md
+              Other: 其他用途
+              # Menu item name for the /providers.md
+              Providers: 提供者
+              # Menu item name for the /find-out-more.md
+              More: 取得協助
