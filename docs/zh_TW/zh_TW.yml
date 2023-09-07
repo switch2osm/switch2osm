@@ -3,7 +3,7 @@ zh_TW:
     - i18n:
         languages:
           # ISO code of your language 
-          - locale: zh-tw
+          - locale: zh-TW
             # Name of your languge
             name: 台灣華語
             # Translate copyright statement
