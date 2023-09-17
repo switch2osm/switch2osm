@@ -1,24 +1,30 @@
-filters:
-  - filter_type: file
-    file_format: YAML_GENERIC
-    source_language: en
-    source_file: docs/en/en.yml
-    translation_files_expression: 'docs/<lang>/<lang>.yml'
-
-  - filter_type: dynamic
-    file_format: GITHUBMARKDOWN
-    source_language: en
-    source_files_expression: docs/en/<file>.md
-    translation_files_expression: 'docs/<lang>/<file>.md'
-
-  - filter_type: dynamic
-    file_format: GITHUBMARKDOWN
-    source_language: en
-    source_files_expression: docs/en/serving-tiles/<file>.md
-    translation_files_expression: 'docs/<lang>/serving-tiles/<file>.md'
-
-  - filter_type: dynamic
-    file_format: GITHUBMARKDOWN
-    source_language: en
-    source_files_expression: docs/en/using-tiles/<file>.md
-    translation_files_expression: 'docs/<lang>/using-tiles/<file>.md'
+git:
+  filters:
+    - filter_type: file
+      file_format: YAML_GENERIC
+      source_language: en
+      source_file: docs/en/en.yml
+      translation_files_expression: 'docs/<lang>/<lang>.yml'
+  
+    - filter_type: dynamic
+      file_format: GITHUBMARKDOWN
+      source_language: en
+      source_files_expression: docs/en/<file>.md
+      translation_files_expression: 'docs/<lang>/<file>.md'
+  
+    - filter_type: dynamic
+      file_format: GITHUBMARKDOWN
+      source_language: en
+      source_files_expression: docs/en/serving-tiles/<file>.md
+      translation_files_expression: 'docs/<lang>/serving-tiles/<file>.md'
+  
+    - filter_type: dynamic
+      file_format: GITHUBMARKDOWN
+      source_language: en
+      source_files_expression: docs/en/using-tiles/<file>.md
+      translation_files_expression: 'docs/<lang>/using-tiles/<file>.md'
+  settings:
+    language_mapping:
+      ku_IQ: ku-IQ
+      pt_BR: pt-BR
+      zh_TW: zh-TW
