@@ -330,7 +330,7 @@ If you look at the system log, you should see messages from the `renderd` servic
 sudo journalctl -ef
 ```
 
-See [here](https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.en.html#changes-to-system-logging):{: target=_blank} for more details.
+See [here](https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.en.html#changes-to-system-logging){: target=_blank}: for more details.
 
 ```sh
 sudo /etc/init.d/apache2 restart
