@@ -330,7 +330,7 @@ sudo /etc/init.d/renderd restart
 sudo journalctl -ef
 ```
 
-Дивіться  [тут](https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.en.html#changes-to-system-logging):{: target=_blank} для ознайомлення з деталями.
+Дивіться [тут](https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.en.html#changes-to-system-logging){: target=_blank}: для ознайомлення з деталями.
 
 ```sh
 sudo /etc/init.d/apache2 restart
