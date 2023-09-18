@@ -63,19 +63,22 @@ extra:
       link: https://www.facebook.com/OpenStreetMap/
 
 markdown_extensions:
+  # Python Markdown
+  - admonition
   - attr_list
   - def_list
+  - footnotes
   - toc:
       permalink: ⚓︎ 
       slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: none
-
-  - admonition
-  - footnotes
+  
+  # Python Markdown Extensions
+  - pymdownx.blocks.html
+  - pymdownx.caret
+  - pymdownx.critic
   - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.blocks.html 
 
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -85,15 +88,13 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
   
-  - pymdownx.critic
-  - pymdownx.caret
+  - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
+  - pymdownx.snippets
+  - pymdownx.superfences
 
 nav:
   - Home: index.md
