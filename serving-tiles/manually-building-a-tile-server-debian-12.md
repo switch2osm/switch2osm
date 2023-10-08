@@ -120,6 +120,12 @@ Browse to https://download.geofabrik.de/asia/azerbaijan.html and note the "This 
     cd ~/data
     wget https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
 
+Next, we need to make sure that the "_renderd" user can access the stylesheet. In order to do this it needs access to wherever you downloaded it, and by default it won't have access to your home directory.  If it's in "src" below your user account then
+
+    chmod o+rx ~
+
+will work.  If you don't want to do this you can move it and amend references to the file locations in subsequent commands.
+
 The following command will insert the OpenStreetMap data you downloaded earlier into the database. This step is very disk I/O intensive; importing the full planet might take many hours, days or weeks depending on the hardware. For smaller extracts the import time is much faster accordingly, and you may need to experiment with different -C values to fit within your machine's available memory.  Note that the "_renderd" user is used for this process.
 
     sudo -u _renderd osm2pgsql -d gis --create --slim  -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -C 2500 --number-processes 1 -S ~/src/openstreetmap-carto/openstreetmap-carto.style ~/data/azerbaijan-latest.osm.pbf
