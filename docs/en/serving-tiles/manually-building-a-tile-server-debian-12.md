@@ -135,10 +135,9 @@ git clone https://github.com/gravitystorm/openstreetmap-carto
 cd openstreetmap-carto
 ```
 
-Next, we'll install a suitable version of the `carto` compiler.
+Next, we'll check that we have installed a suitable version of the `carto` compiler.
 
 ```sh
-sudo npm install -g carto
 carto -v
 ```
 
@@ -167,6 +166,14 @@ mkdir ~/data
 cd ~/data
 wget https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
 ```
+
+Next, we need to make sure that the `_renderd` user can access the stylesheet. In order to do this it needs access to wherever you downloaded it, and by default it won't have access to your home directory. If it's in `src` below your user account then
+
+```sh
+chmod o+rx ~
+```
+
+will work. If you don't want to do this you can move it and amend references to the file locations in subsequent commands.
 
 The following command will insert the OpenStreetMap data you downloaded earlier into the database. This step is very disk I/O intensive; importing the full planet might take many hours, days or weeks depending on the hardware. For smaller extracts the import time is much faster accordingly, and you may need to experiment with different `-C` values to fit within your machine's available memory. Note that the `_renderd` user is used for this process.
 
