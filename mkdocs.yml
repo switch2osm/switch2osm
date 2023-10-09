@@ -150,6 +150,13 @@ plugins:
         - locale: en
           name: English
           default: true
+          theme:
+            palette:
+              - toggle:
+                  name: Switch to dark mode
+              - toggle:
+                  name: Switch to light mode
+          copyright: © 2013–2023 OpenStreetMap and contributors, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
           nav_translations:
             Home: Switch2OSM
             Why: Why Switch?
@@ -174,6 +181,12 @@ plugins:
             More: Getting help
         - locale: uk
           name: Українська
+          theme:
+            palette:
+              - toggle:
+                  name: Увімкнути темний режим
+              - toggle:
+                  name: Увімкнути світлий режим
           copyright: "© 2013–2023 Учасники OpenStreetMap, <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />Матеріали цього сайту ліцензуються на умовах Ліцензії – <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>."
           nav_translations:
             Home: Switch2OSM
@@ -199,6 +212,12 @@ plugins:
             More: Отримання допомоги
         - locale: zh-TW
           name: 台灣華語
+          theme:
+            palette:
+              - toggle:
+                  name: 切換到深色模式
+              - toggle:
+                  name: 切換到燈光模式
           copyright: "© 2013–2023 開放街圖與貢獻者。 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />這些資料採用 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\">創用CC相同方式分享 2.0 未本地化授權條款</a>。"
           nav_translations:
             Home: Switch2OSM
