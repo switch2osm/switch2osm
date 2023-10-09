@@ -220,3 +220,7 @@ plugins:
             Other: 其他用途
             Providers: 提供者
             More: 取得協助
+        - locale: "null"
+          fixed_link: https://app.transifex.com/osm-ua/switch2osm/dashboard/#/
+          name: Help to translate
+          
