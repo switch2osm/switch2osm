@@ -36,7 +36,7 @@ OpenStreetMap is a decentralised, volunteer-run project so there’s no single c
 Please contact the OSM Foundation’s Communications Working Group.
 
 # About switch2osm
-Switch2osm is a community driven site coordinated by [Richard Fairhurst](http://www.systemed.net/) and [Paul Norman](http://www.paulnorman.ca/) with huge amounts of help from the OpenStreetMap community. You can [get involved on GitHub](https://github.com/switch2osm/switch2osm.github.io)
+Switch2osm is a community driven site coordinated by [Richard Fairhurst](http://www.systemed.net/) and [Paul Norman](http://www.paulnorman.ca/) with huge amounts of help from the OpenStreetMap community. You can [get involved on GitHub](https://github.com/switch2osm/switch2osm)
 
 Comments or suggestions? Please make contact via IRC at the first instance.
 
