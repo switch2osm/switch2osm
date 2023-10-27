@@ -85,6 +85,13 @@ Next we'll install osm2pgsql:
 
     sudo apt install osm2pgsql
 
+## Postgresql optimization
+
+If you have a default installation of PostgreSQL it is very unlikely that it will be configured to offer good performance by default.
+It can be neglected if you are only working with small datasets but it might become a problem if you are importing larger ones.
+The configuration of your PostgreSQL is defined on Ubuntu by default at `/etc/postgresql/12/main/postgresql.conf`.
+Those settings must be set appropriately in regards to your machine, if you need help to find the right settings, checkout [Tuning the PostgreSQL Server](https://osm2pgsql.org/doc/manual.html#tuning-the-postgresql-server).
+
 # Mapnik
 
 Next, we'll install Mapnik. We'll use the default version in Ubuntu 20.04:
