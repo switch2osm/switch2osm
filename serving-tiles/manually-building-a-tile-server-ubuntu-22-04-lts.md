@@ -22,7 +22,7 @@ This guide assumes that you run everything from a non-root user via "sudo".  Don
 
     sudo apt update
     sudo apt upgrade
-    sudo apt install screen locate libapache2-mod-tile renderd git tar unzip wget bzip2 apache2 lua5.1 mapnik-utils python3-mapnik python3-psycopg2 python3-yaml gdal-bin npm fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-unifont fonts-hanazono postgresql postgresql-contrib postgis postgresql-14-postgis-3 postgresql-14-postgis-3-scripts osm2pgsql net-tools curl
+    sudo apt install screen locate libapache2-mod-tile renderd git tar unzip wget bzip2 apache2 lua5.1 mapnik-utils python3-mapnik python3-psycopg2 python3-yaml gdal-bin npm postgresql postgresql-contrib postgis postgresql-14-postgis-3 postgresql-14-postgis-3-scripts osm2pgsql net-tools curl
 
 At this point, a couple of new accounts have been added.  You can see them with "tail /etc/passwd".  "postgres" is used for managing the databases that we use to hold data for rendering.  "_renderd" is used for the renderd daemon, and we'll need to make sure lots of the commands below are run as that user.
 
