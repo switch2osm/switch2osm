@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Using Tiles
 lang: en
 ---

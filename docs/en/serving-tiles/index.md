@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Serving your own tiles
 lang: en
 ---

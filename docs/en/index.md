@@ -1,5 +1,4 @@
 ---
-layout: home
 title: Switch to OpenStreetMap
 hide: 
   - toc

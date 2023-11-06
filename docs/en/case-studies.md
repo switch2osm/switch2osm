@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Case Studies
 lang: en
 ---

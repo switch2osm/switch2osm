@@ -1,5 +1,4 @@
 ---
-layout: home
 title: Переходьте на OpenStreetMap
 hide: 
   - toc

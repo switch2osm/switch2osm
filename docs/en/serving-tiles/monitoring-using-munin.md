@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Monitoring using Munin
 lang: en
 ---

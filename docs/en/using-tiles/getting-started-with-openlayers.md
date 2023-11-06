@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Getting started with OpenLayers
 lang: en
 ---

@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Find Out More
 lang: en
 ---

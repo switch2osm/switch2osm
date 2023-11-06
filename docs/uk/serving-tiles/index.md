@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Робимо власні тайли
 lang: uk
 ---

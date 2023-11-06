@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Моніторинг за допомогою Munin
 lang: uk
 ---

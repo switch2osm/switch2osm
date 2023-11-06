@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Manually building a tile server (Debian 12)
 dist: Debian 12
 dl_timestamp: "2020-11-13T21:42:03Z"

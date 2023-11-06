@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Manually building a tile server (18.04 LTS)
 dist: Ubuntu 18.04
 dl_timestamp: "2017-02-26T21:43:02Z"

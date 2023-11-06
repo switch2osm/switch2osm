@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Створення тайлового сервера вручну (Ubuntu 22.04)
 dist: Ubuntu 22.04
 dl_timestamp: "2022-04-22T20:21:40Z"

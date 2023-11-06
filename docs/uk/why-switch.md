@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Навіщо переходити?
 lang: uk
 ---

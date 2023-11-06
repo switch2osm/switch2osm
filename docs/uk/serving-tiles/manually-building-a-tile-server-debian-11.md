@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Створення тайлового сервера вручну (Debian 11)
 dist: Debian 11
 dl_timestamp: "2020-11-13T21:42:03Z"

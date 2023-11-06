@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Досвід використання
 lang: uk
 ---

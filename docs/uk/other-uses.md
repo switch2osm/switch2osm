@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Інші приклади використання
 lang: uk
 ---

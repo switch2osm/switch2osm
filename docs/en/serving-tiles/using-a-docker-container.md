@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Using a Docker container
 lang: en
 ---

@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Оновлення бази даних правками з OpenStreetMap
 lang: uk
 ---

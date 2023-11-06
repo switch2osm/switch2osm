@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Exploring the Power of Vector Map Tiles
 ---
 

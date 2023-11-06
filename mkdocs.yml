@@ -1,8 +1,8 @@
 site_name: Switch2OSM
-site_url: https://andygol.co.ua/switch2osm-mkdocs
+site_url: https://switch2osm.org
 
-repo_url: https://github.com/Andygol/switch2osm-mkdocs
-repo_name: Andygol/switch2osm-mkdocs
+repo_url: https://github.com/switch2osm/switch2osm
+repo_name: switch2osm/switch2osm
 
 edit_uri: edit/main/docs/
 
@@ -240,6 +240,6 @@ plugins:
             Providers: 提供者
             More: 取得協助
         - locale: "null"
-          fixed_link: https://app.transifex.com/osm-ua/switch2osm/dashboard/#/
+          fixed_link: https://github.com/switch2osm/switch2osm#Translation
           name: Help to translate
           

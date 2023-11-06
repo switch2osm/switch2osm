@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Використання контейнера Docker
 lang: uk
 ---

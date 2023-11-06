@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Steps to Serve Vector Map Tiles
 lang: en
 ---

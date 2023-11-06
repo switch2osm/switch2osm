@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Updating your database as people edit OpenStreetMap
 lang: en
 ---

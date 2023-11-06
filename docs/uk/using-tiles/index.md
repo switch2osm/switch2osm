@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Використання тайлів
 lang: uk
 ---

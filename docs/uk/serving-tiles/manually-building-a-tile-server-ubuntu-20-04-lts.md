@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Створення тайлового сервера вручну (Ubuntu 20.04 LTS)
 dist: Ubuntu 20.04
 dl_timestamp: "2020-05-02T20:59:02Z"
