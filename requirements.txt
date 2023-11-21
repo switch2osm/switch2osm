@@ -1,6 +1,6 @@
 mkdocs-ezlinks-plugin == 0.1.14
-mkdocs-glightbox == 0.3.4
+mkdocs-glightbox == 0.3.5
 mkdocs-macros-plugin == 1.0.5
-mkdocs-material == 9.4.8
+mkdocs-material == 9.4.10
 mkdocs-section-index == 0.3.8
 mkdocs-static-i18n == 1.2.0
