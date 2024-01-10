@@ -73,7 +73,7 @@ Open <http://127.0.0.1:8000/switch2osm/> in your browser.
 
 ![](assets/help-to-translate.png)
 
-<!-- Translation into other languages is carried out on [Transifex](https://app.transifex.com/osm-ua/switch2osm/dashboard/). Click "Help to translate" in the language switcher to get there. -->
+<!-- Translation into other languages is carried out on [Transifex](https://app.transifex.com/openstreetmap/switch2osm/dashboard/). Click "Help to translate" in the language switcher to get there. -->
 
 To add a translation in your language, follow these steps:
 
