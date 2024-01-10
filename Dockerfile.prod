@@ -1,7 +1,7 @@
 # This file is used if building for Production environments
-# It uses a multi-stage build to run jekyll to populate an nginx container
+# It uses a multi-stage build to run mkdocs to populate an nginx container
 
-FROM ruby:3.1 as build
+FROM python:3.11 as build
 
 # Add Gem build requirements
 RUN apt-get update && apt-get install -y \
@@ -12,25 +12,15 @@ RUN apt-get update && apt-get install -y \
 # Create app directory
 WORKDIR /app
 
-# Add Gemfile and Gemfile.lock
-ADD Gemfile* /app/
-
-# Install Gems
-RUN gem install bundler -v 2.4.5 \
-    && bundle config build.nokogiri --use-system-libraries \
-    && bundle config --global jobs $(nproc) \
-    && bundle config set deployment 'true' \
-    && bundle config set no-cache 'true' \
-    && bundle install \
-    && bundle clean
+# Add pip requirements
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy Site Files
 COPY . .
 
-ENV JEKYLL_ENV=production
-
-# Run jekyll build site
-RUN bundle exec jekyll build --verbose
+# Run mkdocs build
+RUN mkdocs build
 
 #-------------------------------------------------
 # https://github.com/nginxinc/docker-nginx-unprivileged
@@ -43,7 +33,7 @@ RUN echo "gzip_static on; gzip_proxied any;" >/etc/nginx/conf.d/gzip_static.conf
 # RUN echo "brotli_static on; brotli_proxied any;" >/etc/nginx/conf.d/brotli_static.conf
 
 # Copy built site from build stage
-COPY --from=build /app/_site /usr/share/nginx/html
+COPY --from=build /app/site /usr/share/nginx/html
 
 # Test configuration during docker build
 RUN nginx -t

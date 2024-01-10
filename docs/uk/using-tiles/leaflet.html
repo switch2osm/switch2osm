@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+      crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+      crossorigin="">
+    </script>
+    <style>
+      html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      #map {
+        /* налаштування розміру мапи */
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // ініціалізація Leaflet
+      var map = L.map('map').setView({lon: 31.4512745, lat: 49.0383902}, 6);
+
+      // додамо тайли OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">Учасники OpenStreetMap</a>'
+      }).addTo(map);
+
+      // покажемо масштабну лінійку у лівому нижньому куті
+      L.control.scale({imperial: true, metric: true}).addTo(map);
+
+      // покажемо позначку на мапі
+      L.marker({lon: 31.4512745, lat: 49.0383902})
+        .addTo(map)
+        .bindPopup('Географічний центр України')
+        .openPopup();
+    </script>
+  </body>
+</html>

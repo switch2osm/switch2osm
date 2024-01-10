@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simple Map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+    <!-- Рядок нижче потрібен лише для застарілого ПЗ подібного до Internet Explorer та Android 4.x -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList"></script>
+    <style>
+    html, body {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    #map {
+      /* налаштування розміру мапи */
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <div id="popup" style="padding: 10px;background-color: white;"></div>
+    <script>
+      var map = new ol.Map({
+        layers: [
+          new ol.layer.Tile({
+            // Цей код показує використання власних тайлів, але для
+            // використання тайлів з сервера OpenStreetMap достатньо вказати
+            // new ol.source.OSM() замість ol.source.XYZ(...), цього
+            // буде достатньо
+            source: new ol.source.XYZ({
+              attributions: [
+              ol.source.OSM.ATTRIBUTION,
+                'Тайли надані любʼязно ' +
+                '<a href="http://openstreetmap.org">' +
+                'OpenStreetMap' +
+                '</a>'
+              ],
+              url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+            })
+          })
+        ],
+        controls: ol.control.defaults({
+          // Для показу атрибуції OSM в нижньому куті праворуч
+          attributionOptions:  {
+            collapsed: false
+          }
+        }).extend([
+          new ol.control.ScaleLine() // Додавання масштабної лінійки до елементів керування
+        ]),
+        target: 'map',
+        view: new ol.View({
+          center: ol.proj.fromLonLat([31.15688, 48.40039]),
+          zoom: 6
+        })
+      });
+
+      // Додавання векторного шару з об'єктами та стилем з використанням іконок
+      var vectorLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+          features: [
+            new ol.Feature({
+              geometry: new ol.geom.Point(
+                ol.proj.fromLonLat([31.4512745, 49.0383902])
+              ),
+              name: 'Географічний центр України'
+            })
+          ]
+        }),
+        style: new ol.style.Style({
+          image: new ol.style.Icon({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            src: 'http://openlayers.org/en/latest/examples/data/icon.png'
+          })
+        })
+      });
+
+      map.addLayer(vectorLayer);
+
+      // Шар для показу виринаючих повідомлень на мапі
+      var popup = document.getElementById('popup');
+      var overLay = new ol.Overlay({
+        element: popup,
+        position: ol.proj.fromLonLat([31.4512745, 49.0383902])
+      });
+
+      map.addOverlay(overLay);
+
+      // Керування показом повідомлень під час клацання на мапі
+      map.on('click', function(e) {
+        var info = [];
+        map.forEachFeatureAtPixel(e.pixel, function (feature) {
+          info.push(feature.get('name'));
+        });
+        if (info.length > 0) {
+          popup.innerHTML = info.join(',');
+          popup.style.display = 'inline';
+        } else {
+          popup.innerHTML = '&nbsp;';
+          popup.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+.row {
+    display: flex;
+    /* padding-left: 50px;
+    padding-right: 50px; */
+}
+.column {
+    padding: 0px;
+}
+.column.right-side {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.column.left-side {
+    flex: 1;
+    padding-right: 20px;
+}
+.column.main {
+    flex: 5;
+}
+
+.quote {
+    color: #9c9e9a;
+}
+
+.column.left-side p span {
+    color: LightGray; 
+    font-size: 10em;
+}

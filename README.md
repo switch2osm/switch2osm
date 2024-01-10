@@ -1,4 +1,4 @@
-# switch2osm #
+# Switch2OSM
 
 This repository is the content for switch2osm.org.
 
@@ -45,13 +45,54 @@ See the issues for things to work on.
 * Uses OS distribution methods for software when possible
 
   Use `apt` or `homebrew` or similar.
-  
+
 * Avoid using PPAs where possible.
 
   PPAs can be useful for grouping more different versions of software together, beyond what is distributed by the base OS, but they tend not to be supported forever, and aren't automatically tested for compatibility as new OS versions come out.  Also, base OS support of the components used here is much better than it was.
 
 ## Contribute
-The webpage is built using [GitHub Pages](https://pages.github.com/). To compile your changes, execute
-* `bundle install --path .vendor/bundle`
-* `bundle exec jekyll serve`
-and open http://127.0.0.1:4000/ in the browser
+
+This is a re-work of original <https://switch2osm.org> website using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
+
+The goal is to have instructions in different languages in one place.
+
+You are welcome to extend the styling and content, add new languages. To do this, clone this repository, install the necessary dependencies and experiment.
+
+```
+git clone git@github.com:switch2osm/switch2osm.git
+cd switch2osm
+python -m venv venv
+source ./venv/bin/activate
+pip install -r requirements.txt
+mkdocs serve
+```
+
+Open <http://127.0.0.1:8000/switch2osm/> in your browser.
+
+## Translation
+
+![](assets/help-to-translate.png)
+
+<!-- Translation into other languages is carried out on [Transifex](https://app.transifex.com/openstreetmap/switch2osm/dashboard/). Click "Help to translate" in the language switcher to get there. -->
+
+To add a translation in your language, follow these steps:
+
+1. Begin by editing the `mkdocs.yml` file, which can be found at the root of the repository. To see an example of how to do this, refer to how the Ukrainian translation is added. Once completed, your language will be included in the language switcher, and all menu items and prompts will be displayed in your language.
+
+2. Next, you can start translating the articles' text. Here's how:
+
+   a. Duplicate the `en` folder and replace its name with your language code. Maintain the file names unchanged.
+
+   b. Translate the values of the front matter keys in each Markdown file within your language folder.
+
+   c. In each Markdown file, set the `lang` key in the front matter to match your language code, which should be the same as the name of your language folder.
+
+   d. Preserve the Markdown formatting as is; there's no need to alter it.
+
+3. If you have the `mkdocs serve` script running while making changes, the translated content will be automatically reflected in the displayed content after saving.
+
+By following these steps, you can contribute translations to the project, making it accessible to a broader audience in your language.
+
+## Copyright
+
+© 2013–2023 OpenStreetMap and contributors, [CC BY-SA](http://creativecommons.org/licenses/by-sa/2.0/).

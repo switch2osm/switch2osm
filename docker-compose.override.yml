@@ -11,9 +11,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - 35729:35729
-      - 4000:4000
     volumes:
       # Mount in the local directory into container
       - .:/app
