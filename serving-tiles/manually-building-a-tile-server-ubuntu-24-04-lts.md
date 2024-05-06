@@ -176,7 +176,7 @@ Since version v5.3.0, some extra indexes now need to be [applied manually](https
     cd ~/src/openstreetmap-carto/
     sudo -u _renderd psql -d gis -f indexes.sql
     
-It should respond with "CREATE INDEX" 14 times.
+It should respond with "CREATE INDEX" 16 times.
 
 ## Shapefile download
 
