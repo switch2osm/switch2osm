@@ -3,4 +3,4 @@ mkdocs-glightbox == 0.3.7
 mkdocs-macros-plugin == 1.0.5
 mkdocs-material == 9.5.18
 mkdocs-section-index == 0.3.9
-mkdocs-static-i18n == 1.2.2
+mkdocs-static-i18n == 1.2.3
