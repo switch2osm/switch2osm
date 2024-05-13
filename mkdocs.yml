@@ -113,6 +113,7 @@ nav:
     - Manually:
       - Debian 12: serving-tiles/manually-building-a-tile-server-debian-12.md
       - Debian 11: serving-tiles/manually-building-a-tile-server-debian-11.md
+      - Ubuntu 24.04: serving-tiles/manually-building-a-tile-server-ubuntu-24-04-lts.md
       - Ubuntu 22.04: serving-tiles/manually-building-a-tile-server-ubuntu-22-04-lts.md
       - Ubuntu 20.04: serving-tiles/manually-building-a-tile-server-ubuntu-20-04-lts.md
       - Ubuntu 18.04: serving-tiles/manually-building-a-tile-server-ubuntu-18-04-lts.md
