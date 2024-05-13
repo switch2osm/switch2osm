@@ -5,7 +5,7 @@ lang: en
 
 # {{ title }}
 
-"Munin" can be used to monitor the activity of `renderd` and `mod_tile` on a server. Munin is available on a number of platforms; these instructions were tested on Ubuntu Linux 22.04 in June 2022.
+"Munin" can be used to monitor the activity of `renderd` and `mod_tile` on a server. Munin is available on a number of platforms; these instructions were tested on Ubuntu Linux 22.04 in June 2022 and Ubuntu Linux 24.04 in April 2024.
 
 First, install the necessary software:
 
