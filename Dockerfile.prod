@@ -1,7 +1,7 @@
 # This file is used if building for Production environments
 # It uses a multi-stage build to run mkdocs to populate an nginx container
 
-FROM python:3.11 as build
+FROM python:3.11 AS build
 
 # Add Gem build requirements
 RUN apt-get update && apt-get install -y \
@@ -24,7 +24,7 @@ RUN mkdocs build
 
 #-------------------------------------------------
 # https://github.com/nginxinc/docker-nginx-unprivileged
-FROM nginxinc/nginx-unprivileged:stable-alpine as webserver
+FROM nginxinc/nginx-unprivileged:stable-alpine AS webserver
 
 RUN sed -Ei'' 's/#error_page *404 +.*/error_page 404 \/404.html;/' /etc/nginx/conf.d/default.conf || true
 RUN echo "absolute_redirect off;" >/etc/nginx/conf.d/no-absolute_redirect.conf
