@@ -176,7 +176,14 @@ Since version v5.3.0, some extra indexes now need to be [applied manually](https
     cd ~/src/openstreetmap-carto/
     sudo -u _renderd psql -d gis -f indexes.sql
     
-It should respond with "CREATE INDEX" 14 times.
+It should respond with "CREATE INDEX" 16 times.
+
+## Database functions
+
+In version 5.9.0 of "OSM Carto" (released October 2024), some functions need to be loaded into the database manually. These can be added / re-loaded at any point using:
+
+    cd ~/src/openstreetmap-carto/
+    sudo -u _renderd psql -d gis -f functions.sql
 
 ## Shapefile download
 
