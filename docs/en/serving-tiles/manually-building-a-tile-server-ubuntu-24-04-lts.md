@@ -218,7 +218,16 @@ cd ~/src/openstreetmap-carto/
 sudo -u _renderd psql -d gis -f indexes.sql
 ```
 
-It should respond with `CREATE INDEX` 14 times.
+It should respond with `CREATE INDEX` 16 times.
+
+## Database functions
+
+In version 5.9.0 of “OSM Carto” (released October 2024), some functions need to be loaded into the database manually. These can be added / re-loaded at any point using:
+
+```sh
+cd ~/src/openstreetmap-carto/
+sudo -u _renderd psql -d gis -f functions.sql
+```
 
 ### Shapefile download
 
@@ -321,7 +330,7 @@ Apr 23 11:14:10 servername apachectl[2031]: [Sat Apr 23 11:14:10.190678 2024] [t
 
 Next, point a web browser at `http://your.server.ip.address/index.html` (change `yours.erver.ip.address` to your actual server address). You should see "Apache2 Ubuntu Default Page".
 
-!!! tip 
+!!! tip
     If you don't know what IP address it will have been assigned, you can likely use `ifconfig` to find out - if the network configuration is not too complicated it'll probably be the `inet addr` that is not `127.0.0.1`.
 
 If you're using a server at a hosting provider then it's likely that your server's internal address will be different to the external address that has been allocated to you, but that external IP address will have already been sent to you, and it'll probably be the one that you're accessing the server on currently.

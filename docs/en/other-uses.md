@@ -36,4 +36,4 @@ We’ve focused on tiles, but since OpenStreetMap – uniquely – gives you acc
 
 ## Vector map libraries (Web)
 
-* [MapLibre GL JS](https://maplibre.org/projects/maplibre-gl-js/){: target=_blank}, [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/){: target=_blank} and [Tangram](http://tangrams.github.io/tangram/){: target=_blank} render vector tiles based on OSM data using WebGL for better performance.
+* [MapLibre GL JS](https://maplibre.org/maplibre-gl-js/docs/){: target=_blank}, [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/){: target=_blank} and [Tangram](http://tangrams.github.io/tangram/){: target=_blank} render vector tiles based on OSM data using WebGL for better performance.
