@@ -92,6 +92,10 @@ Here we're assuming that we're storing the stylesheet details in a directory bel
     cd ~/src
     git clone https://github.com/gravitystorm/openstreetmap-carto
     cd openstreetmap-carto
+    git pull --all
+    git switch --detach v5.9.0
+
+The "git switch" is needed because that's the latest release that you can see at OpenStreetMap, but OSM Carto is in the process of moving to a different database format.  See OSM Carto's [INSTALL.md](https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md) for the newer version.
 
 Next, we'll install a suitable version of the "carto" compiler. 
 
