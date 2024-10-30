@@ -225,7 +225,16 @@ cd ~/src/openstreetmap-carto/
 sudo -u _renderd psql -d gis -f indexes.sql
 ```
 
-Скрипт має повідомити `CREATE INDEX` 14 разів.
+Скрипт має повідомити `CREATE INDEX` 16 разів.
+
+## Функції бази даних
+
+У версії 5.9.0 «OSM Carto» (випущена в жовтні 2024 року) деякі функції потрібно завантажувати в базу даних вручну. Вони можуть бути додані/перезавантажені в будь-який момент за допомогою:
+
+```sh
+cd ~/src/openstreetmap-carto/
+sudo -u _renderd psql -d gis -f functions.sql
+```
 
 ### Завантаження Shapefile
 
@@ -307,7 +316,7 @@ sudo /etc/init.d/apache2 restart
 Nov 14 14:24:55 servername apachectl[19119]: [Sat Nov 14 14:24:55.526717 2020] [tile:notice] [pid 19119:tid 140525098995008] Loading tile config s2o at /hot/ for zooms 0 - 20 from tile directory /var/lib/mod_tile with extension .png and mime type image/png
 ```
 
-Далі, відкрийте в оглядачі `http://ip.вашого.сервера/index.html` (замініть `ip.вашого.сервера` на відповідну адресу). Ви маєте побачити типову сторінку сервера Apache2 встановленого на Debian.
+Далі, відкрийте в оглядачі `http://ip.вашого.сервера/index.html` (замініть `ip.вашого.сервера` на відповідну адресу). Ви маєте побачити типову сторінку сервера Apache2 встановленого в Debian.
 
 !!! tip "Порада"
     якщо ви не знаєте IP адресу призначену серверу, її можна дізнатись за допомогою команди `ifconfig`&nbsp;– якщо мережеві налаштування не надто складні, то це має бути щось типу `inet addr` відмінне від `127.0.0.1`.

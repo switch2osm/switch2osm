@@ -9,13 +9,12 @@ lang: uk
 OpenStreetMap&nbsp;– децентралізований проєкт, який працює на волонтерських засадах, тож важко надати єдину адресу е-пошти для звʼязку. Натомість знання всієї спільноти допоможуть вам розвʼязати будь-яку проблему.
 
 * [OpenStreetMap IRC](https://irc.openstreetmap.org/){: target=_blank} (Internet Relay Chat): цілодобовий живий чат OSM (канали `#osm` або `#osm-dev`)
-* [Інтерактивна довідкова платформа](https://help.openstreetmap.org/){: target=_blank}
+* [Форум спільноти](http://community.openstreetmap.org/){: target=_blank}
 * [Часті питання для розробників](https://wiki.openstreetmap.org/wiki/Developer_FAQ){: target=_blank}
 * [Часті питання (загальні)](https://wiki.openstreetmap.org/wiki/Uk:FAQ){: target=_blank}
 
 ## Інші довідники щодо переходу на OSM
 
-* [Використання MapBox та Leaflet](http://developmentseed.org/blog/2012/jan/12/open-source-with-leaflet-and-mapbox/){: target=_blank} (Development Seed)
 * [Настанови по картографії від Kelso](https://github.com/nvkelso/geo-how-to/wiki){: target=_blank}
 * [Розгортаємо сервер з використанням MapServer](http://trac.osgeo.org/mapserver/wiki/RenderingOsmDataUbuntu){: target=_blank}
 
@@ -27,18 +26,17 @@ OpenStreetMap&nbsp;– децентралізований проєкт, який
 
 * [OpenStreetMap: Using and Enhancing the Free Map of the World](http://openstreetmap.info/){: target=_blank} (English/German)
 * [OpenStreetMap: Be Your Own Cartographer](https://www.packtpub.com/openstreetmap/book){: target=_blank} (English)
-* [OpenStreetMap: A Beginner’s Guide](http://en.flossmanuals.net/openstreetmap/){: target=_blank} (English/French)
 * [OpenLayers 2.10 Beginners Guide](https://www.packtpub.com/openlayers-2-1-javascript-web-mapping-library-beginners-guide/book){: target=_blank} (English)
 
 ## Ресурси спільноти
 
-* [Фундація OpenStreetMap](https://wiki.osmfoundation.org/wiki/Main_Page){: target=_blank}
+* [Фундація OpenStreetMap](https://osmfoundation.org/){: target=_blank}
 * [Вікі OpenStreetMap](https://wiki.openstreetmap.org/wiki/Uk:Main_Page){: target=_blank}
 * [Списки розсилки](https://lists.openstreetmap.org/listinfo){: target=_blank} (з можливістю пошуку)
 
 ## Для ЗМІ
 
-Зверніться до [Робочої групи з комунікацій](https://wiki.osmfoundation.org/wiki/Communication_Working_Group){: target=_blank} Фундації OpenStreetMap.
+Зверніться до [Робочої групи з комунікацій](https://osmfoundation.org/wiki/Communication_Working_Group#Get_in_touch){: target=_blank} Фундації OpenStreetMap.
 
 # Про switch2osm
 

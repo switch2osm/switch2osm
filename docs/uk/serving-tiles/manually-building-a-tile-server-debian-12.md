@@ -133,7 +133,11 @@ mkdir ~/src
 cd ~/src
 git clone https://github.com/gravitystorm/openstreetmap-carto
 cd openstreetmap-carto
+git pull --all
+git switch --detach v5.9.0
 ```
+
+"git switch" потрібно виконати тому, що це остання версія, яку ви можете побачити на OpenStreetMap, але OSM Carto перебуває у процесі переходу на інший формат бази даних. Дивіться [INSTALL.md] (https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md) для отримання нової версії OSM Carto.
 
 Далі, перевіримо чи в наявності у нас потрібна версія компілятора `carto`.
 
@@ -230,7 +234,16 @@ cd ~/src/openstreetmap-carto/
 sudo -u _renderd psql -d gis -f indexes.sql
 ```
 
-Скрипт має повідомити `CREATE INDEX` 14 разів.
+Скрипт має повідомити `CREATE INDEX` 16 разів.
+
+## Функції бази даних
+
+У версії 5.9.0 «OSM Carto» (випущена в жовтні 2024 року) деякі функції потрібно завантажувати в базу даних вручну. Вони можуть бути додані/перезавантажені в будь-який момент за допомогою:
+
+```sh
+cd ~/src/openstreetmap-carto/
+sudo -u _renderd psql -d gis -f functions.sql
+```
 
 ### Завантаження Shapefile
 

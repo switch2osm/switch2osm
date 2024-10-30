@@ -36,4 +36,4 @@ lang: uk
 
 ## Бібліотеки для векторних мап (Web)
 
-* [MapLibre GL JS](https://maplibre.org/projects/maplibre-gl-js/){: target=_blank}, [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/){: target=_blank} та [Tangram](http://tangrams.github.io/tangram/){: target=_blank}&nbsp;– працюють з векторними тайлами, створеними з даних OSM, використовуючи WebGL для покращення продуктивності.
+* [MapLibre GL JS](https://maplibre.org/maplibre-gl-js/docs/){: target=_blank}, [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/){: target=_blank} та [Tangram](http://tangrams.github.io/tangram/){: target=_blank}&nbsp;– працюють з векторними тайлами, створеними з даних OSM, використовуючи WebGL для покращення продуктивності.

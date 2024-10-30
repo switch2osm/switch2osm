@@ -218,7 +218,16 @@ cd ~/src/openstreetmap-carto/
 sudo -u _renderd psql -d gis -f indexes.sql
 ```
 
-Скрипт має повідомити `CREATE INDEX` 14 разів.
+Скрипт має повідомити `CREATE INDEX` 16 разів.
+
+## Функції бази даних
+
+У версії 5.9.0 «OSM Carto» (випущена в жовтні 2024 року) деякі функції потрібно завантажувати в базу даних вручну. Вони можуть бути додані/перезавантажені в будь-який момент за допомогою:
+
+```sh
+cd ~/src/openstreetmap-carto/
+sudo -u _renderd psql -d gis -f functions.sql
+```
 
 ### Завантаження Shapefile
 

@@ -218,7 +218,16 @@ cd ~/src/openstreetmap-carto/
 sudo -u _renderd psql -d gis -f indexes.sql
 ```
 
-Скрипт має повідомити `CREATE INDEX` 14 разів.
+Скрипт має повідомити `CREATE INDEX` 16 разів.
+
+## Функції бази даних
+
+У версії 5.9.0 «OSM Carto» (випущена в жовтні 2024 року) деякі функції потрібно завантажувати в базу даних вручну. Вони можуть бути додані/перезавантажені в будь-який момент за допомогою:
+
+```sh
+cd ~/src/openstreetmap-carto/
+sudo -u _renderd psql -d gis -f functions.sql
+```
 
 ### Завантаження Shapefile
 
@@ -270,7 +279,7 @@ MAXZOOM=20
 Під час написання цієї інструкції, версія Mapnik в Ubuntu 22.04 була 3.1, а налаштування `plugins_dir`&nbsp;– в розділі `[mapnik]` файлу `/usr/lib/mapnik/3.1/input`. Номер версії "3.1" може змінитись в майбутньому. У разі виникнення помилки під час спроб рендерінгу тайлів, на кшталт цієї:
 
 !!! warning ""
-    An error occurred while loading the map layer 's2o': Could not create datasource for type: 'postgis' (no datasource plugin directories have been successfully registered) encountered during parsing of layer 'landcover-low-zoom'
+    An error occurred while loading the map layer 's2o': Could not create datasource for type: 'postgis' (no datasource plugin directories have been successfully registered)  encountered during parsing of layer 'landcover-low-zoom'
 
 перевірте `/usr/lib/mapnik` та подивіться, яка версія в назві теки, а також погляньте на `/usr/lib/mapnik/(version)/input`, щоб переконатись, що файл `postgis.input` знаходиться там.
 
@@ -282,7 +291,7 @@ MAXZOOM=20
 sudo nano /usr/lib/systemd/system/renderd.service
 ```
 
-За відсутності додайте:
+Якщо немає, додайте наступний рядок
 
 ```ini
 Environment=G_MESSAGES_DEBUG=all
@@ -343,10 +352,10 @@ sudo nano sample_leaflet.html
 tail -f /var/log/syslog | grep " TILE "
 ```
 
-(Зверніть увагу на пробіли навколо `" TILE "`)
+(зверніть увагу на пробіли довкола `" TILE "`)
 
-Ви бачитимете новий рядок кожного разу, коли буде надходити запит на показ тайлу та рядок по завершенню рендерінгу тайла.
+У відповідь ви отримуватимете по рядку кожного разу, коли буде приходити запит на показ тайлів, або буде закінчуватись їх створення.
 
-За бажанням, для того щоб подовжити час очікування оновлення тайлів, які створюються в фоні, допоки замість них показуються сірі квадрати, ви можете збільшити час з 10 секунд до 30, чи навіть 60 секунд, у параметрі `ModTileMissingRequestTimeout` у файлі `/etc/apache2/conf-available/renderd.conf`. Переконайтеся, що ви виконали команди `#!sh sudo service renderd restart` та `#!sh sudo service apache2 restart` після редагування налаштувань.
+За бажанням, ви можете збільшити значення `ModTileMissingRequestTimeout` у `/etc/apache2/conf-available/renderd.conf` з 10 секунд до, скажімо, 30 або 60, для того, щоб дати більше часу серверу на створення тайлів перед тим як показати сірий фон на замість них. Перевірте, що ви виконали команди `#!shsudo service renderd restart` та `#!shsudo service apache2 restart` після внесення змін.
 
 Вітаємо! Тепер ви можете повернутись до розділу [Використання тайлів](/using-tiles/index.md) для додавання мапи, що використовує ваш новий тайловий сервер.
