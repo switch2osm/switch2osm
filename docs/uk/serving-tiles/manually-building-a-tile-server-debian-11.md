@@ -135,7 +135,11 @@ mkdir ~/src
 cd ~/src
 git clone https://github.com/gravitystorm/openstreetmap-carto
 cd openstreetmap-carto
+git pull --all
+git switch --detach v5.9.0
 ```
+
+"git switch" потрібно виконати тому, що це остання версія, яку ви можете побачити на OpenStreetMap, але OSM Carto перебуває у процесі переходу на інший формат бази даних. Дивіться [INSTALL.md] (https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md) для отримання нової версії OSM Carto.
 
 Далі, встановимо потрібну версію компілятора `carto`.
 
@@ -160,7 +164,7 @@ carto project.mml > mapnik.xml
 
 ## Завантаження даних
 
-Для початку, завантажимо невеличку частину тестових даних. Серед різномаїття місць для отримання даних, оберемо `download.geofabrik.de`, що містить великий перелік різних варіантів для завантаження. Візьмемо для прикладу Азербайджан (~32.4 Мб).
+Для початку, завантажимо невеличку частину тестових даних. Серед різномаїття місць для отримання даних, оберемо `download.geofabrik.de`, що містить великий перелік різних варіантів для завантаження. Візьмімо для прикладу Азербайджан (~32.4 Мб).
 
 Перейдіть за посиланням <https://download.geofabrik.de/asia/azerbaijan.html>{: target=_blank} та зверніть увагу на дату "This file was last modified" (щось схоже на "{{ dl_timestamp }}"). Вона нам знадобиться потім, коли у нас виникне потреба оновити наші дані даними, які учасники OpenStreetMap додали з моменту нашого імпорту. Завантажимо дані:
 

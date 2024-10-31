@@ -120,7 +120,11 @@ mkdir ~/src
 cd ~/src
 git clone https://github.com/gravitystorm/openstreetmap-carto
 cd openstreetmap-carto
+git pull --all
+git switch --detach v5.9.0
 ```
+
+"git switch" потрібно виконати тому, що це остання версія, яку ви можете побачити на OpenStreetMap, але OSM Carto перебуває у процесі переходу на інший формат бази даних. Дивіться [INSTALL.md] (https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md) для отримання нової версії OSM Carto.
 
 Далі, встановимо потрібну версію компілятора `carto`.
 
