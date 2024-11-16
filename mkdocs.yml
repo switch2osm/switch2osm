@@ -17,7 +17,12 @@ theme:
   icon:
     logo: simple/openstreetmap
 
-  palette: 
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/theme-light-dark
+        name: Switch to light mode
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -25,17 +30,18 @@ theme:
       scheme: default
       accent: deep orange
       toggle:
-        icon: material/weather-sunny 
+        icon: material/weather-sunny
         name: Switch to dark mode
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       primary: black
       scheme: slate
+      accent: amber
       toggle:
         icon: material/weather-night
-        name: Switch to light mode
-  
+        name: Switch to system preference
+
   features:
     - navigation.tracking
     - navigation.tabs
@@ -58,22 +64,23 @@ extra:
     - icon: fontawesome/brands/discourse
       link: https://community.openstreetmap.org/
     - icon: fontawesome/brands/x-twitter
-      link: https://twitter.com/openstreetmap 
+      link: https://twitter.com/openstreetmap
     - icon: fontawesome/brands/facebook
       link: https://www.facebook.com/OpenStreetMap/
 
 markdown_extensions:
   # Python Markdown
+  - abbr
   - admonition
   - attr_list
   - def_list
   - footnotes
   - toc:
-      permalink: ⚓︎ 
+      permalink: ⚓︎
       slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: none
-  
+
   # Python Markdown Extensions
   - pymdownx.blocks.html
   - pymdownx.caret
@@ -88,7 +95,7 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  
+
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark
@@ -101,7 +108,7 @@ nav:
   - Why: why-switch.md
   - Cases: case-studies.md
   - Basics: the-basics.md
-  - Using: 
+  - Using:
     # - Own tiles: using-tiles/index.md
     - using-tiles/index.md
     - Leaflet: using-tiles/getting-started-with-leaflet.md
@@ -119,11 +126,11 @@ nav:
       - Ubuntu 18.04: serving-tiles/manually-building-a-tile-server-ubuntu-18-04-lts.md
     - Docker: serving-tiles/using-a-docker-container.md
     - Munin: serving-tiles/monitoring-using-munin.md
-    - Updating: 
+    - Updating:
       - osm2pgsql: serving-tiles/updating-as-people-edit-osm2pgsql-replication.md
       - pyosmium: serving-tiles/updating-as-people-edit-pyosmium.md
       - osmosis: serving-tiles/updating-as-people-edit-osmosis.md
-    - Serving vector tiles: 
+    - Serving vector tiles:
       - Steps: serving-tiles/serving-vector-tiles.md
       - TileServer GL: serving-tiles/serving-vector-tiles-with-tileserver-gl.md
   - Other: other-uses.md
@@ -154,9 +161,11 @@ plugins:
           theme:
             palette:
               - toggle:
+                  name: Switch to light mode
+              - toggle:
                   name: Switch to dark mode
               - toggle:
-                  name: Switch to light mode
+                  name: Switch to system preference
           copyright: © 2013–2023 OpenStreetMap and contributors, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
           nav_translations:
             Home: Switch2OSM
@@ -185,9 +194,11 @@ plugins:
           theme:
             palette:
               - toggle:
+                  name: Увімкнути світлий режим
+              - toggle:
                   name: Увімкнути темний режим
               - toggle:
-                  name: Увімкнути світлий режим
+                  name: Увімкнути режим системи
           copyright: "© 2013–2023 Учасники OpenStreetMap, <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />Матеріали цього сайту ліцензуються на умовах Ліцензії – <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>."
           nav_translations:
             Home: Switch2OSM
@@ -216,9 +227,11 @@ plugins:
           theme:
             palette:
               - toggle:
+                  name: 切換到燈光模式
+              - toggle:
                   name: 切換到深色模式
               - toggle:
-                  name: 切換到燈光模式
+                  name: 切換到系統偏好設定
           copyright: "© 2013–2023 開放街圖與貢獻者。 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />這些資料採用 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\">創用CC相同方式分享 2.0 未本地化授權條款</a>。"
           nav_translations:
             Home: Switch2OSM
@@ -243,4 +256,4 @@ plugins:
         - locale: "null"
           fixed_link: https://app.transifex.com/osm-ua/swtch2osm/dashboard/#/
           name: Help to translate
-          
+
