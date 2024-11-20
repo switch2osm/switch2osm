@@ -55,4 +55,5 @@ The following companies host OpenStreetMap tiles.
 * [Geofabrik](https://www.geofabrik.de/maps/rendering.html), Germany
 * [Makina Corpus](https://makina-corpus.com/), France
 * [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
+* [Timatis Maps](https://www.timatis.com/), Germany
 
