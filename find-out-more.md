@@ -22,8 +22,8 @@ OpenStreetMap is a decentralised, volunteer-run project so there’s no single c
 
 ## Books
 * [OpenStreetMap: Using and Enhancing the Free Map of the World](http://openstreetmap.info/) (English/German)
-* [OpenStreetMap: Be Your Own Cartographer](https://www.packtpub.com/openstreetmap/book) (English)
-* [OpenLayers 2.10 Beginners Guide](https://www.packtpub.com/openlayers-2-1-javascript-web-mapping-library-beginners-guide/book) (English)
+* [OpenStreetMap: Be Your Own Cartographer](https://www.packtpub.com/en-us/product/openstreetmap-9781847197504) (English)
+* [OpenLayers 2.10 Beginners Guide](https://www.packtpub.com/en-us/product/openlayers-210-beginners-guide-9781849514125) (English)
 
 ## Community resources
 * [OpenStreetMap Foundation](https://osmfoundation.org/)
