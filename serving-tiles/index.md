@@ -26,7 +26,7 @@ Serving your own maps is a fairly intensive task. Depending on the size of the a
 We would recommend that you begin with extracts of OpenStreetMap data – for example, a city, county or small country – rather than spending a week importing the whole world (planet.osm) and then having to restart because of a configuration mistake! You can download extracts from:
 
 * [Geofabrik](https://download.geofabrik.de/) (countries and provinces)
-* [Protomaps Extracts](https://protomaps.com/extracts) (minutely-updated cities and small countries)
+* [slice.openstreetmap.us](https://slice.openstreetmap.us) (minutely-updated cities and small countries)
 * [download.openstreetmap.fr](https://download.openstreetmap.fr/)
 
 # The toolchain
