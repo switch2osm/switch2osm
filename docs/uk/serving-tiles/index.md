@@ -31,7 +31,7 @@ lang: uk
 Ми радимо вам розпочати роботу з невеличких частин даних OpenStreetMap&nbsp;– з міста, району чи області. Це краще ніж витратити тиждень на імпорт всього світу (planet.osm) і потім почати все наново після виявлення помилки в налаштуваннях! Ви можете завантажити дані частинами з:
 
 * [Geofabrik](https://download.geofabrik.de/){: target=_blank} (країни та регіони)
-* [Protomaps Extracts](https://protomaps.com/extracts){: target=_blank} (щохвилинні оновлення міст та невеличких країн)
+* [slice.openstreetmap.us](https://slice.openstreetmap.us){: target=_blank} (щохвилинні оновлення міст та невеличких країн)
 * [download.openstreetmap.fr](https://download.openstreetmap.fr/){: target=_blank}
 
 ## Інструментарій
