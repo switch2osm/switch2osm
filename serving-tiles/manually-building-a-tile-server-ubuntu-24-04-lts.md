@@ -207,6 +207,8 @@ In version v5.6.0 and above of Carto, fonts need to be installed manually:
     cd ~/src/openstreetmap-carto/
     scripts/get-fonts.sh
 
+You may see an error getting the last of the fonts ("Noto_Emoji").  That is a [known error](https://github.com/gravitystorm/openstreetmap-carto/issues/5013) that you can ignore - it is awaiting someone to either accept a [pull request](https://github.com/gravitystorm/openstreetmap-carto/pull/4893) or suggest how else to resolve the problem.
+
 Our test data area (Azerbaijan) was chosen both because it was a small area and because some place names in that region have names containing non-latin characters.
 
 # Setting up your webserver
