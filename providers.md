@@ -23,6 +23,7 @@ The following companies offer development services and consulting for sites wish
 * [MapTiler](https://www.maptiler.com/), Switzerland
 * [Maptoolkit](https://www.maptoolkit.com/), Germany/Austria
 * [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
+* [Oslandia](https://oslandia.com), France
 * [SmartMaps by YellowMap](https://www.smartmaps.net/en/), Germany
 * [Stadia Maps](https://stadiamaps.com), US
 * [Stamen](https://www.stamen.com/), US
