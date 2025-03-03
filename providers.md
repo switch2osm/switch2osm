@@ -57,3 +57,9 @@ The following companies host OpenStreetMap tiles.
 * [Makina Corpus](https://makina-corpus.com/), France
 * [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
 
+## Printable cartography
+
+The following providers offer high-resolution, printable maps for professional use based on OpenStreetMap.
+
+* [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
+* [Printmaps.net](https://www.printmaps.net/), Germany/Austria
