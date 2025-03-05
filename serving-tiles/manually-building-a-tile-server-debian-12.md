@@ -202,6 +202,8 @@ Although most of the data used to create the map is directly from the OpenStreet
 
 This process involves a sizable download and may take some time - not much will appear on the screen when it is running.  Some data will go directly into the database, and some will go into a “data” directory below “openstreetmap-carto”.  If there is a problem here then the Natural Earth data may have moved - look at [this issue](https://github.com/nvkelso/natural-earth-vector/issues/581#issuecomment-913988101) and other issues at Natural Earth for more details.  If you need to change the Natural Earth download location your copy of [this file](https://github.com/gravitystorm/openstreetmap-carto/blob/master/external-data.yml) is the one to edit.
 
+This part of the process does not cope well with unexpected situations.  If you think that there is a problem with downloaded external data, delete the "data" directory and recreate it with the correct ownership.  If problems here persist, please ask in the [OpenStreetMap forum](https://community.openstreetmap.org/tags/c/help-and-support/7/all/switch2osm).
+
 ## Fonts
 
 In version v5.6.0 and above of Carto, fonts need to be installed manually:
