@@ -14,7 +14,7 @@ zh_TW:
                 - toggle:
                     name: 切換到深色模式
                 - toggle:
-                    name: " 切換到系統偏好設定"
+                    name: 切換到系統偏好設定
             # Translate copyright statement
             copyright: "© 2013–2023 開放街圖與貢獻者。 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />這些資料採用 <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\">創用CC相同方式分享 2.0 未本地化授權條款</a>。"
             nav_translations:
