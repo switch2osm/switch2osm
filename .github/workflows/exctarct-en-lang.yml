@@ -1,0 +1,60 @@
+name: Extract menu strings to en.yml
+
+on:
+  push:
+    paths:
+      - 'mkdocs.yml'
+
+jobs:
+  update-en-yml:
+    name: Process changes in English menu items
+    runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.check_changes.outputs.has_changes }}
+    env:
+      MKDOCS_FILE: "mkdocs.yml"
+      TARGET_FILE: "./docs/en/en.yml"
+      TMP_FILE: "$(mktemp)"
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🧰 Set up yq
+        uses: mikefarah/yq@v4
+
+      - name: 📝 Update en.yml
+        run: |
+          yq eval '(.plugins[].i18n.languages[] | select(.locale == "en")) | del(.default)' "$MKDOCS_FILE" > "$TMP_FILE"
+
+          yq eval --inplace "
+            (.en.plugins[].i18n.languages[] | select(.locale == \"en\")) = load (\"$TMP_FILE\")
+          " "$TARGET_FILE"
+
+          rm "$TMP_FILE"
+
+      - name: Check if something has been changed in en.yaml
+        id: check_changes
+        run: |
+          git update-index --refresh
+          if git diff-index --quiet HEAD -- "${TARGET_FILE}"; then
+            echo "No changes detected"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Detected changes in en.yml"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${TARGET_FILE}"
+          git commit -m "Changes in ${TARGET_FILE}"
+          git push
+
+      - name: No changes detected
+        if: steps.check_changes.outputs.has_changes == 'false'
+        run: |
+          echo "No changes to commit."
