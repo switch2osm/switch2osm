@@ -10,7 +10,7 @@ zh_TW:
             theme:
               palette:
                 - toggle:
-                  name: 切換到燈光模式
+                    name: 切換到燈光模式
                 - toggle:
                     name: 切換到深色模式
                 - toggle:
