@@ -139,25 +139,25 @@ nav:
 
 plugins:
   - search:
-      lang:
-        - en
-        - uk
-        - zh-TW
+      lang: [en, uk, zh-TW]
   - macros
   - ezlinks
   - glightbox
   - section-index
 
-# This part is for organising languages in specific folders
-# Using a folder per language structure
-# https://ultrabug.github.io/mkdocs-static-i18n/
+  # This part is for organising languages in specific folders
+  # Using a folder per language structure
+  # https://ultrabug.github.io/mkdocs-static-i18n/
   - i18n:
       docs_structure: folder
       reconfigure_material: true
       languages:
-        - locale: en
+        - # ISO code of your language
+          locale: en
+          # Name of your languge
           name: English
           default: true
+          # Day/Night toggle
           theme:
             palette:
               - toggle:
@@ -166,28 +166,46 @@ plugins:
                   name: Switch to dark mode
               - toggle:
                   name: Switch to system preference
+          # Translate copyright statement
           copyright: © 2013–2023 OpenStreetMap and contributors, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
           nav_translations:
+            # Menu item name for the /index.md
             Home: Switch2OSM
+            # Menu item name for the /why-switch.md
             Why: Why Switch?
+            # Menu item name for the /case-studies.md
             Cases: Case Studies
+            # Menu item name for the /the-basics.md
             Basics: The Basics
+            # Menu item name for the "Using Tiles" tab
             Using: Using Tiles
-            # Own tiles: Switch to using OSM tiles
+            # Menu item name for the side menu
             Leaflet: Getting started with Leaflet
+            # Menu item name for the side menu
             OpenLayers: Getting started with OpenLayers
+            # Menu item name for the side menu
             Vector Tiles: Power of Vector Map Tiles
+            # Menu item name for the "Serving Tiles" tab
             Serving: Serving Tiles
-            # Serving tiles: Serving your own tiles
+            # Serving tiles: Manually building a tile server
             Manually: Manually building a tile server
+            # Serving tiles: Using a Docker container
             Docker: Using a Docker container
+            # Serving tiles: Monitoring using Munin
             Munin: Monitoring using Munin
+            # Serving tiles: Updating your database as people edit OpenStreetMap
             Updating: Updating your database as people edit OpenStreetMap
+            # Serving tiles: Vector Map Tiles
             Serving vector tiles: Vector Map Tiles
+            # Vector Map Tiles: Steps to Serve Vector Map Tiles
             Steps: General steps
+            # Vector Map Tiles: Getting started with TileServer GL
             TileServer GL: Getting started with TileServer GL
+            # Menu item name for the /other-uses.md
             Other: Other Uses
+            # Menu item name for the /providers.md
             Providers: Providers
+            # Menu item name for the /find-out-more.md
             More: Getting help
         - locale: uk
           name: Українська
