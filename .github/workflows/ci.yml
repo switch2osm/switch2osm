@@ -1,4 +1,4 @@
-name: ci 
+name: Deploy content
 on:
   push:
     branches:
