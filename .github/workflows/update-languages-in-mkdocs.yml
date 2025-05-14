@@ -1,0 +1,145 @@
+name: Update mkdocs.yml with new/updated languages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/*/*.yml'
+
+jobs:
+  update-languages:
+    name: Integrate language files into mkdocs.yml
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🧰 Set up yq
+        uses: mikefarah/yq@v4
+
+      - name: 🔄 Update mkdocs.yml with language files
+        run: |
+          # Define the mkdocs.yml file path
+          MKDOCS_FILE="mkdocs.yml"
+
+          # Get the index of the i18n plugin once before the loop
+          i18n_plugin_index=$(yq eval '.plugins | to_entries | .[] | select(.value | has("i18n")) | .key' "$MKDOCS_FILE")
+
+          # Loop through all language YAML files except English
+          for lang_file in docs/*/*.yml; do
+
+            lang_code=$(basename "$lang_file" .yml)
+
+            # Skip English language file
+            [[ "$lang_code" == "en" ]] && continue
+
+            echo "🔍 Processing ${lang_file} for lang: ${lang_code}"
+
+            # Create a temporary file
+            temp_lang_file=$(mktemp)
+
+            # Extract and clean language configuration
+            if ! yq eval "... comments=\"\" | .[].plugins[0].i18n.languages[0]" "${lang_file}" > "${temp_lang_file}"; then
+              echo "❌ Error: Failed to process ${lang_file}"
+              rm "${temp_lang_file}"
+              continue
+            fi
+
+            # Validate the language configuration
+            lang_locale=$(yq eval ".locale" "${temp_lang_file}")
+            if [ -z "${lang_locale}" ]; then
+              echo "❌ Error: Invalid language configuration in ${lang_file}"
+              cat "${temp_lang_file}"
+              rm "${temp_lang_file}"
+              continue
+            fi
+
+            echo "🔤 Processing locale: ${lang_locale}"
+
+            # Update mkdocs.yml
+            if ! yq eval --inplace "
+              .plugins[${i18n_plugin_index}].i18n.languages |= (
+                # First filter out existing language config if present
+                map(select(.locale != \"${lang_locale}\")) +
+                # Then add new/updated language config
+                [load(\"${temp_lang_file}\")]
+              )
+            " "$MKDOCS_FILE"; then
+              echo "❌ Error: Failed to update mkdocs.yml"
+              git checkout "$MKDOCS_FILE"
+              rm "${temp_lang_file}"
+              exit 1
+            fi
+
+            echo "✅ Successfully processed ${lang_locale}"
+            rm "${temp_lang_file}"
+          done
+
+          # Sort languages alphabetically after all updates
+          echo "🔤 Sorting languages..."
+          if ! yq eval --inplace "
+            .plugins[${i18n_plugin_index}].i18n.languages |= (
+              # Split into regular languages and the null locale
+              ([.[] | select(.locale != \"null\")] | sort_by(.locale)) +
+              # Add null locale at the end if it exists
+              ([.[] | select(.locale == \"null\")])
+            )
+          " "$MKDOCS_FILE"; then
+            echo "❌ Error: Failed to sort languages"
+            git checkout "$MKDOCS_FILE"
+            exit 1
+          fi
+
+          # Update search languages list
+          echo "🔍 Updating search languages..."
+          if ! yq eval --inplace "
+            (.plugins[] | select(has(\"search\"))).search.lang = [
+              .plugins[] | select(has(\"i18n\")) | .i18n.languages[] |
+              select(.locale != \"null\") | .locale
+            ]
+          " "$MKDOCS_FILE"; then
+            echo "❌ Error: Failed to update search languages"
+            git checkout "$MKDOCS_FILE"
+            exit 1
+          fi
+
+          # Final validation
+          if ! yq eval --exit-status "$MKDOCS_FILE" > /dev/null; then
+            echo "❌ Error: Invalid YAML after all updates"
+            git checkout "$MKDOCS_FILE"
+            exit 1
+          fi
+
+          echo "✅ Successfully processed all languages"
+
+      - name: ⚙️ Check if mkdocs.yml has changes
+        id: check_changes
+        run: |
+          # Update git index to get current state
+          git update-index -q --refresh
+
+          # Check only mkdocs.yml for changes
+          if git diff-index --quiet HEAD mkdocs.yml; then
+            echo "No changes detected in mkdocs.yml"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Detected changes in mkdocs.yml"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+
+            # Show the diff for debugging
+            # git --no-pager diff mkdocs.yml
+          fi
+
+      - name: 📝 Commit changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add mkdocs.yml
+          git commit -m "Update mkdocs.yml with new/updated language files"
+          git push
+
+      - name: ℹ️ No changes detected
+        if: steps.check_changes.outputs.has_changes == 'false'
+        run: echo "No changes to commit in mkdocs.yml"

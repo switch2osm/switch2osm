@@ -2,6 +2,7 @@ name: Extract menu strings to en.yml
 
 on:
   push:
+    branches: [ main ]
     paths:
       - 'mkdocs.yml'
 

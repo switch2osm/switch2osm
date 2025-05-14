@@ -1,4 +1,4 @@
-name: docker
+name: Build docker image
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
     branches:
       - 'master'
       - 'main'
-      - 'gh-pages'
+      # - 'gh-pages'
   schedule:
     - cron: '25 3 */7 * *'
 
