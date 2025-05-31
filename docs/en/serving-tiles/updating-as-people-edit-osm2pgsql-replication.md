@@ -51,7 +51,7 @@ sudo -u _renderd \
 That produces output something like this:
 
 ```log
-2022-04-24 23:32:42 [INFO]: Initialised updates for service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'. 
+2022-04-24 23:32:42 [INFO]: Initialised updates for service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'.
 2022-04-24 23:32:42 [INFO]: Starting at sequence 3314 (2022-04-23 20:21:53+00:00).
 ```
 
@@ -300,7 +300,7 @@ The script to perform the update can be edited as above to output a summary to a
 
 As we're updating based on minutely updates, and we've made the script check that it is not already running before trying to apply updates, we can run this more often than once per day; in this case every 5 minutes.
 
-It's a good idea to clear the "osm2pgsql-replication is running" flag when `renderd` is restated. To do that:
+It's a good idea to clear the "osm2pgsql-replication is running" flag when `renderd` is restarted. To do that:
 
 ```sh
 sudo nano /usr/lib/systemd/system/renderd.service
@@ -318,3 +318,5 @@ in the "[Service]" section. Then:
 sudo systemctl daemon-reload
 sudo systemctl restart renderd
 ```
+
+It's also a good idea to use the “osm2pgsql-replication is running” flag to stop replication running when you're doing a database reimport - don't start the reimport if the flag is set, and set the flag while the reimport happens to prevent replication running then.

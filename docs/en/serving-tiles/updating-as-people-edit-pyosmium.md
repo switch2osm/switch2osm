@@ -134,7 +134,7 @@ and then add:
 
 The script checks that it is not already running before trying to apply updates, so can run it fairly frequently; in this case every 5 minutes.
 
-It's a good idea to clear the "pyosmium is running" flag when `renderd` is restated. To do that:
+It's a good idea to clear the "pyosmium is running" flag when `renderd` is restarted. To do that:
 
 ```sh
 sudo nano /usr/lib/systemd/system/renderd.service
@@ -152,6 +152,8 @@ in the "[Service]" section. Then:
 sudo systemctl daemon-reload
 sudo systemctl restart renderd
 ```
+
+It's also a good idea to use the “osm2pgsql-replication is running” flag to stop replication running when you're doing a database reimport - don't start the reimport if the flag is set, and set the flag while the reimport happens to prevent replication running then.
 
 ## Configuring munin
 
