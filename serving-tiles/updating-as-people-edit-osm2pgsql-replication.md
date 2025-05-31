@@ -213,7 +213,7 @@ The script to perform the update can be edited as above to output a summary to a
 
 As we're updating based on minutely updates, and we've made the script check that it is not already running before trying to apply updates, we can run this more often than once per day; in this case every 5 minutes.
 
-It's a good idea to clear the "osm2pgsql-replication is running" flag when renderd is restated.  To do that:
+It's a good idea to clear the "osm2pgsql-replication is running" flag when renderd is restarted.  To do that:
 
     sudo nano /usr/lib/systemd/system/renderd.service
 
@@ -225,3 +225,5 @@ in the "[Service]" section.  Then:
 
     sudo systemctl daemon-reload
     sudo systemctl restart renderd
+
+It's also a good idea to use the “osm2pgsql-replication is running” flag to stop replication running when you're doing a database reimport - don't start the reimport if the flag is set, and set the flag while the reimport happens to prevent replication running then.
