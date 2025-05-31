@@ -318,3 +318,5 @@ ExecStartPre=rm -f /var/cache/renderd/update_tiles.sh.running
 sudo systemctl daemon-reload
 sudo systemctl restart renderd
 ```
+
+Також корисно використовувати прапорець "osm2pgsql-replication is running", щоб зупинити реплікацію під час реімпорту бази даних — не починайте реімпорт, якщо прапорець встановлено, і встановіть його під час реімпорту, щоб зупинити реплікацію після цього.
