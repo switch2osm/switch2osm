@@ -6,6 +6,10 @@ on:
     paths:
       - 'docs/*/*.yml'
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   update-languages:
     name: Integrate language files into mkdocs.yml

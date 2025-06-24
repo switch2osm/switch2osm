@@ -6,6 +6,10 @@ on:
     paths:
       - 'mkdocs.yml'
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   update-en-yml:
     name: Process changes in English menu items
