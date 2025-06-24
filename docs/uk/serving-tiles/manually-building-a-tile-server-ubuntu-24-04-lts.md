@@ -304,13 +304,13 @@ sudo systemctl reload apache2
 sudo nano /usr/lib/systemd/system/renderd.service
 ```
 
-Якщо немає, додайте наступний рядок
+Якщо цього ще немає нижче `[Service]`, додайте:
 
 ```ini
 Environment=G_MESSAGES_DEBUG=all
 ```
 
-після `[Service]`. Потім:
+Потім виконайте ці команди, щоб перезавантажити конфігурацію:
 
 ```sh
 sudo systemctl daemon-reload
