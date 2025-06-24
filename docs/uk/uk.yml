@@ -16,7 +16,7 @@ uk:
                 - toggle:
                     name: Увімкнути режим системи
             # Translate copyright statement
-            copyright: "© 2013–2023 Учасники OpenStreetMap, <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />Матеріали цього сайту ліцензуються на умовах Ліцензії – <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>."
+            copyright: "© 2013–2025 Учасники OpenStreetMap, <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/2.0/80x15.png\" /></a><br />Матеріали цього сайту ліцензуються на умовах Ліцензії – <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/2.0/deed.uk\" target=\"_blank\">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>."
             nav_translations:
               # Menu item name for the /index.md
               Home: Switch2OSM
