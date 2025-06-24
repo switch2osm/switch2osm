@@ -304,13 +304,13 @@ It'd be really useful at this point to be able to see the output from the tile r
 sudo nano /usr/lib/systemd/system/renderd.service
 ```
 
-If it is not there already, add:
+If it's not already there below `[Service]`, add:
 
 ```ini
 Environment=G_MESSAGES_DEBUG=all
 ```
 
-after `[Service]`. Then:
+Then run these commands to reload the configuration:
 
 ```sh
 sudo systemctl daemon-reload
