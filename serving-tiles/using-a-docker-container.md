@@ -69,4 +69,4 @@ This docker container actually supports a lot more than the simple example here 
 
 For a simple “slippy map” that you can modify, you can use an html file “sample_leaflet.html” which is [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/extra/sample_leaflet.html) in mod_tile’s “extra” folder. Edit “hot” in the URL in that file to read “tile”, and then just open that file in a web browser on the machine where you installed the docker container. If that isn’t possible because you’re installing on a server without a local web browser, you’ll also need to edit it to replace “127.0.0.1” with the IP address of the server and copy it to below “/var/www/html” on that server.
 
-If you want to load a different area, just repeat the process from “wget” above. Unfortunately it is necesary to delete and recreate "osm-data" every time you want to load some new data.
+If you want to load a different area, just repeat the process from “wget” above. Unfortunately it is necessary to delete and recreate "osm-data" every time you want to load some new data.
