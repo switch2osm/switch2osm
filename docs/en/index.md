@@ -19,7 +19,7 @@ Do your maps look like everyone else’s? Are you paying high fees just to inclu
 ///
 
 /// html | div.column.right-side
-  ![OpenStreetMap icon](assets/img/open-street-map-medium.png){ .off-glb }
+  ![OpenStreetMap icon](assets/img/open-street-map-medium.webp){ .off-glb }
 ///
 
 ////

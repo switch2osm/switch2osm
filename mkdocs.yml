@@ -127,6 +127,7 @@ plugins:
   - ezlinks
   - glightbox
   - section-index
+  - privacy
   # This part is for organising languages in specific folders
   # Using a folder per language structure
   # https://ultrabug.github.io/mkdocs-static-i18n/

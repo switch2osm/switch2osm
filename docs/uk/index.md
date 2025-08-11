@@ -19,7 +19,7 @@ hide:
 ///
 
 /// html | div.column.right-side
-  ![OpenStreetMap icon](assets/img/open-street-map-medium.png){ .off-glb }
+  ![OpenStreetMap icon](assets/img/open-street-map-medium.webp){ .off-glb }
 ///
 
 ////
