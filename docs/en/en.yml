@@ -44,12 +44,6 @@ en:
               Munin: Monitoring using Munin
               # Serving tiles: Updating your database as people edit OpenStreetMap
               Updating: Updating your database as people edit OpenStreetMap
-              # Serving tiles: Vector Map Tiles
-              Serving vector tiles: Vector Map Tiles
-              # Vector Map Tiles: Steps to Serve Vector Map Tiles
-              Steps: General steps
-              # Vector Map Tiles: Getting started with TileServer GL
-              TileServer GL: Getting started with TileServer GL
               # Menu item name for the /other-uses.md
               Other: Other Uses
               # Menu item name for the /providers.md
