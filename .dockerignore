@@ -13,3 +13,5 @@ docker-compose.*
 
 # Ignore venv
 venv/
+
+.vscode/
