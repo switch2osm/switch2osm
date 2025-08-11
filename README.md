@@ -9,15 +9,15 @@ The goal is to add to the site the ability to have instructions in different lan
 You are welcome to extend the styling and content, add new languages. To do this, clone this repository, install the necessary dependencies and experiment.
 
 ```
-git clone git@github.com:Andygol/switch2osm-mkdocs.git
-cd switch2osm-mkdocs
+git clone git@github.com:switch2osm/switch2osm.git
+cd switch2osm
 python -m venv venv
 source ./venv/bin/activate
 pip install -r requirements.txt
 mkdocs serve
 ```
 
-Open <http://127.0.0.1:8000/switch2osm-mkdocs/> in your browser.
+Open <http://127.0.0.1:8000/> in your browser.
 
 ## Translation
 
