@@ -10,7 +10,7 @@ lang: en
 
 [OpenLayers](http://openlayers.org/){: target=blank} is a complete JavaScript library for embedding maps. It uses a permissive BSD open-source license so can be incorporated into any site without legal worries. Its source code is available on [GitHub](https://github.com/openlayers/ol3/){: target=blank}.
 
-<!-- Here, we restrict ourselves to a small, self-contained example and refer to the official [tutorials](http://openlayers.org/en/latest/examples/){: target=_blank} and [API](http://openlayers.org/en/latest/apidoc/){: target=_blank} for elaborate usages. -->
+Here, we restrict ourselves to a small, self-contained example and refer to the official [tutorials](http://openlayers.org/en/latest/examples/) and [API](http://openlayers.org/en/latest/apidoc/) for elaborate usages.
 
 ## Getting started
 

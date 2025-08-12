@@ -22,7 +22,7 @@ Apart from very limited testing purposes, you should not use the tiles supplied 
 
 ### Free providers
 
-You can get a list using the project [Leaflet-provider](http://leaflet-extras.github.io/leaflet-providers/preview/){: target=blank} preview although some of them are not free (require an API key).
+You can get a list using the project [Leaflet-provider](http://leaflet-extras.github.io/leaflet-providers/preview/) preview although some of them are not free (require an API key).
 
 ### Paid-for providers
 
