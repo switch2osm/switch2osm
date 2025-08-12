@@ -6,7 +6,7 @@ lang: en
 
 # {{ title }}
 
-"Munin" can be used to monitor the activity of `renderd` and `mod_tile` on a server. Munin is available on a number of platforms; these instructions were tested on Ubuntu Linux 22.04 in June 2022 and Ubuntu Linux 24.04 in April 2024.
+"Munin" can be used to monitor the activity of "renderd" and "mod_tile" on a server.  Munin is available on a number of platforms; these instructions were tested on  Ubuntu Linux 22.04 in June 2022.
 
 First, install the necessary software:
 
@@ -34,16 +34,16 @@ sudo /etc/init.d/munin-node restart
 sudo /etc/init.d/apache2 restart
 ```
 
-Browse to `http://your.server.ip.address/munin`.  You should see a page showing `apache`, `disk`, `munin`, etc.
+Browse to `http://yourserveripaddress/munin`. You should see a page showing "apache", "disk", "munin", etc.
 
-To add the plugins from `mod_tile` and `renderd` to munin:
+To add the plugins from mod_tile and renderd to munin:
 
 ```sh
 sudo ln -s /usr/share/munin/plugins/mod_tile* /etc/munin/plugins/
 sudo ln -s /usr/share/munin/plugins/renderd* /etc/munin/plugins/
 ```
 
-There should be 4 `mod_tile` plugins and 5 `renderd` ones.  Run munin's cron job manually once:
+There should be 4 mod_tile plugins and 5 renderd ones.  Run munin's cron job manually once:
 
 ```sh
 sudo -u munin munin-cron
@@ -56,6 +56,6 @@ sudo /etc/init.d/munin-node restart
 sudo /etc/init.d/apache2 restart
 ```
 
-After a short delay, refreshing `http://your.server.ip.address/munin/` should now show entries for `mod_tile` and `renderd`.
+After a short delay, refreshing `http://yourserveripaddress/munin/` should now show entries for "mod_tile" and "renderd".
 
 Munin updates its graphs every 5 minutes, as configured by the cron file `/etc/cron.d/munin`.
