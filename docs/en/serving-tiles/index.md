@@ -20,7 +20,7 @@ If you are setting up your own tile server, we recommend that you use [Ubuntu Li
 
 ## The options
 
-1. Install locally on [Debian 12](manually-building-a-tile-server-debian-12.md), [Debian 11](manually-building-a-tile-server-debian-11.md), [Ubuntu 24.04](manually-building-a-tile-server-ubuntu-24-04-lts.md), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts.md), [Ubuntu 20.04](manually-building-a-tile-server-ubuntu-20-04-lts.md) or [Ubuntu 18.04](manually-building-a-tile-server-ubuntu-18-04-lts.md).
+1. Install locally on [Debian 12](manually-building-a-tile-server-debian-12), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts/), or [Debian 11](manually-building-a-tile-server-debian-11).
 
 2. Use [docker](using-a-docker-container.md).
 
@@ -38,9 +38,9 @@ We would recommend that you begin with extracts of OpenStreetMap data – for ex
 
 We use a series of tools for generating and serving map tiles.
 
-**Apache** provides the front end server that handles requests from your web browser and passes the request to **mod_tile**. The Apache web server can also be used to serve static web content like the HTML, JavaScript, or CSS for your map webpage.
+**Apache** provides the front end server that handles requests from your web browser and passes the request to mod_tile. The Apache web server can also be used to serve static web content like the HTML, JavaScript, or CSS for your map webpage.
 
-Once Apache handles the request from the web user, it passes the request to mod_tile to deal with. Mod_tile checks if the tile has already been created and is ready for use, or whether it needs to be updated due to not being in the cache already. If it is already available and doesn’t need to be rendered, then it immediately sends the tile back to the client. If it does need to be rendered, then it will add it to a “render request” queue, and when it gets to the top of the queue, a tile renderer will render it and send the tile back to the client.
+Once Apache handles the request from the web user, it passes the request to mod_tile to deal with. Mod_tile checks if the tile has already been created and is ready for use or whether it needs to be updated due to not being in the cache already. If it is already available and doesn’t need to be rendered, then it immediately sends the tile back to the client. If it does need to be rendered, then it will add it to a “render request” queue, and when it gets to the top of the queue, a tile renderer will render it and send the tile back to the client.
 
 We use a tool called **Mapnik** to render tiles. It pulls requests from the work queue as fast as possible, extracts data from various data sources according to the style information, and renders the tile. This tile is passed back to the client and moves on to the next item in the queue.
 
