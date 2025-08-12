@@ -1,6 +1,6 @@
 # switch2osm #
 
-This repository is the content for switch2osm.org.
+This repository is the content for <https://switch2osm.org> website built using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
 
 See the issues for things to work on.
 
