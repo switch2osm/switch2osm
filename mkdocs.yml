@@ -3,6 +3,7 @@ site_url: https://switch2osm.org/
 repo_url: https://github.com/switch2osm/switch2osm
 repo_name: switch2osm/switch2osm
 edit_uri: edit/main/docs/
+dev_addr: 127.0.0.1:8080
 copyright: © 2013–2025 OpenStreetMap and contributors, <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons Attribution-ShareAlike 2.0 Generic License</a>.
 extra_css:
   - stylesheets/extra.css
@@ -48,7 +49,7 @@ theme:
 extra:
   social:
     - icon: material/translate
-      link: https://app.transifex.com/osm-ua/switch2osm/dashboard/#/
+      link: https://github.com/osmfoundation/welcome-mat/#translation
     - icon: fontawesome/solid/globe
       link: https://openstreetmap.org/
     - icon: fontawesome/brands/discourse
@@ -237,5 +238,5 @@ plugins:
             Providers: 提供者
             More: 取得協助
         - locale: "null"
-          fixed_link: https://app.transifex.com/osm-ua/swtch2osm/dashboard/#/
+          fixed_link: https://github.com/osmfoundation/welcome-mat/#translation
           name: Help to translate
