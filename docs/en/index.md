@@ -12,7 +12,9 @@ hide:
 
 /// html | div.column.main
 
-Do your maps look like everyone else’s? Are you paying high fees just to include maps on your website? Switch to OpenStreetMap and discover how you can build beautiful maps from the world’s best map data.
+Do your maps look like everyone else’s? Are you paying high fees just to include maps on your website?
+
+Switch to OpenStreetMap and discover how you can build beautiful maps from the world’s best map data.
 
 [Using Tiles](/using-tiles/index.md){ .md-button .md-button--primary } [Serving Tiles](/serving-tiles/index.md){ .md-button }
 
@@ -34,7 +36,7 @@ Do your maps look like everyone else’s? Are you paying high fees just to inclu
 
 We give you the data for free; you can make any map you like with it. Or benefit from the expertise of those already using OpenStreetMap.
 
-Host it on :material-desktop-tower: your hardware, or :material-server-network: elsewhere. You have control.
+Host it on your hardware, or elsewhere. You have control.
 
 [Switch2OSM](#) explains how to make the switch – from first principles to technical how‑tos.
 ///

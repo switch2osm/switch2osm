@@ -180,7 +180,7 @@ plugins:
             # Menu item name for the /providers.md
             Providers: Providers
             # Menu item name for the /find-out-more.md
-            More: Getting help
+            More: Find Out More
         - locale: uk
           name: Українська
           theme:
