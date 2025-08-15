@@ -267,6 +267,8 @@ cd ~/src/openstreetmap-carto/
 scripts/get-fonts.sh
 ```
 
+Due to a [current issue](https://github.com/gravitystorm/openstreetmap-carto/issues/5013) you might get an error at the very end of that, but it won't adversely affect the display of any current OSM data.
+
 Our test data area (Azerbaijan) was chosen both because it was a small area and because some place names in that region have names containing non-latin characters.
 
 ## Setting up your webserver
