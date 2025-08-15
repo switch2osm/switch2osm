@@ -229,7 +229,7 @@ That command will complete with something like "Osm2pgsql took 238s overall".
 
 ### Creating indexes
 
-Since version v5.3.0, some extra indexes now need to be [applied manually](https://github.com/gravitystorm/openstreetmap-carto/blob/master/CHANGELOG.md#v530---2021-01-28){: target=_blank}:
+Some extra indexes now need to be [applied manually](https://github.com/gravitystorm/openstreetmap-carto/blob/master/CHANGELOG.md#v530---2021-01-28){: target=_blank}:
 
 ```sh
 cd ~/src/openstreetmap-carto/
@@ -240,7 +240,7 @@ It should respond with `CREATE INDEX` 16 times.
 
 ## Database functions
 
-In version 5.9.0 of “OSM Carto” (released October 2024), some functions need to be loaded into the database manually. These can be added / re-loaded at any point using:
+In version 5.9.0 of “OSM Carto” (released October 2024), some functions need to be loaded into the database manually. These can be added using:
 
 ```sh
 cd ~/src/openstreetmap-carto/
@@ -262,7 +262,7 @@ This process involves a sizable download and may take some time - not much will 
 
 ### Fonts
 
-In version v5.6.0 and above of Carto, fonts need to be installed manually:
+Fonts need to be installed manually, like this:
 
 ```sh
 cd ~/src/openstreetmap-carto/
@@ -311,7 +311,7 @@ to find the location on your server, and then edit `/etc/renderd.conf` so that `
 plugins_dir=/usr/lib/aarch64-linux-gnu/mapnik/4.0/input
 ```
 
-This may change in the future. If this is set incorrectly or missing among the errors that you might get when trying to render tiles are:
+If this is set incorrectly or missing among the errors that you might get when trying to render tiles are:
 
 !!! warning ""
     An error occurred while loading the map layer 's2o': Could not create datasource for type: 'postgis' (no datasource plugin directories have been successfully registered) encountered during parsing of layer 'landcover-low-zoom'
@@ -382,16 +382,16 @@ Using `#!sh sudo journalctl -ef` you should see a line such as:
 
 If this does not appear it probably means that the configuration file for mod_tile `/etc/apache2/conf-available/renderd.conf` is either not set up or enabled properly - see the `wget` section above.
 
-Next, point a web browser at `http://your.server.ip.address/index.html` (change `your.server.ip.address` to your actual server address). You should see "Apache2 Debian Default Page".
+Next, point a web browser at `http://yourserveripaddress/index.html` (change `yourserveripaddress` to your actual server address). You should see "Apache2 Debian Default Page".
 
 !!! tip
-    If you don't know what IP address it will have been assigned, you can likely use `ifconfig` to find out – if the network configuration is not too complicated it'll probably be the `inet addr` that is not `127.0.0.1`.
+    If you don't know what IP address it will have been assigned, you can likely use `ip address` to find out – if the network configuration is not too complicated it'll probably be the `inet addr` that is not `127.0.0.1`.
 
-If you're using a server at a hosting provider then it's likely that your server's internal address will be different to the external address that has been allocated to you, but that external IP address will have already been sent to you, and it'll probably be the one that you're accessing the server on currently.
+If you're using a server at a hosting provider then it's possible that your server's internal address will be different to the external address that has been allocated to you, but that external IP address will have already been sent to you, and it'll probably be the one that you're accessing the server on currently.
 
 Note that this is just the `http` (port 80) site – you'll need to do a little bit more Apache configuration if you want to enable `https`, but that's out of the scope of these instructions. However, if you use "Let's Encrypt" to issue certificates, then the process of setting that up can also configure the Apache HTTPS site as well.
 
-Next, point a web browser at: `http://your.server.ip.address/hot/0/0/0.png`
+Next, point a web browser at: `http://yourserveripaddress/hot/0/0/0.png`
 
 You'll need to edit that of course if you changed `URI=/hot/` above. You should see a small map of the world. If you don't, investigate the errors that it displays. These will most likely be permissions errors, or perhaps related to accidentally missing some steps from the instructions above. If you don't get a tile and get other errors again, save the full output in a Pastebin and ask a question about the problem somewhere like [`community.openstreetmap.org`](https://community.openstreetmap.org){: target=_blank}.
 
