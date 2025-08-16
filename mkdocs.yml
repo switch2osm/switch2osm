@@ -49,7 +49,7 @@ theme:
 extra:
   social:
     - icon: material/translate
-      link: https://github.com/osmfoundation/welcome-mat/#translation
+      link: https://github.com/switch2osm/switch2osm/#translation
     - icon: fontawesome/solid/globe
       link: https://openstreetmap.org/
     - icon: fontawesome/brands/discourse
@@ -238,5 +238,5 @@ plugins:
             Providers: 提供者
             More: 取得協助
         - locale: "null"
-          fixed_link: https://github.com/osmfoundation/welcome-mat/#translation
+          fixed_link: https://github.com/switch2osm/switch2osm/#translation
           name: Help to translate
