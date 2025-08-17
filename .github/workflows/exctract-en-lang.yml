@@ -14,8 +14,6 @@ jobs:
   update-en-yml:
     name: Process changes in English menu items
     runs-on: ubuntu-latest
-    outputs:
-      has_changes: ${{ steps.check_changes.outputs.has_changes }}
     env:
       MKDOCS_FILE: "mkdocs.yml"
       TARGET_FILE: "./docs/en/en.yml"
@@ -41,29 +39,22 @@ jobs:
 
           rm "$TMP_FILE"
 
-      - name: Check if something has been changed in en.yaml
-        id: check_changes
+      - name: Commit ${TARGET_FILE} if changed
         run: |
-          if git diff-index --quiet HEAD -- "${TARGET_FILE}"; then
-            echo "No changes detected in ${TARGET_FILE}"
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          else
-            echo "Changes detected in ${TARGET_FILE}"
-            echo "Git diff output:"
-            git diff HEAD -- "${TARGET_FILE}" || true
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-          fi
+          set -euo pipefail
 
-      - name: Commit changes
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "${TARGET_FILE}"
-          git commit -m "Changes in ${TARGET_FILE}"
-          git push
 
-      - name: No changes detected
-        if: steps.check_changes.outputs.has_changes == 'false'
-        run: |
-          echo "No changes to commit."
+          # Stage first, then check what's actually pending
+          [ -f "$TARGET_FILE" ] && git add -- "$TARGET_FILE" || true
+
+          # Nothing staged? clean exit.
+          if [ -z "$(git status --porcelain -- "$TARGET_FILE")" ]; then
+            echo "No changes to commit for $TARGET_FILE"
+            exit 0
+          fi
+
+          git commit -m "Changes in $TARGET_FILE"
+
+          git push origin "$BRANCH"
