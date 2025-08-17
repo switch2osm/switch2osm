@@ -17,7 +17,7 @@ See the issues for things to work on.
 
   Exceptions are
   * planet.openstreetmap.org, for OSM data itself
-  * openstreetmapdata.com, for coastlines and other preprocessed data
+  * osmdata.openstreetmap.de, for coastlines and other preprocessed data
   * Natural Earth and other well-used public data sources
 
 ## Content technical needs ##
