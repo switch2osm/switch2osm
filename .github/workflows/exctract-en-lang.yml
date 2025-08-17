@@ -39,7 +39,7 @@ jobs:
 
           rm "$TMP_FILE"
 
-      - name: Commit ${TARGET_FILE} if changed
+      - name: Commit {{ env.TARGET_FILE }} if changed
         run: |
           set -euo pipefail
 
