@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <script src='https://unpkg.com/maplibre-gl@5.6/dist/maplibre-gl.js'></script>
+  <link href='https://unpkg.com/maplibre-gl@5.6/dist/maplibre-gl.css' rel='stylesheet' />
+
+  <style>
+    #map {position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    maplibregl.setRTLTextPlugin(
+        'https://unpkg.com/@mapbox/mapbox-gl-rtl-text@0.3.0/dist/mapbox-gl-rtl-text.js',
+        true // Lazy load the plugin
+    );
+    
+    const map = new maplibregl.Map({
+      style: new URL('style.json', window.location.href).href,
+      container: 'map',
+      center: [0, 0],
+      zoom: 1,
+      hash: true,
+      maxZoom: 19
+    });
+  </script>
+</body>
+</html>
