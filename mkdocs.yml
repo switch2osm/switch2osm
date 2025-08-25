@@ -102,6 +102,7 @@ nav:
       # - Serving tiles: serving-tiles/index.md
       - serving-tiles/index.md
       - Manually:
+          - Debian 13: serving-tiles/manually-building-a-tile-server-debian-13.md
           - Debian 12: serving-tiles/manually-building-a-tile-server-debian-12.md
           - Debian 11: serving-tiles/manually-building-a-tile-server-debian-11.md
           - Ubuntu 24.04: serving-tiles/manually-building-a-tile-server-ubuntu-24-04-lts.md

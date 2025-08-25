@@ -20,7 +20,7 @@ If you are setting up your own tile server, we recommend that you use [Ubuntu Li
 
 ## The options
 
-1. Install locally on [Debian 12](manually-building-a-tile-server-debian-12.md), [Ubuntu 24.04](manually-building-a-tile-server-ubuntu-24-04-lts.md), or [Debian 11](manually-building-a-tile-server-debian-11.md).
+1. Install locally on [Debian 13](manually-building-a-tile-server-debian-13.md), [Debian 12](manually-building-a-tile-server-debian-12.md), [Ubuntu 24.04](manually-building-a-tile-server-ubuntu-24-04-lts.md), or [Debian 11](manually-building-a-tile-server-debian-11.md).
 
 2. Use [docker](using-a-docker-container.md).
 
