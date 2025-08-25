@@ -297,9 +297,10 @@ MAXZOOM=20
 
 The location of the XML file `/home/accountname/src/openstreetmap-carto/mapnik.xml` will need to be changed to the actual location on your system. You can change `[s2o]` and `URI=/hot/` as well if you like. If you want to render more than one set of tiles from one server you can - just add another section like `[s2o]` with a different name referring to a different map style. If you want it to refer to a different database to the default `gis` you can, but that's out of the scope of this document. If you've only got 4Gb or so of memory, you'll also want to reduce `num_threads` to 2. `URI=/hot/` was chosen so that the tiles generated here can more easily be used in place of the HOT tile layer at OpenStreetMap.org. You can use something else here, but `/hot/` is as good as anything.
 
-The location of the Mapnik plugins directory now varies archtecture.  You can type `` 
+The location of the Mapnik plugins directory now varies between different architectures.  You can type `` 
 
 ```sh
+sudo updatedb
 locate mapnik/4.0/input
 ```
 
