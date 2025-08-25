@@ -8,7 +8,7 @@ lang: uk
 
 Тайли від сторонніх постачальників&nbsp;– це найпростіший спосіб переходу на OpenStreetMap, до того ж він дозволяє точно виміряти ваші витрати. Однак, якщо ви бажаєте мати повний контроль над долею, ви можете створювати та розповсюджувати ваші власні тайли. В цьому розділі йдеться про те, як це зробити.
 
-![сирцеві дані osm](/assets/img/raw-osm-data.webp){ data-title="Сирцеві дані OSM" data-description="Сирцеві дані OpenStreetMap, зі стандартним стилем показу даних в JOSM, отримані для редагування через OSM API. https://www.openstreetmap.org/#map=16/18.0253/-63.0485" } | ![тайловий сервер](/assets/img/vector_tiles_pyramid_structure_window.webp){ data-title="Піраміда тайлів мапи" data-description="Кожен рівень масштабування розбивається на маленькі шматки, які називаються тайлами. Зазвичай, розмір одного тайлу – 256×256 пікселів." } | ![використання мап](/assets/img/map-usage.webp){ data-title="Тайли зібрані в мапу на вашому вебсайті" data-description="Тайли, створені вашим тайловим сервером, потім показуються у вигляді цільної мапи в оглядачі клієнта чи в іншому застосунку." }
+![сирцеві дані osm](/assets/img/raw-osm-data.png){ data-title="Сирцеві дані OSM" data-description="Сирцеві дані OpenStreetMap, зі стандартним стилем показу даних в JOSM, отримані для редагування через OSM API. https://www.openstreetmap.org/#map=16/18.0253/-63.0485" } | ![тайловий сервер](/assets/img/vector_tiles_pyramid_structure_window.png){ data-title="Піраміда тайлів мапи" data-description="Кожен рівень масштабування розбивається на маленькі шматки, які називаються тайлами. Зазвичай, розмір одного тайлу – 256×256 пікселів." } | ![використання мап](/assets/img/map-usage.png){ data-title="Тайли зібрані в мапу на вашому вебсайті" data-description="Тайли, створені вашим тайловим сервером, потім показуються у вигляді цільної мапи в оглядачі клієнта чи в іншому застосунку." }
 :--:|:--:|:--:
 :simple-openstreetmap: :material-database-import: Сирцеві дані OpenStreetMap | :material-server: :material-checkerboard-plus: Ваш власний тайловий сервер | :fontawesome-solid-users: :octicons-browser-16: Відвідувачі переглядають мапу на вашому вебсайті
 
@@ -20,7 +20,7 @@ lang: uk
 
 ## Варіанти
 
-1. Встановлення на [Debian 12](manually-building-a-tile-server-debian-12.md), [Debian 11](manually-building-a-tile-server-debian-11.md), [Ubuntu 24.04](manually-building-a-tile-server-ubuntu-24-04-lts.md), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts.md), [Ubuntu 20.04](manually-building-a-tile-server-ubuntu-20-04-lts.md) або на [Ubuntu 18.04](manually-building-a-tile-server-ubuntu-18-04-lts.md).
+1. Встановлення на [Debian 13](manually-building-a-tile-server-debian-13.md), [Debian 12](manually-building-a-tile-server-debian-12.md), [Debian 11](manually-building-a-tile-server-debian-11.md), [Ubuntu 24.04](manually-building-a-tile-server-ubuntu-24-04-lts.md), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts.md), [Ubuntu 20.04](manually-building-a-tile-server-ubuntu-20-04-lts.md) або на [Ubuntu 18.04](manually-building-a-tile-server-ubuntu-18-04-lts.md).
 
 2. Використання [docker](using-a-docker-container.md).
 
