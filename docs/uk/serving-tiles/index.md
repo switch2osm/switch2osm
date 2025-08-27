@@ -20,7 +20,7 @@ lang: uk
 
 ## Варіанти
 
-1. Встановлення на [Debian 12](manually-building-a-tile-server-debian-12.md), [Debian 11](manually-building-a-tile-server-debian-11.md), [Ubuntu 24.04](manually-building-a-tile-server-ubuntu-24-04-lts.md), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts.md), [Ubuntu 20.04](manually-building-a-tile-server-ubuntu-20-04-lts.md) або на [Ubuntu 18.04](manually-building-a-tile-server-ubuntu-18-04-lts.md).
+1. Встановлення на [Debian 13](manually-building-a-tile-server-debian-13.md), [Debian 12](manually-building-a-tile-server-debian-12.md), [Debian 11](manually-building-a-tile-server-debian-11.md), [Ubuntu 24.04](manually-building-a-tile-server-ubuntu-24-04-lts.md), [Ubuntu 22.04](manually-building-a-tile-server-ubuntu-22-04-lts.md), [Ubuntu 20.04](manually-building-a-tile-server-ubuntu-20-04-lts.md) або на [Ubuntu 18.04](manually-building-a-tile-server-ubuntu-18-04-lts.md).
 
 2. Використання [docker](using-a-docker-container.md).
 
