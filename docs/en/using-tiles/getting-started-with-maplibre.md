@@ -61,7 +61,7 @@ We now need to build the style so it uses our new copy of the glyphs and sprites
 
 Copy the following content to a file [build.ts](build.ts){: target=_blank}, but change "example.com" to the URL that you will serve the tiles from, including your domain name
 
-``` ts title="build.ts"
+```ts title="build.ts"
 --8<-- "docs/en/using-tiles/build.ts"
 ```
 
@@ -73,7 +73,7 @@ node_modules/.bin/tsx build.ts
 
 Copy the following content to a file [maplibre.html](maplibre.html){: target=_blank} and put it in the release directory
 
-``` html title="maplibre.html"
+```html title="maplibre.html"
 --8<-- "docs/en/using-tiles/maplibre.html"
 ```
 
