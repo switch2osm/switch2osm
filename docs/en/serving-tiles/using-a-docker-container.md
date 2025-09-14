@@ -34,7 +34,7 @@ And install it and import the data:
 ```sh 
 time \
     docker run \
-    -v /home/renderaccount/zambia-latest.osm.pbf:/region.osm.pbf \
+    -v /home/renderaccount/zambia-latest.osm.pbf:/data/region.osm.pbf \
     -v osm-data:/data/database/ \
     overv/openstreetmap-tile-server import
 ```
