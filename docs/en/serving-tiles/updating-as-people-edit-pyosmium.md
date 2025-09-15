@@ -50,7 +50,7 @@ sudo -u _renderd \
     ~/data/greater-london-latest.osm.pbf
 ```
 
-The data to load was obtained from a page such as [this one](http://download.geofabrik.de/europe/great-britain/england/greater-london.html){: target=_blank}, which says something like "... and contains all OSM data up to 2023-07-02T20:21:43Z". We'll use that date when setting up replication below:
+The data to load was obtained from a page such as [this one](http://download.geofabrik.de/europe/united-kingdom/england/greater-london.html){: target=_blank}, which says something like "... and contains all OSM data up to 2023-07-02T20:21:43Z". We'll use that date when setting up replication below:
 
 ```sh
 sudo mkdir /var/cache/renderd/pyosmium
