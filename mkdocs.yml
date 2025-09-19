@@ -98,6 +98,7 @@ nav:
       - using-tiles/index.md
       - Leaflet: using-tiles/getting-started-with-leaflet.md
       - OpenLayers: using-tiles/getting-started-with-openlayers.md
+      - MapLibre: using-tiles/getting-started-with-maplibre.md
   - Serving:
       # - Serving tiles: serving-tiles/index.md
       - serving-tiles/index.md
