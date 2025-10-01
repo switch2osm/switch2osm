@@ -32,7 +32,7 @@ If you have followed the Ubuntu instructions, you'll already have the scripts ne
 
 ```sh
 cd ~/src
-git clone -b switch2osm git://github.com/SomeoneElseOSM/mod_tile.git
+git clone -b switch2osm https://github.com/SomeoneElseOSM/mod_tile.git
 cd mod_tile
 ```
 
