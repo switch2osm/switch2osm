@@ -146,7 +146,7 @@ jobs:
 
       - name: 🚀 Trigger deploy workflow
         if: steps.check_changes.outputs.has_changes == 'true'
-        uses: peter-evans/repository-dispatch@v3
+        uses: peter-evans/repository-dispatch@v4
         with:
           event-type: trigger-deploy
 
