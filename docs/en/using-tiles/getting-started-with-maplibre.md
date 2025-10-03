@@ -22,7 +22,7 @@ Displaying a map requires three things: a data source, map style, and site to ho
 
 We need Node.js 18 or later. If you have Ubuntu 24.04 or later or Debian 12 or later, you can install these with
 
-```
+```sh
 sudo apt-get install nodejs
 ```
 
@@ -30,7 +30,7 @@ For other operating systems consult their documentation. You can check the versi
 
 ## Building the style
 
-We're going to be using the VersaTiles colorful style, a basic style which uses Shortbread tiles. The Shortbread vector tile schema is a general-purpose vector tile schema for OpenStreetMap data. To get the tiles we're going to use the OpenStreetMap Foundation's Shortbread tile service. 
+We're going to be using the VersaTiles colorful style, a basic style which uses Shortbread tiles. The Shortbread vector tile schema is a general-purpose vector tile schema for OpenStreetMap data. To get the tiles we're going to use the OpenStreetMap Foundation's Shortbread tile service.
 
 !!! info ""
     Usage of the vector tiles is governed by the [vector tile usage policy](https://operations.osmfoundation.org/policies/vector/). This web page will meet the requirements, but there is no SLA or guarantee with the vector tile service. If you need these you should host them yourself or use a commercial host.
@@ -50,7 +50,7 @@ Building sprites and glyphs can be a complicated process, but because we don't n
 ```sh
 curl -OL https://github.com/versatiles-org/versatiles-style/releases/download/v5.7.0/sprites.tar.gz
 mkdir -p release/sprites
-tar -C release/sprites -xzf sprites.tar.gz 
+tar -C release/sprites -xzf sprites.tar.gz
 
 curl -OL https://github.com/versatiles-org/versatiles-fonts/releases/download/v2.0.0/fonts.tar.gz
 mkdir -p release/fonts
@@ -62,10 +62,11 @@ We now need to build the style so it uses our new copy of the glyphs and sprites
 Copy the following content to a file [build.ts](build.ts){: target=_blank}, but change "example.com" to the URL that you will serve the tiles from, including your domain name
 
 ```ts title="build.ts"
---8<-- "docs/en/using-tiles/build.ts"
+--8<-- "docs/assets/using-tiles/build.ts"
 ```
 
 In the same directory install TypeScript and the VersaTiles styles, then run the script above to build your style.
+
 ```sh
 npm install tsx @versatiles/style@~5.7.0
 node_modules/.bin/tsx build.ts
