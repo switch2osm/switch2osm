@@ -4,7 +4,7 @@ title: Використання контейнера Docker
 lang: uk
 ---
 
-# {{ title}}
+# {{ title }}
 
 Якщо ви тільки бажаєте потестувати або ви використовуєте іншу операційну систему (відмінну від Ubuntu), або ви вже використовуєте Docker для контейнеризації&nbsp;– ви можете спробувати [цю інструкцію](https://github.com/Overv/openstreetmap-tile-server){: target=_blank}. Вона базується на інструкції [звідси](/serving-tiles/manually-building-a-tile-server-ubuntu-22-04-lts.md) і вже має готовий до використання контейнер.
 
