@@ -33,6 +33,8 @@ uk:
               # Menu item name for the side menu
               OpenLayers: За допомогою OpenLayers
               # Menu item name for the side menu
+              MapLibre: Початок роботи з MapLibre GL
+              # Menu item name for the side menu
               Vector Tiles: Переваги векторних тайлів
               # Menu item name for the "Serving Tiles" tab
               Serving: Власний сервер

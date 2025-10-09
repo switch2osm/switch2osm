@@ -50,7 +50,7 @@ sudo -u _renderd \
     ~/data/greater-london-latest.osm.pbf
 ```
 
-Дані для завантаження були отримані зі сторінки [Greater London](http://download.geofabrik.de/europe/great-britain/england/greater-london.html){: target=_blank}, на якій зазначено, щось схоже на "… and contains all OSM data up to 2023-07-02T20:21:43Z" (… містить всі дані OSM станом на …). Ми будемо використовувати цю дату для налаштування реплікації:
+Дані для завантаження були отримані зі сторінки [Greater London](http://download.geofabrik.de/europe/united-kingdom/england/greater-london.html){: target=_blank}, на якій зазначено, щось схоже на "… and contains all OSM data up to 2023-07-02T20:21:43Z" (… містить всі дані OSM станом на …). Ми будемо використовувати цю дату для налаштування реплікації:
 
 ```sh
 sudo mkdir /var/cache/renderd/pyosmium
