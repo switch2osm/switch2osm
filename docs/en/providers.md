@@ -57,3 +57,10 @@ The following companies host OpenStreetMap tiles.
 * [Geofabrik](https://www.geofabrik.de/maps/rendering.html){: target=_blank}, Germany
 * [Makina Corpus](https://makina-corpus.com/){: target=_blank}, France
 * [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/){: target=_blank}, Germany
+
+## Printable cartography
+
+The following providers offer high-resolution, printable maps for professional use based on OpenStreetMap.
+
+* [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/), Germany
+* [Printmaps.net](https://www.printmaps.net/), Germany/Austria
