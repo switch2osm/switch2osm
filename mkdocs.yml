@@ -202,12 +202,16 @@ plugins:
             Using: Мапа
             Leaflet: За допомогою Leaflet
             OpenLayers: За допомогою OpenLayers
+            MapLibre: Початок роботи з MapLibre GL
             Vector Tiles: Переваги векторних тайлів
             Serving: Власний сервер
             Manually: Розгортаємо сервер вручну
             Docker: Використання контейнера Docker
             Munin: Моніторинг за допомогою Munin
             Updating: Оновлення бази даних правками з OpenStreetMap
+            Serving vector tiles: Векторні тайли
+            Steps: Загальні кроки
+            TileServer GL: Розгортання TileServer GL
             Other: Інше
             Providers: Постачальники
             More: Отримання допомоги
@@ -236,6 +240,9 @@ plugins:
             Docker: 使用 Docker 容器
             Munin: 採用 Munin 監控
             Updating: 在人們編輯過開放街圖之後更新資料庫
+            Serving vector tiles: 向量地圖圖磚
+            Steps: 一般步驟
+            TileServer GL: 開始使用 TileServer GL
             Other: 其他用途
             Providers: 提供者
             More: 取得協助
