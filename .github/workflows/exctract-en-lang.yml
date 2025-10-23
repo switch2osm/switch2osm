@@ -17,13 +17,17 @@ jobs:
     env:
       MKDOCS_FILE: "mkdocs.yml"
       TARGET_FILE: "./docs/en/en.yml"
+      # push back to the branch that triggered the workflow (safe default)
+      BRANCH: ${{ github.ref_name }}
 
     steps:
       - name: ⬇️ Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 🧰 Set up yq
         uses: mikefarah/yq@v4
+        with:
+          cmd: yq
 
       - name: 📝 Update en.yml
         run: |
