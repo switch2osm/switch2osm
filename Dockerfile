@@ -1,5 +1,5 @@
 # ---- Build Stage ----
-FROM docker.io/python:3.13-bookworm AS builder
+FROM docker.io/python:3.14-bookworm AS builder
 
 # Create non-root user and set up environment
 RUN useradd -m builder && \
