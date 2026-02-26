@@ -306,7 +306,7 @@ sudo systemctl reload apache2
 It'd be really useful at this point to be able to see the output from the tile rendering process, including any errors.  By default with recent mod_tile versions, this is turned off.  To turn it on:
 
 ```sh
-sudo nano /usr/lib/systemd/system/renderd.service
+sudo systemctl edit renderd.service
 ```
 
 If it's not already there below `[Service]`, add:
