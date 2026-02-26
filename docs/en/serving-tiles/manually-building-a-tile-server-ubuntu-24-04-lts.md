@@ -323,6 +323,33 @@ sudo systemctl restart renderd
 sudo systemctl restart apache2
 ```
 
+#### Restart renderd when database is restarted
+
+Renderd can lose the connection to the database when it is restarted (for example when the database is upgraded), so you can ensure that renderd is restared at the same time as the database:
+
+Edit the service definition with the following command
+
+```
+sudo systemctl edit renderd
+```
+
+
+Ensure these lines exists in the files:
+
+```
+[Unit]
+After=postgresql@16-main.service
+Requires=postgresql@16-main.service
+BindsTo=postgresql@16-main.service
+```
+
+Then reload the systemd configuration:
+
+```
+sudo systemctl daemon-reload
+```
+
+
 ### Configuring Apache
 
 If you look at /var/log/syslog, you should see messages from the "renderd" service.  There will initially be some font warnings - don't worry about those for now.  Next:
