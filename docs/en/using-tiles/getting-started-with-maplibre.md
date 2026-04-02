@@ -80,7 +80,7 @@ Copy the following content to a file [maplibre.html](maplibre.html){: target=_bl
 
 ## Releasing the style
 
-py the contents of the "release" directory to the location that you chose earlier, that you will serve the files from. Common ways of doing this are with a scp or rsync command, or through a web interface.
+Copy the contents of the "release" directory to the location that you chose earlier, that you will serve the files from. Common ways of doing this are with a scp or rsync command, or through a web interface.
 
 ## Common problems
 
