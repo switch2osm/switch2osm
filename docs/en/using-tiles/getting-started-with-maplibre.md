@@ -48,11 +48,11 @@ mkdir release
 Building sprites and glyphs can be a complicated process, but because we don't need to modify them we're going to use pre-built ones
 
 ```sh
-curl -OL https://github.com/versatiles-org/versatiles-style/releases/download/v5.7.0/sprites.tar.gz
+curl -OL https://github.com/versatiles-org/versatiles-style/releases/download/v5.10.0/sprites.tar.gz
 mkdir -p release/sprites
 tar -C release/sprites -xzf sprites.tar.gz
 
-curl -OL https://github.com/versatiles-org/versatiles-fonts/releases/download/v2.0.0/fonts.tar.gz
+curl -OL https://github.com/versatiles-org/versatiles-fonts/releases/download/v2.1.0/fonts.tar.gz
 mkdir -p release/fonts
 tar -C release/fonts -xzf fonts.tar.gz
 ```
@@ -68,7 +68,7 @@ Copy the following content to a file [build.ts](build.ts){: target=_blank}, but 
 In the same directory install TypeScript and the VersaTiles styles, then run the script above to build your style.
 
 ```sh
-npm install tsx @versatiles/style@~5.7.0
+npm install tsx @versatiles/style@~5.10.0
 node_modules/.bin/tsx build.ts
 ```
 
