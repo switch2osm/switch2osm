@@ -35,7 +35,7 @@ We're going to be using the VersaTiles colorful style, a basic style which uses 
 !!! info ""
     Usage of the vector tiles is governed by the [vector tile usage policy](https://operations.osmfoundation.org/policies/vector/). This web page will meet the requirements, but there is no SLA or guarantee with the vector tile service. If you need these you should host them yourself or use a commercial host.
 
-A style requires a style definition, sprite files for any icons, and glyph files for any fonts. We're going to build the style definition to point to our own sprite and glyph files.
+A style requires a style definition and sprite files for any icons. We're going to build the style definition to point to our own sprites.
 
 Start by making a new directory to store the files you'll be creating. We'll call it "style" in the documentation, but it can be whatever you want. Inside this directory we're going to build all the files we need and place them in a "release" subdirectory
 
@@ -45,19 +45,15 @@ cd style
 mkdir release
 ```
 
-Building sprites and glyphs can be a complicated process, but because we don't need to modify them we're going to use pre-built ones
+Building sprites can be a complicated process, but because we don't need to modify them we're going to use pre-built ones
 
 ```sh
 curl -OL https://github.com/versatiles-org/versatiles-style/releases/download/v5.10.0/sprites.tar.gz
 mkdir -p release/sprites
 tar -C release/sprites -xzf sprites.tar.gz
-
-curl -OL https://github.com/versatiles-org/versatiles-fonts/releases/download/v2.1.0/fonts.tar.gz
-mkdir -p release/fonts
-tar -C release/fonts -xzf fonts.tar.gz
 ```
 
-We now need to build the style so it uses our new copy of the glyphs and sprites.
+We now need to build the style so it uses our new copy of the sprites and the OSMF vector tile service.
 
 Copy the following content to a file [build.ts](build.ts){: target=_blank}, but change "example.com" to the URL that you will serve the tiles from, including your domain name
 
