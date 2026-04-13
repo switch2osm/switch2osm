@@ -106,16 +106,14 @@ exit
 
 Mapnik was installed above. We'll check that it has been installed correctly by doing this:
 
-```py
-python3
->>> import mapnik
->>>
+```sh
+mapnik-render --version
 ```
 
-If python replies with the second chevron prompt `>>>` and without errors, then Mapnik library was found by Python. Congratulations! You can leave Python with this command:
+It should reply with the version number of Mapnik:
 
-```py
->>> quit()
+```sh
+version 4.0.7
 ```
 
 ## Stylesheet configuration
