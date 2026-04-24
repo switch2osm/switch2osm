@@ -54,7 +54,7 @@ Host it on your hardware, or elsewhere. You have control.
 ## What people say about OpenStreetMap
 
 &laquo;Much like Wikipedia challenged Encyclopedia Britannica and Linux took on Microsoft Windows, OpenStreetMap is battling Google Maps, and at least in some cases, it’s winning.&raquo;<br />
-*Read what Wired has to say about [people switching to OpenStreetMap](http://www.wired.com/wiredenterprise/2012/01/openstreetmap-google/){: target=_blank}.*{: class="quote"}
+*Read what Wired has to say about [people switching to OpenStreetMap](https://www.wired.com/2012/01/openstreetmap-google/){: target=_blank}.*{: class="quote"}
 
 &laquo;OpenStreetMap is all about people doing their bit, creating an incredible resource for everybody else.&raquo;<br />
 *Tim Berners-Lee, creator of the web, explains [OSM at TED 2009](https://www.ted.com/talks/tim_berners_lee_the_next_web/transcript){: target=_blank}.*{: class="quote"}
