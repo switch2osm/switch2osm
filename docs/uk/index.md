@@ -52,7 +52,7 @@ hide:
 ## Що кажуть люди про OpenStreetMap
 
 &laquo;Так само як Вікіпедія кидає виклик Британській енциклопедії, а Linux міряється силами з Microsoft Windows, OpenStreetMap змагається з Google Maps, і, принаймні, в деяких випадках, перемагає.&raquo;<br />
-*Пише Wired про [перехід на OpenStreetMap](http://www.wired.com/wiredenterprise/2012/01/openstreetmap-google/){: target=_blank}.*{: class="quote"}
+*Пише Wired про [перехід на OpenStreetMap](https://www.wired.com/2012/01/openstreetmap-google/){: target=_blank}.*{: class="quote"}
 
 &laquo;OpenStreetMap&nbsp;— це все про людей, які частка за часткою, створюють неймовірний ресурс для всіх інших.&raquo;<br />
 *Тім Бернерс-Лі (Tim Berners-Lee), творець вебу, розповідаючи про [OSM на TED 2009](https://www.ted.com/talks/tim_berners_lee_the_next_web/transcript){: target=_blank}.*{: class="quote"}
