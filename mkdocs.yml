@@ -99,6 +99,7 @@ nav:
       - Leaflet: using-tiles/getting-started-with-leaflet.md
       - OpenLayers: using-tiles/getting-started-with-openlayers.md
       - MapLibre: using-tiles/getting-started-with-maplibre.md
+      - Custom Data: using-tiles/adding-custom-data-with-maplibre.md
   - Serving:
       # - Serving tiles: serving-tiles/index.md
       - serving-tiles/index.md
@@ -167,6 +168,8 @@ plugins:
             OpenLayers: Getting started with OpenLayers
             # Menu item name for the side menu
             MapLibre: Getting started with MapLibre GL
+            # Menu item name for the side menu
+            Custom Data: Custom data with MapLibre GL
             # Menu item name for the side menu
             Vector Tiles: Power of Vector Map Tiles
             # Menu item name for the "Serving Tiles" tab

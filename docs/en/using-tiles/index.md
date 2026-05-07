@@ -18,6 +18,8 @@ Unlike commercial online map providers, OpenStreetMap does not provide an “off
 
 [Getting started with Maplibre](/using-tiles/getting-started-with-maplibre.md)
 
+[Adding custom data with Maplibre](/using-tiles/adding-custom-data-with-maplibre.md)
+
 ## Choosing a tile provider
 
 Apart from very limited testing purposes, you should not use the tiles supplied by OpenStreetMap.org itself. OpenStreetMap is a volunteer-run non-profit body and cannot supply tiles for large-scale commercial use. Rather, you should use a third party provider that makes tiles from OSM data, or generate your own.
