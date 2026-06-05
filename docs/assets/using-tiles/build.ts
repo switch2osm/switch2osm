@@ -10,4 +10,4 @@ const style = colorful({
 
 // We're using web fonts so we don't need glyphs
 delete style.glyphs;
-writeFileSync("release/style.json", JSON.stringify(style));
+writeFileSync("release/style.json", JSON.stringify(style, null, 2));
