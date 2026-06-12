@@ -22,7 +22,7 @@ lang: uk
 # якщо не існує теки створіть її
 mkdir ~/data
 cd ~/data
-wget http://download.geofabrik.de/europe/great-britain/england/greater-london-latest.osm.pbf
+wget http://download.geofabrik.de/europe/united-kingdom/england/greater-london-latest.osm.pbf
 ```
 
 Потім, завантажте дані в базу. Кількість процесів та обсяг пам'яті залежить від потужності вашої системи:
@@ -51,11 +51,11 @@ sudo -u _renderd \
 В ході виконання команди ви побачите такий вивід:
 
 ```log
-2022-04-24 23:32:42 [INFO]: Initialised updates for service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'.
+2022-04-24 23:32:42 [INFO]: Initialised updates for service 'http://download.geofabrik.de/europe/united-kingdom/england/greater-london-updates'.
 2022-04-24 23:32:42 [INFO]: Starting at sequence 3314 (2022-04-23 20:21:53+00:00).
 ```
 
-В цьому прикладі показана дата відповідає тій, що показувалась на момент написання [на цій сторінці](http://download.geofabrik.de/europe/great-britain/england/greater-london.html){: target=_blank}, коли писався цей текст.
+В цьому прикладі показана дата відповідає тій, що показувалась на момент написання [на цій сторінці](http://download.geofabrik.de/europe/united-kingdom/england/greater-london.html){: target=_blank}, коли писався цей текст.
 
 ### Створення скрипту для оновлення даних
 
@@ -173,7 +173,7 @@ sudo -u _renderd /usr/local/sbin/update_tiles.sh
 Якщо оновлення є, ви побачите щось схоже на:
 
 ```log
-2022-06-05 16:29:32 [INFO]: Using replication service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'. Current sequence 3355 (2022-06-03 20:21:26+00:00).
+2022-06-05 16:29:32 [INFO]: Using replication service 'http://download.geofabrik.de/europe/united-kingdom/england/greater-london-updates'. Current sequence 3355 (2022-06-03 20:21:26+00:00).
 2022-06-05 16:29:33  osm2pgsql version 1.6.0
 2022-06-05 16:29:33  Database version: 14.3 (Ubuntu 14.3-0ubuntu0.22.04.1)
 2022-06-05 16:29:33  PostGIS version: 3.2
