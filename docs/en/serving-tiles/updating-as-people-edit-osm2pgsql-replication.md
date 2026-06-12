@@ -22,10 +22,12 @@ First, from whichever non-root account you are using, download the data:
 # if it doesn't already exist
 mkdir ~/data
 cd ~/data
-wget http://download.geofabrik.de/europe/great-britain/england/greater-london-latest.osm.pbf
+wget http://download.geofabrik.de/europe/united-kingdom/england/greater-london-latest.osm.pbf
 ```
 
-Next, load the database.  The numbers here for processes and memory can be varied to match the system being used:
+Next, load the database.  The actual parameters used will depend on whether the `pgsql` output from `osm2pgsql` is being used (used by OSM Carto versions up to 5.9.0) or whether the `flex` output is (OSM Carto versions 6.0.0 and above).  In addition, the numbers here for processes and memory can be varied to match the system being used.
+
+For `pgsql`:
 
 ```sh
 sudo -u _renderd \
@@ -34,6 +36,17 @@ sudo -u _renderd \
         ~/src/openstreetmap-carto/openstreetmap-carto.lua \
     -C 3000 --number-processes 4 \
     -S ~/src/openstreetmap-carto/openstreetmap-carto.style \
+    ~/data/greater-london-latest.osm.pbf
+```
+
+For `flex`:
+
+```sh
+sudo -u _renderd \
+    osm2pgsql -O flex \
+    -S        ~/src/openstreetmap-carto/openstreetmap-carto-flex.lua \
+    -d gis --create --slim  \
+    -C 3000 --number-processes 4 \
     ~/data/greater-london-latest.osm.pbf
 ```
 
@@ -51,11 +64,11 @@ sudo -u _renderd \
 That produces output something like this:
 
 ```log
-2022-04-24 23:32:42 [INFO]: Initialised updates for service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'.
+2022-04-24 23:32:42 [INFO]: Initialised updates for service 'http://download.geofabrik.de/europe/united-kingdom/england/greater-london-updates'.
 2022-04-24 23:32:42 [INFO]: Starting at sequence 3314 (2022-04-23 20:21:53+00:00).
 ```
 
-In this example, the date shown there corresponds to the date visible [on this page](http://download.geofabrik.de/europe/great-britain/england/greater-london.html){: target=_blank} when the data was downloaded.
+In this example, the date shown there corresponds to the date visible [on this page](http://download.geofabrik.de/europe/united-kingdom/england/greater-london.html){: target=_blank} when the data was downloaded.
 
 ### Creating scripts to apply updates
 
@@ -93,7 +106,7 @@ Next:
 sudo nano /usr/local/sbin/update_tiles.sh
 ```
 
-initially, this script should contain:
+initially, this script should contain something like (for `pgsql`):
 
 ```sh title="update_tiles.sh"
 #!/bin/bash
@@ -109,6 +122,22 @@ osm2pgsql-replication \
     --expire-tiles=1-20 \
     --expire-output=/var/cache/renderd/dirty_tiles.txt
 ```
+
+A `flex` version would be something like:
+
+```sh title="update_tiles.sh"
+#!/bin/bash                                                                                                   
+osm2pgsql-replication \
+    update -d gis \
+    --post-processing /usr/local/sbin/expire_tiles.sh \
+    --max-diff-size 10  --  \
+    -S /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto-flex.lua \
+    -C 2500 --number-processes 4 \
+    --expire-tiles=1-20 \
+    --expire-output=/var/cache/renderd/dirty_tiles.txt
+```
+
+References to `renderaccount` need changing to the actual location based on the account that you are using.
 
 Everything in the `osm2pgsql-replication update` line after `--` is passed as parameters to osm2pgsql - they will all need to match what the database was loaded with in the first place.  Before the `--`, `-d gis` just defines what database we're using and `--max-diff-size 10` how much data to process at once, but note that osm2pgsql-replication will actually repeat downloading data and updating the database until there is no more to process, which may take some time.  The `--max diff-size` determines how much data is fetched on each iteration. The `--post-processing /usr/local/sbin/expire_tiles.sh` just calls our other script.
 
@@ -149,7 +178,7 @@ In another session:
 sudo tail -f /var/log/syslog
 ```
 
-or if you are using Debian 12, which does not have a "syslog" file by default:
+or if you are using a system which does not have a "syslog" file by default, such as Debian 12 or above:
 
 ```sh
 sudo journalctl -ef
@@ -173,7 +202,7 @@ If there are no pending updates (Geofabrik updates for these files appear daily)
 If there are pending updates, then instead you will see something like:
 
 ```log
-2022-06-05 16:29:32 [INFO]: Using replication service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'. Current sequence 3355 (2022-06-03 20:21:26+00:00).
+2022-06-05 16:29:32 [INFO]: Using replication service 'http://download.geofabrik.de/europe/united-kingdom/england/greater-london-updates'. Current sequence 3355 (2022-06-03 20:21:26+00:00).
 2022-06-05 16:29:33  osm2pgsql version 1.6.0
 2022-06-05 16:29:33  Database version: 14.3 (Ubuntu 14.3-0ubuntu0.22.04.1)
 2022-06-05 16:29:33  PostGIS version: 3.2
@@ -239,12 +268,12 @@ Jun  5 16:36:58 ubuntuvm75 renderd[5838]: Connection 0, fd 5 closed, now 0 left,
 
 ### Running every day
 
-The script to perform the update can be added to root's crontab.  First, amend `update_tiles.sh` to do some error checking at startup, and to append a summary to a logfile only.  You can get a copy of that from [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles.sh){: target=_blank}. Again, change "renderaccount" to the name of whatever non-root account you are using here.  You can also adjust the number of threads and the amount of memory cache used.
+The script to perform the update can be added to root's crontab.  First, amend `update_tiles.sh` to do some error checking at startup, and to append a summary to a logfile only.  You can get a copy of that from [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles.sh){: target=_blank} for `pgsql` or [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles_flex.sh){: target=_blank} for `flex` (as noted above, the `osm2pgsql` parameters are different). Again, change "renderaccount" to the name of whatever non-root account you are using here.  You can also adjust the number of threads and the amount of memory cache used.
 
-Then add to root's crontab:
+Then add to your non-root accounts's crontab something like:
 
 ```sh
-04 04  *   *   *     sudo -u _renderd /usr/local/sbin/update_tiles.sh
+04 04  *   *   *     /usr/local/sbin/update_tiles.sh >> /var/log/tiles/run.log
 ```
 
 This example runs once per day at 04:04 every morning.  There's no point in running it more than once per day, since Geofabrik updates are only released daily.
