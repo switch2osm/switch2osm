@@ -22,7 +22,7 @@ First, from whichever non-root account you are using, download the data:
 # if it doesn't already exist
 mkdir ~/data
 cd ~/data
-wget http://download.geofabrik.de/europe/great-britain/england/greater-london-latest.osm.pbf
+wget http://download.geofabrik.de/europe/united-kingdom/england/greater-london-latest.osm.pbf
 ```
 
 Next, load the database.  The numbers here for processes and memory can be varied to match the system being used:
@@ -51,11 +51,11 @@ sudo -u _renderd \
 That produces output something like this:
 
 ```log
-2022-04-24 23:32:42 [INFO]: Initialised updates for service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'.
+2022-04-24 23:32:42 [INFO]: Initialised updates for service 'http://download.geofabrik.de/europe/united-kingdom/england/greater-london-updates'.
 2022-04-24 23:32:42 [INFO]: Starting at sequence 3314 (2022-04-23 20:21:53+00:00).
 ```
 
-In this example, the date shown there corresponds to the date visible [on this page](http://download.geofabrik.de/europe/great-britain/england/greater-london.html){: target=_blank} when the data was downloaded.
+In this example, the date shown there corresponds to the date visible [on this page](http://download.geofabrik.de/europe/united-kingdom/england/greater-london.html){: target=_blank} when the data was downloaded.
 
 ### Creating scripts to apply updates
 
@@ -173,7 +173,7 @@ If there are no pending updates (Geofabrik updates for these files appear daily)
 If there are pending updates, then instead you will see something like:
 
 ```log
-2022-06-05 16:29:32 [INFO]: Using replication service 'http://download.geofabrik.de/europe/great-britain/england/greater-london-updates'. Current sequence 3355 (2022-06-03 20:21:26+00:00).
+2022-06-05 16:29:32 [INFO]: Using replication service 'http://download.geofabrik.de/europe/united-kingdom/england/greater-london-updates'. Current sequence 3355 (2022-06-03 20:21:26+00:00).
 2022-06-05 16:29:33  osm2pgsql version 1.6.0
 2022-06-05 16:29:33  Database version: 14.3 (Ubuntu 14.3-0ubuntu0.22.04.1)
 2022-06-05 16:29:33  PostGIS version: 3.2
