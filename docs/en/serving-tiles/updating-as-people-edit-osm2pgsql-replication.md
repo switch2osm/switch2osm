@@ -321,10 +321,10 @@ Again, note that "osm2pgsql-replication" will actually repeat downloading data a
 2022-06-05 22:30:47 [INFO]: Data imported until 2022-06-05 21:45:42+00:00. Backlog remaining: 0:45:05.948787
 ```
 
-The script to perform the update can be edited as above to output a summary to a logfile and added to root's crontab:
+The script to perform the update can be edited as above to output a summary to a logfile and added to your non-root accounts's crontab:
 
 ```sh
-*/5 *  *   *   *     sudo -u _renderd /usr/local/sbin/update_tiles.sh >> /var/log/tiles/run.log
+*/5 *  *   *   *     /usr/local/sbin/update_tiles.sh >> /var/log/tiles/run.log
 ```
 
 As we're updating based on minutely updates, and we've made the script check that it is not already running before trying to apply updates, we can run this more often than once per day; in this case every 5 minutes.
