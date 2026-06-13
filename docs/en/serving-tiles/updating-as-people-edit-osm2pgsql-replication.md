@@ -273,10 +273,10 @@ The script to perform the update can be added to root's crontab.  First, amend `
 Then add to your non-root accounts's crontab something like:
 
 ```sh
-04 04  *   *   *     /usr/local/sbin/update_tiles.sh >> /var/log/tiles/run.log
+04 09  *   *   *     /usr/local/sbin/update_tiles.sh >> /var/log/tiles/run.log
 ```
 
-This example runs once per day at 04:04 every morning.  There's no point in running it more than once per day, since Geofabrik updates are only released daily.
+This example runs once per day at 09:04 every morning.  There's no point in running it more than once per day, since Geofabrik updates are only released daily.
 
 ## Using minutely updates from openstreetmap.org
 
