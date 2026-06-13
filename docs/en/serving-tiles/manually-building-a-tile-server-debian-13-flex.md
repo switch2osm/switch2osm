@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Manually building a tile server (Debian 13, pgsql)
+title: Manually building a tile server (Debian 13, flex)
 dist: Debian 13
 dl_timestamp: "2025-08-15T12:40:00Z"
 lang: en
@@ -9,7 +9,7 @@ lang: en
 # {{ title }}
 
 !!! info ""
-    This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/){: target=_blank} 13 (trixie), using v5.9.0 of OSM Carto and were tested in August 2025.
+    This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/){: target=_blank} 13 (trixie), using v6.0.0 of OSM Carto and were tested in June 2026.
 
 ## Software installation
 
@@ -78,18 +78,6 @@ CREATE EXTENSION hstore;
 
 (it'll answer CREATE EXTENSION)
 
-```sql
-ALTER TABLE geometry_columns OWNER TO _renderd;
-```
-
-(it'll answer ALTER TABLE)
-
-```sql
-ALTER TABLE spatial_ref_sys OWNER TO _renderd;
-```
-
-(it'll answer ALTER TABLE)
-
 ```sh
 \q
 ```
@@ -132,10 +120,9 @@ cd ~/src
 git clone https://github.com/gravitystorm/openstreetmap-carto
 cd openstreetmap-carto
 git pull --all
-git switch --detach v5.9.0
 ```
 
-The "git switch" is needed because that's not the latest release from OSM Carto - it has moved to a different database format. See OSM Carto's [INSTALL.md](https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md) for the newer version.  The old format is called `pgsql`, the new one `flex`; later we'll get a [warning](https://osm2pgsql.org/doc/faq.html#the-pgsql-output-is-deprecated-what-does-that-mean) from `osm2pgsql` about that.
+Note that OSM Carto has now moved to a different database format - see OSM Carto's [INSTALL.md](https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md) for more details.  The old format was called `pgsql`, the new one is `flex`.
 
 Next, we'll check that we have installed a suitable version of the `carto` compiler.
 
@@ -181,33 +168,24 @@ The following command will insert the OpenStreetMap data you downloaded earlier 
 
 ```sh
 sudo -u _renderd \
-    osm2pgsql -d gis --create --slim  -G --hstore \
-    --tag-transform-script \
-        ~/src/openstreetmap-carto/openstreetmap-carto.lua \
-    -C 2500 --number-processes 1 \
-    -S ~/src/openstreetmap-carto/openstreetmap-carto.style \
+    osm2pgsql -O flex -S ~/src/openstreetmap-carto/openstreetmap-carto-flex.lua -d gis \
+    --create --slim -C 2500 --number-processes 1 \
     ~/data/azerbaijan-latest.osm.pbf
 ```
 
 It's worth explaining a little bit about what those options mean:
 
+`-O flex`
+: We're using `flex` rather than `pgsql` output.
+
+`-S ~/src/openstreetmap-carto/openstreetmap-carto-flex.lua`
+: Defines the lua script used for tag processing. This an easy is a way to process OSM tags before the style itself processes them, making the style logic potentially much simpler.
+
 `-d gis`
 : The database to work with (`gis` used to be the default; now it must be specified).
 
-`--create`
-: Load data into an empty database rather than trying to append to an existing one.
-
 `--slim`
-: osm2pgsql can use different table layouts; `slim` tables works for rendering.
-
-`-G`
-: Determines how multipolygons are processed.
-
-`--hstore`
-: Allows tags for which there are no explicit database columns to be used for rendering.
-
-`--tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua`
-: Defines the lua script used for tag processing. This an easy is a way to process OSM tags before the style itself processes them, making the style logic potentially much simpler.
+: We're using `slim` mode; we can update the database after importing it.
 
 `-C 2500`
 : Allocate 2.5 Gb of memory to osm2pgsql to the import process. If you have less memory you could try a smaller number, and if the import process is killed because it runs out of memory you'll need to try a smaller number or a smaller OSM extract.
@@ -215,15 +193,18 @@ It's worth explaining a little bit about what those options mean:
 `--number-processes 1`
 : Use 1 CPU. If you have more cores available you can use more.
 
-`-S ~/src/openstreetmap-carto/openstreetmap-carto.style`
-: Create the database columns in this file (actually these are unchanged from "openstreetmap-carto")
-
 `~/data/azerbaijan-latest.osm.pbf`
 : The final argument is the data file to load.
 
-While running that you'll get the [warning](https://osm2pgsql.org/doc/faq.html#the-pgsql-output-is-deprecated-what-does-that-mean) that was mentioned above.  The latest version of "OSM Carto" in development has been changed to use the "flex" output, but the version on the OpenStreetMap website (which this guide is designed to mirror) does not yet.
-
 That command will complete with something like "Osm2pgsql took 238s overall".
+
+### Disable JIT
+
+This is [recommended](https://github.com/openstreetmap-carto/openstreetmap-carto/blob/master/INSTALL.md#disable-jit) by the OSM Carto authors.
+
+```sh
+sudo -u _renderd psql -d gis -c 'ALTER SYSTEM SET jit=off;' -c 'SELECT pg_reload_conf();'
+```
 
 ### Creating indexes
 
@@ -238,11 +219,20 @@ It should respond with `CREATE INDEX` 16 times.
 
 ## Database functions
 
-In version 5.9.0 of “OSM Carto” (released October 2024), some functions need to be loaded into the database manually. These can be added using:
+Some functions need to be loaded into the database manually. These can be added using:
 
 ```sh
 cd ~/src/openstreetmap-carto/
 sudo -u _renderd psql -d gis -f functions.sql
+```
+
+### Additional Database Tables
+
+Recent versions of OSM Carto (6.0.0 onwards) [involve](https://github.com/openstreetmap-carto/openstreetmap-carto/blob/master/INSTALL.md#additional-database-tables) a database table of white-listed key/tag values which are updated with each release. This list be added / updated at any point using:
+
+```sh
+cd ~/src/openstreetmap-carto/
+sudo -u _renderd psql -d gis -f common-values.sql
 ```
 
 ### Shapefile download
@@ -264,7 +254,7 @@ Fonts need to be installed manually, like this:
 
 ```sh
 cd ~/src/openstreetmap-carto/
-scripts/get-fonts.sh
+scripts/get-fonts.py
 ```
 
 Due to a [current issue](https://github.com/gravitystorm/openstreetmap-carto/issues/5013) you might get an error at the very end of that, but it won't adversely affect the display of any current OSM data.

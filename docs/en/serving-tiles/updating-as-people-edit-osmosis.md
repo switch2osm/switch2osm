@@ -54,20 +54,28 @@ That will need to be changed to whatever is the non-root username below which th
 
 Also make sure that the script does NOT contain `-e$EXPIRY_METAZOOM:$EXPIRY_METAZOOM`. If it does, change the `:` to a `-`: `-e$EXPIRY_METAZOOM-$EXPIRY_METAZOOM`.
 
-Something else to consider is that you'll probably want to edit the OSM2PGSQL_OPTIONS to refer to the lua tag transform script that you used when loading the database, and the `.style` file that determines what columns are created. There may be other parameters that you need to pass here too depending on what you used when creating the database. Change `/path/to/` to the actual path, of course:
+Something else to consider is that you'll probably want to edit the OSM2PGSQL_OPTIONS to be correct for the database type and the lua tag transform script that you used when loading the database, and for `pgsql` the `.style` file that determines what columns are created. There may be other parameters that you need to pass here too depending on what you used when creating the database. Change `/path/to/` to the actual path, of course:
+
+(`pgsql`)
 
 ```sh
 OSM2PGSQL_OPTIONS="-d $DBNAME --tag-transform-script /path/to/src/openstreetmap-carto/openstreetmap-carto.lua -S /path/to/src/openstreetmap-carto/openstreetmap-carto.style"
 ```
 
-Next, we'll create the log directory for tile expiry logs, and change the ownership to the username used for rendering tiles (for Debian 11, this will be `_renderd`). The script must also be run as this account, and because this account may be different to where the software is downloaded, we'll pass the complete location of the script - modify `/path/to` to whatever is correct.
+(`flex`)
+
+```sh
+OSM2PGSQL_OPTIONS="-d $DBNAME -S /path/to/openstreetmap-carto/openstreetmap-carto-flex.lua"
+```
+
+Next, we'll create the log directory for tile expiry logs, and change the ownership to the username used for rendering tiles (for Debian 11 and above and later Ubuntu, this will be `_renderd`). The script must also be run as this account, and because this account may be different to where the software is downloaded, we'll pass the complete location of the script - modify `/path/to` to whatever is correct.
 
 The parameter passed to `openstreetmap-tiles-update-expire` should be the age of the data originally loaded. If you downloaded data from Geofabrik it should be what the "and contains all OSM data up" date was on e.g. <http://download.geofabrik.de/asia/azerbaijan.html>{: target=_blank} when you downloaded the data.
 
 ```sh
 sudo mkdir /var/log/tiles
-sudo chown renderaccount /var/log/tiles
-sudo -u renderaccount /path/to/src/mod_tile/openstreetmap-tiles-update-expire 2020-11-14T21:42:02Z
+sudo chown _renderd /var/log/tiles
+sudo -u _renderd /path/to/src/mod_tile/openstreetmap-tiles-update-expire 2026-06-12T20:21:15Z
 ```
 
 The last line of the output that you get should look something like
@@ -87,7 +95,7 @@ tail -f /var/log/tiles/run.log
 On another run:
 
 ```sh
-sudo -u renderaccount /path/to/src/mod_tile/openstreetmap-tiles-update-expire
+sudo -u _renderd /path/to/src/mod_tile/openstreetmap-tiles-update-expire
 ```
 
 modifying that like with the correct account and path as was done previously; but this time with no parameter.
@@ -115,13 +123,13 @@ The `replag` value shown is the replication lag; by default, an hours-worth of d
 
 Run `openstreetmap-tiles-update-expire` again in the same way; you should see that `replag` is an hour less than it was.
 
-Next, we'll set up `openstreetmap-tiles-update-expire` in crontab to run every few minutes. We'll want this to run from the crontab of the user that does the rendering, so on Debian 11 we'll need to do this:
+Next, we'll set up `openstreetmap-tiles-update-expire` in crontab to run every few minutes. We'll want this to run from the crontab of the user that does the rendering, so on Debian 11 and above we'll need to do this:
 
 ```sh
 sudo -u _renderd crontab -e
 ```
 
-You may see a message "problems with history file" - don't worry if you do. On non-Debian 11 systems, we will probably be able to run `crontab -e` directly from the username that is rendering tiles. The first time you run `crontab -e` you may be asked to choose an editor. Go down to the end of the file. Lines starting with `#` are comments. The last comment line is:
+You may see a message "problems with history file" - don't worry if you do. On earlier systems, we will probably be able to run `crontab -e` directly from the username that is rendering tiles. The first time you run `crontab -e` you may be asked to choose an editor. Go down to the end of the file. Lines starting with `#` are comments. The last comment line is:
 
 ```sh
 # m h  dom mon dow   command
