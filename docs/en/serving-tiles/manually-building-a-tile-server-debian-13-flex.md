@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Manually building a tile server (Debian 13)
+title: Manually building a tile server (Debian 13, flex)
 dist: Debian 13
 dl_timestamp: "2025-08-15T12:40:00Z"
 lang: en
@@ -9,7 +9,7 @@ lang: en
 # {{ title }}
 
 !!! info ""
-    This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/){: target=_blank} 13 (trixie), and were tested in August 2025.
+    This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/){: target=_blank} 13 (trixie), using v6.0.0 of OSM Carto and were tested in June 2026.
 
 ## Software installation
 

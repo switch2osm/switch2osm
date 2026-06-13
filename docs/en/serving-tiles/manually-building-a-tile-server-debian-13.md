@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Manually building a tile server (Debian 13)
+title: Manually building a tile server (Debian 13, pgsql)
 dist: Debian 13
 dl_timestamp: "2025-08-15T12:40:00Z"
 lang: en
@@ -9,7 +9,7 @@ lang: en
 # {{ title }}
 
 !!! info ""
-    This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/){: target=_blank} 13 (trixie), and were tested in August 2025.
+    This page describes how to install, setup and configure all the necessary software to operate your own tile server. These step-by-step instructions were written for [Debian Linux](https://www.debian.org/){: target=_blank} 13 (trixie), using v5.9.0 of OSM Carto and were tested in August 2025.
 
 ## Software installation
 
@@ -135,7 +135,7 @@ git pull --all
 git switch --detach v5.9.0
 ```
 
-The "git switch" is needed because that's the latest release that you can see at OpenStreetMap, but OSM Carto has actually moved to a different database format. See OSM Carto's [INSTALL.md](https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md) for the newer version.  The old format is called `pgsql`, the new one `flex`; later we'll get a [warning](https://osm2pgsql.org/doc/faq.html#the-pgsql-output-is-deprecated-what-does-that-mean) from `osm2pgsql` about that.
+The "git switch" is needed because that's not the latest release from OSM Carto - it has moved to a different database format. See OSM Carto's [INSTALL.md](https://github.com/gravitystorm/openstreetmap-carto/blob/master/INSTALL.md) for the newer version.  The old format is called `pgsql`, the new one `flex`; later we'll get a [warning](https://osm2pgsql.org/doc/faq.html#the-pgsql-output-is-deprecated-what-does-that-mean) from `osm2pgsql` about that.
 
 Next, we'll check that we have installed a suitable version of the `carto` compiler.
 
