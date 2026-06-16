@@ -40,8 +40,8 @@ A style requires a style definition and sprite files for any icons. We're going 
 Start by making a new directory to store the files you'll be creating. We'll call it "style" in the documentation, but it can be whatever you want. Inside this directory we're going to build all the files we need and place them in a "release" subdirectory
 
 ```sh
-mkdir style
-cd style
+mkdir ~/style
+cd ~/style
 mkdir release
 ```
 

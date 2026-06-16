@@ -1,0 +1,17 @@
+{
+	"layers": {
+        "tree_points": { "minzoom": 10, "maxzoom": 14 },
+        "tree_lines": { "minzoom": 10, "maxzoom": 14 },
+        "tree_areas": { "minzoom": 6, "maxzoom": 14 }
+	},
+	"settings": {
+		"minzoom": 6,
+		"maxzoom": 14,
+		"basezoom": 14,
+		"include_ids": false,
+		"name": "switch2osm tree example",
+		"version": "0.1",
+		"description": "switch2osm example of trees",
+		"compress": "gzip"
+	}
+}
