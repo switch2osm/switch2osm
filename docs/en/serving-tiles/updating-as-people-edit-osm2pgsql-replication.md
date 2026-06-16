@@ -25,7 +25,9 @@ cd ~/data
 wget http://download.geofabrik.de/europe/united-kingdom/england/greater-london-latest.osm.pbf
 ```
 
-Next, load the database.  The numbers here for processes and memory can be varied to match the system being used:
+Next, load the database.  The actual parameters used will depend on whether the `pgsql` output from `osm2pgsql` is being used (used by OSM Carto versions up to 5.9.0) or whether the `flex` output is (OSM Carto versions 6.0.0 and above).  In addition, the numbers here for processes and memory can be varied to match the system being used.
+
+For `pgsql`:
 
 ```sh
 sudo -u _renderd \
@@ -34,6 +36,17 @@ sudo -u _renderd \
         ~/src/openstreetmap-carto/openstreetmap-carto.lua \
     -C 3000 --number-processes 4 \
     -S ~/src/openstreetmap-carto/openstreetmap-carto.style \
+    ~/data/greater-london-latest.osm.pbf
+```
+
+For `flex`:
+
+```sh
+sudo -u _renderd \
+    osm2pgsql -O flex \
+    -S        ~/src/openstreetmap-carto/openstreetmap-carto-flex.lua \
+    -d gis --create --slim  \
+    -C 3000 --number-processes 4 \
     ~/data/greater-london-latest.osm.pbf
 ```
 
@@ -93,7 +106,7 @@ Next:
 sudo nano /usr/local/sbin/update_tiles.sh
 ```
 
-initially, this script should contain:
+initially, this script should contain something like (for `pgsql`):
 
 ```sh title="update_tiles.sh"
 #!/bin/bash
@@ -109,6 +122,22 @@ osm2pgsql-replication \
     --expire-tiles=1-20 \
     --expire-output=/var/cache/renderd/dirty_tiles.txt
 ```
+
+A `flex` version would be something like:
+
+```sh title="update_tiles.sh"
+#!/bin/bash                                                                                                   
+osm2pgsql-replication \
+    update -d gis \
+    --post-processing /usr/local/sbin/expire_tiles.sh \
+    --max-diff-size 10  --  \
+    -S /home/renderaccount/src/openstreetmap-carto/openstreetmap-carto-flex.lua \
+    -C 2500 --number-processes 4 \
+    --expire-tiles=1-20 \
+    --expire-output=/var/cache/renderd/dirty_tiles.txt
+```
+
+References to `renderaccount` need changing to the actual location based on the account that you are using.
 
 Everything in the `osm2pgsql-replication update` line after `--` is passed as parameters to osm2pgsql - they will all need to match what the database was loaded with in the first place.  Before the `--`, `-d gis` just defines what database we're using and `--max-diff-size 10` how much data to process at once, but note that osm2pgsql-replication will actually repeat downloading data and updating the database until there is no more to process, which may take some time.  The `--max diff-size` determines how much data is fetched on each iteration. The `--post-processing /usr/local/sbin/expire_tiles.sh` just calls our other script.
 
@@ -149,7 +178,7 @@ In another session:
 sudo tail -f /var/log/syslog
 ```
 
-or if you are using Debian 12, which does not have a "syslog" file by default:
+or if you are using a system which does not have a "syslog" file by default, such as Debian 12 or above:
 
 ```sh
 sudo journalctl -ef
@@ -239,15 +268,15 @@ Jun  5 16:36:58 ubuntuvm75 renderd[5838]: Connection 0, fd 5 closed, now 0 left,
 
 ### Running every day
 
-The script to perform the update can be added to root's crontab.  First, amend `update_tiles.sh` to do some error checking at startup, and to append a summary to a logfile only.  You can get a copy of that from [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles.sh){: target=_blank}. Again, change "renderaccount" to the name of whatever non-root account you are using here.  You can also adjust the number of threads and the amount of memory cache used.
+The script to perform the update can be added to root's crontab.  First, amend `update_tiles.sh` to do some error checking at startup, and to append a summary to a logfile only.  You can get a copy of that from [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles.sh){: target=_blank} for `pgsql` or [here](https://github.com/SomeoneElseOSM/mod_tile/blob/switch2osm/update_tiles_flex.sh){: target=_blank} for `flex` (as noted above, the `osm2pgsql` parameters are different). Again, change "renderaccount" to the name of whatever non-root account you are using here.  You can also adjust the number of threads and the amount of memory cache used.
 
-Then add to root's crontab:
+Then add to your non-root accounts's crontab something like:
 
 ```sh
-04 04  *   *   *     sudo -u _renderd /usr/local/sbin/update_tiles.sh
+04 09  *   *   *     /usr/local/sbin/update_tiles.sh >> /var/log/tiles/run.log
 ```
 
-This example runs once per day at 04:04 every morning.  There's no point in running it more than once per day, since Geofabrik updates are only released daily.
+This example runs once per day at 09:04 every morning.  There's no point in running it more than once per day, since Geofabrik updates are only released daily.
 
 ## Using minutely updates from openstreetmap.org
 
@@ -292,10 +321,10 @@ Again, note that "osm2pgsql-replication" will actually repeat downloading data a
 2022-06-05 22:30:47 [INFO]: Data imported until 2022-06-05 21:45:42+00:00. Backlog remaining: 0:45:05.948787
 ```
 
-The script to perform the update can be edited as above to output a summary to a logfile and added to root's crontab:
+The script to perform the update can be edited as above to output a summary to a logfile and added to your non-root accounts's crontab:
 
 ```sh
-*/5 *  *   *   *     sudo -u _renderd /usr/local/sbin/update_tiles.sh >> /var/log/tiles/run.log
+*/5 *  *   *   *     /usr/local/sbin/update_tiles.sh >> /var/log/tiles/run.log
 ```
 
 As we're updating based on minutely updates, and we've made the script check that it is not already running before trying to apply updates, we can run this more often than once per day; in this case every 5 minutes.

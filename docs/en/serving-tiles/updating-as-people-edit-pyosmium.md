@@ -8,7 +8,7 @@ lang: en
 
 Every day there are millions of new map updates so to prevent a map becoming "stale" you can refresh the data used to create map tiles regularly.
 
-Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously.  Suitable versions are distributed as part of Ubuntu 22.04 and Debian 12, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html){: target=_blank}.
+Using osm2pgsql (version 1.4.2 or above) it's now much easier to do this than it was previously.  Suitable versions are distributed as part of Ubuntu 22.04 and Debian 12 and later, and it can also be obtained by following [these instructions](https://osm2pgsql.org/doc/install.html){: target=_blank}.
 
 A simpler, but less flexible, method to update a database is to use "osm2pgsql-replication", described [here](/serving-tiles/updating-as-people-edit-osm2pgsql-replication.md). In this example we'll use "PyOsmium" to update a database initially loaded from Geofabrik with minutely updates from planet.openstreetmap.org.
 
@@ -38,7 +38,7 @@ sudo systemctl restart apache2
 
 Important note - the tile expiry script used below assumes that tiles are written below `/var/cache/renderd/`. If `/etc/renderd.conf` specifies another location, you'll need to modify it before expiring tiles using the scripts you're going to create here.  Because that directory will always exist, we'll also use it for workfiles needed by "pyosmium".
 
-For the sake of this example, we'll assume that you've loaded your database in this way:
+For the sake of this example, we'll assume that you've loaded your database in this way (`pgsql`):
 
 ```sh
 sudo -u _renderd \
@@ -50,7 +50,18 @@ sudo -u _renderd \
     ~/data/greater-london-latest.osm.pbf
 ```
 
-The data to load was obtained from a page such as [this one](http://download.geofabrik.de/europe/united-kingdom/england/greater-london.html){: target=_blank}, which says something like "... and contains all OSM data up to 2023-07-02T20:21:43Z". We'll use that date when setting up replication below:
+or like this (`flex`):
+
+```sh
+sudo -u _renderd \
+    osm2pgsql -O flex \
+    -S        ~/src/openstreetmap-carto/openstreetmap-carto-flex.lua \
+    -d gis --create --slim  \
+    -C 3000 --number-processes 4 \
+    ~/data/greater-london-latest.osm.pbf
+```
+
+The data to load was obtained from a page such as [this one](http://download.geofabrik.de/europe/united-kingdom/england/greater-london.html){: target=_blank}, which says something like "... and contains all OSM data up to 2026-06-12T20:21:15Z". We'll use that date when setting up replication below:
 
 ```sh
 sudo mkdir /var/cache/renderd/pyosmium
@@ -59,7 +70,7 @@ sudo mkdir /var/log/tiles
 sudo chown _renderd /var/log/tiles
 cd /var/cache/renderd/pyosmium
 sudo apt install pyosmium
-sudo -u _renderd pyosmium-get-changes -D 2023-07-02T20:21:43Z -f sequence.state -v
+sudo -u _renderd pyosmium-get-changes -D 2026-06-12T20:21:15Z -f sequence.state -v
 ```
 
 The last line creates a "sequence.state" file.  The actual date used in that line will need to match the data that you downloaded.
@@ -80,22 +91,28 @@ sudo apt install python3-shapely python3-lxml
 
 ## Applying updates
 
-A script to actually apply updates has been created [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/call_pyosmium.sh){: target=_blank}. A good place to create that is `/usr/local/sbin`. That will need some customisation:
+A script to actually apply updates has been created [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/call_pyosmium.sh){: target=_blank} for `pgsql` or [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/call_pyosmium_flex.sh){: target=_blank} for `flex` (as noted previously, the `osm2pgsql` parameters are different).  A good place to create that is `/usr/local/sbin`. That will need some customisation:
 
 * If you're not using "trim_osc.py", just remove the section of code between the "Trim the downloaded changes" comment and the "The osm2pgsql append line" one.
 
 * If you are using "trim_osc.py" you'll need to make sure that TRIM_BIN points to the correct location and TRIM_REGION_OPTIONS matches the area that you are interested in (the default in the script covers IE+GB).
 
-* The parameters to "osm2pgsql --append" will need customising to match the server you're using (amount of memory allocated, number of threads, etc.)
+* The parameters to "osm2pgsql --append" will need customising to match your database (`pgsql` or `flex`) and the server you're using (amount of memory allocated, number of threads, etc.)
 
 * The parameters passed to "render_expired" will need to be customised (how many zoom levels to process, and what to do with dirty tiles at each level)
 
-A script to display the current database replication lag is available [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/pyosmium_replag.sh){: target=_blank}, which is based on the "mod_tile" one that is shipped as an example with the mod_tile source. `pyosmium_replag` displays the replication lag in seconds; `pyosmium_replag -h` displays the replication lag in hours (or if less than an hour minutes, or seconds). It is suggested to also create that in `/usr/local/sbin`. Don't forget to make both scripts executable.
+A script to display the current database replication lag is available [here](https://raw.githubusercontent.com/SomeoneElseOSM/mod_tile/switch2osm/pyosmium_replag.sh){: target=_blank}, which is based on the "mod_tile" one that is shipped as an example with the mod_tile source. `pyosmium_replag.sh` displays the replication lag in seconds; `pyosmium_replag.sh -h` displays the replication lag in hours (or if less than an hour minutes, or seconds). It is suggested to also create that in `/usr/local/sbin`. Don't forget to make both scripts executable.
 
 To run the script once:
 
 ```sh
 sudo -u _renderd /usr/local/sbin/call_pyosmium.sh
+```
+
+or
+
+```sh
+sudo -u _renderd /usr/local/sbin/call_pyosmium_flex.sh
 ```
 
 As it runs, it creates workfiles (and the verbose output from the commands that it runs) in `/var/cache/renderd/pyosmium`. At completion you should see something like:
@@ -126,10 +143,16 @@ The script to perform the update can be added to the crontab of the `_renderd` a
 sudo -u _renderd crontab -e
 ```
 
-and then add:
+and then add as appropriate:
 
 ```sh
 */5 *  *   *   *     /usr/local/sbin/call_pyosmium.sh >> /var/log/tiles/run.log
+```
+
+or
+
+```sh
+*/5 *  *   *   *     /usr/local/sbin/call_pyosmium_flex.sh >> /var/log/tiles/run.log
 ```
 
 The script checks that it is not already running before trying to apply updates, so can run it fairly frequently; in this case every 5 minutes.
