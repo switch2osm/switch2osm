@@ -35,6 +35,8 @@ en:
               # Menu item name for the side menu
               MapLibre: Getting started with MapLibre GL
               # Menu item name for the side menu
+              Custom Data: Custom data with MapLibre GL
+              # Menu item name for the side menu
               Vector Tiles: Power of Vector Map Tiles
               # Menu item name for the "Serving Tiles" tab
               Serving: Serving Tiles
