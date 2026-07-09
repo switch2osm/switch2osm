@@ -41,6 +41,7 @@ The following companies host OpenStreetMap tiles.
 * [Jawg](https://www.jawg.io/){: target=_blank}, France
 * [LatLng](https://www.latlng.work/){: target=_blank}, US
 * [Mapbox](http://mapbox.com/){: target=_blank}, US
+* [MapRiot](https://mapriot.com/){: target=_blank}, Czech Republic
 * [MapTiler](https://www.maptiler.com/){: target=_blank}, Switzerland
 * [MapTiles API](https://www.maptilesapi.com/){: target=_blank}, US
 * [Maptoolkit](https://www.maptoolkit.com/){: target=_blank}, Germany/Austria
