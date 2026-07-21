@@ -24,6 +24,8 @@ If you are setting up your own tile server, we recommend that you use [Ubuntu Li
 
 2. Use [docker](using-a-docker-container.md).
 
+3. Use [Martin](https://maplibre.org/martin/quick-start/){: target=_blank} to serve vector tiles from PostGIS, MBTiles, PMTiles, or GeoJSON sources.
+
 ## System requirements
 
 Serving your own maps is a fairly intensive task. Depending on the size of the area you’re interested in serving and the traffic you expect the system requirements will vary. In general, requirements will range from 10-20GB of storage, 4GB of memory, and a modern dual-core processor for a city-sized region to 1TB of fast storage, 24GB of memory, and a quad-core processor for the entire planet.
@@ -36,7 +38,13 @@ We would recommend that you begin with extracts of OpenStreetMap data – for ex
 
 ## The toolchain
 
-We use a series of tools for generating and serving map tiles.
+The manual and Docker guides above use a series of tools for generating and serving raster map tiles.
+
+### Vector tiles with Martin
+
+[Martin](https://maplibre.org/martin/){: target=_blank} is an alternative tile server for vector tiles. It can generate tiles on demand from tables and functions in a PostGIS database, or serve existing MBTiles and PMTiles archives. Martin does not import raw OpenStreetMap data itself, so you still need to prepare a PostGIS database or a tile archive before serving it. See the [Martin quick start](https://maplibre.org/martin/quick-start/){: target=_blank} for installation and a small MBTiles example.
+
+### Raster tiles with mod_tile
 
 **Apache** provides the front end server that handles requests from your web browser and passes the request to mod_tile. The Apache web server can also be used to serve static web content like the HTML, JavaScript, or CSS for your map webpage.
 
