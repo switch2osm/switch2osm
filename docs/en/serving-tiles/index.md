@@ -24,6 +24,8 @@ If you are setting up your own tile server, we recommend that you use [Ubuntu Li
 
 2. Use [docker](using-a-docker-container.md).
 
+3. [Self-host vector tiles](self-hosting-vector-tiles.md) with Planetiler, Martin, and MapLibre GL JS.
+
 ## System requirements
 
 Serving your own maps is a fairly intensive task. Depending on the size of the area you’re interested in serving and the traffic you expect the system requirements will vary. In general, requirements will range from 10-20GB of storage, 4GB of memory, and a modern dual-core processor for a city-sized region to 1TB of fast storage, 24GB of memory, and a quad-core processor for the entire planet.
@@ -36,7 +38,11 @@ We would recommend that you begin with extracts of OpenStreetMap data – for ex
 
 ## The toolchain
 
-We use a series of tools for generating and serving map tiles.
+The manual and Docker guides above use a series of tools for generating and serving raster map tiles.
+
+The [self-hosted vector tile guide](self-hosting-vector-tiles.md) uses Planetiler to prepare OpenStreetMap data as a Shortbread MBTiles archive, Martin to serve it, and MapLibre GL JS with a compatible style to display it. Martin does not import raw OpenStreetMap data itself.
+
+### Raster tiles with mod_tile
 
 **Apache** provides the front end server that handles requests from your web browser and passes the request to mod_tile. The Apache web server can also be used to serve static web content like the HTML, JavaScript, or CSS for your map webpage.
 
