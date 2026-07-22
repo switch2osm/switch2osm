@@ -24,7 +24,7 @@ If you are setting up your own tile server, we recommend that you use [Ubuntu Li
 
 2. Use [docker](using-a-docker-container.md).
 
-3. Use [Martin](https://maplibre.org/martin/quick-start/){: target=_blank} to serve vector tiles from PostGIS, MBTiles, PMTiles, or GeoJSON sources.
+3. [Self-host vector tiles](self-hosting-vector-tiles.md) with Planetiler, Martin, and MapLibre GL JS.
 
 ## System requirements
 
@@ -40,9 +40,7 @@ We would recommend that you begin with extracts of OpenStreetMap data – for ex
 
 The manual and Docker guides above use a series of tools for generating and serving raster map tiles.
 
-### Vector tiles with Martin
-
-[Martin](https://maplibre.org/martin/){: target=_blank} is an alternative tile server for vector tiles. It can generate tiles on demand from tables and functions in a PostGIS database, or serve existing MBTiles and PMTiles archives. Martin does not import raw OpenStreetMap data itself, so you still need to prepare a PostGIS database or a tile archive before serving it. See the [Martin quick start](https://maplibre.org/martin/quick-start/){: target=_blank} for installation and a small MBTiles example.
+The [self-hosted vector tile guide](self-hosting-vector-tiles.md) uses Planetiler to prepare OpenStreetMap data as a Shortbread MBTiles archive, Martin to serve it, and MapLibre GL JS with a compatible style to display it. Martin does not import raw OpenStreetMap data itself.
 
 ### Raster tiles with mod_tile
 
