@@ -34,6 +34,11 @@ The following companies offer development services and consulting for sites wish
 
 The following companies host OpenStreetMap tiles.
 
+### Completely free usage
+
+* [Maptoolkit.org](https://www.maptoolkit.org/){: target=_blank}, Germany/Austria
+* [OpenFreeMap](https://openfreemap.org/){: target=_blank}, Hungary
+
 ### Allows free usage
 
 * [Carto](https://carto.com/){: target=_blank}, US
