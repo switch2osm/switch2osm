@@ -113,6 +113,7 @@ nav:
           - Ubuntu 20.04: serving-tiles/manually-building-a-tile-server-ubuntu-20-04-lts.md
           - Ubuntu 18.04: serving-tiles/manually-building-a-tile-server-ubuntu-18-04-lts.md
       - Docker: serving-tiles/using-a-docker-container.md
+      - Martin: serving-tiles/serving-tiles-with-martin.md
       - Munin: serving-tiles/monitoring-using-munin.md
       - Updating:
           - osm2pgsql: serving-tiles/updating-as-people-edit-osm2pgsql-replication.md
