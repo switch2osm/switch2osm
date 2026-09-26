@@ -40,6 +40,8 @@ en:
               Vector Tiles: Power of Vector Map Tiles
               # Menu item name for the "Serving Tiles" tab
               Serving: Serving Tiles
+              # Serving tiles: Self-hosting vector tiles
+              Self-hosted Vector Tiles: Self-hosting vector tiles
               # Serving tiles: Manually building a tile server
               Manually: Manually building a tile server
               # Serving tiles: Using a Docker container
