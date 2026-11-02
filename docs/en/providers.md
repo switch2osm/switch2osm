@@ -22,7 +22,6 @@ The following companies offer development services and consulting for sites wish
 * [Jawg](https://www.jawg.io/){: target=_blank}, France
 * [Makina Corpus](https://makina-corpus.com/){: target=_blank}, France
 * [Mapbox](https://www.mapbox.com/){: target=_blank}, US
-* [Maps by DeltaBreen](https://maps.deltabreen.eu/){: target=_blank}, Ireland
 * [MapTiler](https://www.maptiler.com/){: target=_blank}, Switzerland
 * [Maptoolkit](https://www.maptoolkit.com/){: target=_blank}, Germany/Austria
 * [mapz.com by Kober-Kümmerly+Frey](https://www.mapz.com/){: target=_blank}, Germany
@@ -41,6 +40,7 @@ The following companies host OpenStreetMap tiles.
 * [Geoapify](https://www.geoapify.com/api/map-tiles/){: target=_blank}, Germany
 * [Jawg](https://www.jawg.io/){: target=_blank}, France
 * [LatLng](https://www.latlng.work/){: target=_blank}, US
+* [Maps by DeltaBreen](https://maps.deltabreen.eu/){: target=_blank}, Ireland
 * [Mapbox](http://mapbox.com/){: target=_blank}, US
 * [MapTiler](https://www.maptiler.com/){: target=_blank}, Switzerland
 * [MapTiles API](https://www.maptilesapi.com/){: target=_blank}, US
