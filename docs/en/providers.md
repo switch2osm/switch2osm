@@ -40,8 +40,8 @@ The following companies host OpenStreetMap tiles.
 * [Geoapify](https://www.geoapify.com/api/map-tiles/){: target=_blank}, Germany
 * [Jawg](https://www.jawg.io/){: target=_blank}, France
 * [LatLng](https://www.latlng.work/){: target=_blank}, US
-* [Maps by DeltaBreen](https://maps.deltabreen.eu/){: target=_blank}, Ireland
 * [Mapbox](http://mapbox.com/){: target=_blank}, US
+* [Maps by DeltaBreen](https://maps.deltabreen.eu/){: target=_blank}, Ireland
 * [MapTiler](https://www.maptiler.com/){: target=_blank}, Switzerland
 * [MapTiles API](https://www.maptilesapi.com/){: target=_blank}, US
 * [Maptoolkit](https://www.maptoolkit.com/){: target=_blank}, Germany/Austria
