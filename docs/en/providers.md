@@ -45,6 +45,7 @@ The following companies host OpenStreetMap tiles.
 * [MapTiles API](https://www.maptilesapi.com/){: target=_blank}, US
 * [Maptoolkit](https://www.maptoolkit.com/){: target=_blank}, Germany/Austria
 * [Nextzen](https://www.nextzen.org/){: target=_blank}, US
+* [PinSharing](https://pinsharing.com){: target=_blank}, US
 * [SmartMaps by YellowMap](https://www.smartmaps.net/en/){: target=_blank}, Germany
 * [Stadia Maps](https://stadiamaps.com){: target=_blank}, US
 * [Stamen](https://stamen.com/){: target=_blank}, US
