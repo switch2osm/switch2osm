@@ -25,11 +25,62 @@ need substantially more disk space, memory, and processing time. Planetiler
 creates a snapshot: to incorporate later OpenStreetMap edits, generate a new
 archive and replace the old one.
 
+## Why run a tile server?
+
+For an archive that never changes, you do not strictly need a server
+process: a plain static web host that supports HTTP range requests can serve
+a [PMTiles](https://docs.protomaps.com/pmtiles/){: target=_blank} archive
+directly, with no backend beyond that. That approach has fewer moving parts
+and is worth using when your hosting is already static and your tiles are
+genuinely a one-off snapshot.
+
+This guide uses Martin instead because it gives one HTTP API regardless of
+what is behind it. The same Martin instance can serve an MBTiles or PMTiles
+file, a directory of sources, or, with a different configuration, tiles
+generated on the fly from PostGIS, so the serving layer does not change if
+you later move from a static snapshot to a continuously updated database.
+Martin is maintained by the MapLibre project, ships as a small Rust binary
+with an official Docker image, and publishes a catalog endpoint that
+describes its sources without extra configuration. If your archive truly
+never changes and you would rather avoid running a server, see the
+[Martin file-source documentation](https://maplibre.org/martin/sources-files/){:
+target=_blank} for its own PMTiles support, or serve the PMTiles archive
+directly from static hosting instead of following the rest of this guide.
+
 ## Requirements
 
-Install [Docker](https://docs.docker.com/engine/install/){: target=_blank} and
-make sure the daemon is running. You also need `curl`, Node.js 18 or later,
-and at least 1 GB of free disk space for this example.
+You need Docker, `curl`, Node.js 18 or later, and at least 1 GB of free disk
+space for this example.
+
+### Installing Docker
+
+If you don't already have Docker installed, follow the [official install
+instructions](https://docs.docker.com/engine/install/){: target=_blank} for
+your platform. On Debian 13 or Ubuntu 22.04 or later, you can instead install
+the distribution's packaged version with
+
+```sh
+sudo apt install docker.io
+```
+
+After installing, make sure the daemon is running (`sudo systemctl status
+docker` on most Linux distributions) and that your user can run `docker`
+commands, either by using `sudo` or by adding your user to the `docker`
+group.
+
+### Installing curl and Node.js
+
+Most Linux distributions and macOS already have `curl` installed; check with
+`curl --version`. If it's missing, install it with your package manager, for
+example `sudo apt install curl` on Debian or Ubuntu, or `brew install curl`
+on macOS.
+
+Install Node.js 18 or later from the [official
+downloads](https://nodejs.org/en/download){: target=_blank}, or with your
+package manager, for example `sudo apt install nodejs npm` on Debian or
+Ubuntu (check the version with `node --version`; if your distribution ships
+an older release, use [nvm](https://github.com/nvm-sh/nvm){: target=_blank}
+instead), or `brew install node` on macOS.
 
 Create a working directory:
 
