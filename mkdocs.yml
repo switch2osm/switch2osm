@@ -103,6 +103,7 @@ nav:
   - Serving:
       # - Serving tiles: serving-tiles/index.md
       - serving-tiles/index.md
+      - Self-hosted Vector Tiles: serving-tiles/self-hosting-vector-tiles.md
       - Manually:
           - Debian 13 flex: serving-tiles/manually-building-a-tile-server-debian-13-flex.md
           - Debian 13 pgsql: serving-tiles/manually-building-a-tile-server-debian-13.md
