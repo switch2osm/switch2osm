@@ -27,4 +27,5 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
     uses: openstreetmap/github-shared-workflows/.github/workflows/container-build-publish.yml@main
