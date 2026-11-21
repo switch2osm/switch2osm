@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Self-hosted OpenStreetMap vector tiles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/maplibre-gl@5.21/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@5.21/dist/maplibre-gl.css" rel="stylesheet" />
+  <style>
+    html, body, #map { height: 100%; margin: 0; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    const fonts = ["Noto Sans", "Noto Sans Bold"];
+    Promise.all(fonts.map(font => document.fonts.load(`24px '${font}'`))).then(() => {
+      new maplibregl.Map({
+        container: "map",
+        style: new URL("style.json", window.location.href).href,
+        center: [7.42, 43.73],
+        zoom: 12,
+        hash: true,
+        maxZoom: 19
+      });
+    });
+  </script>
+</body>
+</html>
